@@ -1,0 +1,1642 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lección 3.3 · Sistemas del cuerpo humano, homeostasis y salud</title>
+    <meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago" />
+    <meta name="license" content="CC BY-NC-SA 4.0" />
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" />
+    <style>
+      :root {
+        /* Unidad 3 — verde del plan curricular (--t3). El tono del tema es el
+       #1b5e20 del plan; la caja de consejo se movió al matiz 326° para
+       que no se funda con él. */
+        --tema: #1b5e20;
+        --tema-d: #0f3d16;
+        --tema-bg: #c3e2c5;
+        --tema-bg2: #aed6b1;
+        --acento: #2e7d32;
+        --txt: #222;
+        --bg: #f5f7fa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        margin: 0;
+        background: var(--bg);
+        color: var(--txt);
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      .contenedor {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* ── ENCABEZADO ─────────────────────────────────────────────── */
+      header.principal {
+        background: var(--tema-d);
+        background: linear-gradient(135deg, #0a2c10 0%, #0f3d16 55%, #1b5e20 100%);
+        color: #ffffff;
+        padding: 32px 30px;
+        border-radius: 14px;
+        margin-bottom: 22px;
+        box-shadow: 0 4px 14px rgba(10, 44, 16, 0.28);
+      }
+      header.principal .ruta {
+        font-size: 13px;
+        color: #ffffff;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+      header.principal h1 {
+        margin: 8px 0 6px;
+        font-size: 23px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+      header.principal .meta {
+        font-size: 14px;
+        color: #ffffff;
+      }
+
+      .practicas-sp {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .sp {
+        display: inline-block;
+        background: #ffffff;
+        color: #0f3d16;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 12px;
+        letter-spacing: 0.3px;
+      }
+
+      h2.seccion {
+        color: var(--tema-d);
+        font-size: 21px;
+        margin: 34px 0 12px;
+        padding-bottom: 6px;
+        border-bottom: 3px solid var(--tema-bg);
+      }
+      h3 {
+        color: var(--tema-d);
+        font-size: 17px;
+        margin: 20px 0 8px;
+      }
+
+      .caja-objetivos {
+        background: var(--tema-bg);
+        border-left: 6px solid var(--tema);
+        padding: 18px 22px;
+        border-radius: 0 10px 10px 0;
+        margin-bottom: 22px;
+      }
+      .caja-objetivos h2 {
+        margin: 0 0 10px;
+        color: var(--tema-d);
+        font-size: 19px;
+      }
+      .caja-objetivos ul {
+        margin: 0;
+        padding-left: 22px;
+      }
+      .caja-objetivos li {
+        margin: 5px 0;
+      }
+
+      .bloque {
+        background: #fff;
+        border-radius: 10px;
+        padding: 4px 24px 18px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
+        margin-bottom: 18px;
+      }
+      p {
+        margin: 10px 0;
+      }
+
+      .diagrama-wrap {
+        text-align: center;
+        margin: 16px 0;
+        overflow-x: auto;
+      }
+
+      /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+      .materiales {
+        background: #eceff1;
+        border-left: 6px solid #37474f;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 18px 0;
+      }
+      .materiales h2 {
+        margin: 0 0 8px;
+        color: #263238;
+        font-size: 18px;
+      }
+      .materiales ul {
+        margin: 8px 0 0;
+        padding-left: 22px;
+      }
+      .materiales li {
+        margin: 5px 0;
+      }
+
+      .ejemplo {
+        background: #fafafa;
+        border: 1px solid #e3e3e3;
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin: 14px 0;
+      }
+      .ejemplo .et {
+        display: inline-block;
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 12px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+        letter-spacing: 0.4px;
+      }
+      .paso {
+        margin: 7px 0;
+        padding-left: 30px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: var(--tema-bg);
+        color: var(--tema-d);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        text-align: center;
+        line-height: 22px;
+      }
+      .resalta {
+        background: var(--tema-bg);
+        padding: 1px 6px;
+        border-radius: 5px;
+        font-weight: 700;
+        color: var(--tema-d);
+      }
+
+      /* ── CAJA DE CONSEJO ─────────────────────────────────────────
+     Matiz fijo (326°, magenta-rosa) e independiente del color de
+     la Unidad: es el único matiz libre en las ocho paletas del
+     plan, de modo que el bloque nunca se funde con el tema.
+     ─────────────────────────────────────────────────────────── */
+      .caja-tip {
+        background: #fce1f0;
+        border-left: 5px solid #9e1c66;
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 14px 0;
+        color: #800d4e;
+        font-size: 15px;
+      }
+      .caja-tip strong {
+        color: #800d4e;
+      }
+
+      .caja-atencion {
+        background: #fff8e1;
+        border-left: 5px solid #f9a825;
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 14px 0;
+        font-size: 15px;
+        color: #5c3900;
+      }
+      .caja-atencion strong {
+        color: #5c3900;
+      }
+
+      /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+      .vocabulario {
+        background: #ede7f6;
+        border-left: 6px solid #5e35b1;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 18px 0;
+      }
+      .vocabulario h2 {
+        margin: 0 0 6px;
+        color: #4527a0;
+        font-size: 18px;
+      }
+      .vocabulario p {
+        color: #311b92;
+      }
+
+      /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+      .lectura {
+        background: #fffdf7;
+        border: 2px solid var(--tema);
+        border-radius: 10px;
+        padding: 6px 22px 18px;
+        margin: 18px 0;
+      }
+      .lectura h2 {
+        color: var(--tema-d);
+        font-size: 19px;
+      }
+      .lectura .fuente {
+        font-size: 13px;
+        color: #555;
+        font-style: italic;
+      }
+      .lectura .texto-adaptado {
+        background: #ffffff;
+        border-left: 5px solid var(--tema-bg);
+        padding: 12px 18px;
+        margin: 12px 0;
+        border-radius: 0 8px 8px 0;
+      }
+
+      /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+      .enlace-interactivo {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        background: var(--tema-bg);
+        border: 2px solid var(--tema);
+        border-left: 6px solid var(--tema);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 18px 0;
+        text-decoration: none;
+        color: var(--tema-d);
+        transition: background 0.15s;
+      }
+      .enlace-interactivo:hover {
+        background: var(--tema-bg2);
+      }
+      .enlace-interactivo .ei-icono {
+        font-size: 26px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .enlace-interactivo .ei-titulo {
+        display: block;
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--tema-d);
+      }
+      .enlace-interactivo .ei-sub {
+        display: block;
+        font-size: 14px;
+        color: #333;
+        margin: 4px 0 8px;
+      }
+      .enlace-interactivo .ei-cta {
+        display: inline-block;
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 6px 16px;
+        border-radius: 7px;
+      }
+
+      /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+      .pendiente {
+        color: #c62828;
+        font-size: 15px;
+        margin-left: 6px;
+      }
+
+      .reglas {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 16px;
+      }
+      .reglas th,
+      .reglas td {
+        border: 1px solid #e0e0e0;
+        padding: 9px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .reglas th {
+        background: var(--tema);
+        color: #ffffff;
+      }
+      .reglas td:first-child {
+        background: var(--tema-bg);
+        font-weight: 600;
+        color: var(--tema-d);
+      }
+
+      .practica {
+        background: var(--tema-bg2);
+        border: 1px dashed var(--tema);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 18px 0;
+      }
+      .practica h3 {
+        margin-top: 0;
+        color: var(--tema-d);
+      }
+      .pregunta {
+        margin: 14px 0;
+      }
+      .pregunta .enun {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .opcion {
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 9px 14px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .opcion:hover {
+        border-color: var(--tema);
+      }
+      .opcion.correcta {
+        border-color: #2e7d32;
+        background: #e8f5e9;
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: #c62828;
+        background: #ffebee;
+      }
+      .opcion.elegida {
+        border-color: var(--tema);
+      }
+      .fb {
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        display: none;
+      }
+      .fb.ok {
+        color: #1b5e20;
+      }
+      .fb.no {
+        color: #c62828;
+      }
+
+      .btn {
+        background: var(--tema);
+        color: #ffffff;
+        border: none;
+        padding: 9px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: inherit;
+        margin-top: 8px;
+      }
+      .btn:hover {
+        background: var(--tema-d);
+      }
+      .btn.sec {
+        background: #546e7a;
+      }
+      .btn.sec:hover {
+        background: #37474f;
+      }
+
+      .modalidad {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 12px 0;
+      }
+      .modo {
+        flex: 1;
+        min-width: 230px;
+        border-radius: 9px;
+        padding: 14px 16px;
+        font-size: 14px;
+      }
+      .modo-pres {
+        background: #e0f2f1;
+        border-left: 5px solid #00695c;
+      }
+      .modo-pres strong {
+        color: #004d40;
+      }
+      .modo-virt {
+        background: #f3e5f5;
+        border-left: 5px solid #6a1b9a;
+      }
+      .modo-virt strong {
+        color: #4a148c;
+      }
+      .modo h3 {
+        margin: 0 0 6px;
+        font-size: 15px;
+      }
+      .modo-pres h3 {
+        color: #004d40;
+      }
+      .modo-virt h3 {
+        color: #4a148c;
+      }
+
+      .actividad {
+        margin-bottom: 18px;
+      }
+      .actividad > .titulo-act {
+        font-weight: 700;
+        color: var(--tema-d);
+        font-size: 15px;
+        background: var(--tema-bg);
+        padding: 7px 14px;
+        border-radius: 7px;
+      }
+
+      .caja-tarea {
+        background: #e3f2fd;
+        border-left: 6px solid #1565c0;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 20px 0;
+      }
+      .caja-tarea h2 {
+        margin-top: 0;
+        color: #0d47a1;
+      }
+
+      .quiz {
+        background: #fff;
+        border: 2px solid var(--tema);
+        border-radius: 12px;
+        padding: 8px 24px 20px;
+        margin: 22px 0;
+      }
+      .quiz h2 {
+        color: var(--tema-d);
+      }
+      #resultado-quiz {
+        font-size: 17px;
+        font-weight: 700;
+        margin: 14px 0;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        display: none;
+      }
+      #resultado-quiz.aprob {
+        background: #e8f5e9;
+        color: #1b5e20;
+      }
+      #resultado-quiz.repro {
+        background: #ffebee;
+        color: #b71c1c;
+      }
+
+      .rubrica {
+        margin: 22px 0;
+        overflow-x: auto;
+      }
+      .rubrica h2 {
+        color: var(--tema-d);
+      }
+      table.tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+      }
+      table.tabla-rubrica th,
+      table.tabla-rubrica td {
+        border: 1px solid #e0e0e0;
+        padding: 8px 10px;
+        vertical-align: top;
+      }
+      table.tabla-rubrica th {
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+      table.tabla-rubrica td:first-child {
+        background: var(--tema-bg);
+        font-weight: 600;
+        color: var(--tema-d);
+      }
+
+      .cierre {
+        background: #263238;
+        color: #eceff1;
+        border-radius: 12px;
+        padding: 22px 26px;
+        margin: 24px 0 10px;
+      }
+      .cierre h2 {
+        color: #ffffff;
+        margin-top: 0;
+      }
+      .cierre strong {
+        color: #9bff8f;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: #555;
+        font-size: 13px;
+        border-top: 1px solid #ddd;
+        margin-top: 20px;
+      }
+      footer p {
+        margin: 5px 0;
+      }
+      footer a {
+        color: #0f3d16;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contenedor">
+      <!-- NÚM. DE CURSO — insertar aquí cuando el curso reciba su número oficial -->
+      <header class="principal">
+        <div class="ruta">Spanish ASE Science · Unidad 3 · Ciencias de la vida I: célula, energía y cuerpo humano</div>
+        <h1>Lección 3.3 · Sistemas del cuerpo humano, homeostasis y salud</h1>
+        <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 4–5 · Brightspace D2L</div>
+        <div class="practicas-sp">
+          <span class="sp">SP.1 · Comprender textos científicos</span>
+          <span class="sp">SP.3 · Razonar a partir de datos y evidencias</span>
+        </div>
+      </header>
+      <div class="caja-objetivos">
+        <h2>Objetivos de la lección</h2>
+        <ul>
+          <li>Describir la función de los sistemas circulatorio, respiratorio, digestivo, nervioso e inmunitario.</li>
+          <li>Explicar al menos una interacción concreta entre dos de esos sistemas.</li>
+          <li>Diagramar un lazo de retroalimentación negativa e identificar sus cinco elementos.</li>
+          <li>Reconocer que el mismo mecanismo regula la temperatura corporal y la glucosa en sangre, con actores distintos.</li>
+          <li>Distinguir la retroalimentación negativa, que estabiliza, de la positiva, que amplifica el cambio.</li>
+          <li>Interpretar datos de salud pública presentados en tablas y gráficas, distinguiendo lo que los datos sostienen de lo que no permiten concluir.</li>
+        </ul>
+      </div>
+      <div class="bloque">
+        <p>
+          <strong>Conexión con la lección anterior.</strong>
+          Las dos lecciones previas trabajaron a escala celular: qué hay dentro de una célula y cómo obtiene su energía. Esta sube de escala hasta el organismo completo. La pregunta que la organiza es
+          cómo
+          <strong>miles de millones de células</strong>
+          se coordinan para comportarse como un solo cuerpo.
+        </p>
+        <p>
+          Y reaparece aquí un texto ya conocido. La lectura de la Lección 1.3, sobre cómo el cuerpo mantiene su temperatura, se estudió entonces como ejercicio de comprensión lectora. Ahora se estudia
+          como contenido: aquel texto describía, sin nombrarlo, un lazo de retroalimentación negativa.
+        </p>
+      </div>
+      <div class="materiales">
+        <h2>
+          <span aria-hidden="true">📐</span>
+          Material y recursos
+        </h2>
+        <ul>
+          <li>Diagramas de los cinco sistemas, en versión rotulada y en versión muda.</li>
+          <li>Esquema del lazo de retroalimentación negativa, con las cinco casillas en blanco.</li>
+          <li>
+            Datos de salud pública por área comunitaria de Chicago en formato de tabla y de gráfica, obtenidos del
+            <em>Chicago Health Atlas</em>
+            .
+          </li>
+          <li>Textos breves sobre patología y prevención de asma, diabetes e hipertensión.</li>
+        </ul>
+        <p>
+          <strong>Modalidad de trabajo:</strong>
+          los datos locales conectan el contenido con la realidad de la comunidad y sostienen la contextualización hacia las certificaciones ICAPS del sector salud. El estudiante trabaja con cifras de
+          los barrios en los que vive.
+        </p>
+      </div>
+      <h2 class="seccion">1. Los cinco sistemas y lo que hace cada uno</h2>
+      <div class="bloque">
+        <p>
+          Un sistema es un conjunto de órganos que colaboran en una misma función general. Ninguno funciona aislado, y el examen pregunta con más frecuencia por las
+          <strong>interacciones</strong>
+          que por las funciones sueltas.
+        </p>
+        <table class="reglas">
+          <caption class="sr-only">Los cinco sistemas principales del cuerpo humano, su función general, sus órganos principales y aquello que aportan a las células.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Sistema</th>
+              <th scope="col">Función general</th>
+              <th scope="col">Qué aporta a la célula</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Circulatorio</td>
+              <td>Transporta sustancias por todo el cuerpo mediante la sangre, impulsada por el corazón.</td>
+              <td>Le lleva oxígeno y nutrientes y le retira los desechos.</td>
+            </tr>
+            <tr>
+              <td>Respiratorio</td>
+              <td>Intercambia gases con el aire en los alvéolos pulmonares.</td>
+              <td>Le suministra el oxígeno y elimina el dióxido de carbono que produce.</td>
+            </tr>
+            <tr>
+              <td>Digestivo</td>
+              <td>Descompone los alimentos hasta moléculas absorbibles.</td>
+              <td>Le suministra la glucosa y los demás nutrientes.</td>
+            </tr>
+            <tr>
+              <td>Nervioso</td>
+              <td>Detecta cambios, procesa la información y ordena respuestas rápidas.</td>
+              <td>Coordina la actividad de todos los demás sistemas.</td>
+            </tr>
+            <tr>
+              <td>Inmunitario</td>
+              <td>Identifica y neutraliza agentes ajenos al organismo.</td>
+              <td>La protege de infecciones que destruirían el tejido.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Una interacción concreta: el recorrido del oxígeno</h3>
+        <p>
+          La colaboración entre el sistema respiratorio y el circulatorio es la más pedida en el examen, porque cierra el circuito abierto en la lección anterior: el oxígeno que llega a la mitocondria
+          y el dióxido de carbono que sale de ella tienen que recorrer un camino.
+        </p>
+        <div class="diagrama-wrap">
+          <svg
+            width="700"
+            height="220"
+            viewBox="0 0 700 220"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Esquema del recorrido de los gases entre los pulmones y las células. El oxígeno viaja desde los pulmones a la sangre y de la sangre a las células, donde la mitocondria lo utiliza. El dióxido de carbono producido por las células hace el recorrido inverso: de las células a la sangre y de la sangre a los pulmones, desde donde se expulsa al exterior.">
+            <rect x="250" y="30" width="200" height="28" rx="8" fill="#c3e2c5" stroke="#1b5e20" stroke-width="2"></rect>
+            <text x="350" y="49" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#0f3d16" text-anchor="middle">El oxígeno avanza hacia las células</text>
+
+            <rect x="60" y="80" width="150" height="66" rx="8" fill="#c3e2c5" stroke="#1b5e20" stroke-width="3"></rect>
+            <text x="135" y="108" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#0f3d16" text-anchor="middle">Pulmones</text>
+            <text x="135" y="128" font-family="Segoe UI, sans-serif" font-size="11" fill="#0f3d16" text-anchor="middle">alvéolos</text>
+
+            <rect x="275" y="80" width="150" height="66" rx="8" fill="#c3e2c5" stroke="#1b5e20" stroke-width="3"></rect>
+            <text x="350" y="108" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#0f3d16" text-anchor="middle">Sangre</text>
+            <text x="350" y="128" font-family="Segoe UI, sans-serif" font-size="11" fill="#0f3d16" text-anchor="middle">glóbulos rojos</text>
+
+            <rect x="490" y="80" width="150" height="66" rx="8" fill="#c3e2c5" stroke="#1b5e20" stroke-width="3"></rect>
+            <text x="565" y="108" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#0f3d16" text-anchor="middle">Células</text>
+            <text x="565" y="128" font-family="Segoe UI, sans-serif" font-size="11" fill="#0f3d16" text-anchor="middle">mitocondria</text>
+
+            <g stroke="#1b5e20" stroke-width="3">
+              <line x1="212" y1="100" x2="263" y2="100"></line>
+              <line x1="427" y1="100" x2="478" y2="100"></line>
+            </g>
+            <g fill="#1b5e20">
+              <polygon points="273,100 260,93 260,107"></polygon>
+              <polygon points="488,100 475,93 475,107"></polygon>
+            </g>
+
+            <g stroke="#9e1c66" stroke-width="3">
+              <line x1="488" y1="128" x2="437" y2="128"></line>
+              <line x1="273" y1="128" x2="222" y2="128"></line>
+            </g>
+            <g fill="#9e1c66">
+              <polygon points="427,128 440,121 440,135"></polygon>
+              <polygon points="212,128 225,121 225,135"></polygon>
+            </g>
+
+            <rect x="250" y="170" width="200" height="28" rx="8" fill="#fce1f0" stroke="#9e1c66" stroke-width="2"></rect>
+            <text x="350" y="189" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#800d4e" text-anchor="middle">El dióxido de carbono regresa</text>
+          </svg>
+        </div>
+        <div class="caja-tip">
+          <strong>Cómo se responde una pregunta de interacción:</strong>
+          no basta con nombrar los dos sistemas. La respuesta completa indica
+          <em>qué</em>
+          pasa de uno a otro y
+          <em>dónde</em>
+          . «El respiratorio y el circulatorio colaboran» vale poco; «el oxígeno pasa del aire alveolar a la sangre en los pulmones, y el dióxido de carbono hace el camino inverso» es la respuesta que
+          el examen busca.
+        </div>
+      </div>
+      <div class="practica">
+        <h3>Práctica interactiva 1 · Sistemas e interacciones</h3>
+        <p>Seleccione la respuesta correcta en cada caso.</p>
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">1. El sistema que descompone los alimentos hasta moléculas absorbibles es el…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Circulatorio</div>
+            <div class="opcion" data-op="b">Digestivo</div>
+            <div class="opcion" data-op="c">Inmunitario</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">2. La glucosa absorbida en el intestino llega hasta una célula muscular gracias a la interacción entre…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">El sistema nervioso y el inmunitario</div>
+            <div class="opcion" data-op="b">El sistema respiratorio y el digestivo</div>
+            <div class="opcion" data-op="c">El sistema digestivo y el circulatorio</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">3. El dióxido de carbono producido en la mitocondria se elimina del cuerpo…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Viajando en la sangre hasta los pulmones, desde donde se exhala</div>
+            <div class="opcion" data-op="b">A través del sistema digestivo</div>
+            <div class="opcion" data-op="c">Transformándose en oxígeno dentro de la célula</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+      </div>
+      <!-- ENLACE AL INTERACTIVO — recurso ya publicado -->
+      <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/humano" target="_blank" rel="noopener" aria-label="Abrir la sub-página El cuerpo humano (se abre en una pestaña nueva)">
+        <span class="ei-icono" aria-hidden="true">🫀</span>
+        <span class="ei-cuerpo">
+          <span class="ei-titulo">El cuerpo humano · Sistemas y homeostasis</span>
+          <span class="ei-sub">
+            Sub-página temática de Biología con diagramas nativos de los sistemas, acordeones de vocabulario, tooltips sobre los términos técnicos y cuestionario de estilo GED. Conviene recorrerla
+            después de la sesión sincrónica, cuando el lazo de retroalimentación ya se ha diagramado a mano.
+          </span>
+          <span class="ei-cta">
+            Abrir el recurso
+            <span aria-hidden="true">›</span>
+          </span>
+        </span>
+      </a>
+      <h2 class="seccion">2. La homeostasis y los lazos de retroalimentación</h2>
+      <div class="bloque">
+        <p>
+          La
+          <strong>homeostasis</strong>
+          es el mantenimiento de condiciones internas estables pese a que el ambiente cambie. No es pasividad: cuesta energía de forma continua. Y el mecanismo que la sostiene tiene siempre la misma
+          forma.
+        </p>
+        <div class="vocabulario">
+          <h2>
+            <span aria-hidden="true">🔤</span>
+            Vocabulario técnico y raíces
+          </h2>
+          <p>
+            <strong>Homeostasis</strong>
+            : de
+            <em>homeo-</em>
+            , semejante o igual, y
+            <em>-stasis</em>
+            , permanencia o estado estable. Literalmente, mantenerse igual. La misma raíz
+            <em>-stasis</em>
+            aparece en
+            <em>metástasis</em>
+            y en
+            <em>estático</em>
+            . Y el adjetivo
+            <strong>negativa</strong>
+            de «retroalimentación negativa» no significa perjudicial: significa que la respuesta va en dirección
+            <em>contraria</em>
+            al cambio detectado. Si la temperatura sube, la respuesta la baja. Ese signo contrario es lo que produce la estabilidad.
+          </p>
+        </div>
+        <div class="diagrama-wrap">
+          <svg
+            width="700"
+            height="300"
+            viewBox="0 0 700 300"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Lazo de retroalimentación negativa en cinco etapas dispuestas en círculo. Primera etapa: se detecta un cambio respecto del valor de referencia. Segunda: un receptor recoge la señal. Tercera: el centro de control la interpreta y decide. Cuarta: un efector ejecuta la orden. Quinta: se produce una respuesta que va en dirección contraria al cambio y devuelve el valor a la referencia. La quinta etapa conecta de nuevo con la primera, cerrando el ciclo.">
+            <g stroke="#1b5e20" stroke-width="3" fill="none">
+              <line x1="432" y1="52" x2="516" y2="112"></line>
+              <line x1="594" y1="162" x2="520" y2="228"></line>
+              <line x1="398" y1="255" x2="300" y2="255"></line>
+              <line x1="150" y1="228" x2="112" y2="176"></line>
+              <line x1="120" y1="108" x2="272" y2="52"></line>
+            </g>
+            <g fill="#1b5e20">
+              <polygon points="520,115 505,110 512,123"></polygon>
+              <polygon points="516,231 531,226 524,239"></polygon>
+              <polygon points="290,255 305,248 305,262"></polygon>
+              <polygon points="109,172 124,175 115,186"></polygon>
+              <polygon points="276,51 261,48 267,61"></polygon>
+            </g>
+
+            <circle cx="350" cy="150" r="52" fill="#c3e2c5" stroke="#1b5e20" stroke-width="3"></circle>
+            <text x="350" y="145" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#0f3d16" text-anchor="middle">Valor de</text>
+            <text x="350" y="163" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#0f3d16" text-anchor="middle">referencia</text>
+
+            <rect x="276" y="18" width="156" height="46" rx="8" fill="#eef7ef" stroke="#1b5e20" stroke-width="3"></rect>
+            <text x="354" y="38" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#0f3d16" text-anchor="middle">1 · Cambio</text>
+            <text x="354" y="55" font-family="Segoe UI, sans-serif" font-size="11" fill="#0f3d16" text-anchor="middle">el valor se aparta</text>
+
+            <rect x="520" y="106" width="150" height="46" rx="8" fill="#eef7ef" stroke="#1b5e20" stroke-width="3"></rect>
+            <text x="595" y="126" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#0f3d16" text-anchor="middle">2 · Receptor</text>
+            <text x="595" y="143" font-family="Segoe UI, sans-serif" font-size="11" fill="#0f3d16" text-anchor="middle">detecta la señal</text>
+
+            <rect x="400" y="232" width="180" height="46" rx="8" fill="#eef7ef" stroke="#1b5e20" stroke-width="3"></rect>
+            <text x="490" y="252" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#0f3d16" text-anchor="middle">3 · Centro de control</text>
+            <text x="490" y="269" font-family="Segoe UI, sans-serif" font-size="11" fill="#0f3d16" text-anchor="middle">interpreta y ordena</text>
+
+            <rect x="130" y="232" width="160" height="46" rx="8" fill="#eef7ef" stroke="#1b5e20" stroke-width="3"></rect>
+            <text x="210" y="252" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#0f3d16" text-anchor="middle">4 · Efector</text>
+            <text x="210" y="269" font-family="Segoe UI, sans-serif" font-size="11" fill="#0f3d16" text-anchor="middle">ejecuta la orden</text>
+
+            <rect x="18" y="106" width="176" height="60" rx="8" fill="#eef7ef" stroke="#1b5e20" stroke-width="3"></rect>
+            <text x="106" y="128" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#0f3d16" text-anchor="middle">5 · Respuesta</text>
+            <text x="106" y="145" font-family="Segoe UI, sans-serif" font-size="11" fill="#0f3d16" text-anchor="middle">en dirección contraria</text>
+            <text x="106" y="160" font-family="Segoe UI, sans-serif" font-size="11" fill="#0f3d16" text-anchor="middle">al cambio detectado</text>
+          </svg>
+        </div>
+        <p>
+          Lo notable del mecanismo es que
+          <strong>no cambia</strong>
+          aunque cambie por completo lo que se regula. Los actores son distintos; el esquema, idéntico.
+        </p>
+        <table class="reglas">
+          <caption class="sr-only">El mismo lazo de retroalimentación negativa aplicado a la regulación de la temperatura corporal y a la de la glucosa en sangre.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Elemento del lazo</th>
+              <th scope="col">Temperatura corporal</th>
+              <th scope="col">Glucosa en sangre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Valor de referencia</td>
+              <td>Alrededor de 37 °C.</td>
+              <td>Un intervalo estrecho de glucosa en sangre.</td>
+            </tr>
+            <tr>
+              <td>Cambio detectado</td>
+              <td>La temperatura sube por calor o por ejercicio.</td>
+              <td>La glucosa sube después de una comida.</td>
+            </tr>
+            <tr>
+              <td>Receptor</td>
+              <td>Terminaciones nerviosas de la piel y del interior del cuerpo.</td>
+              <td>Células del páncreas sensibles a la glucosa.</td>
+            </tr>
+            <tr>
+              <td>Centro de control</td>
+              <td>El hipotálamo, en el encéfalo.</td>
+              <td>El propio páncreas.</td>
+            </tr>
+            <tr>
+              <td>Efector y respuesta</td>
+              <td>Vasos de la piel que se dilatan y glándulas que producen sudor: el cuerpo pierde calor.</td>
+              <td>Liberación de insulina, que hace que las células retiren glucosa de la sangre.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="caja-atencion">
+          <strong>Qué ocurre cuando el lazo falla:</strong>
+          la diabetes es, en términos de este esquema, un lazo interrumpido. O bien el páncreas no produce suficiente insulina, o bien las células dejan de responder a ella. En ambos casos el receptor
+          y el centro de control detectan el cambio, pero la respuesta no llega a producirse, y la glucosa permanece alta. Entender el mecanismo permite entender la enfermedad sin memorizarla como una
+          lista de síntomas.
+        </div>
+        <h3>El otro lazo: la retroalimentación positiva</h3>
+        <p>
+          No todos los lazos estabilizan. Existe un segundo tipo en el que la respuesta, en lugar de revertir el cambio detectado, lo
+          <strong>amplifica</strong>
+          . Se llama
+          <strong>retroalimentación positiva</strong>
+          , y el adjetivo tampoco significa aquí «beneficiosa»: significa que el efecto se suma al cambio en vez de restarse.
+        </p>
+        <p>
+          El organismo la usa cuando lo que hace falta no es mantener un valor estable, sino
+          <em>terminar un proceso cuanto antes</em>
+          . Al producirse una herida, las primeras plaquetas que llegan liberan sustancias que atraen a más plaquetas, que a su vez atraen a más, hasta que el coágulo se completa. Si ese lazo fuera
+          negativo, la hemorragia no se detendría nunca.
+        </p>
+        <table class="reglas">
+          <caption class="sr-only">Comparación entre la retroalimentación negativa y la positiva según la dirección de la respuesta, su resultado, para qué sirve y cómo termina.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Aspecto</th>
+              <th scope="col">Retroalimentación negativa</th>
+              <th scope="col">Retroalimentación positiva</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dirección de la respuesta</td>
+              <td>Contraria al cambio detectado.</td>
+              <td>En el mismo sentido del cambio detectado.</td>
+            </tr>
+            <tr>
+              <td>Resultado</td>
+              <td>El valor regresa a la referencia. Estabilidad.</td>
+              <td>El cambio se acelera cada vez más. Amplificación.</td>
+            </tr>
+            <tr>
+              <td>Para qué sirve</td>
+              <td>Mantener constantes la temperatura, la glucosa o el pH de la sangre.</td>
+              <td>Completar deprisa un proceso que debe terminar: la coagulación, el parto.</td>
+            </tr>
+            <tr>
+              <td>Cómo termina</td>
+              <td>Se detiene sola al alcanzarse el valor de referencia.</td>
+              <td>Necesita un suceso externo que la corte: el coágulo formado, el nacimiento.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="caja-atencion">
+          <strong>Cuando la amplificación no encuentra freno:</strong>
+          un lazo positivo sin suceso que lo detenga se convierte en un círculo vicioso. El ejemplo que más aparece en el examen es climático: al subir la temperatura, parte del bosque muere; el
+          bosque muerto libera el carbono que almacenaba; ese carbono adicional calienta más la atmósfera, lo que mata más bosque. Cada vuelta del ciclo refuerza la siguiente. La Unidad 7 volverá
+          sobre este mecanismo al estudiar el clima; aquí basta con reconocer su forma, que es la misma del lazo de la temperatura corporal con el signo cambiado.
+        </div>
+      </div>
+      <!-- ENLACE AL INTERACTIVO — recurso ya publicado -->
+      <a
+        class="enlace-interactivo"
+        href="https://zhemaria.github.io/ciencias/homeostasis.html"
+        target="_blank"
+        rel="noopener"
+        aria-label="Abrir el recurso La homeostasis (se abre en una pestaña nueva)">
+        <span class="ei-icono" aria-hidden="true">
+          🌡️
+          <br />
+        </span>
+        <span class="ei-cuerpo">
+          <span class="ei-titulo">Simulador de la Homeostasis</span>
+          <span class="ei-sub">
+            La simulación muestra la homeostasis mediante el mecanismo de retroalimentación negativa (temperatura corporal, glucosa en sangre); esquema del lazo de retroalimentación negativa; pero
+            también explicar el lazo de retroalimentación positiva , que amplifica el cambio en lugar de revertirlo (coagulación, parto).
+          </span>
+          <span class="ei-cta">
+            Abrir el recurso
+            <span aria-hidden="true">›</span>
+          </span>
+        </span>
+      </a>
+      <h2 class="seccion">3. Leer datos de salud pública</h2>
+      <div class="bloque">
+        <p>
+          El examen presenta con frecuencia datos de salud en tablas y gráficas. La destreza es la de la Unidad 2 —los cinco pasos, la lectura de valores, la distinción entre lo que los datos muestran
+          y lo que solo sugieren—, aplicada ahora a un contenido con consecuencias reales.
+        </p>
+        <div class="caja-atencion">
+          <strong>Nota para el docente:</strong>
+          las cifras de la tabla y de la gráfica siguientes son
+          <em>ilustrativas</em>
+          , construidas con la estructura y el orden de magnitud de los informes reales. Antes de usarlas en clase conviene sustituirlas por los datos vigentes del
+          <em>Chicago Health Atlas</em>
+          , cuyo indicador correspondiente es la tasa de visitas a urgencias por asma por cada 10 000 habitantes, elaborada a partir de los datos de altas hospitalarias del Departamento de Salud
+          Pública de Illinois. Con datos del propio barrio, la actividad gana todo su sentido.
+        </div>
+        <div class="diagrama-wrap">
+          <svg
+            width="700"
+            height="265"
+            viewBox="0 0 700 265"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Gráfica de barras ilustrativa de la tasa de visitas a urgencias por asma por cada diez mil habitantes en cuatro áreas comunitarias. El área A registra veintiocho, el área B cuarenta y uno, el área C ciento cuatro y el área D ciento diecinueve. Las dos últimas áreas presentan tasas mucho más altas que las dos primeras.">
+            <text x="90" y="22" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#0f3d16">Visitas a urgencias por asma (por cada 10 000 habitantes)</text>
+            <text x="90" y="40" font-family="Segoe UI, sans-serif" font-size="11" fill="#0f3d16">Datos ilustrativos · cuatro áreas comunitarias</text>
+
+            <g stroke="#c3e2c5" stroke-width="1">
+              <line x1="90" y1="60" x2="620" y2="60"></line>
+              <line x1="90" y1="105" x2="620" y2="105"></line>
+              <line x1="90" y1="150" x2="620" y2="150"></line>
+              <line x1="90" y1="195" x2="620" y2="195"></line>
+            </g>
+
+            <line x1="90" y1="210" x2="620" y2="210" stroke="#0f3d16" stroke-width="2.5"></line>
+            <line x1="90" y1="60" x2="90" y2="210" stroke="#0f3d16" stroke-width="2.5"></line>
+
+            <g fill="#1b5e20">
+              <rect x="140" y="182" width="70" height="28"></rect>
+              <rect x="270" y="169" width="70" height="41"></rect>
+              <rect x="400" y="106" width="70" height="104"></rect>
+              <rect x="530" y="91" width="70" height="119"></rect>
+            </g>
+
+            <g font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#0f3d16" text-anchor="middle">
+              <text x="175" y="176">28</text>
+              <text x="305" y="163">41</text>
+              <text x="435" y="100">104</text>
+              <text x="565" y="85">119</text>
+            </g>
+
+            <g font-family="Segoe UI, sans-serif" font-size="11" fill="#0f3d16" text-anchor="end">
+              <text x="80" y="64">150</text>
+              <text x="80" y="109">100</text>
+              <text x="80" y="154">50</text>
+              <text x="80" y="214">0</text>
+            </g>
+
+            <g font-family="Segoe UI, sans-serif" font-size="12" fill="#0f3d16" text-anchor="middle">
+              <text x="175" y="230">Área A</text>
+              <text x="305" y="230">Área B</text>
+              <text x="435" y="230">Área C</text>
+              <text x="565" y="230">Área D</text>
+            </g>
+            <text x="355" y="254" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#0f3d16" text-anchor="middle">Área comunitaria</text>
+          </svg>
+        </div>
+        <div class="ejemplo">
+          <span class="et">Ejemplo 1 · Qué sostienen los datos y qué no</span>
+          <p>Ante la gráfica anterior, conviene separar tres tipos de afirmación.</p>
+          <div class="paso">
+            <span class="n">1</span>
+            <strong>Lo que los datos muestran:</strong>
+            el área D registra una tasa de 119 por cada 10 000 habitantes, más de cuatro veces la del área A. Es una lectura directa.
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            <strong>Lo que los datos sugieren:</strong>
+            que existe alguna diferencia entre esas zonas que influye en el asma. La gráfica lo indica, pero no dice cuál.
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            <strong>Lo que los datos no sostienen:</strong>
+            que la causa sea la contaminación del aire, o la vivienda, o el acceso a atención médica. Cualquiera de esas hipótesis es razonable y ninguna está demostrada por esta gráfica.
+          </div>
+          <p>
+            <strong>Qué dato haría falta:</strong>
+            para poner a prueba la hipótesis de la contaminación habría que disponer de mediciones de calidad del aire en las mismas áreas y en el mismo periodo. Sin esa segunda variable no hay forma
+            de contrastarla, y esto enlaza directamente con la distinción entre correlación y causa de la Lección 2.2.
+          </p>
+        </div>
+        <div class="caja-tip">
+          <strong>La formulación que el examen premia:</strong>
+          ante una pregunta de conclusión, la opción correcta suele ser la más prudente de las que son compatibles con los datos. «El área D presenta una tasa más alta» es sostenible. «El aire del
+          área D causa asma» no lo es, aunque pudiera resultar cierto. Una conclusión que va más allá de los datos es incorrecta aunque acierte.
+        </div>
+      </div>
+      <!-- ENLACE AL INTERACTIVO — retirar <span class="pendiente"> cuando el recurso esté publicado -->
+      <a
+        class="enlace-interactivo"
+        href="https://zhemaria.github.io/ciencias/hotspot_anatomico.html"
+        target="_blank"
+        rel="noopener"
+        aria-label="Abrir el interactivo Hot spot anatómico (se abre en una pestaña nueva)">
+        <span class="ei-icono" aria-hidden="true">🎯</span>
+        <span class="ei-cuerpo">
+          <span class="ei-titulo">
+            Hot spot anatómico
+          </span>
+          <span class="ei-sub">
+            Entrenador del formato de ítem
+            <em>hot spot</em>
+            sobre modelos anatómicos: se plantea una función y el estudiante debe marcar la estructura responsable directamente sobre el diagrama, sin opciones que le sirvan de pista. Es uno de los
+            formatos que más aparece en el examen y el que menos se practica. Trae tres diagramas mudos —el torso, el corazón y el lazo de retroalimentación— con diecinueve preguntas y un interruptor de rótulos para estudiar antes de responder.
+          </span>
+          <span class="ei-cta">
+            Abrir el interactivo
+            <span aria-hidden="true">›</span>
+          </span>
+        </span>
+      </a>
+      <div class="lectura">
+        <h2>
+          <span aria-hidden="true">📖</span>
+          Lectura científica
+        </h2>
+        <p class="fuente">Texto científico breve adaptado al nivel. Obsérvese cómo el autor se detiene justo donde terminan los datos.</p>
+        <div class="texto-adaptado">
+          <p><strong>Una diferencia entre barrios</strong></p>
+          <p>
+            Un equipo de salud pública comparó las tasas de visitas a urgencias por asma en cuatro áreas comunitarias de una misma ciudad durante un año completo. Halló diferencias considerables: dos
+            de las áreas registraron tasas superiores al doble de las otras dos.
+          </p>
+          <p>
+            El equipo planteó tres hipótesis para explicar la diferencia. La primera atribuía el exceso a la calidad del aire, dado que las dos áreas afectadas se sitúan junto a corredores
+            industriales y a autopistas de tráfico intenso. La segunda apuntaba al estado de las viviendas, ya que la humedad y los hongos son desencadenantes conocidos del asma. La tercera señalaba
+            el acceso desigual a la atención médica: quien no dispone de un médico de cabecera acude a urgencias por episodios que en otro caso se habrían controlado antes.
+          </p>
+          <p>
+            En su informe, el equipo advirtió que los datos disponibles no permitían distinguir entre las tres hipótesis, y que las tres podían ser ciertas a la vez y reforzarse entre sí. Para
+            separarlas haría falta cruzar las tasas con mediciones de calidad del aire, con inspecciones de vivienda y con datos de cobertura sanitaria en las mismas áreas.
+          </p>
+          <p>
+            El informe concluía que la desigualdad observada era real y considerable, pero que atribuirla a una causa única sin esos datos adicionales sería ir más allá de lo que la evidencia
+            sostiene.
+          </p>
+        </div>
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">La contaminación del aire causa asma.</div>
+            <div class="opcion" data-op="b">Las visitas a urgencias por asma están aumentando.</div>
+            <div class="opcion" data-op="c">Existe una diferencia real entre barrios, pero los datos disponibles no permiten atribuirla a una sola causa.</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">2. ¿Cuántas hipótesis planteó el equipo y qué relación estableció entre ellas?</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Tres, y demostró que solo una era correcta</div>
+            <div class="opcion" data-op="b">Tres, y señaló que podían ser ciertas a la vez</div>
+            <div class="opcion" data-op="c">Una sola, sobre la calidad del aire</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">3. Según el texto, ¿qué dato adicional permitiría poner a prueba la hipótesis de la vivienda?</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Inspecciones del estado de las viviendas en las mismas áreas</div>
+            <div class="opcion" data-op="b">El número total de habitantes de la ciudad</div>
+            <div class="opcion" data-op="c">Las tasas de asma de otros países</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">4. La prudencia del informe al no señalar una causa única es…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Una debilidad, porque no resuelve el problema</div>
+            <div class="opcion" data-op="b">Una forma de evitar responsabilidades</div>
+            <div class="opcion" data-op="c">Una exigencia del método: la conclusión no debe ir más allá de lo que sostiene la evidencia</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+      </div>
+      <div class="practica">
+        <h3>Práctica interactiva 2 · Homeostasis y datos</h3>
+        <p>Seleccione la respuesta correcta en cada caso.</p>
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">1. En la regulación de la glucosa, el efector que ejecuta la respuesta actúa mediante…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">La liberación de insulina</div>
+            <div class="opcion" data-op="b">La dilatación de los vasos de la piel</div>
+            <div class="opcion" data-op="c">El aumento de la frecuencia respiratoria</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">2. La retroalimentación se llama «negativa» porque…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Produce efectos perjudiciales</div>
+            <div class="opcion" data-op="b">Reduce siempre el valor regulado</div>
+            <div class="opcion" data-op="c">La respuesta va en dirección contraria al cambio detectado</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">3. Según la gráfica de la lección, la tasa del área C respecto de la del área A es aproximadamente…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">El doble</div>
+            <div class="opcion" data-op="b">Casi cuatro veces mayor</div>
+            <div class="opcion" data-op="c">Igual</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">4. ¿Cuál de estas conclusiones está sostenida por la gráfica de asma?</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Las áreas C y D presentan tasas notablemente más altas que las áreas A y B</div>
+            <div class="opcion" data-op="b">El aire del área D provoca asma en sus habitantes</div>
+            <div class="opcion" data-op="c">Los habitantes del área A tienen mejores hábitos de salud</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+      </div>
+      <h2 class="seccion">4. Práctica guiada en clase</h2>
+      <div class="bloque">
+        <p>
+          <span aria-hidden="true">💬</span>
+          Las tres actividades siguientes se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.
+        </p>
+        <div class="actividad">
+          <div class="titulo-act">Actividad 1 · El termostato del cuerpo</div>
+          <div class="modalidad">
+            <div class="modo modo-pres">
+              <h3>
+                <span aria-hidden="true">🏫</span>
+                Presencial
+              </h3>
+              Cada equipo diagrama sobre el esquema en blanco el lazo completo de retroalimentación para la regulación de la temperatura, rellenando las cinco casillas. A continuación se les pide
+              trasladar
+              <strong>el mismo esquema</strong>
+              a la regulación de la glucosa, sin cambiar la estructura, solo los actores. Al comprobar que encaja, el mecanismo deja de ser dos contenidos y pasa a ser uno.
+            </div>
+            <div class="modo modo-virt">
+              <h3>
+                <span aria-hidden="true">💻</span>
+                En línea
+              </h3>
+              El esquema con las cinco casillas en blanco se distribuye en una hoja compartida (Google Docs, Google Sheets u otro editor colaborativo) con dos columnas, temperatura y glucosa. En salas
+              pequeñas (
+              <em>Breakout rooms</em>
+              ), cada equipo completa ambas columnas fila por fila, de modo que la correspondencia entre las dos regulaciones quede visible mientras se construye.
+            </div>
+          </div>
+        </div>
+        <div class="actividad">
+          <div class="titulo-act">Actividad 2 · Dos hipótesis y un dato que falta</div>
+          <div class="modalidad">
+            <div class="modo modo-pres">
+              <h3>
+                <span aria-hidden="true">🏫</span>
+                Presencial
+              </h3>
+              Se reparte la tabla de incidencia de asma por área comunitaria. Cada equipo formula
+              <strong>dos hipótesis</strong>
+              sobre las diferencias observadas y, para cada una, señala qué dato adicional haría falta para comprobarla. Se cierra distinguiendo en la pizarra tres columnas: lo que los datos muestran,
+              lo que sugieren y lo que no sostienen.
+            </div>
+            <div class="modo modo-virt">
+              <h3>
+                <span aria-hidden="true">💻</span>
+                En línea
+              </h3>
+              La tabla se comparte en una hoja compartida (Google Sheets u otro editor colaborativo) con tres columnas para completar: hipótesis, dato que haría falta y cómo se obtendría. Las tres
+              columnas de todos los equipos se vuelcan después en un tablero compartido (foro de Brightspace, Padlet u otro tablero colaborativo), donde cada equipo marca una afirmación ajena que vaya
+              más allá de los datos.
+            </div>
+          </div>
+        </div>
+        <div class="actividad">
+          <div class="titulo-act">Actividad 3 · Señale la estructura</div>
+          <div class="modalidad">
+            <div class="modo modo-pres">
+              <h3>
+                <span aria-hidden="true">🏫</span>
+                Presencial
+              </h3>
+              Con los diagramas mudos de los cinco sistemas, el docente formula preguntas de función y los estudiantes marcan la estructura responsable, en el formato
+              <em>hot spot</em>
+              del examen. Cada respuesta debe ir acompañada de una oración que explique la interacción: no basta con acertar la localización.
+            </div>
+            <div class="modo modo-virt">
+              <h3>
+                <span aria-hidden="true">💻</span>
+                En línea
+              </h3>
+              Los diagramas mudos se colocan en una pizarra compartida (Jamboard, la pizarra de Zoom u otra pizarra colaborativa) y cada estudiante sitúa su marca con su nombre. Las marcas quedan
+              visibles a la vez, lo que permite comentar en grupo las divergencias antes de confirmar la respuesta y su justificación.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="caja-tarea">
+        <h2>
+          <span aria-hidden="true">✅</span>
+          Tarea asincrónica
+        </h2>
+        <p>
+          Para completar de forma individual en
+          <strong>Brightspace</strong>
+          antes de la próxima sesión:
+        </p>
+        <ul>
+          <li>Diez preguntas sobre función e interacción de sistemas y lectura de datos de salud.</li>
+          <li>Un lazo de retroalimentación completo, con sus cinco elementos, para una regulación distinta de las trabajadas en clase.</li>
+          <li>
+            Dos conclusiones redactadas a partir de una tabla de salud pública: una que los datos sostengan y otra que vaya más allá de ellos, explicando en una oración qué distingue a la segunda.
+          </li>
+        </ul>
+        <p>Tiempo estimado: 60 minutos. La entrega se evalúa con la rúbrica de esta lección.</p>
+      </div>
+      <div class="quiz">
+        <h2>Quiz de la lección 3.3</h2>
+        <p>
+          Trece preguntas: cuatro de función e interacción de sistemas, cinco de homeostasis y retroalimentación, y cuatro de interpretación de datos de salud pública. Tiempo sugerido: 30 minutos.
+          Para aprobar se requieren al menos 9 respuestas correctas.
+        </p>
+        <div id="quiz-cuerpo"></div>
+        <div id="resultado-quiz"></div>
+        <button class="btn" id="btn-corregir">Corregir quiz</button>
+        <button class="btn sec" id="btn-reintentar" style="display: none">Intentar de nuevo</button>
+      </div>
+      <div class="rubrica">
+        <h2>
+          <span aria-hidden="true">📊</span>
+          Rúbrica analítica de la lección
+        </h2>
+        <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+        <table class="tabla-rubrica">
+          <caption class="sr-only">Rúbrica analítica de fisiología aplicada con cuatro criterios y cuatro niveles de desempeño.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Criterio</th>
+              <th scope="col">Inicial (1)</th>
+              <th scope="col">En desarrollo (2)</th>
+              <th scope="col">Competente (3)</th>
+              <th scope="col">Destacado (4)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Describe la función de cada sistema</td>
+              <td>Confunde las funciones de unos sistemas con las de otros.</td>
+              <td>Describe la función de algunos sistemas, pero no de todos.</td>
+              <td>Describe correctamente la función general de los cinco sistemas.</td>
+              <td>Describe cada función y la relaciona con lo que la célula necesita recibir o eliminar.</td>
+            </tr>
+            <tr>
+              <td>Explica una interacción entre dos sistemas</td>
+              <td>Nombra dos sistemas sin describir qué intercambian.</td>
+              <td>Indica que colaboran, pero no precisa qué pasa de uno a otro.</td>
+              <td>Explica qué sustancia pasa de un sistema a otro y en qué lugar.</td>
+              <td>Explica la interacción completa en ambos sentidos y la conecta con la respiración celular.</td>
+            </tr>
+            <tr>
+              <td>Diagrama correctamente un lazo de retroalimentación</td>
+              <td>No distingue los elementos del lazo ni su orden.</td>
+              <td>Coloca algunos elementos, pero el lazo no se cierra.</td>
+              <td>Diagrama los cinco elementos en su orden correcto y cierra el ciclo.</td>
+              <td>Diagrama el lazo y traslada la misma estructura a otra regulación distinta.</td>
+            </tr>
+            <tr>
+              <td>Extrae conclusiones sostenidas por los datos</td>
+              <td>Formula conclusiones causales que los datos no respaldan.</td>
+              <td>Lee los datos correctamente, pero añade una causa no demostrada.</td>
+              <td>Distingue lo que los datos muestran de lo que solo sugieren.</td>
+              <td>Además, especifica qué dato adicional haría falta para poner a prueba cada hipótesis.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cierre">
+        <h2>Cierre de la Unidad 3 y enlace con la Unidad 4</h2>
+        <p>
+          Con esta lección se cierra la Unidad 3 y la primera mitad del dominio de mayor peso del examen. Quedan instaladas tres ideas que atraviesan toda la biología: la
+          <strong>célula como unidad</strong>
+          de estructura y función, el
+          <strong>flujo de la energía</strong>
+          entre el cloroplasto y la mitocondria, y la
+          <strong>homeostasis</strong>
+          como mecanismo de estabilidad. La última trajo además una destreza que no es solo biológica: detenerse justo donde terminan los datos.
+        </p>
+        <p>
+          La
+          <strong>Unidad 4 · Ciencias de la vida II</strong>
+          continúa el dominio con la herencia, la evolución y los ecosistemas. Allí reaparecerá el
+          <strong>diagrama de árbol</strong>
+          de la Lección 2.3, esta vez aplicado a los cruces genéticos y al cuadro de Punnett: el conteo de posibilidades que entonces era andamiaje matemático se convierte ahora en contenido de
+          biología.
+        </p>
+      </div>
+      <footer>
+        <p>Spanish ASE Science · Unidad 3 · Lección 3.3 · 4 horas · Brightspace D2L</p>
+        <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+        <p>
+          © 2026. Esta obra está licenciada bajo
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>
+          .
+        </p>
+      </footer>
+    </div>
+    <p>
+      <script>
+        (function () {
+          /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+          var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+          preguntasOp.forEach(function (preg) {
+            var correcta = preg.getAttribute('data-correcta');
+            var opciones = preg.querySelectorAll('.opcion');
+            var fb = preg.querySelector('.fb');
+            opciones.forEach(function (op) {
+              op.addEventListener('click', function () {
+                opciones.forEach(function (o) {
+                  o.classList.remove('correcta', 'incorrecta', 'elegida');
+                });
+                var elegida = op.getAttribute('data-op');
+                if (elegida === correcta) {
+                  op.classList.add('correcta');
+                  fb.textContent = 'Correcto. Bien razonado.';
+                  fb.className = 'fb ok';
+                } else {
+                  op.classList.add('incorrecta');
+                  opciones.forEach(function (o) {
+                    if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+                  });
+                  fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+                  fb.className = 'fb no';
+                }
+                fb.style.display = 'block';
+              });
+            });
+          });
+
+          /* ---- Quiz: 4 de sistemas e interacción, 5 de homeostasis (una de retroalimentación
+     positiva), 4 de datos de salud pública. El plan aprobado especifica 12 preguntas
+     sin retroalimentación positiva; para volver a esa versión basta retirar la
+     pregunta 9 y devolver el umbral a 8. ---- */
+          var preguntasQuiz = [
+            {enun: '1. El sistema encargado de transportar oxígeno y nutrientes a todas las células es el…', ops: ['Circulatorio', 'Digestivo', 'Nervioso', 'Inmunitario'], correcta: 0},
+            {enun: '2. El intercambio de gases entre el aire y la sangre ocurre en…', ops: ['El estómago', 'Los alvéolos pulmonares', 'El corazón', 'Los riñones'], correcta: 1},
+            {
+              enun: '3. El sistema nervioso se distingue de los demás en que su función principal es…',
+              ops: ['Absorber nutrientes', 'Producir glóbulos rojos', 'Detectar cambios y coordinar la respuesta de los demás sistemas', 'Eliminar desechos sólidos'],
+              correcta: 2
+            },
+            {
+              enun: '4. Una persona corre y su frecuencia respiratoria y cardíaca aumentan a la vez. Esto ocurre porque…',
+              ops: [
+                'Los dos sistemas funcionan de forma independiente',
+                'El sistema digestivo se detiene',
+                'El músculo deja de necesitar oxígeno',
+                'Los músculos necesitan más oxígeno y ambos sistemas colaboran para suministrarlo'
+              ],
+              correcta: 3
+            },
+            {
+              enun: '5. La homeostasis se define como…',
+              ops: [
+                'La ausencia total de cambios en el cuerpo',
+                'El mantenimiento de condiciones internas estables pese a los cambios del ambiente',
+                'La capacidad de crecer',
+                'La respuesta del sistema inmunitario'
+              ],
+              correcta: 1
+            },
+            {enun: '6. En un lazo de retroalimentación negativa, el elemento que ejecuta la orden se llama…', ops: ['Receptor', 'Centro de control', 'Efector', 'Valor de referencia'], correcta: 2},
+            {
+              enun: '7. Cuando la temperatura corporal sube, los vasos de la piel se dilatan y aparece el sudor. Estos son ejemplos de…',
+              ops: ['Respuestas que van en dirección contraria al cambio detectado', 'Fallos del sistema de regulación', 'Retroalimentación positiva', 'Cambios del valor de referencia'],
+              correcta: 0
+            },
+            {
+              enun: '8. La regulación de la temperatura y la de la glucosa comparten…',
+              ops: ['Los mismos órganos', 'El mismo valor de referencia', 'La misma estructura de lazo, con actores distintos', 'El mismo efector'],
+              correcta: 2
+            },
+            {
+              enun: '9. Al subir la temperatura muere parte del bosque, que libera el carbono almacenado y calienta aún más la atmósfera. Ese lazo es de retroalimentación…',
+              ops: [
+                'Negativa, porque el efecto es perjudicial',
+                'Positiva, porque la respuesta amplifica el cambio detectado',
+                'Negativa, porque devuelve el valor a la referencia',
+                'Nula, porque no hay centro de control'
+              ],
+              correcta: 1
+            },
+            {
+              enun: '10. Según la gráfica de la lección, el área comunitaria con la tasa más alta de visitas a urgencias por asma es…',
+              ops: ['El área A, con 28', 'El área B, con 41', 'El área C, con 104', 'El área D, con 119'],
+              correcta: 3
+            },
+            {
+              enun: '11. La diferencia entre la tasa del área D y la del área A es de…',
+              ops: ['91 visitas por cada 10 000 habitantes', '119 visitas por cada 10 000 habitantes', '15 visitas por cada 10 000 habitantes', 'No puede calcularse'],
+              correcta: 0
+            },
+            {
+              enun: '12. ¿Cuál de estas afirmaciones va MÁS ALLÁ de lo que la gráfica de asma permite concluir?',
+              ops: [
+                'Las tasas difieren notablemente entre áreas',
+                'El área C supera a el área B en más del doble',
+                'El aire contaminado del área D es la causa de su tasa elevada',
+                'Dos áreas superan las 100 visitas por cada 10 000 habitantes'
+              ],
+              correcta: 2
+            },
+            {
+              enun: '13. Para poner a prueba la hipótesis de que la calidad del aire explica la diferencia entre áreas, haría falta…',
+              ops: [
+                'Repetir el conteo de visitas a urgencias',
+                'Mediciones de calidad del aire en las mismas áreas y el mismo periodo',
+                'Datos de asma de otro país',
+                'Nada más: la gráfica ya lo demuestra'
+              ],
+              correcta: 1
+            }
+          ];
+
+          var cuerpo = document.getElementById('quiz-cuerpo');
+          preguntasQuiz.forEach(function (p, i) {
+            var div = document.createElement('div');
+            div.className = 'pregunta';
+            div.setAttribute('data-idx', i);
+            var enun = document.createElement('div');
+            enun.className = 'enun';
+            enun.textContent = p.enun;
+            div.appendChild(enun);
+            var cont = document.createElement('div');
+            cont.className = 'opciones';
+            p.ops.forEach(function (texto, j) {
+              var op = document.createElement('div');
+              op.className = 'opcion';
+              op.setAttribute('data-j', j);
+              op.textContent = texto;
+              op.addEventListener('click', function () {
+                if (div.getAttribute('data-bloqueado') === 'si') return;
+                cont.querySelectorAll('.opcion').forEach(function (o) {
+                  o.classList.remove('elegida');
+                });
+                op.classList.add('elegida');
+                div.setAttribute('data-elegida', j);
+              });
+              cont.appendChild(op);
+            });
+            div.appendChild(cont);
+            var fb = document.createElement('div');
+            fb.className = 'fb';
+            div.appendChild(fb);
+            cuerpo.appendChild(div);
+          });
+
+          var btnCorregir = document.getElementById('btn-corregir');
+          var btnReintentar = document.getElementById('btn-reintentar');
+          var resultado = document.getElementById('resultado-quiz');
+
+          btnCorregir.addEventListener('click', function () {
+            var aciertos = 0;
+            var divs = cuerpo.querySelectorAll('.pregunta');
+            divs.forEach(function (div, i) {
+              var elegida = div.getAttribute('data-elegida');
+              var fb = div.querySelector('.fb');
+              var opciones = div.querySelectorAll('.opcion');
+              div.setAttribute('data-bloqueado', 'si');
+              opciones.forEach(function (o) {
+                o.classList.remove('correcta', 'incorrecta');
+              });
+              if (elegida === null) {
+                fb.textContent = 'No se respondió esta pregunta.';
+                fb.className = 'fb no';
+                fb.style.display = 'block';
+                opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+                return;
+              }
+              var idxElegida = parseInt(elegida, 10);
+              if (idxElegida === preguntasQuiz[i].correcta) {
+                aciertos++;
+                opciones[idxElegida].classList.add('correcta');
+                fb.textContent = 'Correcto.';
+                fb.className = 'fb ok';
+              } else {
+                opciones[idxElegida].classList.add('incorrecta');
+                opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+                fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+                fb.className = 'fb no';
+              }
+              fb.style.display = 'block';
+            });
+
+            resultado.style.display = 'block';
+            if (aciertos >= 9) {
+              resultado.className = 'aprob';
+              resultado.textContent = 'Resultado: ' + aciertos + ' de 13 correctas. Aprobado. Ha completado la Unidad 3 y puede continuar a la Unidad 4.';
+            } else {
+              resultado.className = 'repro';
+              resultado.textContent = 'Resultado: ' + aciertos + ' de 13 correctas. Repase la lección e intente de nuevo (se requieren 9).';
+            }
+            btnCorregir.style.display = 'none';
+            btnReintentar.style.display = 'inline-block';
+          });
+
+          btnReintentar.addEventListener('click', function () {
+            var divs = cuerpo.querySelectorAll('.pregunta');
+            divs.forEach(function (div) {
+              div.removeAttribute('data-elegida');
+              div.removeAttribute('data-bloqueado');
+              div.querySelectorAll('.opcion').forEach(function (o) {
+                o.classList.remove('correcta', 'incorrecta', 'elegida');
+              });
+              var fb = div.querySelector('.fb');
+              fb.style.display = 'none';
+              fb.textContent = '';
+            });
+            resultado.style.display = 'none';
+            btnReintentar.style.display = 'none';
+            btnCorregir.style.display = 'inline-block';
+            window.scrollTo({top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth'});
+          });
+        })();
+      </script>
+    </p>
+  </body>
+</html>

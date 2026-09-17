@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<!--
+  Lección 2.1 · Notación científica, unidades y la calculadora TI-30XS
+  Spanish ASE Science · Unidad 2 · Razonamiento cuantitativo en ciencias
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 2.1 · Notación científica, unidades y la calculadora TI-30XS</title>
+<meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    /* Unidad 2 — familia fría del plan curricular (--t2), saturada hacia el
+       azul acero para no confundirse con el gris #37474f que ya usa el
+       bloque fijo «Material y recursos» en las 24 lecciones. */
+    --tema:    #2a5f80;
+    --tema-d:  #1b3a4d;
+    --tema-bg: #cfe3ec;
+    --tema-bg2:#b9d6e3;
+    --acento:  #35708f;
+    --txt:     #222;
+    --bg:      #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ── ENCABEZADO ─────────────────────────────────────────────── */
+  header.principal {
+    background: var(--tema-d);
+    background: linear-gradient(135deg, #14303f 0%, #1b3a4d 55%, #2a5f80 100%);
+    color: #ffffff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(20,48,63,.28);
+  }
+  header.principal .ruta {
+    font-size: 13px; color: #ffffff; letter-spacing: .4px; text-transform: uppercase;
+  }
+  header.principal h1 { margin: 8px 0 6px; font-size: 23px; font-weight: 700; color: #ffffff; }
+  header.principal .meta { font-size: 14px; color: #ffffff; }
+
+  .practicas-sp { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sp {
+    display: inline-block; background: #ffffff; color: #1b3a4d;
+    font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 12px;
+    letter-spacing: .3px;
+  }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .diagrama-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+  .materiales {
+    background: #eceff1; border-left: 6px solid #37474f;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .materiales h2 { margin: 0 0 8px; color: #263238; font-size: 18px; }
+  .materiales ul { margin: 8px 0 0; padding-left: 22px; }
+  .materiales li { margin: 5px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+  .resalta { background: var(--tema-bg); padding: 1px 6px; border-radius: 5px; font-weight: 700; color: var(--tema-d); }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-tip strong { color: #1b5e20; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+  .vocabulario {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .vocabulario h2 { margin: 0 0 6px; color: #4527a0; font-size: 18px; }
+  .vocabulario p { color: #311b92; }
+
+  /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+  .lectura {
+    background: #fffdf7; border: 2px solid var(--tema);
+    border-radius: 10px; padding: 6px 22px 18px; margin: 18px 0;
+  }
+  .lectura h2 { color: var(--tema-d); font-size: 19px; }
+  .lectura .fuente { font-size: 13px; color: #555; font-style: italic; }
+  .lectura .texto-adaptado {
+    background: #ffffff; border-left: 5px solid var(--tema-bg);
+    padding: 12px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+  }
+
+  /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+  .enlace-interactivo {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-left: 6px solid var(--tema); border-radius: 10px;
+    padding: 16px 20px; margin: 18px 0; text-decoration: none;
+    color: var(--tema-d); transition: background .15s;
+  }
+  .enlace-interactivo:hover { background: var(--tema-bg2); }
+  .enlace-interactivo .ei-icono { font-size: 26px; line-height: 1; flex-shrink: 0; }
+  .enlace-interactivo .ei-titulo { display: block; font-weight: 700; font-size: 16px; color: var(--tema-d); }
+  .enlace-interactivo .ei-sub { display: block; font-size: 14px; color: #333; margin: 4px 0 8px; }
+  .enlace-interactivo .ei-cta {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 14px; font-weight: 700; padding: 6px 16px; border-radius: 7px;
+  }
+
+  /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+  .pendiente { color: #c62828; font-size: 15px; margin-left: 6px; }
+
+  .reglas { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  .reglas th, .reglas td { border: 1px solid #e0e0e0; padding: 9px 12px; text-align: left; vertical-align: top; }
+  .reglas th { background: var(--tema); color: #ffffff; }
+  .reglas td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #c62828; }
+
+  .btn {
+    background: var(--tema); color: #ffffff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px; font-size: 14px; }
+  .modo-pres { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-pres strong { color: #004d40; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #004d40; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #e3f2fd; border-left: 6px solid #1565c0;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #0d47a1; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #ffffff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #ffffff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #555;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+  footer p { margin: 5px 0; }
+  footer a { color: #1b3a4d; }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <!-- NÚM. DE CURSO — insertar aquí cuando el curso reciba su número oficial -->
+  <header class="principal">
+    <div class="ruta">Spanish ASE Science · Unidad 2 · Razonamiento cuantitativo en ciencias</div>
+    <h1>Lección 2.1 · Notación científica, unidades y la calculadora TI-30XS</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 4–5 · Brightspace D2L</div>
+    <div class="practicas-sp">
+      <span class="sp">SP.6 · Expresar información científica</span>
+      <span class="sp">Puente · Matemáticas Nivel 3 (notación científica)</span>
+    </div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Convertir un número de notación decimal a notación científica y en sentido inverso.</li>
+      <li>Reconocer cuándo un número está mal escrito en notación científica y corregirlo.</li>
+      <li>Multiplicar y dividir cantidades expresadas en notación científica, ajustando el resultado cuando el coeficiente se sale del intervalo permitido.</li>
+      <li>Seleccionar la unidad y el prefijo apropiados para magnitudes atómicas y astronómicas.</li>
+      <li>Operar con la calculadora TI-30XS MultiView™ empleándola como verificación del razonamiento y no como sustituto de este.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Conexión con la unidad anterior.</strong> La Unidad 1 instaló tres herramientas transversales: reconstruir una investigación, auditar su diseño y leer un texto científico. Con la Unidad 2 comienza el otro andamiaje que el examen exige, el <strong>cuantitativo</strong>. Ninguna de las dos sustituye a la otra: la ciencia se lee, pero también se mide.</p>
+    <p>Esta lección abre esa unidad con la herramienta más básica y a la vez más rentable de todas. El examen de Ciencias del GED<sup>®</sup> presenta con frecuencia magnitudes tan pequeñas como el diámetro de un átomo o tan grandes como la distancia entre estrellas. Escribirlas con todas sus cifras es incómodo y, sobre todo, induce a error: basta un cero de más para equivocarse por un factor de diez.</p>
+  </div>
+
+  <div class="materiales">
+    <h2><span aria-hidden="true">📐</span> Material y recursos</h2>
+    <ul>
+      <li>Tabla de magnitudes reales: diámetro de un átomo, masa de la Tierra, distancia a Próxima Centauri y longitud de onda de la luz visible.</li>
+      <li>Hoja de fórmulas científicas oficial del GED<sup>®</sup>, la misma que se entrega durante el examen.</li>
+      <li>Guía de teclas de la TI-30XS MultiView™ para notación científica y potencias.</li>
+      <li>Doce tarjetas con magnitudes escritas en notación decimal, para la actividad de ordenación.</li>
+    </ul>
+    <p><strong>Modalidad de trabajo:</strong> primero la conversión a mano y después la verificación con la calculadora, nunca al revés. La calculadora confirma un resultado que el estudiante ya ha estimado; no lo produce por él.</p>
+  </div>
+
+  <h2 class="seccion">1. Qué es la notación científica y cómo está construida</h2>
+  <div class="bloque">
+    <p>La notación científica escribe cualquier cantidad como el producto de dos piezas: un <strong>coeficiente</strong> y una <strong>potencia de diez</strong>. La regla que la define es una sola y no admite excepciones:</p>
+
+    <div class="caja-tip">
+      <strong>La regla del coeficiente:</strong> el coeficiente debe ser mayor o igual que 1 y menor que 10. Es decir, ha de tener exactamente una cifra distinta de cero delante del punto decimal. Si el coeficiente es 12.5 o 0.6, el número todavía no está en notación científica, aunque el valor sea correcto.
+    </div>
+
+    <div class="diagrama-wrap">
+      <svg width="640" height="215" viewBox="0 0 640 215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anatomía de un número en notación científica, con el ejemplo tres coma seis por diez elevado a ocho. La primera pieza es el coeficiente, tres coma seis, que debe ser mayor o igual que uno y menor que diez. La segunda pieza es la base, que siempre es diez. La tercera pieza es el exponente, ocho, que indica cuántos lugares se desplaza el punto decimal.">
+        <text x="320" y="40" font-family="Segoe UI, sans-serif" font-size="30" font-weight="700" fill="#1b3a4d" text-anchor="middle">3.6 × 10⁸</text>
+
+        <rect x="20" y="70" width="185" height="92" rx="10" fill="#cfe3ec" stroke="#1b3a4d" stroke-width="3"/>
+        <rect x="228" y="70" width="185" height="92" rx="10" fill="#cfe3ec" stroke="#1b3a4d" stroke-width="3"/>
+        <rect x="436" y="70" width="185" height="92" rx="10" fill="#cfe3ec" stroke="#1b3a4d" stroke-width="3"/>
+
+        <g font-family="Segoe UI, sans-serif" fill="#1b3a4d" text-anchor="middle">
+          <text x="112" y="96" font-size="16" font-weight="700">Coeficiente</text>
+          <text x="112" y="120" font-size="14">3.6</text>
+          <text x="112" y="142" font-size="12">de 1 a menos de 10</text>
+
+          <text x="320" y="96" font-size="16" font-weight="700">Base</text>
+          <text x="320" y="120" font-size="14">10</text>
+          <text x="320" y="142" font-size="12">siempre es diez</text>
+
+          <text x="528" y="96" font-size="16" font-weight="700">Exponente</text>
+          <text x="528" y="120" font-size="14">8</text>
+          <text x="528" y="142" font-size="12">lugares que se desplaza</text>
+        </g>
+
+        <rect x="20" y="172" width="601" height="36" rx="10" fill="#b9d6e3" stroke="#1b3a4d" stroke-width="3"/>
+        <text x="320" y="196" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#1b3a4d" text-anchor="middle">Valor: 360 000 000</text>
+      </svg>
+    </div>
+
+    <p>El exponente no es un adorno: es la <strong>escala</strong> del número. Dos cantidades con el mismo coeficiente y exponentes distintos no se parecen en nada. Entre 3.6 × 10⁸ y 3.6 × 10¹¹ hay un factor de mil.</p>
+  </div>
+
+  <h2 class="seccion">2. Convertir en los dos sentidos</h2>
+  <div class="bloque">
+    <p>Toda la conversión se reduce a mover el punto decimal y llevar la cuenta de cuántos lugares se movió. El signo del exponente indica en qué dirección.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Reglas de conversión entre notación decimal y notación científica según el tamaño del número y el sentido de la conversión.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Situación</th>
+          <th scope="col">Qué se hace</th>
+          <th scope="col">Ejemplo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Número grande a notación científica</td>
+          <td>Se mueve el punto hacia la izquierda hasta dejar una sola cifra delante. El exponente es positivo e igual al número de lugares movidos.</td>
+          <td>149 600 000 = 1.496 × 10⁸</td>
+        </tr>
+        <tr>
+          <td>Número pequeño a notación científica</td>
+          <td>Se mueve el punto hacia la derecha hasta pasar la primera cifra distinta de cero. El exponente es negativo.</td>
+          <td>0.00047 = 4.7 × 10⁻⁴</td>
+        </tr>
+        <tr>
+          <td>Exponente positivo a notación decimal</td>
+          <td>Se mueve el punto hacia la derecha tantos lugares como indique el exponente, completando con ceros.</td>
+          <td>2.5 × 10⁶ = 2 500 000</td>
+        </tr>
+        <tr>
+          <td>Exponente negativo a notación decimal</td>
+          <td>Se mueve el punto hacia la izquierda tantos lugares como indique el exponente, completando con ceros.</td>
+          <td>5.2 × 10⁻⁶ = 0.0000052</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1 · De decimal a científica</span>
+      <p>La distancia media entre la Tierra y el Sol es de <strong>149 600 000 km</strong>.</p>
+      <div class="paso"><span class="n">1</span> Se localiza la posición actual del punto decimal, al final del número: 149 600 000.</div>
+      <div class="paso"><span class="n">2</span> Se mueve el punto hacia la izquierda hasta que quede una sola cifra delante: <span class="resalta">1.496</span>.</div>
+      <div class="paso"><span class="n">3</span> Se cuentan los lugares recorridos: ocho. Como el número original era grande, el exponente es positivo.</div>
+      <p><strong>Resultado:</strong> 1.496 × 10⁸ km.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · De científica a decimal</span>
+      <p>La carga de un electrón es de <strong>1.6 × 10⁻¹⁹ culombios</strong>.</p>
+      <div class="paso"><span class="n">1</span> El exponente es negativo, de modo que el número es menor que 1 y el punto se mueve hacia la izquierda.</div>
+      <div class="paso"><span class="n">2</span> Se recorren diecinueve lugares, completando con ceros: 0.00000000000000000016.</div>
+      <p><strong>Observación:</strong> este es exactamente el motivo por el que la notación científica existe. Nadie cuenta dieciocho ceros sin equivocarse, y el examen no pide contarlos: pide interpretar el exponente.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>El error de dirección:</strong> confundir el sentido del movimiento invierte el signo del exponente y convierte un número diminuto en uno gigantesco. Un control rápido evita siempre esa equivocación: si el número original es <em>menor que 1</em>, el exponente tiene que ser <em>negativo</em>; si es <em>mayor que 10</em>, tiene que ser <em>positivo</em>. Antes de escribir el resultado conviene comprobar esa correspondencia.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Convertir en los dos sentidos</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. El número 0.00082 escrito en notación científica es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">8.2 × 10⁻³</div>
+        <div class="opcion" data-op="b">8.2 × 10⁻⁴</div>
+        <div class="opcion" data-op="c">8.2 × 10⁴</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. El número 4.5 × 10⁵ escrito en notación decimal es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">45 000</div>
+        <div class="opcion" data-op="b">0.000045</div>
+        <div class="opcion" data-op="c">450 000</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. La expresión 0.6 × 10⁷ no está en notación científica porque…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">El coeficiente es menor que 1</div>
+        <div class="opcion" data-op="b">El exponente es demasiado grande</div>
+        <div class="opcion" data-op="c">La base debería ser 2 en lugar de 10</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">3. Multiplicar y dividir en notación científica</h2>
+  <div class="bloque">
+    <p>Operar en notación científica es más sencillo que operar con los números completos, porque las dos piezas se tratan por separado. Los coeficientes se multiplican o se dividen; los exponentes se suman o se restan.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="640" height="235" viewBox="0 0 640 235" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esquema de la multiplicación de tres por diez elevado a cuatro por dos por diez elevado a cinco. En la columna de los coeficientes, tres por dos es igual a seis, porque los coeficientes se multiplican. En la columna de las potencias de diez, cuatro más cinco es igual a nueve, porque los exponentes se suman. El resultado es seis por diez elevado a nueve.">
+        <text x="320" y="34" font-family="Segoe UI, sans-serif" font-size="21" font-weight="700" fill="#1b3a4d" text-anchor="middle">(3 × 10⁴) · (2 × 10⁵)</text>
+
+        <rect x="30" y="56" width="255" height="96" rx="10" fill="#cfe3ec" stroke="#1b3a4d" stroke-width="3"/>
+        <rect x="355" y="56" width="255" height="96" rx="10" fill="#cfe3ec" stroke="#1b3a4d" stroke-width="3"/>
+
+        <g font-family="Segoe UI, sans-serif" fill="#1b3a4d" text-anchor="middle">
+          <text x="157" y="82" font-size="16" font-weight="700">Coeficientes</text>
+          <text x="157" y="112" font-size="19">3 × 2 = 6</text>
+          <text x="157" y="136" font-size="12">se multiplican</text>
+
+          <text x="482" y="82" font-size="16" font-weight="700">Potencias de 10</text>
+          <text x="482" y="112" font-size="19">4 + 5 = 9</text>
+          <text x="482" y="136" font-size="12">los exponentes se suman</text>
+        </g>
+
+        <line x1="157" y1="152" x2="220" y2="184" stroke="#1b3a4d" stroke-width="3"/>
+        <line x1="482" y1="152" x2="420" y2="184" stroke="#1b3a4d" stroke-width="3"/>
+
+        <rect x="160" y="184" width="320" height="42" rx="10" fill="#b9d6e3" stroke="#1b3a4d" stroke-width="3"/>
+        <text x="320" y="212" font-family="Segoe UI, sans-serif" font-size="18" font-weight="700" fill="#1b3a4d" text-anchor="middle">Resultado: 6 × 10⁹</text>
+      </svg>
+    </div>
+
+    <p>En la división el procedimiento es el mismo con las operaciones inversas: los coeficientes se dividen y los exponentes se restan.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3 · Cuando el coeficiente se sale del intervalo</span>
+      <p>Multiplicar <strong>(5 × 10⁴) · (4 × 10³)</strong>.</p>
+      <div class="paso"><span class="n">1</span> Coeficientes: 5 × 4 = 20. Exponentes: 4 + 3 = 7. El resultado provisional es 20 × 10⁷.</div>
+      <div class="paso"><span class="n">2</span> El valor es correcto, pero 20 no cumple la regla del coeficiente: no está entre 1 y 10.</div>
+      <div class="paso"><span class="n">3</span> Se reescribe 20 como <span class="resalta">2 × 10¹</span> y esa potencia se suma a la que ya había: 1 + 7 = 8.</div>
+      <p><strong>Resultado:</strong> 2 × 10⁸. Este paso de ajuste es el que más puntos cuesta en el examen, porque el resultado intermedio parece terminado.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>El cociente que se vuelve un número sencillo:</strong> cuando se compara el tamaño de dos objetos y ambos están en notación científica, la división suele dar un número pequeño y limpio. Un glóbulo rojo de 8 × 10⁻⁶ m frente a una bacteria de 2 × 10⁻⁶ m: los coeficientes dan 8 ÷ 2 = 4 y los exponentes se cancelan, −6 − (−6) = 0. El glóbulo es cuatro veces mayor. Sin notación científica, esa misma comparación exige contar ceros.
+    </div>
+  </div>
+
+  <h2 class="seccion">4. Unidades, prefijos y la escala del universo</h2>
+  <div class="bloque">
+    <p>Un mismo valor puede escribirse con muchas unidades, pero solo una hace que el número resulte cómodo de leer. Los prefijos del Sistema Internacional son, en el fondo, potencias de diez con nombre propio.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Prefijos del Sistema Internacional de uso frecuente en el examen, con la potencia de diez que representa cada uno y un ejemplo de magnitud.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Prefijo</th>
+          <th scope="col">Potencia de 10</th>
+          <th scope="col">Magnitud típica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>giga- (G)</td>
+          <td>10⁹</td>
+          <td>Distancias planetarias en gigámetros; capacidad de memoria.</td>
+        </tr>
+        <tr>
+          <td>mega- (M)</td>
+          <td>10⁶</td>
+          <td>Radio de la Tierra: unos 6.4 megámetros.</td>
+        </tr>
+        <tr>
+          <td>kilo- (k)</td>
+          <td>10³</td>
+          <td>Distancias geográficas; masa corporal en kilogramos.</td>
+        </tr>
+        <tr>
+          <td>centi- (c)</td>
+          <td>10⁻²</td>
+          <td>Longitud de una hoja de papel en centímetros.</td>
+        </tr>
+        <tr>
+          <td>mili- (m)</td>
+          <td>10⁻³</td>
+          <td>Grosor de una moneda; precipitación en milímetros.</td>
+        </tr>
+        <tr>
+          <td>micro- (µ)</td>
+          <td>10⁻⁶</td>
+          <td>Tamaño de una célula: entre 10 y 100 micrómetros.</td>
+        </tr>
+        <tr>
+          <td>nano- (n)</td>
+          <td>10⁻⁹</td>
+          <td>Longitud de onda de la luz visible: de 400 a 700 nanómetros.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="vocabulario">
+      <h2><span aria-hidden="true">🔤</span> Vocabulario técnico y raíces</h2>
+      <p>Los prefijos científicos vienen del griego y del latín, y su significado literal ayuda a recordarlos sin memorizar la tabla. <strong>Micro-</strong> significa «pequeño» y aparece también en <em>microscopio</em> y <em>microorganismo</em>. <strong>Nano-</strong> significa «enano». <strong>Mega-</strong> significa «grande», como en <em>megalito</em>. <strong>Kilo-</strong> significa «mil». Y <strong>giga-</strong> procede de la palabra griega para «gigante». Quien reconoce estas cinco piezas deduce el orden de magnitud aunque no recuerde el exponente exacto.</p>
+    </div>
+
+    <h3>La escala completa, de un extremo al otro</h3>
+    <p>El siguiente esquema sitúa siete objetos sobre una misma recta de potencias de diez. Cada marca de la recta equivale a multiplicar por mil, no a sumar una cantidad fija: por eso el protón y la galaxia caben en la misma imagen.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="150" viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Recta logarítmica de potencias de diez desde diez elevado a menos quince metros hasta diez elevado a veintiuno metros. Sobre ella se sitúan siete objetos: el radio de un protón en diez elevado a menos quince metros, el diámetro de un átomo en diez elevado a menos diez metros, un virus en diez elevado a menos siete metros, una persona en diez elevado a cero metros, el diámetro de la Tierra en diez elevado a siete metros, la distancia a Próxima Centauri en diez elevado a dieciséis metros y el diámetro de la Vía Láctea en diez elevado a veintiún metros.">
+        <text x="350" y="18" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1b3a4d" text-anchor="middle">Treinta y seis potencias de diez, medidas en metros</text>
+
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1b3a4d" text-anchor="middle">
+          <text x="126" y="38">átomo</text>
+          <text x="298" y="38">persona</text>
+          <text x="574" y="38">Próxima Centauri</text>
+        </g>
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1b3a4d" text-anchor="middle">
+          <text x="40" y="62">protón</text>
+          <text x="178" y="62">virus</text>
+          <text x="419" y="62">Tierra</text>
+          <text x="660" y="62">Vía Láctea</text>
+        </g>
+
+        <g stroke="#2a5f80" stroke-width="1.5" stroke-dasharray="3,3">
+          <line x1="126" y1="42" x2="126" y2="86"/>
+          <line x1="298" y1="42" x2="298" y2="86"/>
+          <line x1="574" y1="42" x2="574" y2="86"/>
+          <line x1="40" y1="66" x2="40" y2="86"/>
+          <line x1="178" y1="66" x2="178" y2="86"/>
+          <line x1="419" y1="66" x2="419" y2="86"/>
+          <line x1="660" y1="66" x2="660" y2="86"/>
+        </g>
+
+        <line x1="30" y1="90" x2="670" y2="90" stroke="#1b3a4d" stroke-width="3"/>
+
+        <g fill="#2a5f80">
+          <circle cx="40" cy="90" r="5"/>
+          <circle cx="126" cy="90" r="5"/>
+          <circle cx="178" cy="90" r="5"/>
+          <circle cx="298" cy="90" r="5"/>
+          <circle cx="419" cy="90" r="5"/>
+          <circle cx="574" cy="90" r="5"/>
+          <circle cx="660" cy="90" r="5"/>
+        </g>
+
+        <g stroke="#1b3a4d" stroke-width="2">
+          <line x1="40" y1="96" x2="40" y2="102"/>
+          <line x1="92" y1="96" x2="92" y2="102"/>
+          <line x1="143" y1="96" x2="143" y2="102"/>
+          <line x1="195" y1="96" x2="195" y2="102"/>
+          <line x1="247" y1="96" x2="247" y2="102"/>
+          <line x1="298" y1="96" x2="298" y2="102"/>
+          <line x1="350" y1="96" x2="350" y2="102"/>
+          <line x1="402" y1="96" x2="402" y2="102"/>
+          <line x1="453" y1="96" x2="453" y2="102"/>
+          <line x1="505" y1="96" x2="505" y2="102"/>
+          <line x1="557" y1="96" x2="557" y2="102"/>
+          <line x1="608" y1="96" x2="608" y2="102"/>
+          <line x1="660" y1="96" x2="660" y2="102"/>
+        </g>
+
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1b3a4d" text-anchor="middle">
+          <text x="40" y="118">10⁻¹⁵</text>
+          <text x="92" y="118">10⁻¹²</text>
+          <text x="143" y="118">10⁻⁹</text>
+          <text x="195" y="118">10⁻⁶</text>
+          <text x="247" y="118">10⁻³</text>
+          <text x="298" y="118">10⁰</text>
+          <text x="350" y="118">10³</text>
+          <text x="402" y="118">10⁶</text>
+          <text x="453" y="118">10⁹</text>
+          <text x="505" y="118">10¹²</text>
+          <text x="557" y="118">10¹⁵</text>
+          <text x="608" y="118">10¹⁸</text>
+          <text x="660" y="118">10²¹</text>
+        </g>
+
+        <text x="350" y="141" font-family="Segoe UI, sans-serif" font-size="12" fill="#1b3a4d" text-anchor="middle">Entre dos marcas consecutivas hay un factor de mil</text>
+      </svg>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Una recta que engaña a la intuición:</strong> en esta recta, la mitad del camino entre 1 metro y 10¹⁸ metros no está en 500 000 000 000 000 000 de metros, sino en 10⁹, es decir, mil millones. Las escalas logarítmicas aparecen en el examen en gráficas de terremotos, de acidez y de intensidad sonora, y siempre por la misma razón: los datos abarcan tantos órdenes de magnitud que ninguna escala corriente los mostraría juntos.
+    </div>
+  </div>
+
+  <!-- ENLACE AL INTERACTIVO — publicado en agosto de 2026. Ruta según el inventario del plan. -->
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/escala_universo.html" target="_blank" rel="noopener"
+     aria-label="Abrir el interactivo Escala del universo (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔭</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Escala del universo</span>
+      <span class="ei-sub">Recorra con un deslizador logarítmico toda la recta anterior, desde 10⁻¹⁵ hasta 10²¹ metros. En cada posición aparece un objeto real con su magnitud escrita simultáneamente en notación decimal y en notación científica, de modo que el exponente deje de ser un símbolo y se convierta en una intuición de tamaño. Incluye además tres bloques de práctica: conversión en los dos sentidos, multiplicación y división, y selección de la unidad apropiada.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <h2 class="seccion">5. La calculadora TI-30XS MultiView™</h2>
+  <div class="bloque">
+    <p>La TI-30XS MultiView™ es la única calculadora permitida en el examen. En esta lección se emplea únicamente para <strong>verificar</strong> conversiones y operaciones que ya se resolvieron a mano.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Funciones de la calculadora TI-30XS MultiView para trabajar con notación científica, con la indicación de uso y la advertencia asociada a cada una.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Función</th>
+          <th scope="col">Cómo se usa</th>
+          <th scope="col">Advertencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tecla <strong>×10ⁿ</strong></td>
+          <td>Introduce directamente la potencia de diez. Para 3.6 × 10⁸ se teclea el coeficiente, después esta tecla y por último el exponente.</td>
+          <td>No debe teclearse «× 10 ^ 8»: el resultado sería el mismo, pero el procedimiento es más largo y se presta a errores de paréntesis.</td>
+        </tr>
+        <tr>
+          <td>Tecla de signo <strong>(−)</strong></td>
+          <td>Introduce exponentes negativos, como en 4.7 × 10⁻⁴.</td>
+          <td>Es una tecla distinta de la de restar. Usar la de restar produce un mensaje de error o un resultado equivocado.</td>
+        </tr>
+        <tr>
+          <td>Menú <strong>mode</strong></td>
+          <td>Permite elegir entre NORM, SCI y ENG. En SCI todos los resultados se muestran en notación científica.</td>
+          <td>Conviene regresar a NORM al terminar. Si se olvida, los resultados de las lecciones siguientes aparecerán en un formato inesperado.</td>
+        </tr>
+        <tr>
+          <td>Limpieza previa</td>
+          <td>Antes de empezar se borra la pantalla y se eliminan las variables almacenadas de un ejercicio anterior.</td>
+          <td>Un valor guardado que quedó de la sesión anterior es una de las causas más frecuentes de resultados incoherentes.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4 · Primero a mano, después la calculadora</span>
+      <p>¿Cuántos átomos de hidrógeno, de 1 × 10⁻¹⁰ m de diámetro, caben alineados en un milímetro?</p>
+      <div class="paso"><span class="n">1</span> Se expresa el milímetro en notación científica: 1 mm = 1 × 10⁻³ m.</div>
+      <div class="paso"><span class="n">2</span> Se plantea la división: (1 × 10⁻³) ÷ (1 × 10⁻¹⁰).</div>
+      <div class="paso"><span class="n">3</span> Coeficientes: 1 ÷ 1 = 1. Exponentes: −3 − (−10) = <span class="resalta">7</span>.</div>
+      <div class="paso"><span class="n">4</span> Estimación a mano: 1 × 10⁷, es decir, diez millones de átomos.</div>
+      <div class="paso"><span class="n">5</span> Verificación en la calculadora, con la tecla ×10ⁿ y la tecla de signo para los exponentes negativos. Debe aparecer 10 000 000.</div>
+      <p><strong>Por qué en ese orden:</strong> el estudiante que estimó primero reconoce de inmediato si la pantalla muestra un disparate. Quien teclea sin estimar acepta cualquier cosa que aparezca.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>La calculadora no decide el orden de magnitud:</strong> si el exponente se introduce con el signo cambiado, la máquina devolverá un resultado impecablemente calculado y completamente falso. Ningún mensaje de error avisa de ello. La única defensa es la estimación previa hecha a mano, y por eso figura como criterio propio en la rúbrica de esta lección.
+    </div>
+  </div>
+
+  <!-- ENLACE AL INTERACTIVO — publicado en agosto de 2026 -->
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/clinica_ti30xs.html" target="_blank" rel="noopener"
+     aria-label="Abrir el interactivo Clínica de la TI-30XS (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🧮</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Clínica de la TI-30XS</span>
+      <span class="ei-sub">Teclado guiado de la TI-30XS MultiView™ para notación científica, potencias y raíces. Cada ejercicio exige escribir primero la estimación a mano y solo entonces habilita el teclado, de modo que la calculadora nunca pueda sustituir al razonamiento. Se reutiliza en las Unidades 5 y 6.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <div class="lectura">
+    <h2><span aria-hidden="true">📖</span> Lectura científica</h2>
+    <p class="fuente">Texto científico breve adaptado al nivel. Obsérvese que todas las magnitudes aparecen en notación científica, tal como se presentan en el examen.</p>
+
+    <div class="texto-adaptado">
+      <p><strong>Por qué un virus no se ve con un microscopio de luz</strong></p>
+      <p>Un microscopio óptico no puede distinguir dos puntos que estén demasiado próximos entre sí. El obstáculo no es la calidad de las lentes: es la propia luz. La luz visible tiene longitudes de onda comprendidas entre 4 × 10⁻⁷ m y 7 × 10⁻⁷ m, y ningún instrumento que use luz puede separar detalles mucho más pequeños que ese tamaño. En la práctica, el límite se sitúa alrededor de 2 × 10⁻⁷ m.</p>
+      <p>Una bacteria común mide entre 1 × 10⁻⁶ m y 5 × 10⁻⁶ m, es decir, varias veces ese límite. Por esa razón las bacterias se observan sin dificultad con un microscopio escolar, y de hecho fueron descritas por primera vez en el siglo XVII con instrumentos muy modestos.</p>
+      <p>Un virus de la gripe mide, en cambio, alrededor de 1 × 10⁻⁷ m: la mitad del límite. Aumentar el número de aumentos no sirve de nada. La imagen se agranda, pero no aparece ningún detalle nuevo, porque la información nunca llegó a formarse. Durante décadas se supo que los virus existían sin que nadie hubiera visto uno.</p>
+      <p>La solución consistió en sustituir la luz por electrones, cuya longitud de onda asociada es del orden de 10⁻¹² m, millones de veces menor. El microscopio electrónico, desarrollado en la década de 1930, permitió obtener las primeras imágenes de un virus a finales de esa misma década.</p>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Las bacterias fueron descritas por primera vez en el siglo XVII.</div>
+        <div class="opcion" data-op="b">El límite de un microscopio óptico no depende del aumento, sino de la longitud de onda de la luz.</div>
+        <div class="opcion" data-op="c">El microscopio electrónico se desarrolló en la década de 1930.</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. ¿Cuántas veces mayor es una bacteria de 2 × 10⁻⁶ m que un virus de 1 × 10⁻⁷ m?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">2 veces mayor</div>
+        <div class="opcion" data-op="b">200 veces mayor</div>
+        <div class="opcion" data-op="c">20 veces mayor</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. Para expresar el límite de resolución, 2 × 10⁻⁷ m, con un prefijo cómodo conviene decir…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">200 nanómetros</div>
+        <div class="opcion" data-op="b">200 milímetros</div>
+        <div class="opcion" data-op="c">200 kilómetros</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">4. Según el texto, ¿por qué aumentar los aumentos del microscopio óptico no permite ver un virus?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Porque el virus se mueve demasiado rápido</div>
+        <div class="opcion" data-op="b">Porque las lentes escolares son de baja calidad</div>
+        <div class="opcion" data-op="c">Porque el detalle nunca llegó a formarse en la imagen: la limitación está en la luz</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Operaciones y selección de unidad</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. El producto (4 × 10³) · (2 × 10⁶) es igual a…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">6 × 10⁹</div>
+        <div class="opcion" data-op="b">8 × 10⁹</div>
+        <div class="opcion" data-op="c">8 × 10¹⁸</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. El cociente (9 × 10⁸) ÷ (3 × 10²) es igual a…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">3 × 10⁶</div>
+        <div class="opcion" data-op="b">3 × 10¹⁰</div>
+        <div class="opcion" data-op="c">6 × 10⁶</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. Al multiplicar (6 × 10⁵) · (5 × 10²) se obtiene 30 × 10⁷. El resultado definitivo es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">30 × 10⁷, que ya está correctamente escrito</div>
+        <div class="opcion" data-op="b">3 × 10⁷</div>
+        <div class="opcion" data-op="c">3 × 10⁸</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">4. Una célula mide 2 × 10⁻⁵ m. La unidad más cómoda para expresar esa medida es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">El nanómetro</div>
+        <div class="opcion" data-op="b">El micrómetro</div>
+        <div class="opcion" data-op="c">El kilómetro</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">6. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p><span aria-hidden="true">💬</span> Las tres actividades siguientes se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 1 · La escala del universo</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3><span aria-hidden="true">🏫</span> Presencial</h3>
+          Se tiende una cuerda de lado a lado del aula con doce marcas que representan potencias de diez. Cada equipo recibe tarjetas con doce magnitudes escritas en notación decimal —desde el radio de un protón hasta el diámetro de la Vía Láctea—, las convierte a notación científica y las cuelga en la marca que les corresponde. Al final se recorre la cuerda de un extremo al otro comprobando el orden.
+        </div>
+        <div class="modo modo-virt">
+          <h3><span aria-hidden="true">💻</span> En línea</h3>
+          En salas pequeñas (<em>Breakout rooms</em>), cada equipo trabaja sobre una hoja compartida (Google Sheets, Google Docs u otro editor colaborativo) con tres columnas: magnitud en notación decimal, magnitud en notación científica y exponente. Una vez completadas las tres columnas, el equipo ordena las filas de menor a mayor y publica el resultado en un tablero compartido (foro de Brightspace, Padlet u otro tablero colaborativo).
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 2 · Seis operaciones, un orden de magnitud</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3><span aria-hidden="true">🏫</span> Presencial</h3>
+          La pizarra se divide en dos columnas, coeficientes y exponentes. Cada equipo resuelve una de las seis operaciones combinadas —entre ellas, cuántos átomos de hidrógeno caben alineados en un milímetro— y la desarrolla en la pizarra separando las dos piezas. Antes de escribir el resultado, cada equipo anuncia en voz alta el orden de magnitud que espera obtener.
+        </div>
+        <div class="modo modo-virt">
+          <h3><span aria-hidden="true">💻</span> En línea</h3>
+          En salas pequeñas (<em>Breakout rooms</em>), cada equipo desarrolla su operación en una pizarra compartida (Jamboard, la pizarra de Zoom u otra pizarra colaborativa) con las mismas dos columnas. Al regresar a la sala principal, publica en un tablero compartido (foro de Brightspace, Padlet u otro tablero colaborativo) el orden de magnitud anticipado junto al resultado final, para contrastar ambos.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 3 · Primero a mano, después la calculadora</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3><span aria-hidden="true">🏫</span> Presencial</h3>
+          Cada estudiante resuelve a mano seis conversiones y operaciones, y solo entonces toma la TI-30XS para verificarlas. Registra en una tabla de tres columnas el resultado a mano, el de la calculadora y si coinciden. Las discrepancias se analizan en grupo: casi todas provienen del signo del exponente o de la tecla de restar usada en lugar de la de signo.
+        </div>
+        <div class="modo modo-virt">
+          <h3><span aria-hidden="true">💻</span> En línea</h3>
+          El docente proyecta el emulador de la TI-30XS y modela las cuatro funciones de la tabla. Después, cada estudiante completa la misma tabla de tres columnas en una hoja compartida (Google Sheets u otro editor colaborativo), con una columna adicional en la que describe la causa de cada discrepancia encontrada.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2><span aria-hidden="true">✅</span> Tarea asincrónica</h2>
+    <p>Para completar de forma individual en <strong>Brightspace</strong> antes de la próxima sesión:</p>
+    <ul>
+      <li>Diez ejercicios de conversión y operación en notación científica, con contextos tomados de los tres dominios del examen: ciencias de la vida, ciencias físicas y ciencias de la Tierra y el espacio.</li>
+      <li>Selección de la unidad y el prefijo apropiados para cinco magnitudes dadas, justificando la elección en una oración.</li>
+      <li>Registro de verificación con la TI-30XS: para tres de los diez ejercicios, la estimación hecha a mano antes de teclear y el resultado obtenido después.</li>
+    </ul>
+    <p>Tiempo estimado: 60 minutos. La entrega se evalúa con la rúbrica de esta lección.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 2.1</h2>
+    <p>Doce preguntas: cuatro de conversión entre notación decimal y científica, cuatro de selección de unidad apropiada y cuatro de multiplicación y división. Tiempo sugerido: 25 minutos. La calculadora se autoriza únicamente en las cuatro últimas preguntas, que son las de operación: en las ocho primeras el razonamiento debe sostenerse solo. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2><span aria-hidden="true">📊</span> Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <caption class="sr-only">Rúbrica analítica de notación científica con cuatro criterios y cuatro niveles de desempeño.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Inicial (1)</th>
+          <th scope="col">En desarrollo (2)</th>
+          <th scope="col">Competente (3)</th>
+          <th scope="col">Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Coloca correctamente el punto decimal y el exponente</td>
+          <td>Sitúa el punto decimal sin criterio y el signo del exponente no corresponde al tamaño del número.</td>
+          <td>Coloca el punto decimal correctamente, pero se equivoca en el signo o en el conteo de lugares.</td>
+          <td>Convierte en ambos sentidos con el punto y el exponente correctos.</td>
+          <td>Convierte con seguridad y comprueba la correspondencia entre el signo del exponente y el tamaño del número antes de escribir el resultado.</td>
+        </tr>
+        <tr>
+          <td>Opera sin errores de magnitud</td>
+          <td>Opera coeficientes y exponentes mezclándolos, con resultados de magnitud incorrecta.</td>
+          <td>Separa las dos piezas, pero no ajusta el coeficiente cuando se sale del intervalo de 1 a 10.</td>
+          <td>Multiplica y divide correctamente y ajusta el coeficiente cuando corresponde.</td>
+          <td>Opera correctamente y anticipa el orden de magnitud del resultado antes de calcularlo.</td>
+        </tr>
+        <tr>
+          <td>Selecciona la unidad adecuada al contexto</td>
+          <td>Emplea siempre la misma unidad, con independencia del tamaño de la magnitud.</td>
+          <td>Cambia de unidad, pero elige una que deja el número incómodo de leer.</td>
+          <td>Selecciona la unidad y el prefijo que hacen manejable la cantidad.</td>
+          <td>Selecciona la unidad adecuada y justifica la elección relacionando el prefijo con su potencia de diez.</td>
+        </tr>
+        <tr>
+          <td>Usa la calculadora como verificación y no como sustituto del razonamiento</td>
+          <td>Teclea sin estimar y acepta cualquier resultado que aparezca en pantalla.</td>
+          <td>Estima algunas veces, pero no contrasta la estimación con el resultado obtenido.</td>
+          <td>Estima a mano antes de teclear y compara ambos resultados.</td>
+          <td>Estima, compara y, ante una discrepancia, identifica la causa concreta del error de introducción.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Lo que viene en la próxima lección</h2>
+    <p>Esta lección dejó instalada la herramienta que permite manejar cualquier magnitud del examen, por diminuta o descomunal que sea, y la <strong>disciplina de estimar antes de teclear</strong>, que volverá a exigirse en todas las unidades de contenido.</p>
+    <p>La <strong>Lección 2.2 · De la tabla a la gráfica y de la gráfica al texto</strong> continúa el andamiaje cuantitativo por otro camino: el de la representación. Se trabajará con gráficas reales procedentes de artículos científicos —concentración de dióxido de carbono, curvas de crecimiento poblacional, temperatura frente a solubilidad— y con la traducción en tres direcciones entre <strong>tabla, gráfica y párrafo</strong>. Los números que aquí se aprendieron a escribir serán allí los que haya que leer en un eje.</p>
+  </div>
+
+  <footer>
+    <p>Spanish ASE Science · Unidad 2 · Lección 2.1 · 4 horas · Brightspace D2L</p>
+    <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+    <p>© 2026. Esta obra está licenciada bajo
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons
+      Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+  </footer>
+
+
+</div>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = 'Correcto. Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Quiz: 4 de conversión, 4 de selección de unidad, 4 de multiplicación y división ----
+     La calculadora se autoriza solo en el último bloque, que es el de operación. ---- */
+  var preguntasQuiz = [
+    { enun: '1. El número 0.00047 escrito en notación científica es…',
+      ops: ['4.7 × 10⁻³', '4.7 × 10⁻⁴', '47 × 10⁻⁵', '4.7 × 10⁴'], correcta: 1 },
+    { enun: '2. ¿Cuál de estos números NO está correctamente escrito en notación científica?',
+      ops: ['3.0 × 10⁸', '1.6 × 10⁻¹⁹', '12.5 × 10³', '9.8 × 10⁰'], correcta: 2 },
+    { enun: '3. El número 5.2 × 10⁻⁶ escrito en notación decimal es…',
+      ops: ['0.000052', '0.0000052', '5 200 000', '0.00000052'], correcta: 1 },
+    { enun: '4. La distancia media de la Tierra al Sol es de 149 600 000 km. En notación científica se escribe…',
+      ops: ['14.96 × 10⁷ km', '1.496 × 10⁹ km', '1.496 × 10⁸ km', '1.496 × 10⁻⁸ km'], correcta: 2 },
+    { enun: '5. El diámetro de un virus es de 1 × 10⁻⁷ m. La unidad más apropiada para expresarlo es…',
+      ops: ['El milímetro', 'El nanómetro', 'El metro', 'El kilómetro'], correcta: 1 },
+    { enun: '6. Un kilómetro equivale, en metros, a…',
+      ops: ['1 × 10³ m', '1 × 10⁶ m', '1 × 10⁻³ m', '1 × 10² m'], correcta: 0 },
+    { enun: '7. Una hoja de papel tiene un grosor de 0.0001 m. Expresado con el prefijo adecuado, ese grosor es de…',
+      ops: ['100 milímetros', '100 micrómetros', '100 nanómetros', '100 kilómetros'], correcta: 1 },
+    { enun: '8. La luz recorre 3 × 10⁸ m en un segundo. Para expresar esa distancia con un número más manejable conviene usar…',
+      ops: ['Milímetros', 'Nanómetros', 'Centímetros', 'Kilómetros'], correcta: 3 },
+    { enun: '9. El producto (3 × 10⁵) · (2 × 10³) es igual a…',
+      ops: ['6 × 10⁸', '6 × 10¹⁵', '5 × 10⁸', '6 × 10²'], correcta: 0 },
+    { enun: '10. El cociente (8 × 10⁹) ÷ (4 × 10⁴) es igual a…',
+      ops: ['2 × 10¹³', '2 × 10⁵', '4 × 10⁵', '2 × 10⁻⁵'], correcta: 1 },
+    { enun: '11. Al multiplicar (5 × 10⁴) · (4 × 10³) se obtiene 20 × 10⁷. El resultado definitivo, correctamente escrito, es…',
+      ops: ['20 × 10⁷', '2 × 10⁷', '2 × 10⁸', '9 × 10⁷'], correcta: 2 },
+    { enun: '12. Un glóbulo rojo mide 8 × 10⁻⁶ m y una bacteria 2 × 10⁻⁶ m. El glóbulo rojo es…',
+      ops: ['4 veces mayor', '4 veces menor', '16 veces mayor', '4 × 10⁻¹² veces mayor'], correcta: 0 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta'); });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = 'Correcto.';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 8) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Aprobado. Puede continuar a la Lección 2.2.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repase la lección e intente de nuevo (se requieren 8).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

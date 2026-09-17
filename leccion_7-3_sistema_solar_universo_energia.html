@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<!--
+  Lección 7.3 · El sistema solar, el universo y los recursos energéticos
+  Spanish ASE Science · Unidad 7 · Ciencias de la Tierra y el espacio
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 7.3 · El sistema solar, el universo y los recursos energéticos</title>
+<meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    /* Unidad 7 — violeta del plan curricular (--t7 #5b21b6). Coincide con la
+       paleta violeta de las sub-páginas de Tierra y Cosmos de la Ruta C.
+       ATENCIÓN: este violeta invade el matiz que el bloque .vocabulario venía
+       usando en las dieciocho lecciones anteriores (#5e35b1). Para que ambos
+       no se confundan, en esta unidad —y solo en esta— el bloque de
+       vocabulario se desplaza al verde azulado. Para revertirlo, devuelva los
+       valores indicados en el propio bloque .vocabulario. */
+    --tema:    #5b21b6;
+    --tema-d:  #3c1478;
+    --tema-bg: #e6dcf9;
+    --tema-bg2:#d3c3f2;
+    --acento:  #7c3aed;
+    --txt:     #222;
+    --bg:      #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ── ENCABEZADO ─────────────────────────────────────────────── */
+  header.principal {
+    background: var(--tema-d);
+    background: linear-gradient(135deg, #240a4d 0%, #3c1478 55%, #5b21b6 100%);
+    color: #ffffff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(36,10,77,.28);
+  }
+  header.principal .ruta {
+    font-size: 13px; color: #ffffff; letter-spacing: .4px; text-transform: uppercase;
+  }
+  header.principal h1 { margin: 8px 0 6px; font-size: 23px; font-weight: 700; color: #ffffff; }
+  header.principal .meta { font-size: 14px; color: #ffffff; }
+
+  .practicas-sp { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sp {
+    display: inline-block; background: #ffffff; color: #3c1478;
+    font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 12px;
+    letter-spacing: .3px;
+  }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .diagrama-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+  .materiales {
+    background: #eceff1; border-left: 6px solid #37474f;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .materiales h2 { margin: 0 0 8px; color: #263238; font-size: 18px; }
+  .materiales ul { margin: 8px 0 0; padding-left: 22px; }
+  .materiales li { margin: 5px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+  .resalta { background: var(--tema-bg); padding: 1px 6px; border-radius: 5px; font-weight: 700; color: var(--tema-d); }
+
+  /* ── CAJA DE CONSEJO ─────────────────────────────────────────
+     Matiz fijo (326°, magenta-rosa) e independiente del color de
+     la Unidad: es el único matiz libre en las ocho paletas del
+     plan, de modo que el bloque nunca se funde con el tema.
+     ─────────────────────────────────────────────────────────── */
+  .caja-tip {
+    background: #fce1f0; border-left: 5px solid #9e1c66;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #800d4e; font-size: 15px;
+  }
+  .caja-tip strong { color: #800d4e; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+  /* Valores originales de las unidades 1 a 6, para revertir:
+     background #ede7f6 · border #5e35b1 · h2 #4527a0 · p #311b92 */
+  .vocabulario {
+    background: #d9f2ee; border-left: 6px solid #0f766e;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .vocabulario h2 { margin: 0 0 6px; color: #0b5347; font-size: 18px; }
+  .vocabulario p { color: #0b5347; }
+
+  /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+  .lectura {
+    background: #fffdf7; border: 2px solid var(--tema);
+    border-radius: 10px; padding: 6px 22px 18px; margin: 18px 0;
+  }
+  .lectura h2 { color: var(--tema-d); font-size: 19px; }
+  .lectura .fuente { font-size: 13px; color: #555; font-style: italic; }
+  .lectura .texto-adaptado {
+    background: #ffffff; border-left: 5px solid var(--tema-bg);
+    padding: 12px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+  }
+
+  /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+  .enlace-interactivo {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-left: 6px solid var(--tema); border-radius: 10px;
+    padding: 16px 20px; margin: 18px 0; text-decoration: none;
+    color: var(--tema-d); transition: background .15s;
+  }
+  .enlace-interactivo:hover { background: var(--tema-bg2); }
+  .enlace-interactivo .ei-icono { font-size: 26px; line-height: 1; flex-shrink: 0; }
+  .enlace-interactivo .ei-titulo { display: block; font-weight: 700; font-size: 16px; color: var(--tema-d); }
+  .enlace-interactivo .ei-sub { display: block; font-size: 14px; color: #333; margin: 4px 0 8px; }
+  .enlace-interactivo .ei-cta {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 14px; font-weight: 700; padding: 6px 16px; border-radius: 7px;
+  }
+
+  /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+  .pendiente { color: #c62828; font-size: 15px; margin-left: 6px; }
+
+  .reglas { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  .reglas th, .reglas td { border: 1px solid #e0e0e0; padding: 9px 12px; text-align: left; vertical-align: top; }
+  .reglas th { background: var(--tema); color: #ffffff; }
+  .reglas td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #c62828; }
+
+  .btn {
+    background: var(--tema); color: #ffffff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px; font-size: 14px; }
+  .modo-pres { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-pres strong { color: #004d40; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #004d40; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #e3f2fd; border-left: 6px solid #1565c0;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #0d47a1; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #ffffff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #ffffff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #555;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+  footer p { margin: 5px 0; }
+  footer a { color: #3c1478; }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <!-- NÚM. DE CURSO — insertar aquí cuando el curso reciba su número oficial -->
+  <header class="principal">
+    <div class="ruta">Spanish ASE Science · Unidad 7 · Ciencias de la Tierra y el espacio</div>
+    <h1>Lección 7.3 · El sistema solar, el universo y los recursos energéticos</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 4–5 · Brightspace D2L</div>
+    <div class="practicas-sp">
+      <span class="sp">SP.5 · Auditoría crítica de fuentes</span>
+      <span class="sp">SP.4 · Evaluar conclusiones con evidencia</span>
+    </div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Describir la estructura del sistema solar y explicar qué mantiene a los planetas en órbita.</li>
+      <li>Manejar las magnitudes astronómicas en notación científica y compararlas por órdenes de magnitud.</li>
+      <li>Identificar las tres líneas de evidencia que sostienen la teoría del Big Bang.</li>
+      <li>Comparar fuentes de energía renovables y no renovables con criterios explícitos de rendimiento, coste e impacto.</li>
+      <li>Sostener una posición con datos citados y reconocer sus limitaciones.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Última lección de contenido.</strong> Con esta se cierra la Unidad 7 y el último de los tres dominios del examen. La Unidad 8, que viene después, ya no añade contenido nuevo: integra, evalúa y prepara el examen.</p>
+    <p>La lección tiene dos mitades de naturaleza distinta y conviene decirlo desde el principio. La primera es <strong>astronómica</strong> y trabaja magnitudes que solo se manejan en notación científica. La segunda es una <strong>auditoría de fuentes de energía</strong>, y ahí no hay una respuesta correcta que aprender: hay datos que comparar y una posición que sostener con ellos. Es la práctica SP.5 en su forma más exigente, y es también el ensayo directo de lo que hará la Unidad 8.</p>
+  </div>
+
+  <div class="materiales">
+    <h2><span aria-hidden="true">📐</span> Material y recursos</h2>
+    <ul>
+      <li>Tabla comparativa de los planetas con magnitudes en notación científica.</li>
+      <li>Esquema de la evidencia del Big Bang.</li>
+      <li>Tabla de fuentes de energía con datos de eficiencia, emisiones y coste.</li>
+      <li>Dos artículos con posiciones divergentes sobre política energética.</li>
+      <li>Calculadora TI-30XS.</li>
+    </ul>
+    <p><strong>Modalidad de trabajo:</strong> la sección de energía se plantea como <em>debate estructurado con evidencia obligatoria</em>. Ninguna afirmación se admite sin un dato de la tabla que la respalde, y cada equipo debe reconocer al menos una desventaja de la fuente que defiende.</p>
+    <p class="caja-atencion"><strong>Nota para el docente:</strong> los datos de eficiencia, emisiones y coste de las fuentes de energía cambian con rapidez. La tabla que se entregue en clase debe proceder de una fuente actualizada y citada —la Administración de Información Energética de Estados Unidos (EIA), el Laboratorio Nacional de Energías Renovables (NREL) o la Agencia Internacional de la Energía— y conviene indicar el año de los datos. Las cifras que aparecen en esta lección son ilustrativas del <em>procedimiento de comparación</em>, no valores de referencia.</p>
+  </div>
+
+  <h2 class="seccion">1. El sistema solar y el movimiento orbital</h2>
+  <div class="bloque">
+    <p>El sistema solar está organizado alrededor de una estrella que concentra la mayor parte de su masa. Ocho planetas la orbitan, y se agrupan con nitidez en dos familias:</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Los dos grupos de planetas del sistema solar con su composición, tamaño relativo, distancia al Sol y ejemplos.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Grupo</th>
+          <th scope="col">Cuáles son</th>
+          <th scope="col">Composición</th>
+          <th scope="col">Rasgos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Planetas interiores o rocosos</td>
+          <td>Mercurio, Venus, la Tierra y Marte</td>
+          <td>Superficie sólida, de roca y metal</td>
+          <td>Pequeños, densos, con pocas lunas o ninguna. Más próximos al Sol</td>
+        </tr>
+        <tr>
+          <td>Planetas exteriores o gigantes</td>
+          <td>Júpiter, Saturno, Urano y Neptuno</td>
+          <td>Sobre todo gases y hielos, sin superficie sólida definida</td>
+          <td>Enormes, poco densos, con muchas lunas y con anillos</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Entre Marte y Júpiter se sitúa el <strong>cinturón de asteroides</strong>, y más allá de Neptuno, el cinturón de Kuiper, donde se encuentra Plutón, reclasificado como planeta enano.</p>
+
+    <h3>Qué mantiene a un planeta en órbita</h3>
+    <p>Esta pregunta se responde con la Unidad 6, no con contenido nuevo. Un planeta no cae hacia el Sol ni sale despedido porque hay dos cosas actuando a la vez: <span class="resalta">la gravedad, que tira de él hacia el Sol, y su propia velocidad, que lo lleva hacia delante</span>. La combinación de ambas produce una trayectoria curva y cerrada.</p>
+    <p>Es exactamente lo que mostraba la simulación de movimiento parabólico de la Lección 6.1: una fuerza constante hacia un lado no detiene el avance en la otra dirección, sino que lo curva. La órbita es ese mismo fenómeno prolongado indefinidamente. Y por la primera ley de Newton, en el vacío no hay fricción que frene al planeta, de modo que su velocidad se conserva sin necesidad de motor alguno.</p>
+
+    <div class="caja-tip">
+      <strong>El error habitual del examen en este punto</strong> es suponer que hace falta algo que empuje al planeta para mantenerlo en movimiento. No hace falta: la primera ley dice que un cuerpo en movimiento sigue moviéndose mientras ninguna fuerza neta lo altere. En el espacio no hay rozamiento apreciable, así que lo único que se necesita es la gravedad para curvar la trayectoria. Un satélite en órbita, de hecho, está <em>cayendo</em> continuamente hacia la Tierra, pero avanza tan rápido que nunca llega a alcanzarla.
+    </div>
+
+    <h3>Las magnitudes, en notación científica</h3>
+    <p>Las distancias astronómicas no admiten otra escritura, y compararlas es de nuevo cuestión de exponentes, como en las lecciones 2.1, 6.3 y 7.1.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Magnitudes astronómicas de referencia expresadas en notación científica, con su valor aproximado.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Magnitud</th>
+          <th scope="col">Valor aproximado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Distancia de la Tierra al Sol</td><td>1,5 × 10⁸ km</td></tr>
+        <tr><td>Distancia de la Tierra a la Luna</td><td>3,8 × 10⁵ km</td></tr>
+        <tr><td>Distancia de Neptuno al Sol</td><td>4,5 × 10⁹ km</td></tr>
+        <tr><td>Diámetro del Sol</td><td>1,4 × 10⁶ km</td></tr>
+        <tr><td>Diámetro de la Tierra</td><td>1,3 × 10⁴ km</td></tr>
+      </tbody>
+    </table>
+
+    <div class="ejemplo">
+      <span class="et">EJEMPLO RESUELTO · Comparar por órdenes de magnitud</span>
+      <p>¿Cuántas veces más lejos está el Sol de la Tierra que la Luna?</p>
+      <div class="paso"><span class="n">1</span><strong>Los datos.</strong> Sol: 1,5 × 10⁸ km. Luna: 3,8 × 10⁵ km.</div>
+      <div class="paso"><span class="n">2</span><strong>Comparar exponentes primero.</strong> De 10⁵ a 10⁸ hay tres órdenes de magnitud, es decir, un factor de unas mil veces. Con eso basta para muchas preguntas del examen.</div>
+      <div class="paso"><span class="n">3</span><strong>Si se pide más precisión.</strong> 1,5 ÷ 3,8 ≈ 0,39, y 0,39 × 1 000 ≈ <span class="resalta">390 veces</span>.</div>
+      <div class="paso"><span class="n">4</span><strong>Comprobación de sentido.</strong> El resultado debe ser algo menor que mil, porque el primer factor es menor que el segundo. Lo es.</div>
+    </div>
+
+    <p>Una consecuencia de estas cifras merece atención: la luz del Sol tarda unos ocho minutos en llegar a la Tierra. Viaja a 3 × 10⁸ m/s, la velocidad de la Lección 6.3, y aun así necesita ese tiempo. Lo que vemos del Sol es siempre su estado de hace ocho minutos.</p>
+  </div>
+
+  <h2 class="seccion">2. La evidencia del Big Bang</h2>
+  <div class="bloque">
+    <p>El examen no pide explicar la teoría en detalle. Pide algo más útil y más propio de la práctica SP.4: <strong>saber qué observaciones la sostienen</strong>. Son tres, y son independientes entre sí, que es justamente lo que les da fuerza —el mismo criterio que se aplicó a Wegener en la 7.1 y a la evolución en la 4.3.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="300" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Las tres líneas de evidencia que sostienen la teoría del Big Bang, presentadas como tres bloques que convergen en una misma conclusión. La primera es el corrimiento al rojo: la luz de las galaxias lejanas llega desplazada hacia longitudes de onda más largas, lo que indica que se alejan de nosotros, y cuanto más lejos están, más rápido se alejan. La segunda es la radiación de fondo de microondas: una radiación débil y uniforme que llega desde todas las direcciones del cielo y que se interpreta como el resto del calor de un universo primitivo mucho más denso y caliente. La tercera es la abundancia de elementos ligeros: la proporción de hidrógeno y helio que se observa en el universo coincide con la que predice el modelo. Las tres líneas son independientes entre sí y apuntan a la misma conclusión: el universo se expande y tuvo un origen común.">
+        <rect x="14" y="20" width="212" height="132" rx="10" fill="#f3eefc" stroke="#3c1478" stroke-width="2"/>
+        <text x="120" y="46" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#3c1478" text-anchor="middle">Corrimiento al rojo</text>
+        <text x="120" y="72" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">La luz de las galaxias llega</text>
+        <text x="120" y="90" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">con longitud de onda más larga.</text>
+        <text x="120" y="116" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#3c1478" text-anchor="middle">Se alejan de nosotros,</text>
+        <text x="120" y="134" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#3c1478" text-anchor="middle">y las más lejanas, más rápido</text>
+
+        <rect x="244" y="20" width="212" height="132" rx="10" fill="#f3eefc" stroke="#3c1478" stroke-width="2"/>
+        <text x="350" y="46" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#3c1478" text-anchor="middle">Radiación de fondo</text>
+        <text x="350" y="72" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Radiación débil y uniforme</text>
+        <text x="350" y="90" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">que llega de todas partes.</text>
+        <text x="350" y="116" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#3c1478" text-anchor="middle">Resto del calor de un</text>
+        <text x="350" y="134" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#3c1478" text-anchor="middle">universo denso y caliente</text>
+
+        <rect x="474" y="20" width="212" height="132" rx="10" fill="#f3eefc" stroke="#3c1478" stroke-width="2"/>
+        <text x="580" y="46" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#3c1478" text-anchor="middle">Elementos ligeros</text>
+        <text x="580" y="72" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">La proporción de hidrógeno</text>
+        <text x="580" y="90" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">y helio que se observa…</text>
+        <text x="580" y="116" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#3c1478" text-anchor="middle">…coincide con la que</text>
+        <text x="580" y="134" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#3c1478" text-anchor="middle">el modelo predice</text>
+
+        <line x1="120" y1="158" x2="300" y2="212" stroke="#5b21b6" stroke-width="3"/>
+        <line x1="350" y1="158" x2="350" y2="212" stroke="#5b21b6" stroke-width="3"/>
+        <line x1="580" y1="158" x2="400" y2="212" stroke="#5b21b6" stroke-width="3"/>
+
+        <rect x="180" y="218" width="340" height="58" rx="10" fill="#d3c3f2" stroke="#3c1478" stroke-width="3"/>
+        <text x="350" y="244" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#3c1478" text-anchor="middle">El universo se expande</text>
+        <text x="350" y="264" font-family="Segoe UI, sans-serif" font-size="13" fill="#3c1478" text-anchor="middle">y tuvo un origen común</text>
+
+        <text x="350" y="294" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#3c1478" text-anchor="middle">Tres observaciones independientes que apuntan a lo mismo</text>
+      </svg>
+    </div>
+
+    <p>El <strong>corrimiento al rojo</strong> se entiende con las ondas de la Lección 6.3. Si una fuente de luz se aleja, sus ondas llegan estiradas: la longitud de onda aumenta y el color se desplaza hacia el rojo, que es el extremo de onda larga del visible. Eso es lo que se observa en casi todas las galaxias, y el desplazamiento es mayor cuanto más lejos están. La interpretación es que el universo se expande.</p>
+
+    <div class="caja-atencion">
+      <strong>Una precisión que el examen a veces incluye como distractor:</strong> que todas las galaxias se alejen de nosotros no significa que estemos en el centro de nada. En un universo en expansión, un observador situado en cualquier galaxia vería exactamente lo mismo. La analogía habitual es la de los puntos dibujados sobre un globo que se infla: todos se separan de todos, y ninguno es el centro.
+    </div>
+
+    <div class="caja-tip">
+      <strong>La conexión con la Unidad 5.</strong> La tercera evidencia —la abundancia de hidrógeno y helio— tiene que ver con los átomos de la Lección 5.1. Los elementos más ligeros de la tabla periódica son también los más abundantes del universo, y en las proporciones que el modelo anticipa. Los elementos pesados, en cambio, se formaron después, en el interior de las estrellas: el carbono, el oxígeno y el hierro de nuestro cuerpo se fabricaron allí.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Sistema solar y cosmología</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">1. Un planeta se mantiene en órbita porque…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Un motor lo impulsa continuamente</div>
+        <div class="opcion" data-op="b">No actúa ninguna fuerza sobre él</div>
+        <div class="opcion" data-op="c">La gravedad curva su trayectoria mientras su velocidad lo mantiene avanzando</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. La distancia Tierra-Sol es 1,5 × 10⁸ km y la Tierra-Luna, 3,8 × 10⁵ km. La diferencia entre ambas es de…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Unos tres órdenes de magnitud</div>
+        <div class="opcion" data-op="b">Un solo orden de magnitud</div>
+        <div class="opcion" data-op="c">Ningún orden: son comparables</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. El corrimiento al rojo de la luz de las galaxias lejanas indica que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Esas galaxias son de color rojo</div>
+        <div class="opcion" data-op="b">Se alejan de nosotros, y sus ondas llegan estiradas</div>
+        <div class="opcion" data-op="c">La Tierra está en el centro del universo</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">3. Auditar fuentes de energía</h2>
+  <div class="bloque">
+    <p>Esta sección se estudia de otra manera. Aquí no hay una respuesta correcta que memorizar, porque <span class="resalta">ninguna fuente de energía es la mejor en todos los criterios a la vez</span>. Lo que se practica es comparar con criterios explícitos y sostener una posición con datos, que es exactamente lo que evalúa la práctica SP.5.</p>
+
+    <h3>Renovable no es sinónimo de limpio</h3>
+    <p>Conviene separar dos criterios que suelen confundirse:</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Distinción entre el criterio de renovabilidad y el criterio de impacto ambiental, con ejemplos que muestran que no coinciden.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Qué pregunta</th>
+          <th scope="col">Ejemplo que muestra que no coinciden</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>¿Es renovable?</td>
+          <td>Si el recurso se repone en una escala humana de tiempo</td>
+          <td>La biomasa es renovable y, sin embargo, su combustión emite CO₂</td>
+        </tr>
+        <tr>
+          <td>¿Emite gases de efecto invernadero?</td>
+          <td>Si su funcionamiento libera CO₂ u otros gases</td>
+          <td>La energía nuclear no es renovable y apenas emite gases durante su operación</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Esas dos filas bastan para desmontar el atajo mental más común, que consiste en agrupar todas las fuentes en «buenas» y «malas». Una fuente puede ser renovable y emitir, o no renovable y no emitir. Y cada una arrastra además otros costes: ocupación de terreno, residuos, dependencia del clima o de la hora del día.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Criterios que deben considerarse al comparar fuentes de energía, con lo que mide cada uno y por qué importa.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio de comparación</th>
+          <th scope="col">Qué mide</th>
+          <th scope="col">Por qué importa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rendimiento o eficiencia</td>
+          <td>Qué proporción de la energía disponible se convierte en electricidad útil</td>
+          <td>Es la misma pregunta de la Lección 6.2: cuánta energía llega a su destino y cuánta se disipa</td>
+        </tr>
+        <tr>
+          <td>Emisiones</td>
+          <td>Gases de efecto invernadero liberados por unidad de energía producida</td>
+          <td>Enlaza con el mecanismo de la Lección 7.2</td>
+        </tr>
+        <tr>
+          <td>Coste</td>
+          <td>Inversión inicial y coste por unidad de energía a lo largo de la vida útil</td>
+          <td>Una fuente barata de instalar puede ser cara de operar, y al revés</td>
+        </tr>
+        <tr>
+          <td>Disponibilidad</td>
+          <td>Si produce de forma continua o depende del viento, del sol o de la estación</td>
+          <td>Una fuente intermitente exige almacenamiento o respaldo</td>
+        </tr>
+        <tr>
+          <td>Impacto y residuos</td>
+          <td>Terreno ocupado, efectos sobre el entorno, residuos generados</td>
+          <td>Es el criterio que más se olvida al comparar solo precios</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>Cómo se responde a un ítem de comparación en el examen.</strong> Estos ítems presentan una tabla de datos y preguntan cuál fuente conviene <em>según un criterio determinado</em>. La respuesta no sale de lo que uno opine sobre la energía, sino de leer la columna que el enunciado señala. Si pregunta por emisiones, se mira emisiones; si pregunta por coste, se mira coste. Una fuente puede ganar en una columna y perder en la siguiente, y eso no es una contradicción: es el punto.
+    </div>
+
+    <div class="caja-atencion">
+      <strong>La trampa de la afirmación absoluta.</strong> Opciones del tipo «la energía X es la mejor» o «la fuente Y no tiene ningún inconveniente» son casi siempre incorrectas, porque ninguna fuente gana en todos los criterios. Las respuestas correctas suelen estar acotadas: <em>según los datos de la tabla, y en cuanto a emisiones, la fuente X presenta el valor más bajo</em>. Conviene desconfiar de los superlativos sin criterio.
+    </div>
+
+    <div class="vocabulario">
+      <h2><span aria-hidden="true">🔤</span> Vocabulario técnico y raíces</h2>
+      <p><strong>Órbita</strong> procede del latín <em>orbis</em>, círculo o rueda, la raíz de <em>orbe</em>. <strong>Planeta</strong> viene del griego <em>planétēs</em>, errante, porque en el cielo antiguo eran los puntos que se movían frente a las estrellas fijas. <strong>Asteroide</strong> une <em>astro</em>, estrella, con <em>-oide</em>, con forma de: los objetos que parecían estrellas sin serlo. <strong>Cosmología</strong>, de <em>kósmos</em>, orden o universo, y <em>-logía</em>, estudio. <strong>Galaxia</strong> procede de <em>gálaktos</em>, leche, por el aspecto de la Vía Láctea; de la misma raíz viene <em>lácteo</em>. <strong>Renovable</strong> se forma sobre <em>novus</em>, nuevo: el recurso vuelve a hacerse nuevo. Y <strong>fósil</strong>, aplicado a los combustibles, es la misma palabra de la Lección 7.1, del latín <em>fossilis</em>, lo que se extrae excavando: el carbón y el petróleo proceden de restos orgánicos enterrados durante millones de años, lo que explica de un golpe por qué no son renovables en una escala humana.</p>
+    </div>
+  </div>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/sistema_solar" target="_blank" rel="noopener"
+     aria-label="Abrir la sub-página del sistema solar (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🪐</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">El sistema solar</span>
+      <span class="ei-sub">Sub-página temática de Tierra y Cosmos, con diagramas nativos, acordeones de vocabulario y cuestionario de estilo GED con retroalimentación inmediata. Conviene abrirla al terminar la sección 1: las magnitudes del sistema solar resisten la intuición, y verlas representadas ayuda a que los exponentes de la tabla dejen de ser cifras sueltas.</span>
+      <span class="ei-cta">Abrir el recurso <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/cientidebate/" target="_blank" rel="noopener"
+     aria-label="Abrir CientíDebate (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">⚖️</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">CientíDebate</span>
+      <span class="ei-sub">Herramienta de evaluación de posiciones divergentes, alineada con la práctica SP.5. Es el recurso de la auditoría energética: permite contrastar dos posturas sobre un mismo asunto y valorar cuál se apoya mejor en la evidencia, que es precisamente el criterio de la actividad 3 y el que gobernará toda la Unidad 8.</span>
+      <span class="ei-cta">Abrir el recurso <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <div class="lectura">
+    <h2><span aria-hidden="true">📖</span> Lectura científica</h2>
+    <p class="fuente">Texto científico breve adaptado al nivel. Obsérvese que las dos posiciones citan datos correctos y aun así discrepan.</p>
+
+    <div class="texto-adaptado">
+      <p><strong>Dos informes sobre el mismo parque solar</strong></p>
+      <p>Un municipio estudia instalar un parque solar en terrenos agrícolas en desuso y ha encargado dos informes técnicos independientes. Ambos parten de las mismas mediciones de radiación solar de la zona y de los mismos precios de instalación.</p>
+      <p>El primer informe recomienda la instalación. Señala que el coste por unidad de energía producida ha descendido de forma sostenida en la última década, que la operación no genera emisiones ni residuos durante la vida útil de los paneles y que el terreno propuesto lleva años sin cultivarse. Estima que la inversión se recupera dentro del periodo de garantía de los equipos.</p>
+      <p>El segundo informe desaconseja la instalación en ese emplazamiento concreto. No discute las cifras de coste ni de emisiones, y admite que son correctas. Su objeción es distinta: la producción solar es intermitente, y el municipio no dispone de sistema de almacenamiento ni de acuerdo de respaldo con la red, de modo que seguiría necesitando otra fuente en las horas sin sol. Añade que el cálculo de recuperación de la inversión no incluye el coste de reciclar los paneles al final de su vida útil.</p>
+      <p>Ambos informes emplean datos verificables y ninguno contiene errores de cálculo detectados. La discrepancia no está en los datos, sino en <em>qué criterios</em> se consideran decisivos y en qué costes se incluyen en el balance.</p>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Uno de los dos informes miente sobre los datos.</div>
+        <div class="opcion" data-op="b">La energía solar no es viable en ningún municipio.</div>
+        <div class="opcion" data-op="c">Dos informes pueden partir de los mismos datos correctos y discrepar porque priorizan criterios distintos.</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. La objeción principal del segundo informe es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">La intermitencia de la producción y la falta de almacenamiento o respaldo</div>
+        <div class="opcion" data-op="b">Que las emisiones de los paneles son elevadas</div>
+        <div class="opcion" data-op="c">Que el terreno se está cultivando actualmente</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. El segundo informe señala un coste que el primero no incluye. Se trata de…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">El precio de la instalación inicial</div>
+        <div class="opcion" data-op="b">El reciclaje de los paneles al final de su vida útil</div>
+        <div class="opcion" data-op="c">La compra del terreno</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">4. ¿Qué haría falta para decidir entre ambos informes?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Comprobar cuál de los dos equipos tiene más experiencia</div>
+        <div class="opcion" data-op="b">Elegir el que resulte más persuasivo al leerlo</div>
+        <div class="opcion" data-op="c">Establecer qué criterios considera prioritarios el municipio y qué costes deben entrar en el balance</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Comparar fuentes de energía</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. La biomasa es una fuente renovable que, al quemarse, emite dióxido de carbono. Eso muestra que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">La biomasa no es realmente renovable</div>
+        <div class="opcion" data-op="b">Ser renovable y no emitir gases son criterios distintos, que no siempre coinciden</div>
+        <div class="opcion" data-op="c">Todas las fuentes renovables emiten lo mismo</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. Ante una tabla de fuentes de energía, un ítem pregunta cuál conviene según las emisiones. Lo correcto es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Elegir la fuente más barata</div>
+        <div class="opcion" data-op="b">Elegir la que uno considere mejor en general</div>
+        <div class="opcion" data-op="c">Leer la columna de emisiones y responder según ese criterio</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. Una fuente intermitente, como la solar o la eólica, exige además…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Almacenamiento o una fuente de respaldo para las horas sin producción</div>
+        <div class="opcion" data-op="b">Mayor consumo de combustible</div>
+        <div class="opcion" data-op="c">Nada adicional: produce igual a todas horas</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">4. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p><span aria-hidden="true">💬</span> Las tres actividades siguientes se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 1 · La escala que no cabe en el aula</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3><span aria-hidden="true">🏫</span> Presencial</h3>
+          Con la tabla de magnitudes astronómicas, cada equipo construye una <strong>escala reducida</strong>: si el Sol tuviera el tamaño de una pelota conocida, ¿a qué distancia quedaría la Tierra y de qué tamaño sería? Los cálculos se hacen con notación científica y se comprueban por órdenes de magnitud antes de operar. La actividad termina con una pregunta de razonamiento: por qué los esquemas del sistema solar que aparecen en los libros no pueden estar a escala.
+        </div>
+        <div class="modo modo-virt">
+          <h3><span aria-hidden="true">💻</span> En línea</h3>
+          Las magnitudes se reparten en una hoja compartida (Google Sheets u otro editor colaborativo) con columnas para el valor real, el factor de reducción y el valor a escala. En salas pequeñas (<em>Breakout rooms</em>), cada equipo calcula dos filas y verifica las de otro equipo comparando exponentes.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 2 · Tres evidencias, una conclusión</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3><span aria-hidden="true">🏫</span> Presencial</h3>
+          Cada equipo recibe las tres líneas de evidencia del Big Bang por separado y debe responder a dos preguntas por cada una: qué se observa y qué se concluye de ello. Después se plantea la pregunta que da sentido a toda la sección: por qué tres observaciones independientes que coinciden pesan más que una sola repetida tres veces. Se pide relacionarlo con el caso Wegener de la Lección 7.1.
+        </div>
+        <div class="modo modo-virt">
+          <h3><span aria-hidden="true">💻</span> En línea</h3>
+          Las tres evidencias se colocan como tarjetas en una pizarra compartida (Jamboard, la pizarra de Zoom u otra pizarra colaborativa), con dos casillas por tarjeta: observación y conclusión. La respuesta a la pregunta final se publica en un tablero compartido (foro de Brightspace, Padlet u otro tablero colaborativo), donde cada equipo comenta la de otro.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 3 · Auditoría energética</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3><span aria-hidden="true">🏫</span> Presencial</h3>
+          A cada equipo se le asigna una fuente de energía —no la elige— y debe defenderla <strong>usando exclusivamente los datos de la tabla</strong>. Toda afirmación sin dato que la respalde queda descartada. Además, cada equipo está obligado a <strong>reconocer al menos una desventaja de su propia fuente</strong>. Al final, el grupo no vota cuál fuente prefiere: evalúa <em>qué argumentación se apoyó mejor en la evidencia</em>, que no es lo mismo que cuál resultó más persuasiva. Conviene decir esa distinción en voz alta antes de empezar.
+        </div>
+        <div class="modo modo-virt">
+          <h3><span aria-hidden="true">💻</span> En línea</h3>
+          Cada equipo prepara su defensa en salas pequeñas (<em>Breakout rooms</em>) sobre una hoja compartida (Google Docs u otro editor colaborativo) con tres apartados: afirmación, dato de la tabla que la respalda y desventaja reconocida. Las defensas se exponen en el grupo grande y la evaluación se registra en un formulario o tablero compartido (foro de Brightspace, Padlet u otro tablero colaborativo) con el criterio de apoyo en evidencia, no de persuasión.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2><span aria-hidden="true">✅</span> Tarea asincrónica</h2>
+    <p>Para completar de forma individual en <strong>Brightspace</strong> antes de la próxima sesión:</p>
+    <ul>
+      <li>Diez preguntas sobre sistema solar y cosmología, con comparación de magnitudes en notación científica.</li>
+      <li>Un párrafo argumentativo sobre una fuente de energía, con <strong>dos datos citados</strong> de la tabla y el reconocimiento explícito de una limitación.</li>
+      <li>Clasificación de cuatro afirmaciones sobre energía según estén respaldadas por los datos o excedan lo que estos permiten.</li>
+    </ul>
+    <p>Tiempo estimado: 60 minutos. La entrega se evalúa con la rúbrica de esta lección.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 7.3</h2>
+    <p>Doce preguntas: cuatro de sistema solar y órbitas, cuatro de evidencia del Big Bang y cuatro de comparación de fuentes de energía a partir de datos. Tiempo sugerido: 25 minutos. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2><span aria-hidden="true">📊</span> Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <caption class="sr-only">Rúbrica analítica de astronomía y recursos con cuatro criterios y cuatro niveles de desempeño.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Inicial (1)</th>
+          <th scope="col">En desarrollo (2)</th>
+          <th scope="col">Competente (3)</th>
+          <th scope="col">Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Describe la estructura del sistema solar con magnitudes correctas</td>
+          <td>Enumera planetas sin distinguir grupos ni escalas.</td>
+          <td>Distingue rocosos de gigantes, pero maneja mal las magnitudes.</td>
+          <td>Describe ambos grupos y compara distancias por órdenes de magnitud.</td>
+          <td>Explica además el movimiento orbital a partir de la gravedad y la primera ley de Newton.</td>
+        </tr>
+        <tr>
+          <td>Identifica la evidencia que sostiene el modelo cosmológico</td>
+          <td>Confunde la teoría con las observaciones que la apoyan.</td>
+          <td>Nombra alguna evidencia, sin explicar qué se concluye de ella.</td>
+          <td>Expone las tres líneas indicando observación y conclusión en cada caso.</td>
+          <td>Argumenta además por qué su independencia refuerza la conclusión.</td>
+        </tr>
+        <tr>
+          <td>Compara fuentes de energía con criterios explícitos</td>
+          <td>Clasifica las fuentes en buenas y malas sin criterio.</td>
+          <td>Emplea un solo criterio, generalmente el coste o las emisiones.</td>
+          <td>Compara con varios criterios y distingue renovabilidad de emisiones.</td>
+          <td>Señala además qué criterio resulta decisivo según el contexto y por qué.</td>
+        </tr>
+        <tr>
+          <td>Sostiene una posición con datos y reconoce sus limitaciones</td>
+          <td>Afirma sin citar dato alguno.</td>
+          <td>Cita algún dato, pero no admite ninguna desventaja de su posición.</td>
+          <td>Defiende su postura con datos citados y reconoce al menos una limitación.</td>
+          <td>Anticipa además la objeción más fuerte de la posición contraria y la responde con datos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Cierre de la Unidad 7 y del contenido del curso</h2>
+    <p>Con esta lección se cierran la Unidad 7 y el <strong>último de los tres dominios</strong> del examen. Veintiuna lecciones han recorrido las Ciencias de la vida, las Ciencias físicas y las Ciencias de la Tierra y el espacio, y hay una continuidad que conviene señalar ahora que se ve entera: <strong>casi nada se ha estudiado dos veces</strong>. La convección hervía agua, movía el manto y reparte el calor del planeta. La densidad explicaba qué flota, qué placa se hunde y por qué sube el aire caliente. Y la evidencia se ha evaluado con el mismo criterio en la evolución, en Wegener y en el Big Bang: varias líneas independientes que coinciden pesan más que una sola.</p>
+    <p>La <strong>Unidad 8</strong> no añade contenido nuevo. Toma las prácticas <strong>SP.4 y SP.5</strong> —evaluar conclusiones y auditar fuentes— y las lleva a régimen intensivo: reconciliar resultados que no coinciden, un proyecto final integrador, los formatos de ítem del examen y un simulacro cronometrado. La auditoría energética de esta lección ha sido su primer ensayo completo.</p>
+  </div>
+
+  <footer>
+    <p>Spanish ASE Science · Unidad 7 · Lección 7.3 · 4 horas · Brightspace D2L</p>
+    <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+    <p>© 2026. Esta obra está licenciada bajo
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons
+      Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+  </footer>
+
+
+</div>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = 'Correcto. Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Quiz: 4 de sistema solar y órbitas, 4 de evidencia del Big Bang,
+     4 de comparación de fuentes de energía. Umbral 8 de 12.
+     Coincide exactamente con lo que especifica el plan curricular aprobado
+     para esta lección: no hay desviación que registrar. ---- */
+  var preguntasQuiz = [
+    { enun: '1. Los planetas Mercurio, Venus, la Tierra y Marte se caracterizan por…',
+      ops: ['Tener superficie sólida y ser más densos y pequeños', 'Estar formados sobre todo por gases', 'Tener anillos y muchas lunas', 'Encontrarse más allá del cinturón de asteroides'], correcta: 0 },
+    { enun: '2. Un planeta permanece en órbita alrededor del Sol porque…',
+      ops: ['Una fuerza lo impulsa constantemente hacia delante', 'La gravedad curva su trayectoria mientras su velocidad lo mantiene avanzando', 'No actúa sobre él ninguna fuerza', 'El viento solar lo empuja'], correcta: 1 },
+    { enun: '3. La distancia de la Tierra al Sol es 1,5 × 10⁸ km y la de Neptuno al Sol, 4,5 × 10⁹ km. Neptuno está…',
+      ops: ['Más cerca del Sol que la Tierra', 'A la misma distancia', 'Aproximadamente treinta veces más lejos', 'Diez mil veces más lejos'], correcta: 2 },
+    { enun: '4. La luz del Sol tarda unos ocho minutos en llegar a la Tierra. Eso significa que…',
+      ops: ['La luz se detiene por el camino', 'El Sol emite luz solo cada ocho minutos', 'La distancia es despreciable', 'Lo que vemos del Sol corresponde a su estado de hace ocho minutos'], correcta: 3 },
+    { enun: '5. El corrimiento al rojo de la luz de las galaxias lejanas indica que…',
+      ops: ['Se alejan de nosotros y sus ondas llegan con longitud de onda mayor', 'Se acercan a nosotros', 'Están hechas de material rojizo', 'Su luz ha perdido energía por el polvo interestelar'], correcta: 0 },
+    { enun: '6. La radiación de fondo de microondas se interpreta como…',
+      ops: ['Una emisión de las estrellas actuales', 'El resto del calor de un universo primitivo mucho más denso y caliente', 'Una interferencia de los instrumentos', 'Radiación procedente del centro de la Vía Láctea'], correcta: 1 },
+    { enun: '7. Que las tres líneas de evidencia del Big Bang sean independientes entre sí resulta importante porque…',
+      ops: ['Permite descartar dos de ellas', 'Hace innecesaria la observación', 'Su coincidencia refuerza la conclusión mucho más que una sola línea repetida', 'Demuestra que la teoría es definitiva e inmodificable'], correcta: 2 },
+    { enun: '8. Que todas las galaxias lejanas se alejen de nosotros significa que…',
+      ops: ['La Tierra ocupa el centro del universo', 'La Vía Láctea las repele', 'Nuestra galaxia es la más antigua', 'El universo se expande, y un observador de cualquier galaxia vería lo mismo'], correcta: 3 },
+    { enun: '9. La biomasa es renovable y su combustión emite dióxido de carbono. De ahí se concluye que…',
+      ops: ['Ser renovable y no emitir gases son criterios distintos', 'La biomasa no puede considerarse renovable', 'Todas las fuentes renovables emiten la misma cantidad', 'Las emisiones no dependen de la fuente'], correcta: 0 },
+    { enun: '10. Una fuente de energía intermitente, como la solar, requiere además…',
+      ops: ['Un consumo continuo de combustible', 'Almacenamiento o una fuente de respaldo', 'Menor inversión inicial en todos los casos', 'Emitir más gases para compensar'], correcta: 1 },
+    { enun: '11. Ante una tabla de fuentes de energía, un ítem pregunta cuál presenta menores emisiones. Para responder hay que…',
+      ops: ['Elegir la fuente renovable, sea cual sea el dato', 'Elegir la más barata de instalar', 'Leer la columna de emisiones y responder según ese criterio', 'Elegir la que produzca de forma continua'], correcta: 2 },
+    { enun: '12. ¿Cuál de estas afirmaciones sobre fuentes de energía está mejor formulada?',
+      ops: ['La energía solar es la mejor opción en cualquier circunstancia', 'La energía nuclear no presenta ningún inconveniente', 'Las fuentes no renovables carecen de ventajas', 'Según los datos de la tabla y en cuanto a emisiones, esta fuente presenta el valor más bajo'], correcta: 3 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta'); });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = 'Correcto.';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 8) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Aprobado. Ha completado la Unidad 7 y puede continuar a la Unidad 8.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repase la lección e intente de nuevo (se requieren 8).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

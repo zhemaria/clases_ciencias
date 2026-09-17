@@ -1,0 +1,1611 @@
+<!doctype html>
+<!--
+  Lección 1.3 · Leer ciencia: vocabulario técnico y procedimientos de pasos múltiples
+  Spanish ASE Science · Unidad 1 · El método científico y el diseño de investigación
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lección 1.3 · Leer ciencia: vocabulario técnico y procedimientos de pasos múltiples</title>
+    <meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago" />
+    <meta name="license" content="CC BY-NC-SA 4.0" />
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" />
+    <style>
+      :root {
+        /* Unidad 1 — paleta teal heredada del plan curricular (--t1) */
+        --tema: #00695c;
+        --tema-d: #004d40;
+        --tema-bg: #b2dfdb;
+        --tema-bg2: #9ecfc9;
+        --acento: #00796b;
+        --txt: #222;
+        --bg: #f5f7fa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        margin: 0;
+        background: var(--bg);
+        color: var(--txt);
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      .contenedor {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* ── ENCABEZADO ─────────────────────────────────────────────── */
+      header.principal {
+        background: var(--tema-d);
+        background: linear-gradient(135deg, #003d33 0%, #004d40 55%, #00695c 100%);
+        color: #ffffff;
+        padding: 32px 30px;
+        border-radius: 14px;
+        margin-bottom: 22px;
+        box-shadow: 0 4px 14px rgba(0, 61, 51, 0.28);
+      }
+      header.principal .ruta {
+        font-size: 13px;
+        color: #ffffff;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+      header.principal h1 {
+        margin: 8px 0 6px;
+        font-size: 23px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+      header.principal .meta {
+        font-size: 14px;
+        color: #ffffff;
+      }
+
+      .practicas-sp {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .sp {
+        display: inline-block;
+        background: #ffffff;
+        color: #004d40;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 12px;
+        letter-spacing: 0.3px;
+      }
+
+      h2.seccion {
+        color: var(--tema-d);
+        font-size: 21px;
+        margin: 34px 0 12px;
+        padding-bottom: 6px;
+        border-bottom: 3px solid var(--tema-bg);
+      }
+      h3 {
+        color: var(--tema-d);
+        font-size: 17px;
+        margin: 20px 0 8px;
+      }
+
+      .caja-objetivos {
+        background: var(--tema-bg);
+        border-left: 6px solid var(--tema);
+        padding: 18px 22px;
+        border-radius: 0 10px 10px 0;
+        margin-bottom: 22px;
+      }
+      .caja-objetivos h2 {
+        margin: 0 0 10px;
+        color: var(--tema-d);
+        font-size: 19px;
+      }
+      .caja-objetivos ul {
+        margin: 0;
+        padding-left: 22px;
+      }
+      .caja-objetivos li {
+        margin: 5px 0;
+      }
+
+      .bloque {
+        background: #fff;
+        border-radius: 10px;
+        padding: 4px 24px 18px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
+        margin-bottom: 18px;
+      }
+      p {
+        margin: 10px 0;
+      }
+
+      .diagrama-wrap {
+        text-align: center;
+        margin: 16px 0;
+        overflow-x: auto;
+      }
+
+      /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+      .materiales {
+        background: #eceff1;
+        border-left: 6px solid #37474f;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 18px 0;
+      }
+      .materiales h2 {
+        margin: 0 0 8px;
+        color: #263238;
+        font-size: 18px;
+      }
+      .materiales ul {
+        margin: 8px 0 0;
+        padding-left: 22px;
+      }
+      .materiales li {
+        margin: 5px 0;
+      }
+
+      .ejemplo {
+        background: #fafafa;
+        border: 1px solid #e3e3e3;
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin: 14px 0;
+      }
+      .ejemplo .et {
+        display: inline-block;
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 12px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+        letter-spacing: 0.4px;
+      }
+      .paso {
+        margin: 7px 0;
+        padding-left: 30px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: var(--tema-bg);
+        color: var(--tema-d);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        text-align: center;
+        line-height: 22px;
+      }
+      .resalta {
+        background: var(--tema-bg);
+        padding: 1px 6px;
+        border-radius: 5px;
+        font-weight: 700;
+        color: var(--tema-d);
+      }
+
+      .caja-tip {
+        background: #e8f5e9;
+        border-left: 5px solid #2e7d32;
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 14px 0;
+        color: #1b5e20;
+        font-size: 15px;
+      }
+      .caja-tip strong {
+        color: #1b5e20;
+      }
+
+      .caja-atencion {
+        background: #fff8e1;
+        border-left: 5px solid #f9a825;
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 14px 0;
+        font-size: 15px;
+        color: #5c3900;
+      }
+      .caja-atencion strong {
+        color: #5c3900;
+      }
+
+      /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+      .vocabulario {
+        background: #ede7f6;
+        border-left: 6px solid #5e35b1;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 18px 0;
+      }
+      .vocabulario h2 {
+        margin: 0 0 6px;
+        color: #4527a0;
+        font-size: 18px;
+      }
+      .vocabulario p {
+        color: #311b92;
+      }
+
+      /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+      .lectura {
+        background: #fffdf7;
+        border: 2px solid var(--tema);
+        border-radius: 10px;
+        padding: 6px 22px 18px;
+        margin: 18px 0;
+      }
+      .lectura h2 {
+        color: var(--tema-d);
+        font-size: 19px;
+      }
+      .lectura .fuente {
+        font-size: 13px;
+        color: #555;
+        font-style: italic;
+      }
+      .lectura .texto-adaptado {
+        background: #ffffff;
+        border-left: 5px solid var(--tema-bg);
+        padding: 12px 18px;
+        margin: 12px 0;
+        border-radius: 0 8px 8px 0;
+      }
+
+      /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+      .enlace-interactivo {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        background: var(--tema-bg);
+        border: 2px solid var(--tema);
+        border-left: 6px solid var(--tema);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 18px 0;
+        text-decoration: none;
+        color: var(--tema-d);
+        transition: background 0.15s;
+      }
+      .enlace-interactivo:hover {
+        background: var(--tema-bg2);
+      }
+      .enlace-interactivo .ei-icono {
+        font-size: 26px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .enlace-interactivo .ei-titulo {
+        display: block;
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--tema-d);
+      }
+      .enlace-interactivo .ei-sub {
+        display: block;
+        font-size: 14px;
+        color: #333;
+        margin: 4px 0 8px;
+      }
+      .enlace-interactivo .ei-cta {
+        display: inline-block;
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 6px 16px;
+        border-radius: 7px;
+      }
+
+      /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+      .pendiente {
+        color: #c62828;
+        font-size: 15px;
+        margin-left: 6px;
+      }
+
+      .reglas {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .reglas th,
+      .reglas td {
+        border: 1px solid #e0e0e0;
+        padding: 9px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .reglas th {
+        background: var(--tema);
+        color: #ffffff;
+      }
+      .reglas td:first-child {
+        background: var(--tema-bg);
+        font-weight: 600;
+        color: var(--tema-d);
+      }
+
+      .practica {
+        background: var(--tema-bg2);
+        border: 1px dashed var(--tema);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 18px 0;
+      }
+      .practica h3 {
+        margin-top: 0;
+        color: var(--tema-d);
+      }
+      .pregunta {
+        margin: 14px 0;
+      }
+      .pregunta .enun {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .opcion {
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 9px 14px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .opcion:hover {
+        border-color: var(--tema);
+      }
+      .opcion.correcta {
+        border-color: #2e7d32;
+        background: #e8f5e9;
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: #c62828;
+        background: #ffebee;
+      }
+      .opcion.elegida {
+        border-color: var(--tema);
+      }
+      .fb {
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        display: none;
+      }
+      .fb.ok {
+        color: #1b5e20;
+      }
+      .fb.no {
+        color: #c62828;
+      }
+
+      .btn {
+        background: var(--tema);
+        color: #ffffff;
+        border: none;
+        padding: 9px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: inherit;
+        margin-top: 8px;
+      }
+      .btn:hover {
+        background: var(--tema-d);
+      }
+      .btn.sec {
+        background: #546e7a;
+      }
+      .btn.sec:hover {
+        background: #37474f;
+      }
+
+      .modalidad {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 12px 0;
+      }
+      .modo {
+        flex: 1;
+        min-width: 230px;
+        border-radius: 9px;
+        padding: 14px 16px;
+        font-size: 14px;
+      }
+      .modo-pres {
+        background: #e0f2f1;
+        border-left: 5px solid #00695c;
+      }
+      .modo-pres strong {
+        color: #004d40;
+      }
+      .modo-virt {
+        background: #f3e5f5;
+        border-left: 5px solid #6a1b9a;
+      }
+      .modo-virt strong {
+        color: #4a148c;
+      }
+      .modo h3 {
+        margin: 0 0 6px;
+        font-size: 15px;
+      }
+      .modo-pres h3 {
+        color: #004d40;
+      }
+      .modo-virt h3 {
+        color: #4a148c;
+      }
+
+      .actividad {
+        margin-bottom: 18px;
+      }
+      .actividad > .titulo-act {
+        font-weight: 700;
+        color: var(--tema-d);
+        font-size: 15px;
+        background: var(--tema-bg);
+        padding: 7px 14px;
+        border-radius: 7px;
+      }
+
+      .caja-tarea {
+        background: #e3f2fd;
+        border-left: 6px solid #1565c0;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 20px 0;
+      }
+      .caja-tarea h2 {
+        margin-top: 0;
+        color: #0d47a1;
+      }
+
+      .quiz {
+        background: #fff;
+        border: 2px solid var(--tema);
+        border-radius: 12px;
+        padding: 8px 24px 20px;
+        margin: 22px 0;
+      }
+      .quiz h2 {
+        color: var(--tema-d);
+      }
+      #resultado-quiz {
+        font-size: 17px;
+        font-weight: 700;
+        margin: 14px 0;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        display: none;
+      }
+      #resultado-quiz.aprob {
+        background: #e8f5e9;
+        color: #1b5e20;
+      }
+      #resultado-quiz.repro {
+        background: #ffebee;
+        color: #b71c1c;
+      }
+
+      .rubrica {
+        margin: 22px 0;
+        overflow-x: auto;
+      }
+      .rubrica h2 {
+        color: var(--tema-d);
+      }
+      table.tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+      }
+      table.tabla-rubrica th,
+      table.tabla-rubrica td {
+        border: 1px solid #e0e0e0;
+        padding: 8px 10px;
+        vertical-align: top;
+      }
+      table.tabla-rubrica th {
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+      table.tabla-rubrica td:first-child {
+        background: var(--tema-bg);
+        font-weight: 600;
+        color: var(--tema-d);
+      }
+
+      .cierre {
+        background: #263238;
+        color: #eceff1;
+        border-radius: 12px;
+        padding: 22px 26px;
+        margin: 24px 0 10px;
+      }
+      .cierre h2 {
+        color: #ffffff;
+        margin-top: 0;
+      }
+      .cierre strong {
+        color: #9bff8f;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: #555;
+        font-size: 13px;
+        border-top: 1px solid #ddd;
+        margin-top: 20px;
+      }
+      footer p {
+        margin: 5px 0;
+      }
+      footer a {
+        color: #00544a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contenedor">
+      <!-- NÚM. DE CURSO — insertar aquí cuando el curso reciba su número oficial -->
+      <header class="principal">
+        <div class="ruta">Spanish ASE Science · Unidad 1 · El método científico y el diseño de investigación</div>
+        <h1>Lección 1.3 · Leer ciencia: vocabulario técnico y procedimientos de pasos múltiples</h1>
+        <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 4–5 · Brightspace D2L</div>
+        <div class="practicas-sp">
+          <span class="sp">SP.1 · Comprender textos científicos</span>
+          <span class="sp">Enlace · Artes del Lenguaje Nivel 3 (RST.6-8.3, RST.6-8.5)</span>
+        </div>
+      </header>
+
+      <div class="caja-objetivos">
+        <h2>Objetivos de la lección</h2>
+        <ul>
+          <li>Determinar el significado de un término técnico descomponiéndolo en sus raíces griegas y latinas.</li>
+          <li>Deducir el significado de una palabra desconocida a partir de las pistas que ofrece el contexto.</li>
+          <li>Seguir un procedimiento técnico de pasos múltiples sin omitir ni invertir ninguno.</li>
+          <li>Identificar la idea central de un texto científico sin confundirla con un detalle de apoyo.</li>
+          <li>Reconocer la estructura con que el autor organizó el texto: secuencia, causa y efecto, o comparación.</li>
+        </ul>
+      </div>
+
+      <div class="bloque">
+        <p>
+          <strong>Conexión con la lección anterior.</strong>
+          Las lecciones 1.1 y 1.2 enseñaron a reconstruir una investigación y a auditar su diseño. Ambas cosas exigen algo previo que hasta ahora se dio por supuesto:
+          <strong>entender el texto</strong>
+          . Esta lección cierra la Unidad 1 con la destreza que sostiene a las otras dos, y es también la que más se apoya en lo trabajado en Artes del Lenguaje Nivel 3.
+        </p>
+        <p>
+          Conviene decirlo con claridad: el examen de Ciencias del GED
+          <sup>®</sup>
+          es, en buena medida, un examen de lectura. Nadie tiene que saber de antemano qué significa
+          <em>termorregulación</em>
+          . Lo que sí se evalúa es si el estudiante puede averiguarlo con lo que el propio texto le pone delante.
+        </p>
+      </div>
+
+      <div class="materiales">
+        <h2>
+          <span aria-hidden="true">📐</span>
+          Material y recursos
+        </h2>
+        <ul>
+          <li>Tres textos científicos breves con estructuras distintas: secuencia, causa y efecto, y comparación.</li>
+          <li>Lista de raíces y afijos científicos de alta frecuencia: bio-, foto-, -sis, hidro-, termo-, -logía, endo-, exo-.</li>
+          <li>Un protocolo de laboratorio de ocho pasos, entregado también en tarjetas sueltas para reordenar.</li>
+          <li>Hoja de anotación al margen con cuatro marcas: término desconocido, idea central, dato de apoyo y palabra de secuencia.</li>
+        </ul>
+        <p>
+          <strong>Modalidad de trabajo:</strong>
+          lectura guiada con anotación en el margen, primero modelada en voz alta por el docente sobre el primer texto y después aplicada por los estudiantes a los otros dos.
+        </p>
+      </div>
+
+      <h2 class="seccion">1. Descomponer el término: prefijo, raíz y sufijo</h2>
+      <div class="bloque">
+        <p>
+          La mayoría de los términos científicos no son palabras nuevas: son piezas antiguas ensambladas. Quien conoce treinta piezas puede aproximarse al significado de cientos de términos que nunca
+          ha visto.
+        </p>
+
+        <div class="diagrama-wrap">
+          <svg
+            width="640"
+            height="230"
+            viewBox="0 0 640 230"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Descomposición de la palabra termorregulación en tres piezas. La primera pieza, termo, significa calor o temperatura. La segunda, regula, significa ajustar o mantener en orden. La tercera, ción, indica acción o proceso. Unidas, el significado deducido es el proceso de ajustar la temperatura.">
+            <text x="320" y="42" font-family="Segoe UI, sans-serif" font-size="24" font-weight="700" fill="#004d40" text-anchor="middle">termo · rregula · ción</text>
+
+            <rect x="25" y="70" width="180" height="86" rx="10" fill="#b2dfdb" stroke="#004d40" stroke-width="3" />
+            <rect x="230" y="70" width="180" height="86" rx="10" fill="#b2dfdb" stroke="#004d40" stroke-width="3" />
+            <rect x="435" y="70" width="180" height="86" rx="10" fill="#b2dfdb" stroke="#004d40" stroke-width="3" />
+
+            <g font-family="Segoe UI, sans-serif" fill="#004d40" text-anchor="middle">
+              <text x="115" y="96" font-size="16" font-weight="700">termo-</text>
+              <text x="115" y="120" font-size="13">calor,</text>
+              <text x="115" y="140" font-size="13">temperatura</text>
+
+              <text x="320" y="96" font-size="16" font-weight="700">-regula-</text>
+              <text x="320" y="120" font-size="13">ajustar,</text>
+              <text x="320" y="140" font-size="13">mantener en orden</text>
+
+              <text x="525" y="96" font-size="16" font-weight="700">-ción</text>
+              <text x="525" y="120" font-size="13">acción,</text>
+              <text x="525" y="140" font-size="13">proceso</text>
+            </g>
+
+            <rect x="25" y="180" width="590" height="40" rx="10" fill="#9ecfc9" stroke="#004d40" stroke-width="3" />
+            <text x="320" y="206" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#004d40" text-anchor="middle">
+              Significado deducido: el proceso de ajustar la temperatura
+            </text>
+          </svg>
+        </div>
+
+        <h3>Raíces y afijos de alta frecuencia</h3>
+        <table class="reglas">
+          <caption class="sr-only">Raíces y afijos científicos de alta frecuencia, su significado y ejemplos de términos formados con cada uno.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Raíz o afijo</th>
+              <th scope="col">Significado</th>
+              <th scope="col">Ejemplos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>bio-</td>
+              <td>vida</td>
+              <td>Biología, biodiversidad, biomasa, antibiótico.</td>
+            </tr>
+            <tr>
+              <td>foto-</td>
+              <td>luz</td>
+              <td>Fotosíntesis, fotorreceptor, fotón.</td>
+            </tr>
+            <tr>
+              <td>hidro-</td>
+              <td>agua</td>
+              <td>Hidrosfera, hidrólisis, deshidratación.</td>
+            </tr>
+            <tr>
+              <td>termo-</td>
+              <td>calor, temperatura</td>
+              <td>Termómetro, termodinámica, exotérmico.</td>
+            </tr>
+            <tr>
+              <td>endo-</td>
+              <td>dentro, hacia adentro</td>
+              <td>Endotérmico (absorbe calor), endoesqueleto.</td>
+            </tr>
+            <tr>
+              <td>exo-</td>
+              <td>fuera, hacia afuera</td>
+              <td>Exotérmico (libera calor), exoesqueleto.</td>
+            </tr>
+            <tr>
+              <td>-sis</td>
+              <td>proceso, acción</td>
+              <td>Fotosíntesis, ósmosis, mitosis, hidrólisis.</td>
+            </tr>
+            <tr>
+              <td>-logía</td>
+              <td>estudio o tratado de</td>
+              <td>Biología, geología, ecología, meteorología.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ejemplo">
+          <span class="et">Ejemplo 1 · Un término nunca visto</span>
+          <p>
+            Un texto menciona la
+            <strong>hidrólisis</strong>
+            de una molécula grande. El estudiante no conoce la palabra.
+          </p>
+          <div class="paso">
+            <span class="n">1</span>
+            Se separan las piezas conocidas:
+            <span class="resalta">hidro-</span>
+            y
+            <span class="resalta">-lisis</span>
+            .
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            <em>Hidro-</em>
+            es agua. El sufijo
+            <em>-lisis</em>
+            aparece en
+            <em>análisis</em>
+            y en
+            <em>parálisis</em>
+            : tiene que ver con separar o deshacer.
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            Se propone un significado antes de consultar: separar algo mediante agua.
+          </div>
+          <p>
+            <strong>Resultado:</strong>
+            la aproximación es correcta. La hidrólisis es la ruptura de una molécula por acción del agua. No hizo falta memorizarla.
+          </p>
+        </div>
+
+        <div class="caja-tip">
+          <strong>Endo- y exo- valen puntos:</strong>
+          este par aparece en el examen con mucha frecuencia en la Unidad 5, con las reacciones químicas. Una reacción
+          <em>exo</em>
+          térmica libera calor hacia
+          <em>fuera</em>
+          ; una
+          <em>endo</em>
+          térmica lo absorbe hacia
+          <em>dentro</em>
+          . Quien retiene las dos partículas no necesita memorizar las dos definiciones.
+        </div>
+      </div>
+
+      <div class="practica">
+        <h3>Práctica interactiva 1 · Descomponer términos</h3>
+        <p>Seleccione la respuesta correcta en cada caso.</p>
+
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">
+            1. Una reacción
+            <em>exotérmica</em>
+            es aquella que…
+          </div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Ocurre solamente dentro de un ser vivo</div>
+            <div class="opcion" data-op="b">Absorbe calor del ambiente</div>
+            <div class="opcion" data-op="c">Libera calor hacia el exterior</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">
+            2. Sabiendo que
+            <em>foto-</em>
+            es luz y
+            <em>-sis</em>
+            es proceso, la
+            <em>fotosíntesis</em>
+            debe ser…
+          </div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Un proceso que utiliza la luz</div>
+            <div class="opcion" data-op="b">El estudio de la luz</div>
+            <div class="opcion" data-op="c">Un instrumento que mide la luz</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">
+            3. La
+            <em>hidrosfera</em>
+            es, con toda probabilidad…
+          </div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">El estudio de los océanos</div>
+            <div class="opcion" data-op="b">El conjunto del agua del planeta</div>
+            <div class="opcion" data-op="c">Un aparato para medir la humedad</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+      </div>
+
+      <h2 class="seccion">2. Cuando la raíz no basta: las pistas del contexto</h2>
+      <div class="bloque">
+        <p>
+          No todo término se deja descomponer. En esos casos, el autor de un texto científico casi siempre deja una pista cerca de la palabra, porque le interesa que se le entienda. Reconocer el tipo
+          de pista acelera muchísimo la lectura.
+        </p>
+
+        <table class="reglas">
+          <caption class="sr-only">Cuatro tipos de pista de contexto para deducir el significado de un término, con las señales que las delatan y un ejemplo de cada una.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tipo de pista</th>
+              <th scope="col">Señales que la delatan</th>
+              <th scope="col">Ejemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Definición directa</td>
+              <td>es decir, o sea, se define como, comas o paréntesis explicativos</td>
+              <td>
+                La
+                <em>homeostasis</em>
+                , es decir, el mantenimiento de condiciones internas estables, exige energía.
+              </td>
+            </tr>
+            <tr>
+              <td>Ejemplo</td>
+              <td>por ejemplo, como, tales como, entre ellos</td>
+              <td>
+                Los
+                <em>artrópodos</em>
+                , como los insectos, los cangrejos y las arañas, tienen exoesqueleto.
+              </td>
+            </tr>
+            <tr>
+              <td>Contraste</td>
+              <td>en cambio, a diferencia de, mientras que, pero, sin embargo</td>
+              <td>
+                Las especies
+                <em>autótrofas</em>
+                fabrican su alimento; las heterótrofas, en cambio, deben obtenerlo.
+              </td>
+            </tr>
+            <tr>
+              <td>Sinónimo cercano</td>
+              <td>también llamado, conocido como, o simplemente</td>
+              <td>
+                La
+                <em>precipitación</em>
+                , también llamada lluvia cuando cae en forma líquida, devuelve el agua al suelo.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="caja-atencion">
+          <strong>El contraste engaña si se lee rápido:</strong>
+          en «las autótrofas fabrican su alimento; las heterótrofas, en cambio, deben obtenerlo», la palabra que se define no es la primera sino la segunda.
+          <em>En cambio</em>
+          avisa de que lo que sigue es lo
+          <strong>contrario</strong>
+          de lo anterior. Leer solo la mitad de la oración conduce a la definición invertida.
+        </div>
+      </div>
+
+      <h2 class="seccion">3. Procedimientos de pasos múltiples</h2>
+      <div class="bloque">
+        <p>
+          Un protocolo de laboratorio no es una lista de sugerencias: es una
+          <strong>secuencia</strong>
+          . Cada paso prepara la condición que el siguiente necesita. Invertir dos pasos o saltarse uno no retrasa el experimento, lo invalida.
+        </p>
+
+        <div class="ejemplo">
+          <span class="et">Ejemplo 2 · Protocolo de ocho pasos</span>
+          <p>Preparación de una muestra de epidermis de cebolla para observar sus células al microscopio:</p>
+          <div class="paso">
+            <span class="n">1</span>
+            Cortar un trozo pequeño de cebolla y separar una capa fina y transparente de la cara interna.
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            Colocar la capa extendida sobre el portaobjetos, sin dobleces.
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            Añadir una gota de colorante sobre la muestra.
+          </div>
+          <div class="paso">
+            <span class="n">4</span>
+            Esperar un minuto para que el colorante penetre.
+          </div>
+          <div class="paso">
+            <span class="n">5</span>
+            Cubrir con el cubreobjetos inclinándolo poco a poco, para evitar burbujas de aire.
+          </div>
+          <div class="paso">
+            <span class="n">6</span>
+            Retirar el exceso de colorante con papel absorbente por el borde.
+          </div>
+          <div class="paso">
+            <span class="n">7</span>
+            Observar primero con el objetivo de menor aumento y enfocar.
+          </div>
+          <div class="paso">
+            <span class="n">8</span>
+            Cambiar al objetivo de mayor aumento y ajustar solamente el enfoque fino.
+          </div>
+          <p>
+            <strong>Qué ocurre si se altera el orden:</strong>
+            colorear después de cubrir impide que el colorante llegue a las células. Empezar por el mayor aumento deja la muestra fuera de campo y obliga a comenzar de nuevo. Cubrir de golpe, sin
+            inclinar, atrapa burbujas que se confunden con estructuras celulares.
+          </p>
+        </div>
+
+        <div class="caja-tip">
+          <strong>Palabras que marcan la secuencia:</strong>
+          primero, a continuación, después, una vez que, antes de, seguidamente, por último, finalmente. Al leer un procedimiento conviene subrayarlas: son el esqueleto del orden y, con frecuencia, la
+          respuesta a la pregunta del examen está justo en una de ellas.
+        </div>
+      </div>
+
+      <!-- ENLACE AL INTERACTIVO — publicado en agosto de 2026 -->
+      <a
+        class="enlace-interactivo"
+        href="https://zhemaria.github.io/ciencias/protocolo_desordenado.html"
+        target="_blank"
+        rel="noopener"
+        aria-label="Abrir el interactivo El protocolo desordenado (se abre en una pestaña nueva)">
+        <span class="ei-icono" aria-hidden="true">🔬</span>
+        <span class="ei-cuerpo">
+          <span class="ei-titulo">El protocolo desordenado</span>
+          <span class="ei-sub">
+            Reciba los pasos de tres protocolos de laboratorio mezclados y colóquelos en su orden correcto. Cuando dos pasos quedan invertidos, el sistema explica qué consecuencia concreta tendría ese
+            error en el resultado del experimento. Incluye además práctica de palabras de secuencia y de reconocimiento de dependencias entre pasos.
+          </span>
+          <span class="ei-cta">
+            Abrir el interactivo
+            <span aria-hidden="true">›</span>
+          </span>
+        </span>
+      </a>
+
+      <h2 class="seccion">4. Idea central y estructura del texto</h2>
+      <div class="bloque">
+        <p>
+          La
+          <strong>idea central</strong>
+          es aquello que el texto sostiene en su conjunto. Los
+          <strong>detalles de apoyo</strong>
+          son los datos, ejemplos y cifras que la sostienen. Confundir un detalle llamativo con la idea central es el error más común, y el examen ofrece siempre esa opción entre los distractores.
+        </p>
+
+        <p>
+          La
+          <strong>estructura</strong>
+          es la forma en que el autor organizó esa idea. En textos científicos, tres estructuras cubren casi todos los casos.
+        </p>
+
+        <div class="diagrama-wrap">
+          <svg
+            width="640"
+            height="215"
+            viewBox="0 0 640 215"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Tres estructuras de texto científico. La primera, secuencia: tres bloques numerados conectados en línea, de uno a dos y de dos a tres. La segunda, causa y efecto: un bloque de causa conectado por una flecha a un bloque de efecto. La tercera, comparación: dos bloques colocados uno al lado del otro, A y B, separados por una línea vertical.">
+            <defs>
+              <marker id="fl3" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+                <polygon points="0,0 10,4 0,8" fill="#004d40" />
+              </marker>
+            </defs>
+
+            <text x="107" y="26" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#004d40" text-anchor="middle">Secuencia</text>
+            <text x="320" y="26" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#004d40" text-anchor="middle">Causa y efecto</text>
+            <text x="533" y="26" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#004d40" text-anchor="middle">Comparación</text>
+
+            <rect x="20" y="45" width="46" height="46" rx="8" fill="#b2dfdb" stroke="#004d40" stroke-width="2" />
+            <rect x="84" y="45" width="46" height="46" rx="8" fill="#b2dfdb" stroke="#004d40" stroke-width="2" />
+            <rect x="148" y="45" width="46" height="46" rx="8" fill="#b2dfdb" stroke="#004d40" stroke-width="2" />
+            <line x1="68" y1="68" x2="80" y2="68" stroke="#004d40" stroke-width="2" marker-end="url(#fl3)" />
+            <line x1="132" y1="68" x2="144" y2="68" stroke="#004d40" stroke-width="2" marker-end="url(#fl3)" />
+            <g font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#004d40" text-anchor="middle">
+              <text x="43" y="75">1</text>
+              <text x="107" y="75">2</text>
+              <text x="171" y="75">3</text>
+            </g>
+
+            <rect x="228" y="45" width="80" height="46" rx="8" fill="#b2dfdb" stroke="#004d40" stroke-width="2" />
+            <rect x="336" y="45" width="80" height="46" rx="8" fill="#b2dfdb" stroke="#004d40" stroke-width="2" />
+            <line x1="310" y1="68" x2="330" y2="68" stroke="#004d40" stroke-width="2" marker-end="url(#fl3)" />
+            <g font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#004d40" text-anchor="middle">
+              <text x="268" y="73">Causa</text>
+              <text x="376" y="73">Efecto</text>
+            </g>
+
+            <rect x="448" y="45" width="76" height="46" rx="8" fill="#b2dfdb" stroke="#004d40" stroke-width="2" />
+            <rect x="542" y="45" width="76" height="46" rx="8" fill="#b2dfdb" stroke="#004d40" stroke-width="2" />
+            <line x1="533" y1="40" x2="533" y2="96" stroke="#004d40" stroke-width="2" stroke-dasharray="5,4" />
+            <g font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#004d40" text-anchor="middle">
+              <text x="486" y="75">A</text>
+              <text x="580" y="75">B</text>
+            </g>
+
+            <rect x="20" y="115" width="600" height="82" rx="10" fill="#9ecfc9" stroke="#004d40" stroke-width="3" />
+            <g font-family="Segoe UI, sans-serif" font-size="13" fill="#004d40" text-anchor="middle">
+              <text x="320" y="140" font-weight="700">Señales que delatan cada estructura</text>
+              <text x="320" y="162">Secuencia: primero, después, a continuación, por último</text>
+              <text x="320" y="182">Causa y efecto: porque, debido a, provoca, por lo tanto, como resultado</text>
+            </g>
+          </svg>
+        </div>
+
+        <table class="reglas">
+          <caption class="sr-only">Tres estructuras de texto científico con las señales que las identifican y la pregunta que responde cada una.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Estructura</th>
+              <th scope="col">Señales</th>
+              <th scope="col">Pregunta que responde el texto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Secuencia</td>
+              <td>primero, después, a continuación, mientras, por último, finalmente</td>
+              <td>¿En qué orden ocurre?</td>
+            </tr>
+            <tr>
+              <td>Causa y efecto</td>
+              <td>porque, debido a, provoca, produce, por lo tanto, como resultado, en consecuencia</td>
+              <td>¿Por qué ocurre y qué consecuencias tiene?</td>
+            </tr>
+            <tr>
+              <td>Comparación</td>
+              <td>en cambio, a diferencia de, mientras que, ambos, al igual que, sin embargo</td>
+              <td>¿En qué se parecen y en qué se diferencian?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="caja-atencion">
+          <strong>Idea central frente a detalle:</strong>
+          si una afirmación solo cubre un párrafo del texto, es un detalle. La idea central tiene que abarcar el texto completo. Un buen control consiste en preguntarse si la afirmación deja fuera
+          alguna parte importante de lo leído: si la deja, no es la idea central.
+        </div>
+      </div>
+
+      <div class="lectura">
+        <h2>
+          <span aria-hidden="true">📖</span>
+          Lectura científica
+        </h2>
+        <p class="fuente">Texto científico breve adaptado al nivel. Léalo aplicando las cuatro marcas de anotación y responda las preguntas.</p>
+
+        <div class="texto-adaptado">
+          <p><strong>Cómo mantiene el cuerpo su temperatura</strong></p>
+          <p>
+            El cuerpo humano funciona correctamente dentro de un margen estrecho de temperatura, alrededor de los 37 °C. Mantener ese valor estable, a pesar de que el ambiente cambie, se denomina
+            <em>termorregulación</em>
+            , y es un caso particular de
+            <em>homeostasis</em>
+            , es decir, del mantenimiento de condiciones internas constantes.
+          </p>
+          <p>
+            Cuando la temperatura externa sube, los vasos sanguíneos de la piel se dilatan y llega más sangre a la superficie, de modo que el calor se pierde con mayor facilidad hacia el aire. Además,
+            las glándulas sudoríparas liberan sudor: al evaporarse, el agua absorbe calor del cuerpo y lo enfría.
+          </p>
+          <p>
+            Cuando la temperatura externa baja, ocurre lo contrario. Los vasos de la piel se estrechan y reducen la pérdida de calor, mientras que los músculos producen contracciones rápidas e
+            involuntarias —los escalofríos— que generan calor adicional.
+          </p>
+          <p>
+            Estos mecanismos tienen un límite. Si el ambiente es extremo o el esfuerzo demasiado prolongado, la temperatura interna se desplaza fuera del margen seguro y aparecen el golpe de calor o
+            la hipotermia. Por eso la termorregulación no es un lujo del organismo, sino una condición para su funcionamiento.
+          </p>
+        </div>
+
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">El sudor se evapora y absorbe calor del cuerpo.</div>
+            <div class="opcion" data-op="b">Los escalofríos son contracciones musculares involuntarias.</div>
+            <div class="opcion" data-op="c">El cuerpo dispone de mecanismos para mantener estable su temperatura, aunque tienen un límite.</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">
+            2. Según las pistas del propio texto,
+            <em>homeostasis</em>
+            significa…
+          </div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">El mantenimiento de condiciones internas constantes</div>
+            <div class="opcion" data-op="b">La pérdida de calor por evaporación</div>
+            <div class="opcion" data-op="c">El estudio de la temperatura corporal</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">
+            3. ¿Qué tipo de pista de contexto ofrece el texto para
+            <em>homeostasis</em>
+            ?
+          </div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Un ejemplo</div>
+            <div class="opcion" data-op="b">Una definición directa, introducida por «es decir»</div>
+            <div class="opcion" data-op="c">Un contraste</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">4. Los párrafos segundo y tercero están organizados sobre todo como…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Una secuencia de pasos de laboratorio</div>
+            <div class="opcion" data-op="b">Una lista de definiciones</div>
+            <div class="opcion" data-op="c">Una comparación entre lo que ocurre con calor y lo que ocurre con frío</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+      </div>
+
+      <div class="practica">
+        <h3>Práctica interactiva 2 · Procedimientos, idea central y estructura</h3>
+        <p>Seleccione la respuesta correcta en cada caso.</p>
+
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">1. En el protocolo de la cebolla, ¿qué ocurre si se cubre con el cubreobjetos antes de añadir el colorante?</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Nada: el orden de esos dos pasos es indiferente</div>
+            <div class="opcion" data-op="b">El colorante no llega a las células y la muestra no se ve</div>
+            <div class="opcion" data-op="c">La muestra se seca de inmediato</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">
+            2. «El aumento de dióxido de carbono
+            <em>provoca</em>
+            una subida de la temperatura media,
+            <em>por lo tanto</em>
+            los glaciares retroceden». La estructura es…
+          </div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Causa y efecto</div>
+            <div class="opcion" data-op="b">Comparación</div>
+            <div class="opcion" data-op="c">Secuencia</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">
+            3. «Los anfibios respiran también por la piel; los reptiles,
+            <em>en cambio</em>
+            , dependen solo de sus pulmones». La estructura es…
+          </div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Secuencia</div>
+            <div class="opcion" data-op="b">Causa y efecto</div>
+            <div class="opcion" data-op="c">Comparación</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">4. Un texto describe con detalle el color del sudor en un experimento. Esa información es…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">La idea central del texto</div>
+            <div class="opcion" data-op="b">Un detalle de apoyo</div>
+            <div class="opcion" data-op="c">La estructura del texto</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+      </div>
+
+      <h2 class="seccion">5. Práctica guiada en clase</h2>
+      <div class="bloque">
+        <p>
+          <span aria-hidden="true">💬</span>
+          Las tres actividades siguientes se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.
+        </p>
+
+        <div class="actividad">
+          <div class="titulo-act">Actividad 1 · El protocolo desordenado</div>
+          <div class="modalidad">
+            <div class="modo modo-pres">
+              <h3>
+                <span aria-hidden="true">🏫</span>
+                Presencial
+              </h3>
+              Los ocho pasos del protocolo se entregan en tarjetas mezcladas. Cada equipo los ordena sobre la mesa y después ejecuta el procedimiento en seco, sin materiales, comprobando si el orden
+              propuesto funcionaba. Donde falle, el equipo señala qué paso dependía de otro anterior.
+            </div>
+            <div class="modo modo-virt">
+              <h3>
+                <span aria-hidden="true">💻</span>
+                En línea
+              </h3>
+              En salas pequeñas (
+              <em>Breakout rooms</em>
+              ), cada equipo reordena los ocho pasos arrastrando bloques en un documento compartido (Google Docs u otro editor colaborativo). Después narra el procedimiento en voz alta paso a paso
+              para verificar si la secuencia se sostiene.
+            </div>
+          </div>
+        </div>
+
+        <div class="actividad">
+          <div class="titulo-act">Actividad 2 · Descomponer para adivinar</div>
+          <div class="modalidad">
+            <div class="modo modo-pres">
+              <h3>
+                <span aria-hidden="true">🏫</span>
+                Presencial
+              </h3>
+              El docente presenta seis términos desconocidos en contexto, entre ellos
+              <em>termorregulación</em>
+              . Cada estudiante los descompone en raíces y propone un significado
+              <strong>antes</strong>
+              de consultar el glosario. Después se contrasta la propuesta con la definición y se comenta qué pieza dio la pista decisiva.
+            </div>
+            <div class="modo modo-virt">
+              <h3>
+                <span aria-hidden="true">💻</span>
+                En línea
+              </h3>
+              Los seis términos se reparten en una hoja compartida (Google Sheets, Google Docs u otro editor colaborativo) con tres columnas: piezas identificadas, significado propuesto y definición
+              del glosario. El glosario se revela solo cuando todos han completado la segunda columna.
+            </div>
+          </div>
+        </div>
+
+        <div class="actividad">
+          <div class="titulo-act">Actividad 3 · Anotar al margen</div>
+          <div class="modalidad">
+            <div class="modo modo-pres">
+              <h3>
+                <span aria-hidden="true">🏫</span>
+                Presencial
+              </h3>
+              Con los tres textos de estructuras distintas, cada equipo aplica las cuatro marcas de anotación, determina la idea central de su texto y nombra su estructura señalando las palabras que
+              la delatan. Los equipos comparan después sus tres textos.
+            </div>
+            <div class="modo modo-virt">
+              <h3>
+                <span aria-hidden="true">💻</span>
+                En línea
+              </h3>
+              Cada equipo anota su texto con la herramienta de comentarios de un documento compartido (Google Docs u otro editor colaborativo) y publica en un tablero compartido (foro de discusión de
+              Brightspace, Padlet u otro tablero colaborativo) la idea central en una sola oración, junto con las señales de estructura encontradas.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="caja-tarea">
+        <h2>
+          <span aria-hidden="true">✅</span>
+          Tarea
+        </h2>
+        <ul>
+          <li>Lectura de un texto científico con diez preguntas: idea central, vocabulario en contexto y estructura del texto.</li>
+          <li>Descomposición de cinco términos técnicos en sus raíces, con el significado propuesto antes de consultar el glosario.</li>
+          <li>Ordenar los pasos de un procedimiento de laboratorio y explicar en una oración qué fallaría si se invirtieran dos de ellos.</li>
+        </ul>
+        <p>Tiempo estimado: 60 minutos. Evalúa la tarea con la rúbrica de esta lección.</p>
+      </div>
+
+      <div class="quiz">
+        <h2>Quiz de la lección 1.3</h2>
+        <p>
+          Diez preguntas: cuatro de vocabulario técnico en contexto, tres de procedimientos de pasos múltiples y tres de idea central y estructura del texto. Tiempo sugerido: 25 minutos. Para aprobar
+          se requieren al menos 7 respuestas correctas.
+        </p>
+        <div id="quiz-cuerpo"></div>
+        <div id="resultado-quiz"></div>
+        <button class="btn" id="btn-corregir">Corregir quiz</button>
+        <button class="btn sec" id="btn-reintentar" style="display: none">Intentar de nuevo</button>
+      </div>
+
+      <div class="rubrica">
+        <h2>
+          <span aria-hidden="true">📊</span>
+          Rúbrica analítica de la lección
+        </h2>
+        <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+        <table class="tabla-rubrica">
+          <caption class="sr-only">Rúbrica analítica de lectura técnica con cuatro criterios y cuatro niveles de desempeño.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Criterio</th>
+              <th scope="col">Inicial (1)</th>
+              <th scope="col">En desarrollo (2)</th>
+              <th scope="col">Competente (3)</th>
+              <th scope="col">Destacado (4)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Deduce el significado de un término por contexto o raíz</td>
+              <td>Se detiene ante el término desconocido y no propone significado.</td>
+              <td>Propone un significado, pero sin apoyarse en la raíz ni en el contexto.</td>
+              <td>Deduce el significado apoyándose en la raíz o en la pista del contexto.</td>
+              <td>Deduce el significado y explica qué pieza o qué señal del texto lo permitió.</td>
+            </tr>
+            <tr>
+              <td>Ejecuta un procedimiento sin omitir pasos</td>
+              <td>Omite o invierte varios pasos del procedimiento.</td>
+              <td>Sigue el procedimiento con alguna omisión o inversión puntual.</td>
+              <td>Ejecuta los pasos completos y en su orden correcto.</td>
+              <td>Ejecuta el procedimiento y anticipa qué fallaría si se alterara el orden.</td>
+            </tr>
+            <tr>
+              <td>Identifica la idea central sin confundirla con un detalle</td>
+              <td>Señala un detalle llamativo como idea central.</td>
+              <td>Se aproxima a la idea central, pero la formula de forma parcial.</td>
+              <td>Identifica la idea central que abarca el texto completo.</td>
+              <td>Formula la idea central en una oración propia y distingue los detalles que la sostienen.</td>
+            </tr>
+            <tr>
+              <td>Reconoce la estructura organizativa del texto</td>
+              <td>No identifica la estructura del texto.</td>
+              <td>Identifica la estructura, pero sin señalar en qué se basa.</td>
+              <td>Reconoce si el texto es de secuencia, causa y efecto, o comparación.</td>
+              <td>Reconoce la estructura, cita las señales que la delatan y explica qué aporta a la comprensión.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cierre">
+        <h2>Cierre de la Unidad 1 y enlace con la Unidad 2</h2>
+        <p>
+          Con esta lección se cierra la Unidad 1. Quedan instaladas las tres herramientas transversales del curso: la
+          <strong>anatomía de una investigación</strong>
+          , el
+          <strong>diseño experimental</strong>
+          con sus variables y fuentes de error, y la
+          <strong>lectura de textos científicos</strong>
+          por raíces, contexto, procedimientos y estructura. Ninguna de las tres pertenece a un contenido concreto: todas se aplicarán a biología, química, física y ciencias de la Tierra por igual.
+        </p>
+        <p>
+          La
+          <strong>Unidad 2 · Razonamiento cuantitativo en ciencias</strong>
+          construye el otro andamiaje que el examen exige: el numérico. Abrirá con la
+          <strong>Lección 2.1 · Notación científica, unidades y la calculadora TI-30XS</strong>
+          , donde se trabajará con magnitudes que van del diámetro de un átomo a la distancia entre estrellas.
+        </p>
+      </div>
+
+      <footer>
+        <p>Spanish ASE Science · Unidad 1 · Lección 1.3 · 4 horas · Brightspace D2L</p>
+        <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+        <p>
+          © 2026. Esta obra está licenciada bajo
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>
+          .
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+        var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+        preguntasOp.forEach(function (preg) {
+          var correcta = preg.getAttribute('data-correcta');
+          var opciones = preg.querySelectorAll('.opcion');
+          var fb = preg.querySelector('.fb');
+          opciones.forEach(function (op) {
+            op.addEventListener('click', function () {
+              opciones.forEach(function (o) {
+                o.classList.remove('correcta', 'incorrecta', 'elegida');
+              });
+              var elegida = op.getAttribute('data-op');
+              if (elegida === correcta) {
+                op.classList.add('correcta');
+                fb.textContent = 'Correcto. Bien razonado.';
+                fb.className = 'fb ok';
+              } else {
+                op.classList.add('incorrecta');
+                opciones.forEach(function (o) {
+                  if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+                });
+                fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+                fb.className = 'fb no';
+              }
+              fb.style.display = 'block';
+            });
+          });
+        });
+
+        /* ---- Quiz: 4 de vocabulario, 3 de procedimientos, 3 de idea central y estructura ---- */
+        var preguntasQuiz = [
+          {
+            enun: '1. Sabiendo que hidro- significa agua, la deshidratación de un organismo consiste en…',
+            ops: ['La entrada excesiva de agua', 'La pérdida de agua del cuerpo', 'El estudio del agua corporal', 'La medición del agua ingerida'],
+            correcta: 1
+          },
+          {
+            enun: '2. Una reacción endotérmica, por el significado de endo- y termo-, es la que…',
+            ops: ['Absorbe calor hacia adentro', 'Libera calor hacia afuera', 'No implica cambios de calor', 'Ocurre solo dentro del agua'],
+            correcta: 0
+          },
+          {
+            enun: '3. «Los artrópodos, como los insectos, los cangrejos y las arañas, tienen exoesqueleto». La pista de contexto es…',
+            ops: ['Un contraste', 'Un sinónimo cercano', 'Un ejemplo', 'Una definición directa'],
+            correcta: 2
+          },
+          {
+            enun: '4. «Las especies autótrofas fabrican su alimento; las heterótrofas, en cambio, deben obtenerlo». Según el texto, heterótrofo significa…',
+            ops: ['Que fabrica su propio alimento', 'Que vive dentro del agua', 'Que estudia la alimentación', 'Que debe obtener su alimento del exterior'],
+            correcta: 3
+          },
+          {
+            enun: '5. En el protocolo de la cebolla, el colorante debe añadirse…',
+            ops: ['Después de colocar el cubreobjetos', 'Antes de colocar el cubreobjetos', 'Solo al terminar la observación', 'Únicamente sobre el objetivo del microscopio'],
+            correcta: 1
+          },
+          {
+            enun: '6. ¿Por qué se observa primero con el objetivo de menor aumento?',
+            ops: [
+              'Porque permite localizar y enfocar la muestra antes de ampliarla',
+              'Porque el mayor aumento daña el portaobjetos',
+              'Porque el colorante actúa más rápido así',
+              'Porque evita que se formen burbujas de aire'
+            ],
+            correcta: 0
+          },
+          {enun: '7. ¿Cuál de estas palabras señala el orden dentro de un procedimiento?', ops: ['Debido a', 'En cambio', 'A continuación', 'Por ejemplo'], correcta: 2},
+          {
+            enun: '8. Un texto explica el ciclo del agua párrafo a párrafo: evaporación, condensación, precipitación e infiltración. Su estructura es…',
+            ops: ['Comparación', 'Causa y efecto', 'Problema y solución', 'Secuencia'],
+            correcta: 3
+          },
+          {
+            enun: '9. «La tala de árboles reduce la retención de agua en el suelo y, como resultado, aumentan las inundaciones». La estructura es…',
+            ops: ['Causa y efecto', 'Secuencia de pasos', 'Comparación', 'Definición'],
+            correcta: 0
+          },
+          {
+            enun: '10. ¿Cuál es la mejor prueba para decidir si una afirmación es la idea central?',
+            ops: ['Que aparezca en la primera oración del texto', 'Que abarque el texto completo y no solo un párrafo', 'Que contenga un dato numérico', 'Que sea la afirmación más larga del texto'],
+            correcta: 1
+          }
+        ];
+
+        var cuerpo = document.getElementById('quiz-cuerpo');
+        preguntasQuiz.forEach(function (p, i) {
+          var div = document.createElement('div');
+          div.className = 'pregunta';
+          div.setAttribute('data-idx', i);
+          var enun = document.createElement('div');
+          enun.className = 'enun';
+          enun.textContent = p.enun;
+          div.appendChild(enun);
+          var cont = document.createElement('div');
+          cont.className = 'opciones';
+          p.ops.forEach(function (texto, j) {
+            var op = document.createElement('div');
+            op.className = 'opcion';
+            op.setAttribute('data-j', j);
+            op.textContent = texto;
+            op.addEventListener('click', function () {
+              if (div.getAttribute('data-bloqueado') === 'si') return;
+              cont.querySelectorAll('.opcion').forEach(function (o) {
+                o.classList.remove('elegida');
+              });
+              op.classList.add('elegida');
+              div.setAttribute('data-elegida', j);
+            });
+            cont.appendChild(op);
+          });
+          div.appendChild(cont);
+          var fb = document.createElement('div');
+          fb.className = 'fb';
+          div.appendChild(fb);
+          cuerpo.appendChild(div);
+        });
+
+        var btnCorregir = document.getElementById('btn-corregir');
+        var btnReintentar = document.getElementById('btn-reintentar');
+        var resultado = document.getElementById('resultado-quiz');
+
+        btnCorregir.addEventListener('click', function () {
+          var aciertos = 0;
+          var divs = cuerpo.querySelectorAll('.pregunta');
+          divs.forEach(function (div, i) {
+            var elegida = div.getAttribute('data-elegida');
+            var fb = div.querySelector('.fb');
+            var opciones = div.querySelectorAll('.opcion');
+            div.setAttribute('data-bloqueado', 'si');
+            opciones.forEach(function (o) {
+              o.classList.remove('correcta', 'incorrecta');
+            });
+            if (elegida === null) {
+              fb.textContent = 'No se respondió esta pregunta.';
+              fb.className = 'fb no';
+              fb.style.display = 'block';
+              opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+              return;
+            }
+            var idxElegida = parseInt(elegida, 10);
+            if (idxElegida === preguntasQuiz[i].correcta) {
+              aciertos++;
+              opciones[idxElegida].classList.add('correcta');
+              fb.textContent = 'Correcto.';
+              fb.className = 'fb ok';
+            } else {
+              opciones[idxElegida].classList.add('incorrecta');
+              opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+              fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+              fb.className = 'fb no';
+            }
+            fb.style.display = 'block';
+          });
+
+          resultado.style.display = 'block';
+          if (aciertos >= 7) {
+            resultado.className = 'aprob';
+            resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. Aprobado. Ha completado la Unidad 1 y puede continuar a la Lección 2.1.';
+          } else {
+            resultado.className = 'repro';
+            resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. Repase la lección e intente de nuevo (se requieren 7).';
+          }
+          btnCorregir.style.display = 'none';
+          btnReintentar.style.display = 'inline-block';
+        });
+
+        btnReintentar.addEventListener('click', function () {
+          var divs = cuerpo.querySelectorAll('.pregunta');
+          divs.forEach(function (div) {
+            div.removeAttribute('data-elegida');
+            div.removeAttribute('data-bloqueado');
+            div.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('correcta', 'incorrecta', 'elegida');
+            });
+            var fb = div.querySelector('.fb');
+            fb.style.display = 'none';
+            fb.textContent = '';
+          });
+          resultado.style.display = 'none';
+          btnReintentar.style.display = 'none';
+          btnCorregir.style.display = 'inline-block';
+          window.scrollTo({top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth'});
+        });
+      })();
+    </script>
+  </body>
+</html>

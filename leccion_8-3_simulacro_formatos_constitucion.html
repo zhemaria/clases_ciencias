@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<!--
+  Lección 8.3 · Simulacro cronometrado, tipos de ítem y Constitución de Illinois
+  Spanish ASE Science · Unidad 8 · Integración, evaluación de conclusiones y preparación GED
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 8.3 · Simulacro cronometrado, tipos de ítem y Constitución de Illinois</title>
+<meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    /* Unidad 8 — azul del plan curricular (--t8 #0d47a1). Última unidad, de
+       integración y preparación del examen.
+       ATENCIÓN: este azul invade el matiz que el bloque .caja-tarea venía
+       usando en las veintiuna lecciones anteriores (#1565c0 sobre #e3f2fd).
+       Para que ambos no se confundan, en esta unidad —y solo en esta— la caja
+       de tarea asincrónica se desplaza al verde. Para revertirlo, devuelva los
+       valores indicados en el propio bloque .caja-tarea.
+       El bloque .vocabulario recupera aquí su violeta original de las unidades
+       1 a 6, ya que el violeta queda libre al abandonar la paleta de la
+       Unidad 7. */
+    --tema:    #0d47a1;
+    --tema-d:  #08306b;
+    --tema-bg: #d6e6fa;
+    --tema-bg2:#bcd6f5;
+    --acento:  #2f6fd0;
+    --txt:     #222;
+    --bg:      #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ── ENCABEZADO ─────────────────────────────────────────────── */
+  header.principal {
+    background: var(--tema-d);
+    background: linear-gradient(135deg, #041c40 0%, #08306b 55%, #0d47a1 100%);
+    color: #ffffff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(4,28,64,.28);
+  }
+  header.principal .ruta {
+    font-size: 13px; color: #ffffff; letter-spacing: .4px; text-transform: uppercase;
+  }
+  header.principal h1 { margin: 8px 0 6px; font-size: 23px; font-weight: 700; color: #ffffff; }
+  header.principal .meta { font-size: 14px; color: #ffffff; }
+
+  .practicas-sp { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sp {
+    display: inline-block; background: #ffffff; color: #08306b;
+    font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 12px;
+    letter-spacing: .3px;
+  }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .diagrama-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+  .materiales {
+    background: #eceff1; border-left: 6px solid #37474f;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .materiales h2 { margin: 0 0 8px; color: #263238; font-size: 18px; }
+  .materiales ul { margin: 8px 0 0; padding-left: 22px; }
+  .materiales li { margin: 5px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+  .resalta { background: var(--tema-bg); padding: 1px 6px; border-radius: 5px; font-weight: 700; color: var(--tema-d); }
+
+  /* ── CAJA DE CONSEJO ─────────────────────────────────────────
+     Matiz fijo (326°, magenta-rosa) e independiente del color de
+     la Unidad: es el único matiz libre en las ocho paletas del
+     plan, de modo que el bloque nunca se funde con el tema.
+     ─────────────────────────────────────────────────────────── */
+  .caja-tip {
+    background: #fce1f0; border-left: 5px solid #9e1c66;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #800d4e; font-size: 15px;
+  }
+  .caja-tip strong { color: #800d4e; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+  /* Recupera el violeta de las unidades 1 a 6 (en la Unidad 7 se desplazó al
+     verde azulado porque el tema violeta lo invadía). */
+  .vocabulario {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .vocabulario h2 { margin: 0 0 6px; color: #4527a0; font-size: 18px; }
+  .vocabulario p { color: #311b92; }
+
+  /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+  .lectura {
+    background: #fffdf7; border: 2px solid var(--tema);
+    border-radius: 10px; padding: 6px 22px 18px; margin: 18px 0;
+  }
+  .lectura h2 { color: var(--tema-d); font-size: 19px; }
+  .lectura .fuente { font-size: 13px; color: #555; font-style: italic; }
+  .lectura .texto-adaptado {
+    background: #ffffff; border-left: 5px solid var(--tema-bg);
+    padding: 12px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+  }
+
+  /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+  .enlace-interactivo {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-left: 6px solid var(--tema); border-radius: 10px;
+    padding: 16px 20px; margin: 18px 0; text-decoration: none;
+    color: var(--tema-d); transition: background .15s;
+  }
+  .enlace-interactivo:hover { background: var(--tema-bg2); }
+  .enlace-interactivo .ei-icono { font-size: 26px; line-height: 1; flex-shrink: 0; }
+  .enlace-interactivo .ei-titulo { display: block; font-weight: 700; font-size: 16px; color: var(--tema-d); }
+  .enlace-interactivo .ei-sub { display: block; font-size: 14px; color: #333; margin: 4px 0 8px; }
+  .enlace-interactivo .ei-cta {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 14px; font-weight: 700; padding: 6px 16px; border-radius: 7px;
+  }
+
+  /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+  .pendiente { color: #c62828; font-size: 15px; margin-left: 6px; }
+
+  .reglas { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  .reglas th, .reglas td { border: 1px solid #e0e0e0; padding: 9px 12px; text-align: left; vertical-align: top; }
+  .reglas th { background: var(--tema); color: #ffffff; }
+  .reglas td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #c62828; }
+
+  .btn {
+    background: var(--tema); color: #ffffff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px; font-size: 14px; }
+  .modo-pres { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-pres strong { color: #004d40; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #004d40; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  /* Valores originales de las unidades 1 a 7, para revertir:
+     background #e3f2fd · border #1565c0 · h2 #0d47a1 */
+  .caja-tarea {
+    background: #dcf0dc; border-left: 6px solid #2e7d32;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #1b5e20; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #ffffff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #ffffff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #555;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+  footer p { margin: 5px 0; }
+  footer a { color: #08306b; }
+
+  /* ── BLOQUE ADMINISTRATIVO (Constitución de Illinois) ─────────
+     Requisito de graduación ajeno al contenido de Ciencias. Se
+     mantiene visualmente separado del resto de la lección. Para
+     retirarlo, elimine la sección completa marcada en el cuerpo
+     con el comentario BLOQUE ADMINISTRATIVO.
+     ─────────────────────────────────────────────────────────── */
+  .administrativo {
+    background: #f4f2ec; border: 3px double #6d5f3f;
+    border-radius: 12px; padding: 6px 24px 20px; margin: 26px 0;
+  }
+  .administrativo h2.seccion { color: #4a4029; border-bottom-color: #cfc6ad; }
+  .administrativo h3 { color: #4a4029; }
+  .administrativo .aviso-alcance {
+    background: #e8e3d5; border-left: 6px solid #6d5f3f;
+    padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #3d3422; font-size: 15px;
+  }
+  .administrativo .aviso-alcance strong { color: #3d3422; }
+
+  .formato {
+    background: #ffffff; border: 2px solid var(--tema-bg2);
+    border-left: 8px solid var(--tema); border-radius: 0 12px 12px 0;
+    padding: 6px 22px 16px; margin: 18px 0;
+  }
+  .formato h3 { margin-top: 12px; color: var(--tema-d); }
+  .formato .etiqueta-formato {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-top: 12px; letter-spacing: .4px;
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <!-- NÚM. DE CURSO — insertar aquí cuando el curso reciba su número oficial -->
+  <header class="principal">
+    <div class="ruta">Spanish ASE Science · Unidad 8 · Integración, evaluación de conclusiones y preparación GED</div>
+    <h1>Lección 8.3 · Simulacro cronometrado, tipos de ítem y Constitución de Illinois</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · Última lección del curso · Brightspace D2L</div>
+    <div class="practicas-sp">
+      <span class="sp">Evaluación final sumativa</span>
+      <span class="sp">SP.1 a SP.8 · Informe de desempeño</span>
+    </div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Manejar con soltura los cinco formatos de ítem interactivo del examen.</li>
+      <li>Administrar el tiempo por bloques durante una prueba cronometrada.</li>
+      <li>Resolver un simulacro completo de noventa minutos en condiciones equivalentes a las del examen.</li>
+      <li>Analizar los errores propios clasificados por práctica científica para identificar el patrón personal de dificultad.</li>
+      <li>Completar el registro y el Módulo en Línea de la Constitución del Estado de Illinois.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Última lección, y no enseña ciencia.</strong> Todo el contenido está visto y el proyecto está entregado. Lo que queda es lo que separa a un estudiante que sabe de uno que además <em>rinde</em>: conocer la interfaz, repartir el tiempo y saber dónde falla uno mismo.</p>
+    <p>Conviene decir por qué esto importa. En el examen se pierden puntos por tres motivos distintos: no saber el contenido, no saber razonar con los datos y <span class="resalta">no saber manejar la pantalla o el reloj</span>. Los dos primeros se trabajaron durante veintitrés lecciones. El tercero se resuelve aquí, y es el más fácil de eliminar.</p>
+  </div>
+
+  <div class="materiales">
+    <h2><span aria-hidden="true">📐</span> Material y recursos</h2>
+    <ul>
+      <li>Simulacro completo en Brightspace con la distribución oficial de dominios y predominio de ítems DOK 2 y DOK 3.</li>
+      <li>Guía de los cinco formatos de ítem interactivo.</li>
+      <li>Emulador de la calculadora TI-30XS y hoja de fórmulas del GED.</li>
+      <li>Guía paso a paso del portal del Módulo de la Constitución.</li>
+    </ul>
+    <p><strong>Modalidad de trabajo:</strong> el simulacro se realiza <em>en condiciones reales</em>: noventa minutos, sin descanso, sin consultas y sin interrupciones. Un simulacro con pausas no mide lo que hay que medir, que es también la resistencia y la administración del tiempo.</p>
+  </div>
+
+  <h2 class="seccion">1. La estructura del examen</h2>
+  <div class="bloque">
+    <p>Saber cómo está construida la prueba permite repartir el esfuerzo antes de empezar.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Distribución de los dominios de contenido del examen de Ciencias, con su porcentaje aproximado y las unidades del curso que los cubren.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Dominio</th>
+          <th scope="col">Peso aproximado</th>
+          <th scope="col">Unidades del curso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Ciencias de la vida</td><td>40 %</td><td>Unidades 3 y 4</td></tr>
+        <tr><td>Ciencias físicas</td><td>40 %</td><td>Unidades 5 y 6</td></tr>
+        <tr><td>Ciencias de la Tierra y el espacio</td><td>20 %</td><td>Unidad 7</td></tr>
+      </tbody>
+    </table>
+
+    <p>Las prácticas científicas <strong>SP.1 a SP.8</strong> no forman un bloque aparte: atraviesan los tres dominios. Un ítem de biología puede evaluar la lectura de una gráfica, y uno de física, la evaluación de una conclusión. Por eso las unidades 1, 2 y 8 no tienen dominio propio: enseñan lo que se aplica en todos.</p>
+
+    <div class="caja-tip">
+      <strong>Sobre la profundidad de las preguntas.</strong> La mayoría de los ítems no piden recordar un dato, sino <em>aplicarlo o razonar con él</em> a partir de un estímulo que se acaba de leer. Eso significa que memorizar definiciones rinde poco, y que releer con atención el texto o la gráfica del enunciado rinde mucho. Casi siempre, la información necesaria está delante.
+    </div>
+  </div>
+
+  <h2 class="seccion">2. Los cinco formatos de ítem</h2>
+  <div class="bloque">
+    <p>Estos son los cinco tipos de pregunta que aparecen en pantalla. Ninguno es difícil en sí mismo; lo que cuesta puntos es descubrirlos por primera vez el día del examen.</p>
+
+    <div class="formato">
+      <span class="etiqueta-formato">FORMATO 1</span>
+      <h3>Selección múltiple</h3>
+      <p>La pregunta clásica: un enunciado y cuatro opciones, de las que se elige una.</p>
+      <p><strong>Cómo abordarlo:</strong> leer las cuatro opciones antes de decidir. Con frecuencia dos son claramente descartables y la elección real está entre las otras dos, que se diferencian en un matiz. Desconfíe de los superlativos —«siempre», «nunca», «la mejor»—, que ya se señalaron en la Lección 7.3.</p>
+    </div>
+
+    <div class="formato">
+      <span class="etiqueta-formato">FORMATO 2</span>
+      <h3>Arrastrar y soltar</h3>
+      <p>Se toman elementos de una zona y se colocan en casillas, en un diagrama o en un orden determinado. Es el formato con el que se equilibran ecuaciones químicas y se clasifican niveles tróficos.</p>
+      <p><strong>Cómo abordarlo:</strong> colocar primero los elementos de los que se está seguro y dejar los dudosos para el final, cuando queden menos casillas libres. Si un elemento no encaja, se puede volver a mover: nada queda fijado hasta enviar la respuesta. Compruebe que no queda ninguna casilla vacía.</p>
+    </div>
+
+    <div class="formato">
+      <span class="etiqueta-formato">FORMATO 3</span>
+      <h3>Menú desplegable</h3>
+      <p>Dentro de una frase aparecen uno o varios huecos, cada uno con su lista de opciones. Al elegir, la frase queda completa.</p>
+      <p><strong>Cómo abordarlo:</strong> leer la frase entera <em>después</em> de elegir, para comprobar que tiene sentido completo. Cuando hay dos menús en la misma frase, la elección del primero suele condicionar la del segundo.</p>
+    </div>
+
+    <div class="formato">
+      <span class="etiqueta-formato">FORMATO 4</span>
+      <h3>Completar espacios</h3>
+      <p>Se escribe la respuesta con el teclado, sin opciones donde elegir. Suele ser un número o una palabra.</p>
+      <p><strong>Cómo abordarlo:</strong> escribir solo lo que se pide. Si la pregunta pide un número, se escribe el número, sin unidad ni texto adicional, salvo que el enunciado indique otra cosa. Atención a los decimales: se usa el formato que el enunciado emplee.</p>
+    </div>
+
+    <div class="formato">
+      <span class="etiqueta-formato">FORMATO 5</span>
+      <h3>Punto crítico de imagen</h3>
+      <p>Se hace clic sobre un lugar concreto de una imagen, un diagrama o una gráfica: el punto donde la energía cinética es máxima, la capa correspondiente de un esquema, la zona de una gráfica donde ocurre algo.</p>
+      <p><strong>Cómo abordarlo:</strong> localizar primero mentalmente la respuesta y solo entonces hacer clic. El punto marcado puede cambiarse haciendo clic en otro lugar antes de enviar.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Lo que estos formatos tienen en común</strong> es que ninguno evalúa destreza informática: evalúan ciencia. Pero un estudiante que se encuentra por primera vez con una pantalla de arrastrar y soltar gasta un minuto entendiéndola, y ese minuto sale del tiempo de pensar. Practicarlos antes elimina una fuente de error <em>que nada tiene que ver con lo que se sabe</em>.
+    </div>
+  </div>
+
+  <h2 class="seccion">3. Administrar el tiempo</h2>
+  <div class="bloque">
+    <p>Noventa minutos para cuarenta ítems dan algo más de <span class="resalta">dos minutos por pregunta</span>. Ese promedio no significa dedicar dos minutos a cada una: significa que las fáciles deben dejar margen para las difíciles.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Estrategia de administración del tiempo durante el simulacro, dividida en tres bloques con su objetivo y la señal de alarma correspondiente.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Momento</th>
+          <th scope="col">Qué hacer</th>
+          <th scope="col">Señal de alarma</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Primer tercio · minutos 1 a 30</td>
+          <td>Avanzar sin atascarse. Responder lo que se sabe y marcar para revisar lo que no.</td>
+          <td>Si al minuto 30 no se ha llegado al ítem 13, se está yendo demasiado despacio.</td>
+        </tr>
+        <tr>
+          <td>Segundo tercio · minutos 31 a 60</td>
+          <td>Mantener el ritmo. Los estímulos largos aparecen a menudo aquí: leerlos una vez con atención es más rápido que releerlos tres veces.</td>
+          <td>Si al minuto 60 no se ha llegado al ítem 27, conviene acelerar y dejar marcados más ítems.</td>
+        </tr>
+        <tr>
+          <td>Último tercio · minutos 61 a 90</td>
+          <td>Terminar todos los ítems y volver a los marcados con el tiempo que quede.</td>
+          <td>Si faltan diez minutos y quedan ítems sin abrir, responder todos aunque sea sin certeza.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>Nunca se deja un ítem en blanco.</strong> No hay penalización por error, de modo que una respuesta al azar tiene alguna probabilidad de acierto y una casilla vacía tiene cero. Antes de enviar, la última comprobación es siempre la misma: que no quede nada sin responder.
+    </div>
+
+    <div class="caja-atencion">
+      <strong>El ítem que consume el tiempo de otros tres.</strong> Atascarse ocho minutos en una pregunta difícil cuesta mucho más que el punto que vale: cuesta también las tres preguntas del final que quedan sin leer. Si tras un minuto largo no se ve el camino, se marca y se sigue. Volver después, con la cabeza despejada, suele funcionar mejor que insistir.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva · Antes del cronómetro</h3>
+    <p>Compruebe que domina el funcionamiento de la prueba.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Faltan cinco minutos y quedan tres ítems sin responder. Lo correcto es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Dejarlos en blanco para no arriesgarse a fallar</div>
+        <div class="opcion" data-op="b">Responderlos todos, porque no hay penalización por error</div>
+        <div class="opcion" data-op="c">Responder solo el que parezca más fácil</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. En un ítem de arrastrar y soltar, la estrategia más eficaz es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Colocar los elementos en el orden en que aparecen</div>
+        <div class="opcion" data-op="b">Empezar por los que generan más duda</div>
+        <div class="opcion" data-op="c">Colocar primero los seguros y dejar los dudosos para el final</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. Un ítem se resiste después de un minuto largo. Conviene…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Marcarlo, seguir adelante y volver al final</div>
+        <div class="opcion" data-op="b">Insistir hasta resolverlo, cueste lo que cueste</div>
+        <div class="opcion" data-op="c">Abandonar el bloque completo</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">4. Un ítem de completar espacios pide la densidad de un objeto. La respuesta esperada es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Una explicación breve del procedimiento</div>
+        <div class="opcion" data-op="b">Solo el número, en el formato que indique el enunciado</div>
+        <div class="opcion" data-op="c">El número acompañado de todo el desarrollo</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/entrenador_formatos/" target="_blank" rel="noopener"
+     aria-label="Abrir el simulador de formatos de ítem (recurso aún no publicado; se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🖱️</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Simulador de formatos de ítem<span class="pendiente" aria-label="Recurso aún no publicado">★</span></span>
+      <span class="ei-sub">Entrenador de los cinco tipos de pregunta interactiva con contenido de ciencias, incluido el ensayo específico de arrastrar y soltar para equilibrar ecuaciones químicas y clasificar niveles tróficos. No enseña ciencia: elimina una fuente de error ajena al conocimiento del estudiante, y por eso es el interactivo de mayor rendimiento inmediato del curso.</span>
+      <span class="ei-cta">Abrir el simulador <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <h2 class="seccion">4. Después del simulacro: leer los propios errores</h2>
+  <div class="bloque">
+    <p>Terminar el simulacro no es el final del trabajo, sino el principio de la parte más útil. La calificación global dice poco; lo que orienta el repaso es <span class="resalta">saber en qué práctica científica se concentran los fallos</span>.</p>
+    <p>Dos estudiantes con la misma puntuación pueden necesitar repasos opuestos: uno falla al leer gráficas y domina el contenido; el otro razona bien y le faltan conceptos. El informe individual separa esas dos situaciones.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Guía de interpretación del informe de desempeño: patrón de error detectado, qué indica y qué conviene repasar en cada caso.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Si los fallos se concentran en…</th>
+          <th scope="col">Lo que indica</th>
+          <th scope="col">Qué conviene repasar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SP.1 y SP.6 · comprender y expresar información científica</td>
+          <td>La dificultad está en la lectura del estímulo, no en el contenido</td>
+          <td>Las lecturas científicas de cada unidad y el vocabulario técnico con sus raíces</td>
+        </tr>
+        <tr>
+          <td>SP.3 y SP.8 · razonar con datos, estadística y probabilidad</td>
+          <td>El obstáculo es cuantitativo</td>
+          <td>La Unidad 2 completa y los ejercicios de despeje de las lecciones 5.2, 6.1 y 6.2</td>
+        </tr>
+        <tr>
+          <td>SP.4 y SP.5 · evaluar conclusiones y auditar fuentes</td>
+          <td>El contenido se domina, pero cuesta decidir qué sostienen los datos</td>
+          <td>Las lecciones 8.1 y 7.3, más CientíDebate y CientíGraf</td>
+        </tr>
+        <tr>
+          <td>SP.2 y SP.7 · método científico y aplicación de fórmulas</td>
+          <td>Falta soltura en el procedimiento</td>
+          <td>La Unidad 1 y la hoja de fórmulas, hasta que su uso sea automático</td>
+        </tr>
+        <tr>
+          <td>Un dominio de contenido concreto</td>
+          <td>Es una laguna de contenido, no de destreza</td>
+          <td>Las unidades correspondientes a ese dominio y sus quizzes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>Cómo se revisa un error.</strong> No basta con mirar cuál era la respuesta correcta. La pregunta que rinde es: <em>¿por qué me pareció bien la que elegí?</em> Casi siempre hay una razón, y esa razón es el error real que conviene corregir. Un fallo entendido no se repite; un fallo solo corregido, sí.
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Análisis de errores en clase</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3><span aria-hidden="true">🏫</span> Presencial</h3>
+          Con el informe individual delante, cada estudiante clasifica sus errores por práctica científica y escribe, para los tres más repetidos, por qué le pareció correcta la opción elegida. A partir de ahí redacta su propio <strong>plan de repaso de dos semanas</strong>, señalando qué lecciones concretas va a revisar y en qué orden.
+        </div>
+        <div class="modo modo-virt">
+          <h3><span aria-hidden="true">💻</span> En línea</h3>
+          El informe se comenta individualmente con el docente en salas pequeñas (<em>Breakout rooms</em>) de dos o tres personas. Cada estudiante registra su plan de repaso en una hoja compartida (Google Docs u otro editor colaborativo) con tres columnas: práctica o dominio con más fallos, lecciones que va a revisar y fecha prevista.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz">
+    <h2><span aria-hidden="true">⏱️</span> Evaluación final sumativa</h2>
+    <p>La evaluación de esta lección <strong>no es un quiz de práctica</strong>: es el simulacro completo, que se realiza en Brightspace en condiciones equivalentes a las del examen oficial.</p>
+    <table class="reglas">
+      <caption class="sr-only">Condiciones del simulacro final: número de ítems, duración, intentos permitidos, material autorizado y distribución de contenidos.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Condición</th>
+          <th scope="col">Especificación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Número de ítems</td><td>40</td></tr>
+        <tr><td>Duración</td><td>90 minutos, sin descanso</td></tr>
+        <tr><td>Intentos</td><td>Uno solo</td></tr>
+        <tr><td>Material permitido</td><td>Emulador de la TI-30XS y hoja de fórmulas del GED</td></tr>
+        <tr><td>Distribución de dominios</td><td>40 % vida · 40 % físicas · 20 % Tierra y espacio</td></tr>
+        <tr><td>Formatos</td><td>Los cinco tipos de ítem practicados en esta lección</td></tr>
+        <tr><td>Resultado</td><td>Informe individual de desempeño por práctica científica y por dominio</td></tr>
+      </tbody>
+    </table>
+    <p>Cuando el programa disponga de códigos, el simulacro se complementa con el <strong>GED Ready</strong><span aria-hidden="true">®</span> oficial.</p>
+  </div>
+
+  <div class="caja-tarea">
+    <h2><span aria-hidden="true">✅</span> Tarea asincrónica</h2>
+    <p>Para completar de forma individual antes del cierre del curso:</p>
+    <ul>
+      <li>Registro y ejecución del <strong>Módulo en Línea de la Constitución de Illinois</strong>, que se describe en la sección siguiente. Duración aproximada: dos horas.</li>
+      <li>Descarga del <strong>certificado digital</strong> del módulo y entrega en Brightspace.</li>
+      <li>Plan personal de repaso de dos semanas, elaborado a partir del informe de desempeño.</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       BLOQUE ADMINISTRATIVO · Constitución de Illinois
+       Requisito de graduación ajeno al contenido de Ciencias.
+       Para retirarlo, elimine esta sección completa hasta el
+       comentario de cierre. No afecta a ninguna otra parte de la
+       lección ni al simulacro.
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="administrativo">
+    <h2 class="seccion"><span aria-hidden="true">📋</span> Trámite de graduación · Módulo de la Constitución de Illinois</h2>
+
+    <div class="aviso-alcance">
+      <strong>Esto no es contenido de Ciencias y no entra en el examen.</strong> El Módulo en Línea de la Constitución del Estado de Illinois es un <strong>requisito para la expedición del diploma</strong>, no para aprobar este curso ni para presentarse a la prueba de Ciencias. Se incluye aquí por conveniencia logística, según indica el plan curricular: colocarlo en este punto evita que el trámite quede pendiente al final del programa. Puede completarse en cualquier momento desde la primera semana.
+    </div>
+
+    <h3>Qué es y por qué se pide</h3>
+    <p>La normativa del estado exige acreditar conocimiento de la Constitución de Illinois y de la Constitución de los Estados Unidos para la expedición del diploma de educación secundaria. El módulo en línea es la vía habitual de acreditación en el sistema de educación de adultos.</p>
+
+    <h3>Cómo se completa</h3>
+    <ol>
+      <li><strong>Registro.</strong> Cree una cuenta en el portal indicado por el programa. Anote el correo y la contraseña empleados: harán falta para recuperar el certificado.</li>
+      <li><strong>Estudio del material.</strong> El módulo presenta el contenido por secciones, con una evaluación al final de cada una. No es cronometrado y puede interrumpirse y retomarse.</li>
+      <li><strong>Evaluación final.</strong> Se supera con la puntuación mínima que indique el portal. Admite repetición.</li>
+      <li><strong>Certificado.</strong> Al terminar, <strong>descargue el certificado digital</strong> y guárdelo. Es el documento que acredita el cumplimiento.</li>
+      <li><strong>Entrega.</strong> Suba el certificado a la tarea correspondiente de Brightspace.</li>
+    </ol>
+
+    <div class="aviso-alcance">
+      <strong>Duración estimada:</strong> unas dos horas en total, que no tienen que ser seguidas. <strong>Recomendación:</strong> no lo deje para el último día del ciclo. El certificado tarda en tramitarse y su ausencia retrasa la expedición del diploma aunque todo lo demás esté completo.
+    </div>
+
+    <p><strong>Consulte con la coordinación del programa</strong> la dirección exacta del portal vigente, las credenciales de acceso institucional si las hubiera y el procedimiento de entrega. Estos datos cambian de un ciclo a otro y no se recogen aquí a propósito.</p>
+  </div>
+  <!-- ═══════════ FIN DEL BLOQUE ADMINISTRATIVO ═══════════ -->
+
+  <div class="rubrica">
+    <h2><span aria-hidden="true">📊</span> Informe individual de desempeño</h2>
+    <p>Esta lección no se evalúa con una rúbrica analítica, sino con un informe de resultados que se entrega a cada estudiante tras el simulacro.</p>
+    <table class="tabla-rubrica">
+      <caption class="sr-only">Contenido del informe individual de desempeño que se entrega tras el simulacro, con lo que muestra cada apartado y para qué sirve.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Apartado del informe</th>
+          <th scope="col">Qué muestra</th>
+          <th scope="col">Para qué sirve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Porcentaje de acierto por práctica científica</td>
+          <td>Resultado en cada una de las ocho prácticas, de SP.1 a SP.8</td>
+          <td>Identificar el patrón propio de dificultad, que suele repetirse en todos los dominios</td>
+        </tr>
+        <tr>
+          <td>Porcentaje de acierto por dominio</td>
+          <td>Resultado en Ciencias de la vida, físicas y de la Tierra y el espacio</td>
+          <td>Detectar lagunas de contenido concretas</td>
+        </tr>
+        <tr>
+          <td>Recomendación personalizada de repaso</td>
+          <td>Lecciones y recursos concretos según el patrón detectado</td>
+          <td>Orientar las semanas previas al examen oficial</td>
+        </tr>
+        <tr>
+          <td>Documentación del ciclo</td>
+          <td>El informe, junto con la post-prueba TABE</td>
+          <td>Acreditar la ganancia de habilidades medibles del ciclo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Fin del curso</h2>
+    <p>Aquí termina <strong>Spanish ASE Science</strong>. Veinticuatro lecciones, dieciséis semanas y noventa y seis horas de trabajo, desde la primera hipótesis de la Unidad 1 hasta este simulacro.</p>
+    <p>Conviene mirar atrás una vez. El curso no enseñó tres ciencias separadas: enseñó unos pocos mecanismos que reaparecieron una y otra vez. La <strong>convección</strong> hervía agua, movía el manto terrestre y reparte hoy el calor del planeta. La <strong>densidad</strong> explicaba qué flota, qué placa se hunde y por qué el aire caliente sube. La <strong>conservación</strong> gobernaba los átomos de una ecuación química y la energía de una montaña rusa. Y la evidencia se evaluó siempre con el mismo criterio, en la evolución, en Wegener y en el Big Bang: <strong>varias líneas independientes que coinciden pesan más que una sola</strong>.</p>
+    <p>Queda lo más importante, y es un hábito más que un contenido: <strong>preguntar qué sostienen los datos y qué no</strong>. Sirve para el examen, que es lo inmediato, y sigue sirviendo mucho después. Suerte en la prueba.</p>
+  </div>
+
+  <footer>
+    <p>Spanish ASE Science · Unidad 8 · Lección 8.3 · 4 horas · Brightspace D2L</p>
+    <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+    <p>© 2026. Esta obra está licenciada bajo
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons
+      Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+  </footer>
+
+
+</div>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones (bloques .practica y .lectura) ----
+     Esta lección no lleva quiz autocorregible: la evaluación es el
+     simulacro cronometrado de Brightspace. Solo se activa la práctica
+     de opciones de la sección «Antes del cronómetro». ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = 'Correcto. Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

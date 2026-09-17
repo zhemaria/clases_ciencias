@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<!--
+  Lección 2.2 · De la tabla a la gráfica y de la gráfica al texto
+  Spanish ASE Science · Unidad 2 · Razonamiento cuantitativo en ciencias
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 2.2 · De la tabla a la gráfica y de la gráfica al texto</title>
+<meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    /* Unidad 2 — familia fría del plan curricular (--t2), saturada hacia el
+       azul acero para no confundirse con el gris #37474f que ya usa el
+       bloque fijo «Material y recursos» en las 24 lecciones. */
+    --tema:    #2a5f80;
+    --tema-d:  #1b3a4d;
+    --tema-bg: #cfe3ec;
+    --tema-bg2:#b9d6e3;
+    --acento:  #35708f;
+    --txt:     #222;
+    --bg:      #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ── ENCABEZADO ─────────────────────────────────────────────── */
+  header.principal {
+    background: var(--tema-d);
+    background: linear-gradient(135deg, #14303f 0%, #1b3a4d 55%, #2a5f80 100%);
+    color: #ffffff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(20,48,63,.28);
+  }
+  header.principal .ruta {
+    font-size: 13px; color: #ffffff; letter-spacing: .4px; text-transform: uppercase;
+  }
+  header.principal h1 { margin: 8px 0 6px; font-size: 23px; font-weight: 700; color: #ffffff; }
+  header.principal .meta { font-size: 14px; color: #ffffff; }
+
+  .practicas-sp { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sp {
+    display: inline-block; background: #ffffff; color: #1b3a4d;
+    font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 12px;
+    letter-spacing: .3px;
+  }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .diagrama-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+  .materiales {
+    background: #eceff1; border-left: 6px solid #37474f;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .materiales h2 { margin: 0 0 8px; color: #263238; font-size: 18px; }
+  .materiales ul { margin: 8px 0 0; padding-left: 22px; }
+  .materiales li { margin: 5px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+  .resalta { background: var(--tema-bg); padding: 1px 6px; border-radius: 5px; font-weight: 700; color: var(--tema-d); }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-tip strong { color: #1b5e20; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+  .vocabulario {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .vocabulario h2 { margin: 0 0 6px; color: #4527a0; font-size: 18px; }
+  .vocabulario p { color: #311b92; }
+
+  /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+  .lectura {
+    background: #fffdf7; border: 2px solid var(--tema);
+    border-radius: 10px; padding: 6px 22px 18px; margin: 18px 0;
+  }
+  .lectura h2 { color: var(--tema-d); font-size: 19px; }
+  .lectura .fuente { font-size: 13px; color: #555; font-style: italic; }
+  .lectura .texto-adaptado {
+    background: #ffffff; border-left: 5px solid var(--tema-bg);
+    padding: 12px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+  }
+
+  /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+  .enlace-interactivo {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-left: 6px solid var(--tema); border-radius: 10px;
+    padding: 16px 20px; margin: 18px 0; text-decoration: none;
+    color: var(--tema-d); transition: background .15s;
+  }
+  .enlace-interactivo:hover { background: var(--tema-bg2); }
+  .enlace-interactivo .ei-icono { font-size: 26px; line-height: 1; flex-shrink: 0; }
+  .enlace-interactivo .ei-titulo { display: block; font-weight: 700; font-size: 16px; color: var(--tema-d); }
+  .enlace-interactivo .ei-sub { display: block; font-size: 14px; color: #333; margin: 4px 0 8px; }
+  .enlace-interactivo .ei-cta {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 14px; font-weight: 700; padding: 6px 16px; border-radius: 7px;
+  }
+
+  /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+  .pendiente { color: #c62828; font-size: 15px; margin-left: 6px; }
+
+  .reglas { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  .reglas th, .reglas td { border: 1px solid #e0e0e0; padding: 9px 12px; text-align: left; vertical-align: top; }
+  .reglas th { background: var(--tema); color: #ffffff; }
+  .reglas td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #c62828; }
+
+  .btn {
+    background: var(--tema); color: #ffffff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px; font-size: 14px; }
+  .modo-pres { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-pres strong { color: #004d40; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #004d40; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #e3f2fd; border-left: 6px solid #1565c0;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #0d47a1; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #ffffff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #ffffff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #555;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+  footer p { margin: 5px 0; }
+  footer a { color: #1b3a4d; }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <!-- NÚM. DE CURSO — insertar aquí cuando el curso reciba su número oficial -->
+  <header class="principal">
+    <div class="ruta">Spanish ASE Science · Unidad 2 · Razonamiento cuantitativo en ciencias</div>
+    <h1>Lección 2.2 · De la tabla a la gráfica y de la gráfica al texto</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 4–5 · Brightspace D2L</div>
+    <div class="practicas-sp">
+      <span class="sp">SP.3 · Razonar a partir de datos y evidencias</span>
+      <span class="sp">SP.4 · Evaluar conclusiones con evidencia</span>
+    </div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Aplicar una misma secuencia de cinco pasos para leer cualquier gráfica científica, sea del tipo que sea.</li>
+      <li>Distinguir las cuatro representaciones más frecuentes del examen —líneas múltiples, doble barra, dispersión y circular— y reconocer para qué sirve cada una.</li>
+      <li>Leer valores concretos de una gráfica y describir su tendencia con lenguaje cuantitativo.</li>
+      <li>Interpolar y extrapolar a partir de los datos, distinguiendo lo que la gráfica sostiene de lo que solo se conjetura.</li>
+      <li>Traducir una misma información entre tabla, gráfica y párrafo sin perder ni añadir contenido.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Conexión con la lección anterior.</strong> La Lección 2.1 enseñó a escribir cualquier magnitud, por diminuta o descomunal que fuera. Esta enseña a <strong>leerla en un eje</strong>. Es el mismo andamiaje cuantitativo visto desde el otro lado: allí el número se escribía, aquí se interpreta.</p>
+    <p>Conviene medir la importancia de esta lección con un dato del propio examen: una proporción muy alta de las preguntas de Ciencias del GED<sup>®</sup> se apoya en un estímulo visual —una gráfica, una tabla o un diagrama—. No se pide construirlas, pero sí extraer de ellas la información exacta que la pregunta reclama, ni una más ni una menos.</p>
+  </div>
+
+  <div class="materiales">
+    <h2><span aria-hidden="true">📐</span> Material y recursos</h2>
+    <ul>
+      <li>Seis gráficas procedentes de fuentes científicas: concentración de dióxido de carbono atmosférico, curva de crecimiento poblacional, temperatura frente a solubilidad y distribución de fenotipos.</li>
+      <li>Papel milimetrado y plantilla de construcción de gráficas con los ejes ya rotulados.</li>
+      <li>Lista de verificación de cinco pasos para leer cualquier gráfica: título, ejes, unidades, escala y tendencia.</li>
+      <li>Juegos de tarjetas con la misma información en tres formatos distintos —tabla, gráfica y párrafo— para la actividad de traducción.</li>
+    </ul>
+    <p><strong>Modalidad de trabajo:</strong> el estudiante describe la gráfica en voz alta <em>antes</em> de leer las preguntas. Quien lee primero la pregunta busca en la gráfica solo lo que la pregunta menciona, y así pasa por alto la mitad de la información disponible.</p>
+  </div>
+
+  <h2 class="seccion">1. Cinco pasos antes de leer un solo dato</h2>
+  <div class="bloque">
+    <p>Toda gráfica científica se lee con la misma secuencia, y siempre en este orden. Saltarse el primer paso para ir directamente al dato es la causa más frecuente de respuestas equivocadas: el valor leído es correcto, pero corresponde a otra cosa.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Los cinco pasos para leer cualquier gráfica científica, con la pregunta que responde cada uno y el error que evita.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Paso</th>
+          <th scope="col">Qué se comprueba</th>
+          <th scope="col">Error que evita</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. Título</td>
+          <td>De qué trata la gráfica y a qué población, lugar o periodo se refiere.</td>
+          <td>Atribuir los datos a un contexto que no es el suyo.</td>
+        </tr>
+        <tr>
+          <td>2. Ejes</td>
+          <td>Qué variable ocupa el eje horizontal y cuál el vertical.</td>
+          <td>Invertir causa y efecto al describir la relación.</td>
+        </tr>
+        <tr>
+          <td>3. Unidades</td>
+          <td>En qué se mide cada eje: años, gramos, partes por millón, porcentaje.</td>
+          <td>Dar un número sin unidad, que en Ciencias no significa nada.</td>
+        </tr>
+        <tr>
+          <td>4. Escala</td>
+          <td>Cuánto vale cada división y si el eje vertical empieza en cero.</td>
+          <td>Ver una diferencia enorme donde solo hay una diferencia pequeña.</td>
+        </tr>
+        <tr>
+          <td>5. Tendencia</td>
+          <td>Hacia dónde va la línea o cómo se comparan las barras, en conjunto.</td>
+          <td>Quedarse en un punto aislado y perder el comportamiento general.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>La gráfica de referencia de esta lección</h3>
+    <p>Sobre la gráfica siguiente se aplicarán los cinco pasos y, más adelante, la lectura de valores, la descripción de la tendencia y la extrapolación.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="290" viewBox="0 0 700 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de líneas titulada concentración media de dióxido de carbono en la atmósfera, medida en el observatorio de Mauna Loa. El eje horizontal representa el año, de mil novecientos sesenta a dos mil veinte. El eje vertical representa la concentración en partes por millón, de trescientas a cuatrocientas veinte. Los valores son: en mil novecientos sesenta, trescientas diecisiete partes por millón; en mil novecientos setenta, trescientas veintiséis; en mil novecientos ochenta, trescientas treinta y nueve; en mil novecientos noventa, trescientas cincuenta y cuatro; en dos mil, trescientas sesenta y nueve; en dos mil diez, trescientas noventa; y en dos mil veinte, cuatrocientas catorce. La línea sube de forma continua y cada vez más rápido.">
+        <text x="90" y="26" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1b3a4d">Concentración media de CO₂ en la atmósfera</text>
+        <text x="90" y="44" font-family="Segoe UI, sans-serif" font-size="12" fill="#1b3a4d">Observatorio de Mauna Loa, 1960–2020</text>
+
+        <g stroke="#cfe3ec" stroke-width="1">
+          <line x1="90" y1="70" x2="600" y2="70"/>
+          <line x1="90" y1="96.7" x2="600" y2="96.7"/>
+          <line x1="90" y1="123.3" x2="600" y2="123.3"/>
+          <line x1="90" y1="150" x2="600" y2="150"/>
+          <line x1="90" y1="176.7" x2="600" y2="176.7"/>
+          <line x1="90" y1="203.3" x2="600" y2="203.3"/>
+        </g>
+
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1b3a4d" text-anchor="end">
+          <text x="80" y="74">420</text>
+          <text x="80" y="100.7">400</text>
+          <text x="80" y="127.3">380</text>
+          <text x="80" y="154">360</text>
+          <text x="80" y="180.7">340</text>
+          <text x="80" y="207.3">320</text>
+          <text x="80" y="234">300</text>
+        </g>
+
+        <text x="30" y="150" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1b3a4d" text-anchor="middle" transform="rotate(-90 30 150)">CO₂ (ppm)</text>
+
+        <line x1="90" y1="230" x2="600" y2="230" stroke="#1b3a4d" stroke-width="2.5"/>
+        <line x1="90" y1="70" x2="90" y2="230" stroke="#1b3a4d" stroke-width="2.5"/>
+
+        <polyline points="90,207.3 168,195.3 247,178 325,158 403,138 482,110 560,78" fill="none" stroke="#2a5f80" stroke-width="3"/>
+
+        <g fill="#2a5f80">
+          <circle cx="90" cy="207.3" r="4.5"/>
+          <circle cx="168" cy="195.3" r="4.5"/>
+          <circle cx="247" cy="178" r="4.5"/>
+          <circle cx="325" cy="158" r="4.5"/>
+          <circle cx="403" cy="138" r="4.5"/>
+          <circle cx="482" cy="110" r="4.5"/>
+          <circle cx="560" cy="78" r="4.5"/>
+        </g>
+
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1b3a4d" text-anchor="middle">
+          <text x="90" y="250">1960</text>
+          <text x="168" y="250">1970</text>
+          <text x="247" y="250">1980</text>
+          <text x="325" y="250">1990</text>
+          <text x="403" y="250">2000</text>
+          <text x="482" y="250">2010</text>
+          <text x="560" y="250">2020</text>
+        </g>
+
+        <text x="345" y="274" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1b3a4d" text-anchor="middle">Año</text>
+      </svg>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1 · Los cinco pasos aplicados</span>
+      <div class="paso"><span class="n">1</span> <strong>Título:</strong> concentración media de CO₂ en la atmósfera, medida en un observatorio concreto entre 1960 y 2020. No son datos mundiales de todas las estaciones ni de todos los gases.</div>
+      <div class="paso"><span class="n">2</span> <strong>Ejes:</strong> el horizontal es el tiempo; el vertical, la concentración. La concentración depende del año, y no al revés.</div>
+      <div class="paso"><span class="n">3</span> <strong>Unidades:</strong> años en el eje horizontal, partes por millón en el vertical. Decir «llegó a 414» sin la unidad no responde a nada.</div>
+      <div class="paso"><span class="n">4</span> <strong>Escala:</strong> cada división vertical vale 20 ppm y el eje empieza en 300, no en cero. La subida real es menor de lo que aparenta la inclinación de la línea.</div>
+      <div class="paso"><span class="n">5</span> <strong>Tendencia:</strong> sube de forma continua durante los sesenta años, y además cada vez más deprisa.</div>
+    </div>
+  </div>
+
+  <h2 class="seccion">2. Las cuatro representaciones del examen</h2>
+  <div class="bloque">
+    <p>Cada tipo de gráfica responde a una pregunta distinta. Reconocer cuál es esa pregunta permite descartar de inmediato las opciones que piden a la gráfica algo que ese formato no puede dar.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="200" viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cuatro miniaturas de tipos de gráfica. La primera, de líneas múltiples, muestra dos líneas ascendentes que se separan. La segunda, de doble barra, muestra tres pares de barras de distinta altura. La tercera, de dispersión, muestra puntos sueltos que siguen una tendencia ascendente. La cuarta, circular, muestra un círculo dividido en tres sectores desiguales.">
+        <g stroke="#1b3a4d" stroke-width="2" fill="none">
+          <polyline points="30,140 30,40"/><polyline points="30,140 170,140"/>
+          <polyline points="200,140 200,40"/><polyline points="200,140 340,140"/>
+          <polyline points="370,140 370,40"/><polyline points="370,140 510,140"/>
+        </g>
+
+        <polyline points="38,125 72,110 106,86 140,60" fill="none" stroke="#2a5f80" stroke-width="3"/>
+        <polyline points="38,132 72,126 106,116 140,104" fill="none" stroke="#8d6e63" stroke-width="3" stroke-dasharray="6,4"/>
+
+        <g fill="#2a5f80">
+          <rect x="215" y="86" width="20" height="54"/>
+          <rect x="258" y="66" width="20" height="74"/>
+          <rect x="301" y="98" width="20" height="42"/>
+        </g>
+        <g fill="#8d6e63">
+          <rect x="236" y="106" width="20" height="34"/>
+          <rect x="279" y="92" width="20" height="48"/>
+          <rect x="322" y="76" width="20" height="64"/>
+        </g>
+
+        <g fill="#2a5f80">
+          <circle cx="386" cy="126" r="4"/><circle cx="404" cy="118" r="4"/>
+          <circle cx="420" cy="122" r="4"/><circle cx="440" cy="104" r="4"/>
+          <circle cx="456" cy="96" r="4"/><circle cx="472" cy="100" r="4"/>
+          <circle cx="490" cy="78" r="4"/><circle cx="502" cy="66" r="4"/>
+        </g>
+
+        <circle cx="610" cy="90" r="50" fill="#cfe3ec" stroke="#1b3a4d" stroke-width="2"/>
+        <path d="M 610 90 L 610 40 A 50 50 0 0 1 653 115 Z" fill="#2a5f80"/>
+        <path d="M 610 90 L 653 115 A 50 50 0 0 1 574 126 Z" fill="#8d6e63"/>
+
+        <g font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1b3a4d" text-anchor="middle">
+          <text x="100" y="168">Líneas múltiples</text>
+          <text x="270" y="168">Doble barra</text>
+          <text x="440" y="168">Dispersión</text>
+          <text x="610" y="168">Circular</text>
+        </g>
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1b3a4d" text-anchor="middle">
+          <text x="100" y="186">Cambio en el tiempo</text>
+          <text x="270" y="186">Comparar categorías</text>
+          <text x="440" y="186">Relación entre dos variables</text>
+          <text x="610" y="186">Partes de un total</text>
+        </g>
+      </svg>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Los cuatro tipos de gráfica más frecuentes en el examen, la pregunta que responde cada uno y lo que ese formato no puede mostrar.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Tipo</th>
+          <th scope="col">Pregunta que responde</th>
+          <th scope="col">Lo que NO puede mostrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Líneas múltiples</td>
+          <td>¿Cómo cambia cada grupo a lo largo del tiempo y en qué momento se separan o se cruzan?</td>
+          <td>La proporción de cada grupo dentro de un total.</td>
+        </tr>
+        <tr>
+          <td>Doble barra</td>
+          <td>¿Cómo se comparan dos condiciones dentro de cada categoría? Es la gráfica típica del grupo de control frente al experimental.</td>
+          <td>Una evolución continua: entre dos barras no hay valores intermedios.</td>
+        </tr>
+        <tr>
+          <td>Dispersión</td>
+          <td>¿Existe relación entre dos variables medidas en los mismos individuos? ¿Es positiva, negativa o inexistente?</td>
+          <td>Cuál de las dos variables causa la otra. La dispersión muestra correlación, nunca causalidad.</td>
+        </tr>
+        <tr>
+          <td>Circular</td>
+          <td>¿Qué fracción del total representa cada parte?</td>
+          <td>Cantidades absolutas ni cambios en el tiempo. Todos los sectores suman siempre el cien por ciento.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-atencion">
+      <strong>Correlación no es causa:</strong> en una gráfica de dispersión, dos variables pueden subir juntas sin que ninguna provoque la otra. El consumo de helado y los ahogamientos suben a la vez, y la causa de ambos es una tercera variable, el calor del verano. El examen incluye con frecuencia una opción que confunde correlación con causa, y suele ser la más tentadora.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Elegir la representación</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">1. Para mostrar qué porcentaje de la masa corporal corresponde a agua, a proteínas y a grasas, la gráfica adecuada es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">De líneas múltiples</div>
+        <div class="opcion" data-op="b">De dispersión</div>
+        <div class="opcion" data-op="c">Circular</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. Para comparar la altura media de plantas regadas con agua y con disolución nutritiva en tres tipos de suelo, conviene una gráfica…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">De doble barra</div>
+        <div class="opcion" data-op="b">Circular</div>
+        <div class="opcion" data-op="c">De dispersión</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. Una gráfica de dispersión muestra que a mayor número de horas de estudio corresponde mayor calificación. De ahí se puede concluir que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Estudiar causa necesariamente mejores calificaciones</div>
+        <div class="opcion" data-op="b">Existe una relación positiva entre ambas variables</div>
+        <div class="opcion" data-op="c">Las calificaciones determinan las horas de estudio</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">3. Leer valores y describir la tendencia</h2>
+  <div class="bloque">
+    <p>Leer un valor consiste en localizar el punto sobre el eje horizontal, subir hasta la línea y desplazarse hasta el eje vertical. La dificultad no está en el procedimiento sino en la <strong>escala</strong>: cuando el punto cae entre dos divisiones, hay que estimar el valor intermedio.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · Leer un valor entre divisiones</span>
+      <p>En la gráfica de CO₂, ¿qué concentración corresponde al año 1990?</p>
+      <div class="paso"><span class="n">1</span> Se localiza 1990 en el eje horizontal y se sube hasta encontrar el punto de la línea.</div>
+      <div class="paso"><span class="n">2</span> El punto queda entre las divisiones de 340 y 360 ppm, más cerca de la superior.</div>
+      <div class="paso"><span class="n">3</span> Cada división vale 20 ppm; el punto está a unas tres cuartas partes del tramo.</div>
+      <p><strong>Resultado:</strong> aproximadamente <span class="resalta">354 ppm</span>. En el examen las opciones están lo bastante separadas como para que una estimación cuidadosa baste; no hace falta el valor exacto.</p>
+    </div>
+
+    <h3>Describir la tendencia con lenguaje cuantitativo</h3>
+    <p>Decir que una línea «sube» es correcto pero insuficiente. Una descripción científica indica <strong>cuánto</strong> sube, <strong>en cuánto tiempo</strong> y <strong>si el ritmo cambia</strong>.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Comparación entre descripciones vagas y descripciones cuantitativas de una misma tendencia.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Descripción insuficiente</th>
+          <th scope="col">Descripción cuantitativa</th>
+          <th scope="col">Qué añade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>«El CO₂ sube.»</td>
+          <td>«El CO₂ pasó de 317 a 414 ppm entre 1960 y 2020: un aumento de 97 ppm en sesenta años.»</td>
+          <td>La magnitud del cambio y el periodo en que ocurrió.</td>
+        </tr>
+        <tr>
+          <td>«Sube bastante rápido.»</td>
+          <td>«En la primera década subió 9 ppm; en la última, 24 ppm.»</td>
+          <td>Que el ritmo no es constante, sino creciente.</td>
+        </tr>
+        <tr>
+          <td>«Las plantas crecieron más.»</td>
+          <td>«El grupo experimental alcanzó 18 cm frente a los 12 cm del control: un 50 % más.»</td>
+          <td>La comparación expresada como diferencia y como proporción.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>Una fórmula que sirve siempre:</strong> «La variable del eje vertical <em>aumenta o disminuye</em> [cantidad] [unidad] cuando la del eje horizontal pasa de [valor] a [valor]». Quien completa esa oración con los cuatro datos ha descrito la tendencia correctamente, sin necesidad de vocabulario técnico adicional.
+    </div>
+  </div>
+
+  <h2 class="seccion">4. Interpolar, extrapolar y saber dónde está el límite</h2>
+  <div class="bloque">
+    <p>Ambas operaciones consisten en estimar un valor que no fue medido. La diferencia está en <strong>dónde</strong> cae ese valor, y esa diferencia lo cambia todo.</p>
+
+    <div class="vocabulario">
+      <h2><span aria-hidden="true">🔤</span> Vocabulario técnico y raíces</h2>
+      <p>Las dos palabras comparten la misma raíz y se distinguen por el prefijo. <strong>Inter-</strong> significa «entre», como en <em>internacional</em> o <em>intercelular</em>: interpolar es estimar un valor situado <em>entre</em> dos datos que sí se midieron. <strong>Extra-</strong> significa «fuera de», como en <em>extraordinario</em> o <em>extracelular</em>: extrapolar es estimar un valor situado <em>fuera</em> del intervalo medido. El prefijo indica, por sí solo, cuál de las dos operaciones es fiable.</p>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Diferencias entre interpolar y extrapolar, con su fiabilidad y un ejemplo de cada operación.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Operación</th>
+          <th scope="col">Dónde cae el valor estimado</th>
+          <th scope="col">Fiabilidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Interpolar</td>
+          <td>Entre dos puntos medidos, dentro del intervalo de datos.</td>
+          <td>Alta. Los datos que rodean la estimación la sostienen por ambos lados.</td>
+        </tr>
+        <tr>
+          <td>Extrapolar</td>
+          <td>Más allá del último punto medido, fuera del intervalo de datos.</td>
+          <td>Limitada. Supone que la tendencia continúa, y ningún dato lo garantiza.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3 · Las dos operaciones sobre la misma gráfica</span>
+      <p><strong>Interpolación.</strong> ¿Qué concentración de CO₂ había hacia 1995? El año cae entre 1990 (354 ppm) y 2000 (369 ppm), de modo que el valor estará cerca del punto medio: unas 361 ppm. La estimación es sólida.</p>
+      <p><strong>Extrapolación.</strong> ¿Qué concentración habrá en 2050? Si el ritmo de la última década se mantuviera, se superarían las 480 ppm. Pero esa cifra depende por completo de que nada cambie —ni las emisiones, ni la absorción de los océanos, ni la política ambiental—, y la gráfica no contiene ninguna información sobre eso.</p>
+      <p><strong>Cómo se formula la respuesta correcta:</strong> «Si la tendencia se mantiene, cabe esperar…». Esa condición inicial no es una cortesía retórica: es lo que distingue una predicción científica de una adivinanza.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>La trampa de la extrapolación en el examen:</strong> entre las opciones suele figurar una que extrapola con total seguridad («en 2050 habrá exactamente 480 ppm») y otra que lo hace de forma condicionada («si el ritmo actual se mantiene, se acercará a las 480 ppm»). Ambas contienen el mismo número. La correcta es siempre la que conserva la condición.
+    </div>
+  </div>
+
+  <h2 class="seccion">5. La escala que engaña</h2>
+  <div class="bloque">
+    <p>El cuarto paso de la lista de verificación —comprobar si el eje vertical empieza en cero— parece un detalle menor y es, en la práctica, el que más conclusiones equivocadas produce. Las dos gráficas siguientes contienen <strong>exactamente los mismos datos</strong>.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="250" viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dos gráficas de barras con los mismos cuatro datos: sesenta y dos, sesenta y cuatro, sesenta y seis y sesenta y ocho por ciento de germinación en los tratamientos A, B, C y D. En la gráfica de la izquierda, con el eje vertical desde cero hasta cien, las cuatro barras se ven casi iguales. En la gráfica de la derecha, con el eje vertical recortado entre sesenta y setenta, la última barra parece cuatro veces mayor que la primera, aunque la diferencia real es de solo seis puntos porcentuales.">
+        <line x1="60" y1="190" x2="300" y2="190" stroke="#1b3a4d" stroke-width="2.5"/>
+        <line x1="60" y1="50" x2="60" y2="190" stroke="#1b3a4d" stroke-width="2.5"/>
+        <g fill="#2a5f80">
+          <rect x="80" y="103" width="40" height="87"/>
+          <rect x="135" y="100" width="40" height="90"/>
+          <rect x="190" y="98" width="40" height="92"/>
+          <rect x="245" y="95" width="40" height="95"/>
+        </g>
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1b3a4d" text-anchor="end">
+          <text x="52" y="194">0</text>
+          <text x="52" y="124">50</text>
+          <text x="52" y="54">100</text>
+        </g>
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1b3a4d" text-anchor="middle">
+          <text x="100" y="208">A</text><text x="155" y="208">B</text>
+          <text x="210" y="208">C</text><text x="265" y="208">D</text>
+        </g>
+        <text x="180" y="232" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1b3a4d" text-anchor="middle">Eje desde cero: apenas hay diferencia</text>
+
+        <line x1="420" y1="190" x2="660" y2="190" stroke="#1b3a4d" stroke-width="2.5"/>
+        <line x1="420" y1="50" x2="420" y2="190" stroke="#1b3a4d" stroke-width="2.5"/>
+        <g fill="#8d6e63">
+          <rect x="440" y="162" width="40" height="28"/>
+          <rect x="495" y="134" width="40" height="56"/>
+          <rect x="550" y="106" width="40" height="84"/>
+          <rect x="605" y="78" width="40" height="112"/>
+        </g>
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1b3a4d" text-anchor="end">
+          <text x="412" y="194">60</text>
+          <text x="412" y="124">65</text>
+          <text x="412" y="54">70</text>
+        </g>
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1b3a4d" text-anchor="middle">
+          <text x="460" y="208">A</text><text x="515" y="208">B</text>
+          <text x="570" y="208">C</text><text x="625" y="208">D</text>
+        </g>
+        <text x="540" y="232" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1b3a4d" text-anchor="middle">Eje recortado: la diferencia parece enorme</text>
+
+        <text x="350" y="24" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1b3a4d" text-anchor="middle">Germinación (%): 62, 64, 66 y 68 en los dos casos</text>
+      </svg>
+    </div>
+
+    <p>La diferencia real entre el tratamiento A y el D es de seis puntos porcentuales. En la gráfica de la derecha, la última barra <em>parece</em> cuatro veces la primera. Ningún dato ha sido falsificado: solo se recortó el eje.</p>
+
+    <div class="caja-tip">
+      <strong>Cómo responder cuando la escala está recortada:</strong> el recorte del eje no invalida la gráfica —muchas veces es necesario para que las diferencias sean visibles—, pero obliga a leer los números en lugar de fiarse de la altura. Ante una pregunta del tipo «¿cuántas veces mayor es…?», la respuesta se calcula siempre con los valores, nunca comparando barras a ojo.
+    </div>
+  </div>
+
+  <!-- ENLACE AL INTERACTIVO — recurso ya publicado; sustituir la URL provisional por el enlace directo -->
+  <a class="enlace-interactivo" href="https://www.gedparahispanos.com/ciencias" target="_blank" rel="noopener"
+     aria-label="Abrir el interactivo CientíGraf, práctica de gráficas científicas (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">📈</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">CientíGraf · Práctica de gráficas científicas</span>
+      <span class="ei-sub">Módulo de práctica dedicado al razonamiento a partir de datos y a la evaluación de conclusiones sobre representaciones gráficas, con escenarios de biología, química, física y ciencias de la Tierra. Cubre exactamente las destrezas de esta lección y se asigna como práctica asincrónica principal de la semana.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <h2 class="seccion">6. Traducción en tres direcciones</h2>
+  <div class="bloque">
+    <p>Una misma información puede presentarse como <strong>tabla</strong>, como <strong>gráfica</strong> o como <strong>párrafo</strong>. Las tres formas dicen lo mismo, pero cada una lo dice mejor para un propósito distinto: la tabla da los valores exactos, la gráfica muestra la forma del comportamiento y el párrafo explica qué significa.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Solubilidad del nitrato de potasio en agua, en gramos por cada cien mililitros, a cinco temperaturas distintas.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Temperatura (°C)</th>
+          <th scope="col">Solubilidad (g por 100 mL de agua)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td>13</td></tr>
+        <tr><td>20</td><td>32</td></tr>
+        <tr><td>40</td><td>64</td></tr>
+        <tr><td>60</td><td>110</td></tr>
+        <tr><td>80</td><td>169</td></tr>
+      </tbody>
+    </table>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4 · De la tabla al párrafo</span>
+      <p>La misma tabla, traducida a texto: «La solubilidad del nitrato de potasio aumenta con la temperatura. A 0 °C se disuelven 13 gramos por cada 100 mililitros de agua, y a 80 °C se disuelven 169, es decir, unas trece veces más. El aumento no es constante: entre 0 y 20 °C la solubilidad crece 19 gramos, mientras que entre 60 y 80 °C crece 59.»</p>
+      <p><strong>Qué se conservó:</strong> los valores extremos, la dirección de la relación y el hecho de que el ritmo se acelera. <strong>Qué no se añadió:</strong> ninguna explicación sobre por qué ocurre. La traducción entre formatos no puede introducir información que el formato original no contenía.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>El error más frecuente al traducir:</strong> añadir una causa. Al pasar de la tabla al párrafo es muy tentador escribir «porque el calor separa las partículas del sólido». Puede ser cierto, pero no está en los datos: la tabla registra <em>qué</em> ocurre, no <em>por qué</em>. En el examen, la opción que explica el mecanismo suele ser incorrecta cuando la pregunta solo pide describir la gráfica.
+    </div>
+  </div>
+
+  <div class="lectura">
+    <h2><span aria-hidden="true">📖</span> Lectura científica</h2>
+    <p class="fuente">Texto científico breve adaptado al nivel. Léalo pensando en qué gráfica le correspondería.</p>
+
+    <div class="texto-adaptado">
+      <p><strong>Un experimento sobre la germinación de semillas</strong></p>
+      <p>Un equipo de investigación quiso determinar si la temperatura del suelo influye en la rapidez con que germinan las semillas de frijol. Sembró cuatro lotes de cien semillas cada uno y mantuvo cada lote a una temperatura constante distinta: 10, 15, 20 y 25 grados Celsius. Todos los demás factores —humedad, tipo de suelo, luz y profundidad de siembra— se mantuvieron iguales en los cuatro lotes.</p>
+      <p>A los diez días se contaron las semillas germinadas en cada lote. A 10 °C germinaron 22; a 15 °C, 51; a 20 °C, 78; y a 25 °C, 84. El equipo observó que el aumento fue notable entre los 10 y los 20 grados, pero mucho menor entre los 20 y los 25.</p>
+      <p>Los autores señalaron en su informe que el estudio no permite afirmar qué ocurriría a 30 grados, porque ninguna medición se realizó por encima de los 25. Añadieron que tampoco puede concluirse que exista una temperatura óptima única, ya que el intervalo entre 20 y 25 grados no se exploró con detalle suficiente.</p>
+      <p>El informe se acompañó de una gráfica en la que la temperatura ocupaba el eje horizontal y el número de semillas germinadas, el vertical.</p>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. ¿Qué tipo de gráfica corresponde mejor a estos datos?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Una gráfica circular, porque hay cuatro lotes</div>
+        <div class="opcion" data-op="b">Una gráfica de barras o de líneas, porque relaciona una variable numérica con un resultado medido</div>
+        <div class="opcion" data-op="c">Ninguna gráfica: los datos son solo cuatro</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. Según el texto, entre 10 °C y 20 °C el número de semillas germinadas aumentó en…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">22 semillas</div>
+        <div class="opcion" data-op="b">78 semillas</div>
+        <div class="opcion" data-op="c">56 semillas</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. Estimar cuántas semillas germinarían a 17 °C sería un caso de…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Interpolación, porque 17 está dentro del intervalo medido</div>
+        <div class="opcion" data-op="b">Extrapolación, porque no se midió exactamente ese valor</div>
+        <div class="opcion" data-op="c">Una operación imposible con estos datos</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">4. ¿Por qué los autores se niegan a afirmar qué ocurriría a 30 °C?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Porque a esa temperatura las semillas no germinan</div>
+        <div class="opcion" data-op="b">Porque ese valor queda fuera del intervalo medido y la tendencia podría no continuar</div>
+        <div class="opcion" data-op="c">Porque no dispusieron de suficientes semillas</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Leer, describir y traducir</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">1. Según la gráfica de CO₂, ¿cuál fue el aumento total entre 1960 y 2020?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Unas 24 ppm</div>
+        <div class="opcion" data-op="b">Unas 414 ppm</div>
+        <div class="opcion" data-op="c">Unas 97 ppm</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. En la tabla de solubilidad, ¿qué valor cabría esperar a 50 °C?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Un valor entre 64 y 110 g por 100 mL</div>
+        <div class="opcion" data-op="b">Un valor menor que 64 g por 100 mL</div>
+        <div class="opcion" data-op="c">Exactamente 87 g por 100 mL, sin margen de error</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. Dos gráficas muestran los mismos datos, pero una tiene el eje vertical recortado. Puede afirmarse que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">La gráfica recortada contiene datos falsos</div>
+        <div class="opcion" data-op="b">Ambas son correctas, pero la recortada exagera visualmente la diferencia</div>
+        <div class="opcion" data-op="c">La gráfica con eje desde cero es siempre la única aceptable</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">4. ¿Cuál de estas descripciones de la gráfica de CO₂ es cuantitativa?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">«La concentración de CO₂ ha ido subiendo con los años.»</div>
+        <div class="opcion" data-op="b">«El CO₂ sube porque aumentan las emisiones industriales.»</div>
+        <div class="opcion" data-op="c">«El CO₂ pasó de 317 a 414 ppm entre 1960 y 2020, y el ritmo se aceleró.»</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">7. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p><span aria-hidden="true">💬</span> Las tres actividades siguientes se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 1 · Describir antes de preguntar</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3><span aria-hidden="true">🏫</span> Presencial</h3>
+          El docente proyecta una de las seis gráficas científicas <strong>sin ninguna pregunta a la vista</strong>. Cada estudiante recorre en voz alta los cinco pasos de la lista de verificación y describe la tendencia con una oración cuantitativa. Solo cuando toda la clase ha descrito la gráfica se muestran las preguntas, y se comprueba cuántas ya estaban respondidas por la descripción.
+        </div>
+        <div class="modo modo-virt">
+          <h3><span aria-hidden="true">💻</span> En línea</h3>
+          La gráfica se comparte en pantalla sin las preguntas. Cada estudiante escribe su descripción de cinco pasos en un tablero compartido (foro de Brightspace, Padlet u otro tablero colaborativo) antes de ver ninguna aportación ajena. Después se revelan todas a la vez y se comparan las tendencias descritas.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 2 · Traducción en tres direcciones</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3><span aria-hidden="true">🏫</span> Presencial</h3>
+          Cada equipo recibe la misma información en un formato distinto —unos la tabla, otros la gráfica, otros el párrafo— y debe producir los otros dos, con papel milimetrado para el que le toque construir. Al final se comparan las versiones de equipos que partieron de formatos diferentes con los mismos datos, y se discute qué se perdió o se añadió en cada traducción.
+        </div>
+        <div class="modo modo-virt">
+          <h3><span aria-hidden="true">💻</span> En línea</h3>
+          En salas pequeñas (<em>Breakout rooms</em>), cada equipo recibe su formato de partida y construye los otros dos en una hoja compartida (Google Sheets, Google Docs u otro editor colaborativo), aprovechando la función de gráfico automático para la representación. Las tres versiones de cada equipo se publican en un tablero compartido (foro de Brightspace, Padlet u otro tablero colaborativo) para el contraste final.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 3 · Cazar la escala recortada</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3><span aria-hidden="true">🏫</span> Presencial</h3>
+          Se reparten seis gráficas, tres de ellas con el eje vertical recortado. Cada equipo identifica cuáles lo están y calcula, con los valores numéricos, la diferencia real entre el primer y el último dato. Después redacta una oración que describa esa diferencia sin dejarse influir por la altura de las barras.
+        </div>
+        <div class="modo modo-virt">
+          <h3><span aria-hidden="true">💻</span> En línea</h3>
+          Las seis gráficas se distribuyen en una hoja compartida (Google Sheets u otro editor colaborativo) con dos columnas: «¿empieza el eje en cero?» y «diferencia real calculada». Cada equipo completa las dos columnas en salas pequeñas (<em>Breakout rooms</em>) y, al regresar, defiende ante el grupo una de sus filas.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2><span aria-hidden="true">✅</span> Tarea asincrónica</h2>
+    <p>Para completar de forma individual en <strong>Brightspace</strong> antes de la próxima sesión:</p>
+    <ul>
+      <li>Ocho preguntas de tendencia y extrapolación sobre dos gráficas científicas, con la exigencia de conservar la condición «si la tendencia se mantiene» en las respuestas de predicción.</li>
+      <li>Construcción de una gráfica a partir de una tabla de datos experimentales, rotulando título, ejes, unidades y escala.</li>
+      <li>Sesión de práctica en <strong>CientíGraf</strong> con registro del desempeño por categoría, para identificar en qué dominio se pierden más preguntas de lectura de datos.</li>
+    </ul>
+    <p>Tiempo estimado: 60 minutos. La entrega se evalúa con la rúbrica de esta lección.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 2.2</h2>
+    <p>Doce preguntas: cuatro de lectura de valores específicos, cuatro de identificación de tendencia y extrapolación, y cuatro de correspondencia entre descripción y representación. Tiempo sugerido: 30 minutos. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2><span aria-hidden="true">📊</span> Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <caption class="sr-only">Rúbrica analítica de traducción multimodal con cuatro criterios y cuatro niveles de desempeño.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Inicial (1)</th>
+          <th scope="col">En desarrollo (2)</th>
+          <th scope="col">Competente (3)</th>
+          <th scope="col">Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Identifica título, ejes, unidades y escala</td>
+          <td>Va directamente al dato sin examinar el encuadre de la gráfica.</td>
+          <td>Identifica los ejes, pero pasa por alto las unidades o el punto de inicio de la escala.</td>
+          <td>Recorre los cuatro elementos antes de leer ningún valor.</td>
+          <td>Recorre los cuatro elementos y advierte cuándo la escala condiciona la impresión visual.</td>
+        </tr>
+        <tr>
+          <td>Lee valores con precisión</td>
+          <td>Lee valores que no corresponden al punto solicitado.</td>
+          <td>Lee correctamente los valores que caen sobre una división, pero no los intermedios.</td>
+          <td>Lee valores exactos e intermedios estimando dentro del margen razonable.</td>
+          <td>Lee con precisión y expresa siempre el valor acompañado de su unidad.</td>
+        </tr>
+        <tr>
+          <td>Describe la tendencia con lenguaje cuantitativo</td>
+          <td>Describe la tendencia con términos vagos como «sube» o «baja».</td>
+          <td>Indica la dirección del cambio, pero no su magnitud ni el periodo.</td>
+          <td>Indica dirección, magnitud y periodo del cambio.</td>
+          <td>Añade si el ritmo del cambio es constante o variable, apoyándose en los datos.</td>
+        </tr>
+        <tr>
+          <td>Traduce entre formatos conservando la información</td>
+          <td>Pierde datos esenciales o inventa información ausente en el formato original.</td>
+          <td>Traduce el contenido principal, pero omite valores o añade una explicación causal.</td>
+          <td>Traduce entre tabla, gráfica y párrafo sin perder ni añadir información.</td>
+          <td>Traduce con fidelidad y justifica qué formato resulta más adecuado para cada propósito.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Lo que viene en la próxima lección</h2>
+    <p>Esta lección dejó instalada una rutina que no depende del contenido: <strong>los cinco pasos</strong> se aplican igual a una gráfica de genética que a una de sismología. Y dejó una distinción que el examen premia con insistencia: la que separa <strong>interpolar de extrapolar</strong>, y la descripción de la explicación.</p>
+    <p>La <strong>Lección 2.3 · Estadística y probabilidad de datos experimentales</strong> cierra la Unidad 2 y el andamiaje cuantitativo completo. Se pasará de leer los datos a <strong>resumirlos</strong>: media, mediana, moda y rango; histogramas y diagramas de caja para describir forma, centro y dispersión; y el principio del conteo aplicado a escenarios genéticos. Ese diagrama de árbol reaparecerá en la Unidad 4 con los cruces genéticos, ya como contenido de biología.</p>
+  </div>
+
+  <footer>
+    <p>Spanish ASE Science · Unidad 2 · Lección 2.2 · 4 horas · Brightspace D2L</p>
+    <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+    <p>© 2026. Esta obra está licenciada bajo
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons
+      Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+  </footer>
+
+
+</div>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = 'Correcto. Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Quiz: 4 de lectura de valores, 4 de tendencia y extrapolación, 4 de correspondencia ---- */
+  var preguntasQuiz = [
+    { enun: '1. En la gráfica de CO₂, la concentración correspondiente al año 1980 es de aproximadamente…',
+      ops: ['317 ppm', '339 ppm', '354 ppm', '390 ppm'], correcta: 1 },
+    { enun: '2. En la tabla de solubilidad, ¿cuántos gramos de nitrato de potasio se disuelven en 100 mL de agua a 40 °C?',
+      ops: ['32 g', '110 g', '64 g', '169 g'], correcta: 2 },
+    { enun: '3. Según la lectura, ¿cuántas semillas germinaron en el lote mantenido a 15 °C?',
+      ops: ['22', '78', '84', '51'], correcta: 3 },
+    { enun: '4. Un punto de una gráfica cae entre las divisiones de 340 y 360 ppm, muy cerca de la superior. El valor más razonable es…',
+      ops: ['341 ppm', '356 ppm', '350 ppm', '362 ppm'], correcta: 1 },
+    { enun: '5. ¿Cuál de estas afirmaciones describe correctamente la tendencia de la gráfica de CO₂?',
+      ops: ['Sube de forma constante, con el mismo aumento cada década', 'Sube durante todo el periodo y además cada vez más deprisa', 'Sube hasta 1990 y después se estabiliza', 'Baja ligeramente en la última década'], correcta: 1 },
+    { enun: '6. Estimar la solubilidad del nitrato de potasio a 50 °C a partir de la tabla es un caso de…',
+      ops: ['Extrapolación, poco fiable', 'Interpolación, con apoyo en los datos', 'Una operación que la tabla no permite', 'Una correlación negativa'], correcta: 1 },
+    { enun: '7. ¿Cuál de estas predicciones sobre el CO₂ en 2050 está formulada correctamente?',
+      ops: ['En 2050 habrá exactamente 480 ppm', 'En 2050 el CO₂ habrá dejado de subir', 'Si el ritmo actual se mantiene, se acercará a las 480 ppm', 'No es posible decir nada sobre el futuro a partir de datos'], correcta: 2 },
+    { enun: '8. En la gráfica de germinación con el eje recortado entre 60 y 70, la barra D parece cuatro veces la barra A. La diferencia real es de…',
+      ops: ['Cuatro veces', 'Seis puntos porcentuales', 'Sesenta puntos porcentuales', 'No puede determinarse'], correcta: 1 },
+    { enun: '9. Para mostrar qué proporción de la energía eléctrica de un país procede de cada fuente, la representación adecuada es…',
+      ops: ['Una gráfica de dispersión', 'Una gráfica de líneas múltiples', 'Una gráfica circular', 'Un histograma de frecuencias'], correcta: 2 },
+    { enun: '10. Un texto informa de la altura media alcanzada por plantas con fertilizante y sin él, en tres tipos de suelo. La gráfica que corresponde es…',
+      ops: ['De doble barra', 'Circular', 'De dispersión', 'De una sola línea'], correcta: 0 },
+    { enun: '11. Una gráfica de dispersión muestra que a mayor temperatura del agua corresponde menor cantidad de oxígeno disuelto. Esa relación es…',
+      ops: ['Positiva', 'Inexistente', 'Causal y demostrada', 'Negativa'], correcta: 3 },
+    { enun: '12. Al traducir una tabla de datos a un párrafo, ¿cuál de estas frases NO debería aparecer?',
+      ops: ['La solubilidad aumenta con la temperatura', 'A 80 °C se disuelven 169 g por cada 100 mL', 'El aumento se acelera en el tramo superior', 'Esto ocurre porque el calor separa las partículas del sólido'], correcta: 3 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta'); });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = 'Correcto.';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 8) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Aprobado. Puede continuar a la Lección 2.3.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repase la lección e intente de nuevo (se requieren 8).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>
