@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<!--
+  Lección 5.1 · El átomo, la tabla periódica y los enlaces químicos
+  Spanish ASE Science · Unidad 5 · Ciencias físicas I: materia, átomo y reacciones químicas
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 5.1 · El átomo, la tabla periódica y los enlaces químicos</title>
+<meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    /* Unidad 5 — naranja quemado del plan curricular (--t5 #bf360c). Primer
+       cambio de dominio: se abandona la familia verde de Ciencias de la vida
+       y se abre la familia cálida de Ciencias físicas. Coincide además con
+       la paleta naranja de las sub-páginas de Química de la Ruta C. */
+    --tema:    #bf360c;
+    --tema-d:  #8c2600;
+    --tema-bg: #ffdccf;
+    --tema-bg2:#ffc8b3;
+    --acento:  #e64a19;
+    --txt:     #222;
+    --bg:      #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ── ENCABEZADO ─────────────────────────────────────────────── */
+  header.principal {
+    background: var(--tema-d);
+    background: linear-gradient(135deg, #4a1300 0%, #8c2600 55%, #bf360c 100%);
+    color: #ffffff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(74,19,0,.28);
+  }
+  header.principal .ruta {
+    font-size: 13px; color: #ffffff; letter-spacing: .4px; text-transform: uppercase;
+  }
+  header.principal h1 { margin: 8px 0 6px; font-size: 23px; font-weight: 700; color: #ffffff; }
+  header.principal .meta { font-size: 14px; color: #ffffff; }
+
+  .practicas-sp { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sp {
+    display: inline-block; background: #ffffff; color: #8c2600;
+    font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 12px;
+    letter-spacing: .3px;
+  }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .diagrama-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+  .materiales {
+    background: #eceff1; border-left: 6px solid #37474f;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .materiales h2 { margin: 0 0 8px; color: #263238; font-size: 18px; }
+  .materiales ul { margin: 8px 0 0; padding-left: 22px; }
+  .materiales li { margin: 5px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+  .resalta { background: var(--tema-bg); padding: 1px 6px; border-radius: 5px; font-weight: 700; color: var(--tema-d); }
+
+  /* ── CAJA DE CONSEJO ─────────────────────────────────────────
+     Matiz fijo (326°, magenta-rosa) e independiente del color de
+     la Unidad: es el único matiz libre en las ocho paletas del
+     plan, de modo que el bloque nunca se funde con el tema.
+     ─────────────────────────────────────────────────────────── */
+  .caja-tip {
+    background: #fce1f0; border-left: 5px solid #9e1c66;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #800d4e; font-size: 15px;
+  }
+  .caja-tip strong { color: #800d4e; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+  .vocabulario {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .vocabulario h2 { margin: 0 0 6px; color: #4527a0; font-size: 18px; }
+  .vocabulario p { color: #311b92; }
+
+  /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+  .lectura {
+    background: #fffdf7; border: 2px solid var(--tema);
+    border-radius: 10px; padding: 6px 22px 18px; margin: 18px 0;
+  }
+  .lectura h2 { color: var(--tema-d); font-size: 19px; }
+  .lectura .fuente { font-size: 13px; color: #555; font-style: italic; }
+  .lectura .texto-adaptado {
+    background: #ffffff; border-left: 5px solid var(--tema-bg);
+    padding: 12px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+  }
+
+  /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+  .enlace-interactivo {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-left: 6px solid var(--tema); border-radius: 10px;
+    padding: 16px 20px; margin: 18px 0; text-decoration: none;
+    color: var(--tema-d); transition: background .15s;
+  }
+  .enlace-interactivo:hover { background: var(--tema-bg2); }
+  .enlace-interactivo .ei-icono { font-size: 26px; line-height: 1; flex-shrink: 0; }
+  .enlace-interactivo .ei-titulo { display: block; font-weight: 700; font-size: 16px; color: var(--tema-d); }
+  .enlace-interactivo .ei-sub { display: block; font-size: 14px; color: #333; margin: 4px 0 8px; }
+  .enlace-interactivo .ei-cta {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 14px; font-weight: 700; padding: 6px 16px; border-radius: 7px;
+  }
+
+  /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+  .pendiente { color: #c62828; font-size: 15px; margin-left: 6px; }
+
+  .reglas { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  .reglas th, .reglas td { border: 1px solid #e0e0e0; padding: 9px 12px; text-align: left; vertical-align: top; }
+  .reglas th { background: var(--tema); color: #ffffff; }
+  .reglas td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #c62828; }
+
+  .btn {
+    background: var(--tema); color: #ffffff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px; font-size: 14px; }
+  .modo-pres { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-pres strong { color: #004d40; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #004d40; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #e3f2fd; border-left: 6px solid #1565c0;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #0d47a1; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #ffffff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #ffffff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #555;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+  footer p { margin: 5px 0; }
+  footer a { color: #8c2600; }
+
+      /* ===== Índice interno de la lección (GEDparaHispanos) ===== */
+      .indice {
+        background: #ffffff;
+        border: 1px solid var(--tema-bg);
+        border-left: 5px solid var(--tema-d);
+        border-radius: 8px;
+        padding: 14px 20px;
+        margin: 20px 0;
+      }
+      .indice h2 { margin: 0 0 8px; font-size: 18px; color: var(--tema-d); }
+      .indice ul { list-style: none; margin: 0; padding: 0; columns: 2 260px; column-gap: 28px; }
+      .indice li { margin: 0 0 6px; break-inside: avoid; }
+      .indice a { color: var(--tema-d); font-weight: 600; text-decoration: underline; }
+      .indice a:hover { text-decoration-thickness: 2px; }
+      h2[id] { scroll-margin-top: 16px; }
+      .volver-indice {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        background: var(--tema-d);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        z-index: 50;
+      }
+      .volver-indice:focus-visible, .indice a:focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; }
+      .actividad p { margin: 6px 0 0; }
+      @media print { .volver-indice, .indice { display: none; } }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">GEDparaHispanos · Ciencias · Unidad 5 · Ciencias físicas I: materia, átomo y reacciones químicas</div>
+    <h1>Lección 5.1 · El átomo, la tabla periódica y los enlaces químicos</h1>
+    <div class="meta">Tiempo estimado: unas 4 horas · NRS 4–5</div>
+    <div class="practicas-sp">
+      <span class="sp">SP.6 · Expresar información científica</span>
+      <span class="sp">SP.1 · Comprender textos científicos</span>
+    </div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Identificar protones, neutrones y electrones, y describir la carga y la posición de cada uno.</li>
+      <li>Calcular el número atómico, el número másico y el número de neutrones de un átomo.</li>
+      <li>Distinguir un isótopo de un ion y explicar qué partícula cambia en cada caso.</li>
+      <li>Localizar un elemento en la tabla periódica y deducir propiedades a partir de su grupo y su periodo.</li>
+      <li>Predecir si dos elementos formarán un enlace iónico o covalente, y justificar la predicción.</li>
+    </ul>
+  </div>
+
+      <nav class="indice" id="indice" aria-labelledby="indice-titulo">
+        <h2 id="indice-titulo">Contenido de la lección</h2>
+        <ul>
+          <li><a href="#s-material-y-recursos">Material y recursos</a></li>
+          <li><a href="#s-1-el-atomo-y-sus-tres-particulas">1. El átomo y sus tres partículas</a></li>
+          <li><a href="#s-2-isotopos-e-iones-dos-cambios-que-no-se-parecen">2. Isótopos e iones: dos cambios que no se parecen</a></li>
+          <li><a href="#s-3-la-tabla-periodica-como-documento-predictivo">3. La tabla periódica como documento predictivo</a></li>
+          <li><a href="#s-4-por-que-se-unen-los-atomos-el-enlace-quimico">4. Por qué se unen los átomos: el enlace químico</a></li>
+          <li><a href="#s-vocabulario-tecnico-y-raices">Vocabulario técnico y raíces</a></li>
+          <li><a href="#s-lectura-cientifica">Lectura científica</a></li>
+          <li><a href="#s-tarea">Tarea</a></li>
+          <li><a href="#s-quiz-de-la-leccion-5-1">Quiz de la lección 5.1</a></li>
+          <li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li>
+          <li><a href="#s-cierre-de-la-leccion-y-enlace-con-la-5-2">Cierre de la lección y enlace con la 5.2</a></li>
+        </ul>
+      </nav>
+
+  <div class="bloque">
+    <p><strong>Cambio de dominio.</strong> Las cuatro unidades anteriores recorrieron las <strong>Ciencias de la vida</strong>. Esta abre el segundo gran dominio del examen, el de las <strong>Ciencias físicas</strong>, y lo hace por donde corresponde: por la unidad más pequeña que conserva la identidad de una sustancia.</p>
+    <p>Cambia el contenido, pero no las herramientas. Seguirá haciendo falta la <strong>notación científica</strong> de la Lección 2.1, porque las masas atómicas se manejan en potencias de diez; la <strong>lectura de tablas</strong> de la 2.2, porque la tabla periódica es antes que nada una tabla de datos; y el hábito de la 4.3 de separar lo que un dato sostiene de lo que no.</p>
+    <p>Y hay una continuidad de fondo que conviene nombrar desde ahora. En la Unidad 4 se vio que una sola base cambiada en el ADN modifica una proteína entera. Esa base es una molécula, y una molécula es un conjunto de átomos unidos por enlaces. Lo que aquí se estudia es <strong>por qué se unen</strong>.</p>
+  </div>
+
+  <div class="materiales">
+        <h2 id="s-material-y-recursos"><span aria-hidden="true">📐</span> Material y recursos</h2>
+        <ul>
+          <li>Una tabla periódica a la vista durante toda la lección, impresa o en pantalla.</li>
+          <li>Los datos atómicos de cada elemento que aparecen en la tabla: símbolo, número atómico y masa atómica.</li>
+          <li>Los modelos de Bohr de esta lección.</li>
+          <li>La hoja de fórmulas científicas del GED<sup>®</sup>.</li>
+        </ul>
+        <p><strong>Cómo estudiar esta lección:</strong> use la tabla periódica como un documento para consultar, no como una lista para memorizar. No hace falta aprender de memoria símbolos ni masas atómicas: lo que se practica es extraer información de una tabla que siempre tendrá a la vista.</p>
+      </div>
+
+  <h2 class="seccion" id="s-1-el-atomo-y-sus-tres-particulas">1. El átomo y sus tres partículas</h2>
+  <div class="bloque">
+    <p>Toda la materia está formada por átomos, y todo átomo tiene la misma arquitectura: un <strong>núcleo</strong> central, muy pequeño y muy denso, y una región exterior mucho más amplia donde se encuentran los electrones. Las diferencias entre un elemento y otro no están en el diseño, sino en el número de partículas.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="290" viewBox="0 0 700 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Modelo de Bohr de un átomo de litio. En el centro hay un núcleo que contiene tres protones de carga positiva y cuatro neutrones sin carga. Alrededor del núcleo se dibujan dos niveles de energía en forma de circunferencias: el primer nivel, el más cercano, contiene dos electrones de carga negativa; el segundo nivel contiene un electrón. En total hay tres protones y tres electrones, de modo que el átomo es eléctricamente neutro. El único electrón del nivel exterior es el electrón de valencia.">
+        <circle cx="240" cy="145" r="112" fill="none" stroke="#ffc8b3" stroke-width="2"/>
+        <circle cx="240" cy="145" r="64" fill="none" stroke="#ffc8b3" stroke-width="2"/>
+        <circle cx="240" cy="145" r="34" fill="#ffdccf" stroke="#8c2600" stroke-width="3"/>
+        <text x="240" y="140" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#8c2600" text-anchor="middle">3 p⁺</text>
+        <text x="240" y="158" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#8c2600" text-anchor="middle">4 n⁰</text>
+
+        <circle cx="176" cy="145" r="12" fill="#8c2600"/>
+        <text x="176" y="150" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">−</text>
+        <circle cx="304" cy="145" r="12" fill="#8c2600"/>
+        <text x="304" y="150" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">−</text>
+        <circle cx="240" cy="33" r="12" fill="#8c2600"/>
+        <text x="240" y="38" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">−</text>
+
+        <text x="240" y="278" font-family="Segoe UI, sans-serif" font-size="13" fill="#8c2600" text-anchor="middle">Litio · 3 protones, 4 neutrones, 3 electrones</text>
+
+        <text x="404" y="46" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#8c2600">Núcleo</text>
+        <text x="404" y="66" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Protones (carga +) y neutrones (sin carga).</text>
+        <text x="404" y="84" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Concentra casi toda la masa del átomo.</text>
+
+        <text x="404" y="120" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#8c2600">Primer nivel de energía</text>
+        <text x="404" y="140" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Admite un máximo de 2 electrones.</text>
+
+        <text x="404" y="176" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#8c2600">Segundo nivel de energía</text>
+        <text x="404" y="196" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Admite un máximo de 8 electrones.</text>
+        <text x="404" y="214" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Aquí solo hay 1: es el electrón de valencia,</text>
+        <text x="404" y="232" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">y de él dependerá todo el enlace químico.</text>
+      </svg>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Las tres partículas subatómicas con su carga eléctrica, su localización en el átomo y su masa relativa.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Partícula</th>
+          <th scope="col">Carga</th>
+          <th scope="col">Dónde se encuentra</th>
+          <th scope="col">Masa relativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Protón</td>
+          <td>Positiva (+)</td>
+          <td>En el núcleo</td>
+          <td>1 unidad</td>
+        </tr>
+        <tr>
+          <td>Neutrón</td>
+          <td>Sin carga (0)</td>
+          <td>En el núcleo</td>
+          <td>1 unidad</td>
+        </tr>
+        <tr>
+          <td>Electrón</td>
+          <td>Negativa (−)</td>
+          <td>Fuera del núcleo, en niveles de energía</td>
+          <td>Unas 1 800 veces menor</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>De esa tabla se desprende algo que el examen aprovecha con frecuencia: como el electrón tiene una masa casi despreciable, <span class="resalta">la masa del átomo está prácticamente toda en el núcleo</span>. Ganar o perder un electrón no cambia la masa de manera apreciable; ganar o perder un neutrón sí.</p>
+
+    <h3>Los dos números que definen a un átomo</h3>
+    <p>Dos cantidades bastan para describir el núcleo de cualquier átomo, y las dos aparecen en la tabla periódica o se deducen de ella.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Definición del número atómico y del número másico, con la operación que permite calcularlos.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Número</th>
+          <th scope="col">Qué cuenta</th>
+          <th scope="col">Cómo se obtiene</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Número atómico (Z)</td>
+          <td>Los protones del núcleo</td>
+          <td>Lo indica la tabla periódica. Es el que <strong>identifica al elemento</strong>.</td>
+        </tr>
+        <tr>
+          <td>Número másico (A)</td>
+          <td>Los protones más los neutrones</td>
+          <td>A = protones + neutrones. En consecuencia, neutrones = A − Z.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>El número atómico es la identidad del elemento, y no admite excepciones.</strong> Un átomo con 6 protones es carbono, tenga los neutrones que tenga y los electrones que tenga. Si el número de protones cambia, deja de ser carbono. Por eso, ante cualquier pregunta del tipo «¿de qué elemento se trata?», la única cifra que hay que buscar es la de los protones.
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">EJEMPLO RESUELTO</span>
+      <p>El átomo de aluminio tiene número atómico 13 y número másico 27. Determine sus protones, neutrones y electrones, suponiendo que el átomo es neutro.</p>
+      <div class="paso"><span class="n">1</span><strong>Protones.</strong> El número atómico es el número de protones: <span class="resalta">13 protones</span>.</div>
+      <div class="paso"><span class="n">2</span><strong>Electrones.</strong> El enunciado dice que el átomo es neutro, de modo que las cargas positivas y negativas se compensan: hay tantos electrones como protones, <span class="resalta">13 electrones</span>.</div>
+      <div class="paso"><span class="n">3</span><strong>Neutrones.</strong> Se restan: 27 − 13 = <span class="resalta">14 neutrones</span>.</div>
+      <div class="paso"><span class="n">4</span><strong>Comprobación.</strong> 13 protones + 14 neutrones = 27, que es justamente el número másico. La resta se verifica siempre con la suma inversa.</div>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>La masa atómica de la tabla no es el número másico.</strong> En la tabla periódica, bajo el símbolo del elemento, suele aparecer un número con decimales: el del cloro es 35,45. Ese valor es un <em>promedio</em> de todos los isótopos del elemento tal como se encuentran en la naturaleza, y por eso no es entero. El número másico, en cambio, es siempre un número entero y corresponde a <em>un</em> átomo concreto. Cuando un ejercicio pide neutrones a partir de la masa atómica de la tabla, se redondea al entero más cercano.
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-2-isotopos-e-iones-dos-cambios-que-no-se-parecen">2. Isótopos e iones: dos cambios que no se parecen</h2>
+  <div class="bloque">
+    <p>Un átomo puede apartarse de la descripción básica de dos maneras distintas, y el examen las contrapone con frecuencia porque se confunden con facilidad. La diferencia se resuelve con una sola pregunta: <strong>¿qué partícula cambió?</strong></p>
+
+    <table class="reglas">
+      <caption class="sr-only">Comparación entre isótopo e ion según la partícula que cambia, el efecto sobre la masa, el efecto sobre la carga y un ejemplo de cada caso.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Isótopo</th>
+          <th scope="col">Ion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Partícula que cambia</td>
+          <td>El número de <strong>neutrones</strong></td>
+          <td>El número de <strong>electrones</strong></td>
+        </tr>
+        <tr>
+          <td>Efecto sobre la masa</td>
+          <td>Cambia el número másico</td>
+          <td>Prácticamente no cambia</td>
+        </tr>
+        <tr>
+          <td>Efecto sobre la carga</td>
+          <td>Ninguno: sigue siendo neutro</td>
+          <td>Queda con carga positiva o negativa</td>
+        </tr>
+        <tr>
+          <td>¿Sigue siendo el mismo elemento?</td>
+          <td>Sí, porque los protones no cambian</td>
+          <td>Sí, porque los protones no cambian</td>
+        </tr>
+        <tr>
+          <td>Ejemplo</td>
+          <td>Carbono-12 y carbono-14: 6 protones ambos, 6 y 8 neutrones</td>
+          <td>Na⁺: el sodio ha perdido un electrón; Cl⁻: el cloro ha ganado uno</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>El caso del carbono-14 conviene retenerlo porque reaparecerá en la Unidad 7. Es un isótopo inestable, y esa inestabilidad es lo que permite datar restos antiguos: se conoce el ritmo al que se desintegra, de modo que la proporción que queda en una muestra informa del tiempo transcurrido. Pero, químicamente, el carbono-14 se comporta igual que el carbono-12, porque el comportamiento químico lo deciden los electrones y ambos tienen seis.</p>
+
+    <h3>Cationes y aniones</h3>
+    <p>Cuando un átomo pierde electrones, se queda con más cargas positivas que negativas y el resultado es un <strong>catión</strong>, de carga positiva. Cuando gana electrones, sobran cargas negativas y el resultado es un <strong>anión</strong>. La lógica es aritmética: la carga del ion es la diferencia entre protones y electrones.</p>
+
+    <div class="ejemplo">
+      <span class="et">EJEMPLO RESUELTO</span>
+      <p>El ion magnesio se representa Mg²⁺. El magnesio tiene número atómico 12. ¿Cuántos electrones tiene ese ion?</p>
+      <div class="paso"><span class="n">1</span><strong>Protones.</strong> El número atómico no cambia nunca: <span class="resalta">12 protones</span>, es decir, 12 cargas positivas.</div>
+      <div class="paso"><span class="n">2</span><strong>Lectura del signo.</strong> El 2+ indica que hay dos cargas positivas <em>en exceso</em>. Eso solo puede ocurrir si faltan dos electrones.</div>
+      <div class="paso"><span class="n">3</span><strong>Cálculo.</strong> 12 − 2 = <span class="resalta">10 electrones</span>.</div>
+      <div class="paso"><span class="n">4</span><strong>Comprobación.</strong> 12 cargas positivas menos 10 negativas dejan un saldo de 2 positivas, que es exactamente lo que dice el símbolo.</div>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>El error más frecuente del examen en este punto:</strong> suponer que el signo positivo significa que el átomo <em>ganó</em> algo. Es al revés. Un ion positivo lo es porque <em>perdió</em> electrones, que son las partículas negativas. Conviene fijarlo con una frase: pierde negativo, queda positivo.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Estructura del átomo</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Un átomo tiene número atómico 19 y número másico 39. ¿Cuántos neutrones tiene?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">19</div>
+        <div class="opcion" data-op="b">20</div>
+        <div class="opcion" data-op="c">39</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. Dos átomos tienen 8 protones cada uno, pero uno tiene 8 neutrones y el otro 10. Se trata de…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Dos elementos distintos</div>
+        <div class="opcion" data-op="b">Dos iones del mismo elemento</div>
+        <div class="opcion" data-op="c">Dos isótopos del mismo elemento</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. El ion fluoruro se escribe F⁻ y el flúor tiene número atómico 9. Ese ion tiene…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">9 protones y 10 electrones</div>
+        <div class="opcion" data-op="b">10 protones y 9 electrones</div>
+        <div class="opcion" data-op="c">9 protones y 8 electrones</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-3-la-tabla-periodica-como-documento-predictivo">3. La tabla periódica como documento predictivo</h2>
+  <div class="bloque">
+    <p>La tabla periódica no es una lista de nombres que haya que aprender de memoria. Es una <strong>tabla de datos organizada</strong>, y su organización no es arbitraria: la posición de un elemento anticipa cómo se va a comportar. Quien sabe leerla no necesita recordar las propiedades del calcio, porque puede deducirlas de dónde está.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="360" viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esquema simplificado de la tabla periódica. Las columnas se llaman grupos y las filas, periodos. De izquierda a derecha se representan: el grupo 1, el grupo 2, un bloque ancho de metales de transición, un bloque de elementos donde se encuentran los no metales, el grupo 17 y el grupo 18 en el extremo derecho. Una flecha superior indica que el número atómico aumenta de izquierda a derecha y de arriba abajo. Los metales ocupan la parte izquierda de la tabla y los no metales la parte derecha. La leyenda indica que el grupo 1 son los metales alcalinos con un electrón de valencia, el grupo 2 los alcalinotérreos con dos, el grupo 17 los halógenos con siete y el grupo 18 los gases nobles con la capa completa.">
+        <text x="350" y="24" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#8c2600" text-anchor="middle">El número atómico aumenta en este sentido</text>
+        <line x1="60" y1="38" x2="596" y2="38" stroke="#8c2600" stroke-width="2"/>
+        <polygon points="596,32 610,38 596,44" fill="#8c2600"/>
+
+        <rect x="60" y="58" width="42" height="180" fill="#ffdccf" stroke="#8c2600" stroke-width="2"/>
+        <rect x="102" y="58" width="42" height="180" fill="#ffdccf" stroke="#8c2600" stroke-width="2"/>
+        <rect x="144" y="58" width="210" height="180" fill="#ffefe8" stroke="#8c2600" stroke-width="2"/>
+        <rect x="354" y="58" width="168" height="180" fill="#fff8f5" stroke="#8c2600" stroke-width="2"/>
+        <rect x="522" y="58" width="42" height="180" fill="#ffdccf" stroke="#8c2600" stroke-width="2"/>
+        <rect x="564" y="58" width="42" height="180" fill="#ffc8b3" stroke="#8c2600" stroke-width="2"/>
+
+        <text x="81" y="80" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#8c2600" text-anchor="middle">1</text>
+        <text x="123" y="80" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#8c2600" text-anchor="middle">2</text>
+        <text x="249" y="80" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#8c2600" text-anchor="middle">Metales de transición</text>
+        <text x="438" y="80" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#8c2600" text-anchor="middle">Aquí están los no metales</text>
+        <text x="543" y="80" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#8c2600" text-anchor="middle">17</text>
+        <text x="585" y="80" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#8c2600" text-anchor="middle">18</text>
+
+        <text x="207" y="160" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#8c2600" text-anchor="middle">METALES</text>
+        <text x="207" y="180" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Tienden a perder electrones</text>
+        <text x="438" y="160" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#8c2600" text-anchor="middle">NO METALES</text>
+        <text x="438" y="180" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Tienden a ganar electrones</text>
+
+        <text x="333" y="258" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Cada columna es un grupo · Cada fila es un periodo</text>
+
+        <text x="20" y="290" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Grupo 1 · Metales alcalinos: 1 electrón de valencia. Muy reactivos.</text>
+        <text x="20" y="310" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Grupo 2 · Metales alcalinotérreos: 2 electrones de valencia.</text>
+        <text x="20" y="330" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Grupo 17 · Halógenos: 7 electrones de valencia. Les falta uno para completar el nivel.</text>
+        <text x="20" y="350" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Grupo 18 · Gases nobles: el nivel exterior ya está completo. Casi no reaccionan.</text>
+      </svg>
+    </div>
+
+    <h3>Las dos coordenadas: grupo y periodo</h3>
+    <p>Localizar un elemento consiste en dar dos datos, igual que localizar una casilla en cualquier tabla de doble entrada de las que ya se han trabajado en el curso.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Significado del grupo y del periodo en la tabla periódica y consecuencia de cada uno sobre las propiedades del elemento.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Coordenada</th>
+          <th scope="col">Qué es</th>
+          <th scope="col">Qué permite predecir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Grupo (columna)</td>
+          <td>Cada una de las 18 columnas verticales</td>
+          <td>Los elementos de un mismo grupo tienen el <strong>mismo número de electrones de valencia</strong>, y por eso se comportan de forma parecida. El sodio y el potasio reaccionan igual porque los dos están en el grupo 1.</td>
+        </tr>
+        <tr>
+          <td>Periodo (fila)</td>
+          <td>Cada una de las 7 filas horizontales</td>
+          <td>El número del periodo indica cuántos <strong>niveles de energía</strong> tiene el átomo. Un elemento del periodo 3 tiene tres niveles ocupados.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Los <strong>electrones de valencia</strong> son los del nivel más externo, y son los únicos que participan en los enlaces. En el litio del diagrama anterior había uno solo en el nivel exterior: eso es lo que hace del litio un elemento del grupo 1. Para los grupos 1, 2, 13 a 18, existe un atajo cómodo: los grupos 1 y 2 tienen uno y dos electrones de valencia; en los grupos 13 a 18 se resta 10 al número del grupo, de manera que el grupo 17 tiene siete y el grupo 18, ocho.</p>
+
+    <div class="caja-tip">
+      <strong>La pregunta que el examen hace realmente.</strong> Los ítems no suelen pedir «¿cuántos electrones de valencia tiene el azufre?» a secas. Suelen dar un fragmento de tabla o los datos del elemento dentro del propio enunciado y preguntar qué elemento se comportará de forma parecida a otro. La respuesta se busca siempre en la misma columna, no en la misma fila.
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">EJEMPLO RESUELTO</span>
+      <p>Un elemento desconocido está en el grupo 2 y en el periodo 4. ¿Qué se puede afirmar de él sin conocer su nombre?</p>
+      <div class="paso"><span class="n">1</span><strong>Por el grupo.</strong> Grupo 2 significa <span class="resalta">dos electrones de valencia</span>. Es un metal alcalinotérreo y tenderá a perder esos dos electrones, formando un ion de carga 2+.</div>
+      <div class="paso"><span class="n">2</span><strong>Por el periodo.</strong> Periodo 4 significa <span class="resalta">cuatro niveles de energía</span> ocupados.</div>
+      <div class="paso"><span class="n">3</span><strong>Por la posición general.</strong> Está en la parte izquierda de la tabla, luego es un metal: conduce la electricidad y reacciona con los no metales.</div>
+      <div class="paso"><span class="n">4</span><strong>Predicción de comportamiento.</strong> Se parecerá al magnesio y al calcio, que están en su misma columna. Nada de esto ha exigido saber que el elemento es el calcio.</div>
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-4-por-que-se-unen-los-atomos-el-enlace-quimico">4. Por qué se unen los átomos: el enlace químico</h2>
+  <div class="bloque">
+    <p>Los gases nobles del grupo 18 casi no reaccionan con nada, y esa es la observación de la que arranca toda la explicación del enlace. Su nivel exterior está completo, con ocho electrones, y en ese estado un átomo es estable y no necesita nada. Los demás elementos no tienen esa suerte: su nivel exterior está incompleto, y todo su comportamiento químico consiste en <strong>conseguir esa configuración completa</strong>. Esa tendencia se conoce como <em>regla del octeto</em>.</p>
+    <p>Hay dos maneras de conseguirlo, y de ahí salen los dos tipos de enlace que evalúa el examen.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="300" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparación entre el enlace iónico y el enlace covalente. En el panel izquierdo, el enlace iónico: un átomo de sodio, que es un metal con un electrón de valencia, transfiere ese electrón a un átomo de cloro, que es un no metal al que le falta uno. El resultado son dos iones de carga opuesta, sodio positivo y cloruro negativo, que se atraen entre sí. En el panel derecho, el enlace covalente: dos átomos no metálicos, en este caso oxígeno e hidrógeno, comparten un par de electrones que pertenece a los dos a la vez, y forman una molécula. La conclusión es que metal más no metal produce enlace iónico, y no metal más no metal produce enlace covalente.">
+        <rect x="12" y="14" width="326" height="272" rx="10" fill="#fff8f5" stroke="#8c2600" stroke-width="2"/>
+        <text x="175" y="42" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#8c2600" text-anchor="middle">Enlace iónico</text>
+        <text x="175" y="62" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">El electrón se transfiere</text>
+
+        <circle cx="80" cy="118" r="34" fill="#ffdccf" stroke="#8c2600" stroke-width="3"/>
+        <text x="80" y="124" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#8c2600" text-anchor="middle">Na</text>
+        <circle cx="270" cy="118" r="34" fill="#ffdccf" stroke="#8c2600" stroke-width="3"/>
+        <text x="270" y="124" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#8c2600" text-anchor="middle">Cl</text>
+
+        <circle cx="122" cy="100" r="9" fill="#8c2600"/>
+        <text x="122" y="105" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">−</text>
+        <line x1="136" y1="100" x2="216" y2="100" stroke="#8c2600" stroke-width="2"/>
+        <polygon points="216,94 230,100 216,106" fill="#8c2600"/>
+
+        <text x="80" y="176" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">Metal · 1 e⁻ de valencia</text>
+        <text x="270" y="176" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">No metal · le falta 1 e⁻</text>
+
+        <rect x="42" y="196" width="76" height="34" rx="8" fill="#ffc8b3" stroke="#8c2600" stroke-width="2"/>
+        <text x="80" y="219" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#8c2600" text-anchor="middle">Na⁺</text>
+        <rect x="232" y="196" width="76" height="34" rx="8" fill="#ffc8b3" stroke="#8c2600" stroke-width="2"/>
+        <text x="270" y="219" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#8c2600" text-anchor="middle">Cl⁻</text>
+        <text x="175" y="219" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#8c2600" text-anchor="middle">↔</text>
+        <text x="175" y="258" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Cargas opuestas que se atraen:</text>
+        <text x="175" y="276" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">sal común (NaCl)</text>
+
+        <rect x="356" y="14" width="332" height="272" rx="10" fill="#fff8f5" stroke="#8c2600" stroke-width="2"/>
+        <text x="522" y="42" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#8c2600" text-anchor="middle">Enlace covalente</text>
+        <text x="522" y="62" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Los electrones se comparten</text>
+
+        <circle cx="470" cy="126" r="42" fill="#ffdccf" stroke="#8c2600" stroke-width="3"/>
+        <text x="464" y="132" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#8c2600" text-anchor="middle">O</text>
+        <circle cx="562" cy="126" r="30" fill="#ffdccf" stroke="#8c2600" stroke-width="3"/>
+        <text x="570" y="132" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#8c2600" text-anchor="middle">H</text>
+        <circle cx="516" cy="116" r="8" fill="#8c2600"/>
+        <circle cx="516" cy="138" r="8" fill="#8c2600"/>
+
+        <text x="522" y="196" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Los dos electrones del centro</text>
+        <text x="522" y="214" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">pertenecen a los dos átomos a la vez</text>
+        <rect x="424" y="230" width="196" height="34" rx="8" fill="#ffc8b3" stroke="#8c2600" stroke-width="2"/>
+        <text x="522" y="253" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#8c2600" text-anchor="middle">Molécula de agua (H₂O)</text>
+        <text x="522" y="284" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Dos no metales unidos</text>
+      </svg>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Comparación de los tres tipos de enlace químico según lo que ocurre con los electrones, los elementos que lo forman, un ejemplo y las propiedades resultantes.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Tipo de enlace</th>
+          <th scope="col">Qué ocurre con los electrones</th>
+          <th scope="col">Entre qué elementos</th>
+          <th scope="col">Propiedades del resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Iónico</td>
+          <td>Se transfieren de un átomo al otro</td>
+          <td>Metal + no metal</td>
+          <td>Sólidos duros y quebradizos, de punto de fusión alto. Disueltos en agua conducen la electricidad.</td>
+        </tr>
+        <tr>
+          <td>Covalente</td>
+          <td>Se comparten entre los dos átomos</td>
+          <td>No metal + no metal</td>
+          <td>Puntos de fusión más bajos. En general no conducen la electricidad.</td>
+        </tr>
+        <tr>
+          <td>Metálico</td>
+          <td>Se mueven libremente entre todos los átomos</td>
+          <td>Metal + metal</td>
+          <td>Conducen bien el calor y la electricidad. Son maleables: se deforman sin romperse.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>La regla práctica para predecir el tipo de enlace</strong> no exige cálculo alguno: basta con localizar los dos elementos en la tabla. Si uno está a la izquierda (metal) y el otro a la derecha (no metal), el enlace será iónico. Si los dos están a la derecha, será covalente. Si los dos están a la izquierda, metálico. La posición decide.
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Compartir no significa repartir a partes iguales.</strong> En muchos enlaces covalentes uno de los dos átomos atrae los electrones compartidos con más fuerza que el otro, y la molécula queda con un lado algo más negativo y otro algo más positivo. Eso ocurre en el agua, y explica propiedades que se estudiarán en la Lección 5.2: por qué el agua disuelve tantas sustancias y por qué su punto de ebullición es tan alto para una molécula tan pequeña. Aquí basta con reconocer el enlace como covalente.
+    </div>
+
+    <div class="vocabulario">
+      <h2 id="s-vocabulario-tecnico-y-raices"><span aria-hidden="true">🔤</span> Vocabulario técnico y raíces</h2>
+      <p><strong>Átomo</strong>: del griego <em>á-tomos</em>, «sin división», porque se creyó que era la porción de materia que ya no podía partirse. La raíz <em>tom-</em>, cortar, reaparece en <em>anatomía</em> y en <em>tomografía</em>. <strong>Isótopo</strong>: de <em>iso-</em>, igual, y <em>tópos</em>, lugar: literalmente, «en el mismo lugar», porque todos los isótopos de un elemento ocupan la misma casilla de la tabla. La raíz <em>iso-</em> ya apareció en <em>isotónico</em>. <strong>Ion</strong> procede del griego <em>ión</em>, «el que va», por su desplazamiento hacia los electrodos; de ahí <strong>catión</strong>, el que va hacia el cátodo, y <strong>anión</strong>, el que va hacia el ánodo. <strong>Valencia</strong> viene del latín <em>valere</em>, tener fuerza o valor, y designa la capacidad de combinación de un átomo. <strong>Periódico</strong>, en <em>tabla periódica</em>, no alude al tiempo sino a la repetición regular: las propiedades vuelven a aparecer cada cierto número de elementos.</p>
+    </div>
+  </div>
+
+  <div class="lectura">
+    <h2 id="s-lectura-cientifica"><span aria-hidden="true">📖</span> Lectura científica</h2>
+    <p class="fuente">Texto científico breve adaptado al nivel. Obsérvese qué permitió a la tabla convencer a la comunidad científica.</p>
+
+    <div class="texto-adaptado">
+      <p><strong>Una casilla vacía y un elemento que aún no existía</strong></p>
+      <p>Hacia 1869, el químico ruso Dmitri Mendeléyev ordenó los elementos conocidos según su masa atómica creciente y observó que ciertas propiedades reaparecían de forma regular. Al colocar los elementos de propiedades semejantes en una misma columna, la disposición dejó varias casillas sin ocupar.</p>
+      <p>Mendeléyev sostuvo que esos huecos correspondían a elementos todavía no descubiertos. Fue más lejos: a partir de la posición de cada casilla vacía, predijo la masa atómica aproximada, la densidad y el comportamiento químico del elemento que debía ocuparla. Para uno de ellos, situado debajo del aluminio, anunció una masa cercana a 68 y una densidad próxima a 5,9 gramos por centímetro cúbico.</p>
+      <p>En 1875, un químico francés aisló un elemento nuevo y lo llamó galio. Su masa resultó ser 69,7. El valor de densidad que midió al principio, 4,7, no coincidía con la predicción; tras purificar mejor la muestra, la medición se corrigió a 5,9. La coincidencia con lo anunciado seis años antes reforzó considerablemente la aceptación de la tabla.</p>
+      <p>El sistema de Mendeléyev, sin embargo, presentaba anomalías: en unos pocos casos hubo que alterar el orden de masas para que las propiedades encajaran en la columna correcta. La explicación llegó décadas después, cuando Henry Moseley mostró que el criterio de ordenación no era la masa atómica, sino el número de protones. Con el número atómico como criterio, las anomalías desaparecieron. Conviene notar que la tabla resultó útil y predictiva durante casi medio siglo antes de que se conociera la razón por la que funcionaba.</p>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Mendeléyev descubrió el galio en 1869.</div>
+        <div class="opcion" data-op="b">La tabla no solo ordenaba lo conocido: permitía predecir propiedades de elementos aún no descubiertos, y esa capacidad la validó.</div>
+        <div class="opcion" data-op="c">Las masas atómicas medidas en el siglo XIX eran todas incorrectas.</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. La primera medición de la densidad del galio no coincidía con la predicción. Según el texto, la discrepancia se resolvió porque…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Mendeléyev modificó su predicción para ajustarla al dato</div>
+        <div class="opcion" data-op="b">Se decidió ignorar la densidad como propiedad</div>
+        <div class="opcion" data-op="c">Se purificó mejor la muestra y la nueva medición dio un valor distinto</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. Las anomalías del orden por masa atómica desaparecieron cuando…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Se pasó a ordenar los elementos por su número de protones</div>
+        <div class="opcion" data-op="b">Se retiraron de la tabla los elementos problemáticos</div>
+        <div class="opcion" data-op="c">Se descubrieron los gases nobles</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">4. ¿Cuál de estas conclusiones se apoya en el texto sin ir más allá de lo que afirma?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Toda predicción científica acaba confirmándose si se espera lo suficiente.</div>
+        <div class="opcion" data-op="b">La masa atómica no sirve para nada en química.</div>
+        <div class="opcion" data-op="c">Un sistema de clasificación puede resultar útil y predictivo antes de que se conozca la causa de que funcione.</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/atomo/" target="_blank" rel="noopener"
+     aria-label="Abrir el recurso El átomo y la tabla periódica (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">⚛️</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">El átomo y la tabla periódica</span>
+      <span class="ei-sub">Tabla periódica navegable: al seleccionar un elemento se muestran su número atómico, su número másico, el diagrama de niveles con los electrones de valencia y los elementos de su misma columna, para comprobar que coinciden en valencia. Conviene abrirlo después de la sección 3, porque convierte en comprobación lo que allí se enuncia como regla.</span>
+      <span class="ei-cta">Abrir el recurso <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Tabla periódica y enlaces</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. El elemento X está en el grupo 17. ¿Cuál de estos elementos se comportará de manera más parecida a X?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Uno situado a su lado, en el grupo 16</div>
+        <div class="opcion" data-op="b">Otro situado en el grupo 17, en un periodo distinto</div>
+        <div class="opcion" data-op="c">Uno situado en su mismo periodo, en el grupo 2</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. El magnesio es un metal y el oxígeno un no metal. El enlace que forman entre sí será…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Iónico</div>
+        <div class="opcion" data-op="b">Covalente</div>
+        <div class="opcion" data-op="c">Metálico</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. Los gases nobles del grupo 18 casi no forman compuestos porque…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Son demasiado pesados</div>
+        <div class="opcion" data-op="b">No tienen electrones</div>
+        <div class="opcion" data-op="c">Su nivel exterior ya está completo y no necesitan ganar ni perder electrones</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+
+  <div class="caja-tarea">
+    <h2 id="s-tarea"><span aria-hidden="true">✅</span> Tarea </h2>
+        <ul>
+      <li>Diez ejercicios de estructura atómica: cálculo de protones, neutrones y electrones a partir del número atómico y del número másico, incluidos dos casos de iones.</li>
+      <li>Predicción del tipo de enlace para cinco parejas de elementos, con la justificación basada en la posición de cada uno en la tabla.</li>
+      <li>Un párrafo breve explicando, con sus propias palabras, la diferencia entre un isótopo y un ion.</li>
+    </ul>
+    <p>Tiempo estimado: 60 minutos. Evalúe su trabajo con la rúbrica de esta lección.</p>
+  </div>
+
+  <div class="quiz">
+    <h2 id="s-quiz-de-la-leccion-5-1">Quiz de la lección 5.1</h2>
+    <p>Doce preguntas: cuatro de partículas subatómicas y cálculo del número másico, cuatro de lectura de la tabla periódica, y cuatro de isótopos, iones y tipo de enlace. Tiempo sugerido: 25 minutos. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2 id="s-rubrica-analitica-de-la-leccion"><span aria-hidden="true">📊</span> Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <caption class="sr-only">Rúbrica analítica de estructura atómica con cuatro criterios y cuatro niveles de desempeño.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Inicial (1)</th>
+          <th scope="col">En desarrollo (2)</th>
+          <th scope="col">Competente (3)</th>
+          <th scope="col">Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Calcula protones, neutrones y electrones</td>
+          <td>Confunde el número atómico con el número másico.</td>
+          <td>Obtiene los protones, pero se equivoca al restar los neutrones.</td>
+          <td>Calcula las tres cantidades sin errores en átomos neutros.</td>
+          <td>Resuelve además los casos con iones, ajustando solo el número de electrones.</td>
+        </tr>
+        <tr>
+          <td>Deduce propiedades a partir de la posición en la tabla</td>
+          <td>Busca las propiedades por memoria, sin usar la tabla.</td>
+          <td>Localiza el elemento, pero no relaciona el grupo con los electrones de valencia.</td>
+          <td>Deduce electrones de valencia y niveles de energía a partir de grupo y periodo.</td>
+          <td>Predice además con qué otros elementos se comportará de forma parecida y lo justifica por la columna.</td>
+        </tr>
+        <tr>
+          <td>Distingue isótopo de ion</td>
+          <td>Emplea los dos términos como equivalentes.</td>
+          <td>Sabe que son distintos, pero no identifica qué partícula cambia en cada caso.</td>
+          <td>Explica que el isótopo varía en neutrones y el ion en electrones, con sus efectos.</td>
+          <td>Justifica además por qué ninguno de los dos cambios altera la identidad del elemento.</td>
+        </tr>
+        <tr>
+          <td>Predice el tipo de enlace con justificación</td>
+          <td>Responde al azar o adivina el tipo de enlace.</td>
+          <td>Acierta en algunos casos, pero no explica el criterio empleado.</td>
+          <td>Predice el enlace aplicando la posición de los elementos en la tabla.</td>
+          <td>Relaciona además el tipo de enlace con las propiedades esperables del compuesto resultante.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2 id="s-cierre-de-la-leccion-y-enlace-con-la-5-2">Cierre de la lección y enlace con la 5.2</h2>
+    <p>Esta lección ha trabajado en el nivel del <strong>átomo aislado</strong>: sus partículas, su posición en la tabla y la razón por la que se une a otros. La <strong>Lección 5.2</strong> sube un escalón y observa lo que ocurre cuando esos átomos y esas moléculas se encuentran en cantidad: los <strong>estados de la materia</strong>, la <strong>densidad</strong> y las <strong>disoluciones</strong>.</p>
+    <p>El enlace entre ambas lecciones es directo. El carácter <strong>covalente y desigual</strong> del enlace del agua, que aquí solo se ha nombrado, será en la 5.2 la explicación de por qué el agua disuelve tantas sustancias. Y conviene avisar de algo: la 5.2 exige <strong>despejar una fórmula</strong>, la de la densidad, para hallar la masa o el volumen. Es el punto donde el Nivel 3 de Matemáticas entra de lleno en el curso de Ciencias.</p>
+  </div>
+
+  <footer>
+    <p>GEDparaHispanos · Ciencias · Unidad 5 · Lección 5.1</p>
+    <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+    <p>© 2026. Esta obra está licenciada bajo
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons
+      Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+  </footer>
+
+
+</div>
+
+<a href="#indice" class="volver-indice" aria-label="Volver al contenido de la lección">↑ Índice</a>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = 'Correcto. Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Quiz: 4 de partículas subatómicas y número másico, 4 de lectura de la
+     tabla periódica, 4 de isótopos, iones y tipo de enlace. Umbral 8 de 12.
+     Coincide exactamente con lo que especifica el plan curricular aprobado
+     para esta lección: no hay desviación que registrar. ---- */
+  var preguntasQuiz = [
+    { enun: '1. La partícula con carga positiva que se encuentra en el núcleo es…',
+      ops: ['El electrón', 'El protón', 'El neutrón', 'El ion'], correcta: 1 },
+    { enun: '2. Un átomo tiene número atómico 16 y número másico 32. ¿Cuántos neutrones tiene?',
+      ops: ['32', '48', '16', '8'], correcta: 2 },
+    { enun: '3. Casi toda la masa de un átomo se concentra en…',
+      ops: ['El núcleo', 'El primer nivel de energía', 'El nivel exterior', 'Los electrones de valencia'], correcta: 0 },
+    { enun: '4. Un átomo neutro de nitrógeno tiene número atómico 7. Su número de electrones es…',
+      ops: ['14', '7', '0', 'Depende del número másico'], correcta: 1 },
+    { enun: '5. En la tabla periódica, las columnas verticales se llaman…',
+      ops: ['Periodos', 'Niveles', 'Grupos', 'Series'], correcta: 2 },
+    { enun: '6. Dos elementos situados en el mismo grupo tienen en común…',
+      ops: ['El mismo número de protones', 'El mismo número másico', 'El mismo número de niveles de energía', 'El mismo número de electrones de valencia'], correcta: 3 },
+    { enun: '7. Un elemento está en el periodo 3. Eso significa que sus átomos tienen…',
+      ops: ['3 niveles de energía ocupados', '3 protones', '3 electrones de valencia', '3 neutrones'], correcta: 0 },
+    { enun: '8. Los elementos del grupo 18 casi no reaccionan porque…',
+      ops: ['No tienen electrones', 'Su nivel exterior ya está completo', 'Son los más pesados de la tabla', 'Pierden electrones con mucha facilidad'], correcta: 1 },
+    { enun: '9. El carbono-12 y el carbono-14 son el mismo elemento porque…',
+      ops: ['Tienen el mismo número de neutrones', 'Tienen la misma masa', 'Tienen el mismo número de protones', 'Ocupan columnas distintas de la tabla'], correcta: 2 },
+    { enun: '10. El ion Ca²⁺ procede de un átomo de calcio de número atómico 20. Ese ion tiene…',
+      ops: ['20 protones y 18 electrones', '18 protones y 20 electrones', '22 protones y 20 electrones', '20 protones y 22 electrones'], correcta: 0 },
+    { enun: '11. Un metal y un no metal se combinan entre sí. El enlace que se forma es…',
+      ops: ['Covalente', 'Metálico', 'Iónico', 'No se forma ningún enlace'], correcta: 2 },
+    { enun: '12. La diferencia esencial entre el enlace iónico y el covalente es que…',
+      ops: ['En el iónico los electrones se transfieren y en el covalente se comparten', 'En el iónico intervienen neutrones y en el covalente protones', 'El iónico solo ocurre entre gases nobles', 'El covalente cambia el número atómico de los átomos'], correcta: 0 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta'); });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = 'Correcto.';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 8) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Aprobado. Puede continuar a la Lección 5.2.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repase la lección e intente de nuevo (se requieren 8).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

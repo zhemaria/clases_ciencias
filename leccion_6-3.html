@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<!--
+  Lección 6.3 · Calor, transferencia térmica y ondas
+  Spanish ASE Science · Unidad 6 · Ciencias físicas II: fuerza, movimiento, energía y ondas
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 6.3 · Calor, transferencia térmica y ondas</title>
+<meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    /* Unidad 6 — índigo profundo del plan curricular (--t6 #1e3a8a). Segunda
+       mitad del dominio de Ciencias físicas: se conserva la estructura de la
+       Unidad 5 pero cambia la familia de color, del naranja de la química al
+       índigo de la física, para que el estudiante perciba el cambio de tema
+       sin salir del dominio. */
+    --tema:    #1e3a8a;
+    --tema-d:  #14265e;
+    --tema-bg: #dbe2f7;
+    --tema-bg2:#c3cdf0;
+    --acento:  #3b56c4;
+    --txt:     #222;
+    --bg:      #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ── ENCABEZADO ─────────────────────────────────────────────── */
+  header.principal {
+    background: var(--tema-d);
+    background: linear-gradient(135deg, #0c1738 0%, #14265e 55%, #1e3a8a 100%);
+    color: #ffffff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(12,23,56,.28);
+  }
+  header.principal .ruta {
+    font-size: 13px; color: #ffffff; letter-spacing: .4px; text-transform: uppercase;
+  }
+  header.principal h1 { margin: 8px 0 6px; font-size: 23px; font-weight: 700; color: #ffffff; }
+  header.principal .meta { font-size: 14px; color: #ffffff; }
+
+  .practicas-sp { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sp {
+    display: inline-block; background: #ffffff; color: #14265e;
+    font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 12px;
+    letter-spacing: .3px;
+  }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .diagrama-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+  .materiales {
+    background: #eceff1; border-left: 6px solid #37474f;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .materiales h2 { margin: 0 0 8px; color: #263238; font-size: 18px; }
+  .materiales ul { margin: 8px 0 0; padding-left: 22px; }
+  .materiales li { margin: 5px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+  .resalta { background: var(--tema-bg); padding: 1px 6px; border-radius: 5px; font-weight: 700; color: var(--tema-d); }
+
+  /* ── CAJA DE CONSEJO ─────────────────────────────────────────
+     Matiz fijo (326°, magenta-rosa) e independiente del color de
+     la Unidad: es el único matiz libre en las ocho paletas del
+     plan, de modo que el bloque nunca se funde con el tema.
+     ─────────────────────────────────────────────────────────── */
+  .caja-tip {
+    background: #fce1f0; border-left: 5px solid #9e1c66;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #800d4e; font-size: 15px;
+  }
+  .caja-tip strong { color: #800d4e; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+  .vocabulario {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .vocabulario h2 { margin: 0 0 6px; color: #4527a0; font-size: 18px; }
+  .vocabulario p { color: #311b92; }
+
+  /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+  .lectura {
+    background: #fffdf7; border: 2px solid var(--tema);
+    border-radius: 10px; padding: 6px 22px 18px; margin: 18px 0;
+  }
+  .lectura h2 { color: var(--tema-d); font-size: 19px; }
+  .lectura .fuente { font-size: 13px; color: #555; font-style: italic; }
+  .lectura .texto-adaptado {
+    background: #ffffff; border-left: 5px solid var(--tema-bg);
+    padding: 12px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+  }
+
+  /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+  .enlace-interactivo {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-left: 6px solid var(--tema); border-radius: 10px;
+    padding: 16px 20px; margin: 18px 0; text-decoration: none;
+    color: var(--tema-d); transition: background .15s;
+  }
+  .enlace-interactivo:hover { background: var(--tema-bg2); }
+  .enlace-interactivo .ei-icono { font-size: 26px; line-height: 1; flex-shrink: 0; }
+  .enlace-interactivo .ei-titulo { display: block; font-weight: 700; font-size: 16px; color: var(--tema-d); }
+  .enlace-interactivo .ei-sub { display: block; font-size: 14px; color: #333; margin: 4px 0 8px; }
+  .enlace-interactivo .ei-cta {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 14px; font-weight: 700; padding: 6px 16px; border-radius: 7px;
+  }
+
+  /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+  .pendiente { color: #c62828; font-size: 15px; margin-left: 6px; }
+
+  .reglas { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  .reglas th, .reglas td { border: 1px solid #e0e0e0; padding: 9px 12px; text-align: left; vertical-align: top; }
+  .reglas th { background: var(--tema); color: #ffffff; }
+  .reglas td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #c62828; }
+
+  .btn {
+    background: var(--tema); color: #ffffff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px; font-size: 14px; }
+  .modo-pres { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-pres strong { color: #004d40; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #004d40; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #e3f2fd; border-left: 6px solid #1565c0;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #0d47a1; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #ffffff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #ffffff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #555;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+  footer p { margin: 5px 0; }
+  footer a { color: #14265e; }
+
+      /* ===== Índice interno de la lección (GEDparaHispanos) ===== */
+      .indice {
+        background: #ffffff;
+        border: 1px solid var(--tema-bg);
+        border-left: 5px solid var(--tema-d);
+        border-radius: 8px;
+        padding: 14px 20px;
+        margin: 20px 0;
+      }
+      .indice h2 { margin: 0 0 8px; font-size: 18px; color: var(--tema-d); }
+      .indice ul { list-style: none; margin: 0; padding: 0; columns: 2 260px; column-gap: 28px; }
+      .indice li { margin: 0 0 6px; break-inside: avoid; }
+      .indice a { color: var(--tema-d); font-weight: 600; text-decoration: underline; }
+      .indice a:hover { text-decoration-thickness: 2px; }
+      h2[id] { scroll-margin-top: 16px; }
+      .volver-indice {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        background: var(--tema-d);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        z-index: 50;
+      }
+      .volver-indice:focus-visible, .indice a:focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; }
+      .actividad p { margin: 6px 0 0; }
+      @media print { .volver-indice, .indice { display: none; } }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">GEDparaHispanos · Ciencias · Unidad 6 · Ciencias físicas II: fuerza, movimiento, energía y ondas</div>
+    <h1>Lección 6.3 · Calor, transferencia térmica y ondas</h1>
+    <div class="meta">Tiempo estimado: unas 4 horas · NRS 4–5</div>
+    <div class="practicas-sp">
+      <span class="sp">SP.6 · Expresar información científica</span>
+      <span class="sp">SP.7 · Aplicar fórmulas y notación científica</span>
+    </div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Distinguir el calor de la temperatura y explicar en qué sentido se transfiere siempre el calor.</li>
+      <li>Identificar los tres mecanismos de transferencia térmica: conducción, convección y radiación.</li>
+      <li>Rotular las propiedades de una onda: longitud, amplitud, frecuencia y velocidad.</li>
+      <li>Explicar la relación inversa entre longitud de onda y frecuencia cuando la velocidad es constante.</li>
+      <li>Situar las regiones del espectro electromagnético según su longitud de onda y su energía.</li>
+    </ul>
+  </div>
+
+      <nav class="indice" id="indice" aria-labelledby="indice-titulo">
+        <h2 id="indice-titulo">Contenido de la lección</h2>
+        <ul>
+          <li><a href="#s-material-y-recursos">Material y recursos</a></li>
+          <li><a href="#s-1-calor-y-temperatura-no-son-lo-mismo">1. Calor y temperatura no son lo mismo</a></li>
+          <li><a href="#s-2-los-tres-caminos-del-calor">2. Los tres caminos del calor</a></li>
+          <li><a href="#s-3-las-ondas-y-sus-propiedades">3. Las ondas y sus propiedades</a></li>
+          <li><a href="#s-4-el-espectro-electromagnetico">4. El espectro electromagnético</a></li>
+          <li><a href="#s-vocabulario-tecnico-y-raices">Vocabulario técnico y raíces</a></li>
+          <li><a href="#s-lectura-cientifica">Lectura científica</a></li>
+          <li><a href="#s-tarea">Tarea</a></li>
+          <li><a href="#s-quiz-de-la-leccion-6-3">Quiz de la lección 6.3</a></li>
+          <li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li>
+          <li><a href="#s-cierre-de-la-unidad-6-y-enlace-con-la-unidad-7">Cierre de la Unidad 6 y enlace con la Unidad 7</a></li>
+        </ul>
+      </nav>
+
+  <div class="bloque">
+    <p><strong>De dónde viene esta lección.</strong> La 6.2 terminó en el calor: allí va a parar la energía que la fricción retira del movimiento. Esta lección lo estudia por derecho propio y añade después un asunto nuevo, las <strong>ondas</strong>, que son la otra manera que tiene la energía de trasladarse de un sitio a otro.</p>
+    <p>Vuelve además una herramienta de la Unidad 2. Las longitudes de onda del espectro electromagnético van de kilómetros a diezmilmillonésimas de metro, y esas magnitudes solo se manejan con <span class="resalta">notación científica</span>. Es la misma destreza de la Lección 2.1, ahora aplicada a un contenido nuevo.</p>
+  </div>
+
+  <div class="materiales">
+        <h2 id="s-material-y-recursos"><span aria-hidden="true">📐</span> Material y recursos</h2>
+        <ul>
+          <li>Diagramas de los tres mecanismos de transferencia térmica, con ejemplos cotidianos.</li>
+          <li>El diagrama rotulado de una onda.</li>
+          <li>El espectro electromagnético ordenado por longitud de onda.</li>
+          <li>Datos de eficiencia energética de distintos tipos de bombilla.</li>
+          <li>La calculadora TI-30XS, para el manejo de potencias de diez.</li>
+        </ul>
+        <p><strong>Cómo estudiar esta lección:</strong> las magnitudes del espectro se expresan siempre en notación científica. Conviene repasar antes la Lección 2.1, en especial cómo se comparan dos números escritos en potencias de diez: de eso depende toda la lectura del espectro.</p>
+      </div>
+
+  <h2 class="seccion" id="s-1-calor-y-temperatura-no-son-lo-mismo">1. Calor y temperatura no son lo mismo</h2>
+  <div class="bloque">
+    <p>En el lenguaje corriente se usan casi como sinónimos, y en el examen se distinguen con precisión. La diferencia es la siguiente:</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Comparación entre temperatura y calor según lo que mide cada magnitud, su unidad, de qué depende y un ejemplo aclaratorio.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Temperatura</th>
+          <th scope="col">Calor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Qué mide</td>
+          <td>La energía cinética <strong>media</strong> de las partículas</td>
+          <td>La energía que se <strong>transfiere</strong> de un cuerpo a otro por diferencia de temperatura</td>
+        </tr>
+        <tr>
+          <td>Unidad habitual</td>
+          <td>Grados Celsius (°C)</td>
+          <td>Julios (J), la misma unidad de energía de la Lección 6.2</td>
+        </tr>
+        <tr>
+          <td>¿Depende de la cantidad de materia?</td>
+          <td>No: es un promedio por partícula</td>
+          <td>Sí: cuanta más materia, más energía total puede transferir</td>
+        </tr>
+        <tr>
+          <td>Ejemplo</td>
+          <td>Una taza de té y una bañera de agua pueden estar los dos a 60 °C</td>
+          <td>La bañera contiene muchísima más energía térmica que la taza, y puede transferir mucha más</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>El ejemplo de la última fila es la clave de toda la sección: <span class="resalta">misma temperatura no significa misma cantidad de energía</span>. Una chispa que salta de una hoguera puede estar a mil grados y no quemar, porque su masa es minúscula y la energía que transfiere es despreciable.</p>
+
+    <div class="caja-tip">
+      <strong>El calor tiene un solo sentido de circulación:</strong> siempre va del cuerpo de mayor temperatura al de menor, nunca al revés, y el flujo continúa hasta que ambos igualan su temperatura. Por eso un cubito no «da frío» a la bebida: es la bebida la que le cede calor al cubito. La expresión «entra frío por la ventana» es cómoda pero físicamente incorrecta: lo que ocurre es que sale calor.
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-2-los-tres-caminos-del-calor">2. Los tres caminos del calor</h2>
+  <div class="bloque">
+    <p>El calor puede transferirse por tres mecanismos distintos, y el examen pide reconocer cuál actúa en una situación descrita.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="280" viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Los tres mecanismos de transferencia del calor. Primero, la conducción: el calor viaja por contacto directo a través de un material, como en el mango metálico de una cuchara apoyada en una olla caliente; requiere que haya materia y que las partículas estén en contacto. Segundo, la convección: en un fluido, la porción caliente asciende porque es menos densa y la fría desciende, formando una corriente circular; ocurre en el agua de una olla al hervir y en el aire de una habitación con calefacción. Tercero, la radiación: el calor viaja en forma de ondas electromagnéticas y no necesita ningún material que lo transporte, que es la razón por la que el calor del Sol atraviesa el vacío del espacio.">
+        <rect x="12" y="14" width="220" height="216" rx="10" fill="#eef2fc" stroke="#14265e" stroke-width="2"/>
+        <text x="122" y="42" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#14265e" text-anchor="middle">Conducción</text>
+        <rect x="42" y="120" width="160" height="26" rx="5" fill="#dbe2f7" stroke="#14265e" stroke-width="2"/>
+        <circle cx="42" cy="133" r="15" fill="#1e3a8a"/>
+        <line x1="66" y1="133" x2="176" y2="133" stroke="#1e3a8a" stroke-width="3" stroke-dasharray="8 6"/>
+        <polygon points="176,126 192,133 176,140" fill="#1e3a8a"/>
+        <text x="122" y="176" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Por contacto directo,</text>
+        <text x="122" y="194" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">a través del material.</text>
+        <text x="122" y="216" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e" text-anchor="middle">Cuchara en una olla</text>
+
+        <rect x="244" y="14" width="220" height="216" rx="10" fill="#eef2fc" stroke="#14265e" stroke-width="2"/>
+        <text x="354" y="42" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#14265e" text-anchor="middle">Convección</text>
+        <rect x="290" y="70" width="128" height="86" rx="6" fill="#dbe2f7" stroke="#14265e" stroke-width="2"/>
+        <path d="M 320 146 Q 306 108 320 82" fill="none" stroke="#1e3a8a" stroke-width="3"/>
+        <polygon points="313,86 320,70 327,86" fill="#1e3a8a"/>
+        <path d="M 388 82 Q 402 118 388 146" fill="none" stroke="#1e3a8a" stroke-width="3"/>
+        <polygon points="381,142 388,158 395,142" fill="#1e3a8a"/>
+        <text x="354" y="176" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Lo caliente sube, lo frío baja:</text>
+        <text x="354" y="194" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">se forma una corriente.</text>
+        <text x="354" y="216" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e" text-anchor="middle">Agua hirviendo, aire de un cuarto</text>
+
+        <rect x="476" y="14" width="212" height="216" rx="10" fill="#eef2fc" stroke="#14265e" stroke-width="2"/>
+        <text x="582" y="42" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#14265e" text-anchor="middle">Radiación</text>
+        <circle cx="524" cy="118" r="22" fill="#dbe2f7" stroke="#14265e" stroke-width="3"/>
+        <path d="M 552 100 q 12 10 24 0 q 12 -10 24 0" fill="none" stroke="#1e3a8a" stroke-width="3"/>
+        <path d="M 552 118 q 12 10 24 0 q 12 -10 24 0" fill="none" stroke="#1e3a8a" stroke-width="3"/>
+        <path d="M 552 136 q 12 10 24 0 q 12 -10 24 0" fill="none" stroke="#1e3a8a" stroke-width="3"/>
+        <text x="582" y="176" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">En forma de ondas.</text>
+        <text x="582" y="194" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">No necesita ningún material.</text>
+        <text x="582" y="216" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e" text-anchor="middle">El calor del Sol</text>
+
+        <text x="350" y="262" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#14265e" text-anchor="middle">Solo la radiación atraviesa el vacío: las otras dos necesitan materia</text>
+      </svg>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Los tres mecanismos de transferencia térmica según en qué medio actúan, si necesitan materia y ejemplos cotidianos de cada uno.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Mecanismo</th>
+          <th scope="col">Dónde actúa</th>
+          <th scope="col">¿Necesita materia?</th>
+          <th scope="col">Ejemplos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Conducción</td>
+          <td>Sobre todo en sólidos, en especial en los metales</td>
+          <td>Sí, y además con contacto directo</td>
+          <td>El mango de una cuchara que se calienta; el suelo frío bajo los pies descalzos</td>
+        </tr>
+        <tr>
+          <td>Convección</td>
+          <td>En líquidos y gases, que pueden moverse</td>
+          <td>Sí, y el material debe poder circular</td>
+          <td>El agua que hierve; el aire caliente que sube al techo; las brisas costeras</td>
+        </tr>
+        <tr>
+          <td>Radiación</td>
+          <td>En cualquier medio, incluido el vacío</td>
+          <td>No</td>
+          <td>El calor del Sol; el que se siente frente a una hoguera sin tocarla</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-atencion">
+      <strong>La pregunta que resuelve la mayoría de los ítems</strong> es si hay materia de por medio y si esa materia se mueve. Si el calor atraviesa el vacío, solo puede ser radiación: es lo que ocurre con el Sol, y es la razón por la que su energía llega hasta la Tierra a través de ciento cincuenta millones de kilómetros de espacio vacío. Conviene tener presente además que en muchas situaciones cotidianas <em>actúa más de un mecanismo a la vez</em>: en una olla al fuego hay conducción por el metal, convección en el agua y radiación desde la llama.
+    </div>
+
+    <p>La convección explica también algo que la Lección 5.2 dejó preparado: la porción caliente de un fluido sube porque, al calentarse, sus partículas se separan y su <strong>densidad</strong> disminuye. Es la misma regla de flotación de entonces, aplicada ahora al aire y al agua.</p>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Calor y transferencia</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Una taza de té y una bañera de agua están ambas a 60 °C. Se puede afirmar que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">La taza contiene más energía térmica</div>
+        <div class="opcion" data-op="b">Tienen la misma temperatura, pero la bañera contiene mucha más energía térmica</div>
+        <div class="opcion" data-op="c">La bañera está más caliente</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. El calor del Sol llega a la Tierra atravesando el vacío del espacio. Eso solo es posible por…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Conducción</div>
+        <div class="opcion" data-op="b">Convección</div>
+        <div class="opcion" data-op="c">Radiación</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. Al colocar un cubito de hielo en un vaso de agua, lo que ocurre en realidad es que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">El agua cede calor al cubito, y por eso el agua se enfría</div>
+        <div class="opcion" data-op="b">El cubito transmite frío al agua</div>
+        <div class="opcion" data-op="c">El frío y el calor se intercambian en las dos direcciones por igual</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+    <a class="enlace-interactivo" href="https://zhemaria.github.io/fisica/luz_led" target="_blank" rel="noopener"
+     aria-label="Abrir el interactivo luz LED (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">💡</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Bombillas: de energía eléctrica a luz y calor</span>
+      <span class="ei-sub">En este interactivo practicarás responderás preguntas como ¿cuál bombilla convierte más electricidad en luz? ¿Cuál desperdicia más en calor? ¿Por qué la incandescente se calienta mucho más? ¿Por qué se dice que la bombilla LED es más eficiente?</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <h2 class="seccion" id="s-3-las-ondas-y-sus-propiedades">3. Las ondas y sus propiedades</h2>
+  <div class="bloque">
+    <p>Una <strong>onda</strong> es una perturbación que transporta energía de un lugar a otro <span class="resalta">sin transportar materia</span>. Un corcho que flota sobre el agua sube y baja al paso de las olas, pero no viaja con ellas: lo que avanza es la energía, no el agua ni el corcho.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="300" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama rotulado de una onda. La línea horizontal central es la posición de reposo. Los puntos más altos de la curva se llaman crestas y los más bajos, valles. La longitud de onda es la distancia entre dos crestas consecutivas, o entre dos valles consecutivos, y se representa con la letra griega lambda. La amplitud es la distancia vertical desde la posición de reposo hasta una cresta, e indica la energía que transporta la onda. La frecuencia es el número de ondas completas que pasan por un punto en un segundo y se mide en hercios.">
+        <line x1="40" y1="150" x2="660" y2="150" stroke="#222" stroke-width="2" stroke-dasharray="6 5"/>
+        <text x="668" y="146" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="end">reposo</text>
+        <path d="M 60 150 Q 105 50 150 150 Q 195 250 240 150 Q 285 50 330 150 Q 375 250 420 150 Q 465 50 510 150 Q 555 250 600 150" fill="none" stroke="#1e3a8a" stroke-width="4"/>
+
+        <circle cx="105" cy="86" r="6" fill="#14265e"/>
+        <text x="105" y="72" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e" text-anchor="middle">Cresta</text>
+        <circle cx="195" cy="214" r="6" fill="#14265e"/>
+        <text x="195" y="238" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e" text-anchor="middle">Valle</text>
+
+        <line x1="105" y1="60" x2="285" y2="60" stroke="#14265e" stroke-width="2"/>
+        <polygon points="111,54 97,60 111,66" fill="#14265e"/>
+        <polygon points="279,54 293,60 279,66" fill="#14265e"/>
+        <text x="195" y="46" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#14265e" text-anchor="middle">Longitud de onda (λ)</text>
+
+        <line x1="465" y1="86" x2="465" y2="150" stroke="#14265e" stroke-width="2"/>
+        <polygon points="459,92 465,78 471,92" fill="#14265e"/>
+        <polygon points="459,144 465,158 471,144" fill="#14265e"/>
+        <text x="530" y="112" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#14265e" text-anchor="middle">Amplitud</text>
+        <text x="540" y="130" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">(energía que transporta)</text>
+
+        <text x="350" y="278" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Frecuencia: cuántas ondas completas pasan por un punto en un segundo · se mide en hercios (Hz)</text>
+      </svg>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Propiedades de una onda con su definición, su unidad y lo que indica cada una.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Propiedad</th>
+          <th scope="col">Qué es</th>
+          <th scope="col">Unidad</th>
+          <th scope="col">Qué indica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Longitud de onda (λ)</td>
+          <td>Distancia entre dos crestas consecutivas</td>
+          <td>Metros (m)</td>
+          <td>El «tamaño» de cada onda</td>
+        </tr>
+        <tr>
+          <td>Amplitud</td>
+          <td>Altura desde el reposo hasta la cresta</td>
+          <td>Metros (m)</td>
+          <td>La energía que transporta: más amplitud, más energía</td>
+        </tr>
+        <tr>
+          <td>Frecuencia (f)</td>
+          <td>Ondas completas que pasan por un punto en un segundo</td>
+          <td>Hercios (Hz)</td>
+          <td>Con qué rapidez se repite la perturbación</td>
+        </tr>
+        <tr>
+          <td>Velocidad (v)</td>
+          <td>Rapidez con que avanza la onda</td>
+          <td>Metros por segundo (m/s)</td>
+          <td>Depende del medio por el que viaja</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="ejemplo">
+      <span class="et">LA RELACIÓN ENTRE LAS TRES</span>
+      <p>Las tres magnitudes se enlazan en una sola fórmula: <span class="resalta">v = λ × f</span>.</p>
+      <p>La consecuencia importante es la siguiente: <strong>si la velocidad no cambia, longitud de onda y frecuencia son inversamente proporcionales</strong>. Si la longitud de onda se reduce a la mitad, la frecuencia se duplica; si la longitud se duplica, la frecuencia cae a la mitad. Ondas más cortas equivalen siempre a frecuencias más altas.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Amplitud y frecuencia son independientes,</strong> y confundirlas es el error más común de esta sección. La amplitud tiene que ver con la <em>intensidad</em>: en el sonido, con el volumen. La frecuencia tiene que ver con la <em>repetición</em>: en el sonido, con lo agudo o grave que se percibe. Subir el volumen de una radio no cambia la nota, y cantar más agudo no significa cantar más fuerte.
+    </div>
+  </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/simulador_ondas/" target="_blank" rel="noopener"
+     aria-label="Abrir el simulador de ondas (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">〰️</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Simulador de ondas</span>
+      <span class="ei-sub">Deslizadores independientes de frecuencia y de amplitud sobre una onda dibujada en tiempo real, con la longitud de onda y la velocidad indicadas en pantalla. Es el recurso que más falta hace de la unidad: la relación inversa entre longitud de onda y frecuencia se ve en un segundo moviendo un deslizador, y la independencia entre amplitud y frecuencia deja de ser una advertencia para convertirse en algo comprobable.</span>
+      <span class="ei-cta">Abrir el simulador <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <h2 class="seccion" id="s-4-el-espectro-electromagnetico">4. El espectro electromagnético</h2>
+  <div class="bloque">
+    <p>La luz visible es solo una franja estrecha de una familia mucho más amplia de ondas, todas de la misma naturaleza y todas viajando en el vacío a la misma velocidad: la de la luz, aproximadamente <span class="resalta">3 × 10⁸ m/s</span>. Lo único que las diferencia es su longitud de onda, y con ella su frecuencia y su energía.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="290" viewBox="0 0 700 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esquema del espectro electromagnético ordenado de izquierda a derecha. En el extremo izquierdo están las ondas de radio, con longitudes de onda muy grandes, del orden de metros o kilómetros, baja frecuencia y baja energía. Siguen las microondas, el infrarrojo, la estrecha franja de la luz visible, el ultravioleta, los rayos X y, en el extremo derecho, los rayos gamma, con longitudes de onda diminutas, alta frecuencia y alta energía. La regla general es que a medida que la longitud de onda disminuye, la frecuencia y la energía aumentan.">
+        <rect x="20" y="70" width="94" height="54" fill="#dbe2f7" stroke="#14265e" stroke-width="2"/>
+        <rect x="114" y="70" width="94" height="54" fill="#cdd7f4" stroke="#14265e" stroke-width="2"/>
+        <rect x="208" y="70" width="94" height="54" fill="#bfcbef" stroke="#14265e" stroke-width="2"/>
+        <rect x="302" y="70" width="60" height="54" fill="#9fb0e6" stroke="#14265e" stroke-width="3"/>
+        <rect x="362" y="70" width="94" height="54" fill="#8296dd" stroke="#14265e" stroke-width="2"/>
+        <rect x="456" y="70" width="94" height="54" fill="#3a4a8f" stroke="#14265e" stroke-width="2"/>
+        <rect x="550" y="70" width="110" height="54" fill="#25305f" stroke="#14265e" stroke-width="2"/>
+
+        <text x="67" y="102" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e" text-anchor="middle">Radio</text>
+        <text x="161" y="102" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e" text-anchor="middle">Microondas</text>
+        <text x="255" y="102" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e" text-anchor="middle">Infrarrojo</text>
+        <text x="332" y="102" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#14265e" text-anchor="middle">Visible</text>
+        <text x="409" y="102" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e" text-anchor="middle">Ultravioleta</text>
+        <text x="503" y="102" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Rayos X</text>
+        <text x="605" y="102" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Rayos gamma</text>
+
+        <text x="67" y="150" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">10³ m</text>
+        <text x="161" y="150" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">10⁻² m</text>
+        <text x="255" y="150" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">10⁻⁵ m</text>
+        <text x="332" y="150" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">10⁻⁷ m</text>
+        <text x="409" y="150" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">10⁻⁸ m</text>
+        <text x="503" y="150" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">10⁻¹⁰ m</text>
+        <text x="605" y="150" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">10⁻¹² m</text>
+        <text x="350" y="46" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e" text-anchor="middle">Longitud de onda aproximada (orden de magnitud)</text>
+
+        <line x1="20" y1="186" x2="646" y2="186" stroke="#14265e" stroke-width="2"/>
+        <polygon points="646,179 662,186 646,193" fill="#14265e"/>
+        <text x="330" y="178" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#14265e" text-anchor="middle">La longitud de onda disminuye →</text>
+        <text x="330" y="212" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#14265e" text-anchor="middle">→ la frecuencia y la energía aumentan</text>
+
+        <text x="20" y="248" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Izquierda: ondas largas, poca energía. Atraviesan obstáculos y se usan para comunicar.</text>
+        <text x="20" y="270" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Derecha: ondas cortísimas, mucha energía. Penetran en la materia y pueden dañar las células.</text>
+      </svg>
+    </div>
+
+    <p>Todo el espectro se ordena con una sola regla, y quien la retiene puede reconstruirlo entero: <span class="resalta">a menor longitud de onda, mayor frecuencia y mayor energía</span>. De ahí se deducen los hechos que el examen pregunta. Las ondas de radio son inofensivas y sirven para transmitir información porque su energía es mínima. Los rayos ultravioleta ya son capaces de dañar la piel. Los rayos X y los gamma, con longitudes de onda de billonésimas de metro, atraviesan el cuerpo y por eso se manejan con protección.</p>
+
+    <div class="caja-tip">
+      <strong>Comparar potencias de diez es toda la destreza que hace falta,</strong> y es la de la Lección 2.1. Entre 10⁻⁵ m del infrarrojo y 10⁻¹² m de los rayos gamma hay siete órdenes de magnitud, es decir, un factor de diez millones. Y conviene recordar que un exponente <em>más negativo</em> significa un número <em>más pequeño</em>: 10⁻¹² es mucho menor que 10⁻⁵, aunque a primera vista el doce parezca el número mayor.
+    </div>
+
+    <div class="caja-atencion">
+      <strong>La franja visible es asombrosamente estrecha.</strong> Todo lo que el ojo humano percibe cabe entre unos 4 × 10⁻⁷ y 7 × 10⁻⁷ metros. Fuera de esa rendija está casi todo el espectro, y sin embargo nos resulta invisible. El infrarrojo, justo al lado, es el que se percibe como calor: por eso una estufa calienta sin necesidad de tocar nada, y por eso la radiación del apartado anterior y las ondas de este son el mismo fenómeno.
+    </div>
+
+    <div class="vocabulario">
+      <h2 id="s-vocabulario-tecnico-y-raices"><span aria-hidden="true">🔤</span> Vocabulario técnico y raíces</h2>
+      <p><strong>Térmico</strong> procede del griego <em>thermós</em>, calor, ya vista en la Unidad 5 con <em>exotérmico</em> y <em>endotérmico</em>. <strong>Conducción</strong> viene del latín <em>conducere</em>, llevar juntamente, la raíz de <em>conducto</em>. <strong>Convección</strong>, de <em>convehere</em>, transportar: nombra el movimiento del propio fluido. <strong>Radiación</strong>, de <em>radius</em>, rayo, la misma de <em>radio</em> y <em>radial</em>. <strong>Amplitud</strong> procede de <em>amplus</em>, amplio o extenso. <strong>Frecuencia</strong>, de <em>frequens</em>, repetido o concurrido: cuántas veces se repite algo. <strong>Infrarrojo</strong> y <strong>ultravioleta</strong> se explican solos una vez conocidos los prefijos: <em>infra-</em>, por debajo, y <em>ultra-</em>, más allá; están situados justo por debajo del rojo y justo más allá del violeta en el orden del espectro. Y <strong>hercio</strong> es otro epónimo, por Heinrich Hertz, con la misma norma de siempre: nombre en minúscula, símbolo en mayúscula, Hz.</p>
+    </div>
+  </div>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/fisica/luz_led" target="_blank" rel="noopener"
+     aria-label="Abrir el interactivo Espectro electromagnético (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">💡</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Espectro electromagnético</span>
+      <span class="ei-sub">En este interactivo practicarás como reconocer las partes de una onda, relacionar longitud de onda, frecuencia y energía con las fórmulas f = c / λ y E = h · f. Situar las siete regiones del espectro según su longitud de onda y su energía y leer y escribir estas magnitudes en notación científica</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  
+
+  <div class="lectura">
+    <h2 id="s-lectura-cientifica"><span aria-hidden="true">📖</span> Lectura científica</h2>
+    <p class="fuente">Texto científico breve adaptado al nivel. Obsérvese qué proporción de la energía se convierte en luz y cuál en calor.</p>
+
+    <div class="texto-adaptado">
+      <p><strong>Dos bombillas y el mismo enchufe</strong></p>
+      <p>Una bombilla incandescente produce luz calentando un filamento metálico hasta que emite radiación visible. El procedimiento funciona, pero es poco eficiente: la mayor parte de la energía eléctrica que consume se emite como radiación infrarroja, es decir, como calor, y solo una pequeña fracción sale en forma de luz visible. Por eso una bombilla de este tipo quema al tacto después de unos minutos encendida.</p>
+      <p>Un diodo emisor de luz, o LED, genera luz por un mecanismo distinto, sin necesidad de llevar un material a alta temperatura. Los ensayos de eficiencia muestran que un LED produce una cantidad de luz comparable consumiendo una fracción de la energía eléctrica, y que su superficie permanece mucho más fría.</p>
+      <p>Un laboratorio comparó ambos tipos midiendo la luz emitida y el consumo eléctrico de cada bombilla en condiciones idénticas de temperatura ambiente y tensión de alimentación. Los resultados mostraron diferencias considerables de eficiencia a favor del LED, coherentes con los datos publicados por los fabricantes.</p>
+      <p>El informe advierte, no obstante, que la eficiencia no es el único criterio para comparar dos bombillas. La duración, el coste inicial, el color de la luz emitida y el comportamiento a bajas temperaturas también intervienen, y el ensayo descrito no midió ninguno de esos aspectos.</p>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">La incandescente convierte en calor la mayor parte de la energía y el LED aprovecha mucha más para producir luz.</div>
+        <div class="opcion" data-op="b">Las bombillas incandescentes no producen luz.</div>
+        <div class="opcion" data-op="c">El LED no consume energía eléctrica.</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. La radiación que emite el filamento y que se percibe como calor corresponde a la región…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">De los rayos X</div>
+        <div class="opcion" data-op="b">De las ondas de radio</div>
+        <div class="opcion" data-op="c">Del infrarrojo</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. ¿Qué variables mantuvo constantes el laboratorio para poder comparar?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">El precio y la duración de cada bombilla</div>
+        <div class="opcion" data-op="b">La temperatura ambiente y la tensión de alimentación</div>
+        <div class="opcion" data-op="c">La cantidad de luz emitida</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">4. ¿Cuál de estas conclusiones se apoya en el texto sin excederlo?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">El LED es superior a la incandescente en todos los aspectos.</div>
+        <div class="opcion" data-op="b">La incandescente debería prohibirse.</div>
+        <div class="opcion" data-op="c">En eficiencia energética el LED resultó mejor, pero el ensayo no midió duración, coste ni color de la luz.</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Ondas y espectro</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Si la longitud de onda se reduce a la mitad y la velocidad no cambia, la frecuencia…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Se reduce a la mitad</div>
+        <div class="opcion" data-op="b">Se duplica</div>
+        <div class="opcion" data-op="c">No cambia</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. Al subir el volumen de una radio sin cambiar de emisora, lo que aumenta es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">La amplitud de la onda sonora</div>
+        <div class="opcion" data-op="b">La frecuencia de la onda sonora</div>
+        <div class="opcion" data-op="c">La velocidad del sonido</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. De estas tres radiaciones, la de mayor energía es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Las ondas de radio</div>
+        <div class="opcion" data-op="b">La luz visible</div>
+        <div class="opcion" data-op="c">Los rayos gamma</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+
+  <div class="caja-tarea">
+    <h2 id="s-tarea"><span aria-hidden="true">✅</span> Tarea</h2>
+    
+    <ul>
+      <li>Diez preguntas sobre transferencia térmica y propiedades de las ondas.</li>
+      <li>Ordenación de las regiones del espectro electromagnético por longitud de onda, con las magnitudes en notación científica.</li>
+      <li>Un párrafo breve explicando la diferencia entre calor y temperatura con un ejemplo propio.</li>
+    </ul>
+    <p>Tiempo estimado: 60 minutos. Evalúe su trabajo con la rúbrica de esta lección.</p>
+  </div>
+
+  <div class="quiz">
+    <h2 id="s-quiz-de-la-leccion-6-3">Quiz de la lección 6.3</h2>
+    <p>Doce preguntas: cuatro de calor y temperatura, cuatro de mecanismos de transferencia y cuatro de propiedades de las ondas y espectro electromagnético. Tiempo sugerido: 25 minutos. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2 id="s-rubrica-analitica-de-la-leccion"><span aria-hidden="true">📊</span> Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <caption class="sr-only">Rúbrica analítica de energía térmica y ondas con cuatro criterios y cuatro niveles de desempeño.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Inicial (1)</th>
+          <th scope="col">En desarrollo (2)</th>
+          <th scope="col">Competente (3)</th>
+          <th scope="col">Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Distingue calor de temperatura</td>
+          <td>Emplea ambos términos como sinónimos.</td>
+          <td>Sabe que son distintos, pero no explica en qué.</td>
+          <td>Define la temperatura como energía media por partícula y el calor como energía transferida.</td>
+          <td>Aplica además la distinción a un caso de igual temperatura y distinta cantidad de energía.</td>
+        </tr>
+        <tr>
+          <td>Identifica el mecanismo de transferencia</td>
+          <td>Asigna los mecanismos al azar.</td>
+          <td>Reconoce la conducción, pero confunde convección con radiación.</td>
+          <td>Clasifica correctamente los tres mecanismos y justifica con la presencia o ausencia de materia.</td>
+          <td>Detecta además las situaciones en que actúa más de un mecanismo a la vez.</td>
+        </tr>
+        <tr>
+          <td>Rotula las propiedades de una onda</td>
+          <td>No distingue las partes del diagrama.</td>
+          <td>Identifica cresta y valle, pero confunde amplitud con longitud de onda.</td>
+          <td>Rotula longitud, amplitud y frecuencia con sus unidades correctas.</td>
+          <td>Explica además que amplitud y frecuencia son independientes entre sí.</td>
+        </tr>
+        <tr>
+          <td>Relaciona longitud de onda, frecuencia y energía</td>
+          <td>Supone que las tres magnitudes crecen juntas.</td>
+          <td>Enuncia la relación inversa, pero no la aplica al espectro.</td>
+          <td>Ordena el espectro y predice el efecto de reducir la longitud de onda.</td>
+          <td>Compara magnitudes en notación científica y deduce de ahí el riesgo de cada radiación.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2 id="s-cierre-de-la-unidad-6-y-enlace-con-la-unidad-7">Cierre de la Unidad 6 y enlace con la Unidad 7</h2>
+    <p>Con esta lección se cierra la Unidad 6 y queda completo el dominio de <strong>Ciencias físicas</strong>, el segundo de mayor peso del examen. Las seis lecciones de las unidades 5 y 6 recorrieron una sola línea: de qué está hecha la materia, cómo se transforma, qué hace que se mueva, cuánta energía cuesta moverla y cómo esa energía se transmite. Y una idea las atraviesa todas: <strong>nada se crea ni se destruye</strong>, ni los átomos de la 5.3 ni la energía de la 6.2.</p>
+    <p>La <strong>Unidad 7 · Ciencias de la Tierra y el espacio</strong> abre el último dominio de contenido, con la tectónica, la atmósfera y el clima, y el sistema solar. Es el dominio de menor peso en el examen, un veinte por ciento, pero el que más se apoya en lo ya visto: la <strong>radiación</strong> de esta lección explicará el efecto invernadero, la <strong>convección</strong> explicará tanto las corrientes del manto terrestre como los vientos, y la <strong>retroalimentación positiva</strong> que se estudió en la Lección 3.3 volverá como el mecanismo central del cambio climático.</p>
+  </div>
+
+  <footer>
+    <p>GEDparaHispanos · Ciencias · Unidad 6 · Lección 6.3</p>
+    <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+    <p>© 2026. Esta obra está licenciada bajo
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons
+      Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+  </footer>
+
+
+</div>
+
+<a href="#indice" class="volver-indice" aria-label="Volver al contenido de la lección">↑ Índice</a>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = 'Correcto. Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Quiz: 4 de calor y temperatura, 4 de mecanismos de transferencia,
+     4 de propiedades de ondas y espectro. Umbral 8 de 12.
+     Coincide exactamente con lo que especifica el plan curricular aprobado
+     para esta lección: no hay desviación que registrar. ---- */
+  var preguntasQuiz = [
+    { enun: '1. La temperatura de un cuerpo mide…',
+      ops: ['La energía cinética media de sus partículas', 'La cantidad total de energía que contiene', 'Su masa', 'La energía que transfiere a otro cuerpo'], correcta: 0 },
+    { enun: '2. El calor es…',
+      ops: ['Una sustancia que contienen los cuerpos calientes', 'La energía que se transfiere entre dos cuerpos por diferencia de temperatura', 'Lo mismo que la temperatura', 'Una propiedad que solo tienen los metales'], correcta: 1 },
+    { enun: '3. El calor se transfiere siempre…',
+      ops: ['Del cuerpo de menor al de mayor temperatura', 'En ambos sentidos por igual', 'Del cuerpo de mayor al de menor temperatura', 'Solo cuando hay contacto físico'], correcta: 2 },
+    { enun: '4. Una taza de té y una bañera están ambas a 60 °C. Se puede afirmar que…',
+      ops: ['La taza tiene mayor temperatura', 'La bañera tiene mayor temperatura', 'La taza contiene más energía térmica', 'Tienen igual temperatura, pero la bañera contiene más energía térmica'], correcta: 3 },
+    { enun: '5. El mango de una cuchara metálica se calienta al dejarla dentro de una olla. Ese mecanismo es…',
+      ops: ['Conducción', 'Convección', 'Radiación', 'Ninguno: la cuchara genera su propio calor'], correcta: 0 },
+    { enun: '6. En una olla con agua hirviendo, el agua caliente sube y la fría baja. Ese mecanismo es…',
+      ops: ['Conducción', 'Convección', 'Radiación', 'Sublimación'], correcta: 1 },
+    { enun: '7. El único mecanismo capaz de transferir calor a través del vacío es…',
+      ops: ['La conducción', 'La convección', 'La radiación', 'Los tres por igual'], correcta: 2 },
+    { enun: '8. En la convección, la porción caliente de un fluido asciende porque…',
+      ops: ['Pesa más', 'Se solidifica', 'Pierde masa', 'Su densidad disminuye al calentarse'], correcta: 3 },
+    { enun: '9. La distancia entre dos crestas consecutivas de una onda se denomina…',
+      ops: ['Longitud de onda', 'Amplitud', 'Frecuencia', 'Velocidad'], correcta: 0 },
+    { enun: '10. Si la longitud de onda disminuye y la velocidad se mantiene, la frecuencia…',
+      ops: ['Disminuye', 'Aumenta', 'No cambia', 'Se anula'], correcta: 1 },
+    { enun: '11. De estas regiones del espectro, la de mayor longitud de onda es…',
+      ops: ['Los rayos gamma', 'La luz visible', 'Las ondas de radio', 'Los rayos X'], correcta: 2 },
+    { enun: '12. A medida que la longitud de onda disminuye a lo largo del espectro electromagnético…',
+      ops: ['La energía disminuye', 'La frecuencia disminuye', 'La velocidad en el vacío disminuye', 'La frecuencia y la energía aumentan'], correcta: 3 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta'); });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = 'Correcto.';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 8) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Aprobado. Ha completado la Unidad 6 y puede continuar a la Unidad 7.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repase la lección e intente de nuevo (se requieren 8).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

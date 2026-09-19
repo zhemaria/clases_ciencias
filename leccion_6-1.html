@@ -1,0 +1,1620 @@
+<!doctype html>
+<!--
+  Lección 6.1 · Las leyes de Newton, fuerza y fricción
+  Spanish ASE Science · Unidad 6 · Ciencias físicas II: fuerza, movimiento, energía y ondas
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lección 6.1 · Las leyes de Newton, fuerza y fricción</title>
+    <meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago" />
+    <meta name="license" content="CC BY-NC-SA 4.0" />
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" />
+    <style>
+      :root {
+        /* Unidad 6 — índigo profundo del plan curricular (--t6 #1e3a8a). Segunda
+       mitad del dominio de Ciencias físicas: se conserva la estructura de la
+       Unidad 5 pero cambia la familia de color, del naranja de la química al
+       índigo de la física, para que el estudiante perciba el cambio de tema
+       sin salir del dominio. */
+        --tema: #1e3a8a;
+        --tema-d: #14265e;
+        --tema-bg: #dbe2f7;
+        --tema-bg2: #c3cdf0;
+        --acento: #3b56c4;
+        --txt: #222;
+        --bg: #f5f7fa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        margin: 0;
+        background: var(--bg);
+        color: var(--txt);
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      .contenedor {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* ── ENCABEZADO ─────────────────────────────────────────────── */
+      header.principal {
+        background: var(--tema-d);
+        background: linear-gradient(135deg, #0c1738 0%, #14265e 55%, #1e3a8a 100%);
+        color: #ffffff;
+        padding: 32px 30px;
+        border-radius: 14px;
+        margin-bottom: 22px;
+        box-shadow: 0 4px 14px rgba(12, 23, 56, 0.28);
+      }
+      header.principal .ruta {
+        font-size: 13px;
+        color: #ffffff;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+      header.principal h1 {
+        margin: 8px 0 6px;
+        font-size: 23px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+      header.principal .meta {
+        font-size: 14px;
+        color: #ffffff;
+      }
+
+      .practicas-sp {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .sp {
+        display: inline-block;
+        background: #ffffff;
+        color: #14265e;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 12px;
+        letter-spacing: 0.3px;
+      }
+
+      h2.seccion {
+        color: var(--tema-d);
+        font-size: 21px;
+        margin: 34px 0 12px;
+        padding-bottom: 6px;
+        border-bottom: 3px solid var(--tema-bg);
+      }
+      h3 {
+        color: var(--tema-d);
+        font-size: 17px;
+        margin: 20px 0 8px;
+      }
+
+      .caja-objetivos {
+        background: var(--tema-bg);
+        border-left: 6px solid var(--tema);
+        padding: 18px 22px;
+        border-radius: 0 10px 10px 0;
+        margin-bottom: 22px;
+      }
+      .caja-objetivos h2 {
+        margin: 0 0 10px;
+        color: var(--tema-d);
+        font-size: 19px;
+      }
+      .caja-objetivos ul {
+        margin: 0;
+        padding-left: 22px;
+      }
+      .caja-objetivos li {
+        margin: 5px 0;
+      }
+
+      .bloque {
+        background: #fff;
+        border-radius: 10px;
+        padding: 4px 24px 18px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
+        margin-bottom: 18px;
+      }
+      p {
+        margin: 10px 0;
+      }
+
+      .diagrama-wrap {
+        text-align: center;
+        margin: 16px 0;
+        overflow-x: auto;
+      }
+
+      /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+      .materiales {
+        background: #eceff1;
+        border-left: 6px solid #37474f;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 18px 0;
+      }
+      .materiales h2 {
+        margin: 0 0 8px;
+        color: #263238;
+        font-size: 18px;
+      }
+      .materiales ul {
+        margin: 8px 0 0;
+        padding-left: 22px;
+      }
+      .materiales li {
+        margin: 5px 0;
+      }
+
+      .ejemplo {
+        background: #fafafa;
+        border: 1px solid #e3e3e3;
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin: 14px 0;
+      }
+      .ejemplo .et {
+        display: inline-block;
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 12px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+        letter-spacing: 0.4px;
+      }
+      .paso {
+        margin: 7px 0;
+        padding-left: 30px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: var(--tema-bg);
+        color: var(--tema-d);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        text-align: center;
+        line-height: 22px;
+      }
+      .resalta {
+        background: var(--tema-bg);
+        padding: 1px 6px;
+        border-radius: 5px;
+        font-weight: 700;
+        color: var(--tema-d);
+      }
+
+      /* ── CAJA DE CONSEJO ─────────────────────────────────────────
+     Matiz fijo (326°, magenta-rosa) e independiente del color de
+     la Unidad: es el único matiz libre en las ocho paletas del
+     plan, de modo que el bloque nunca se funde con el tema.
+     ─────────────────────────────────────────────────────────── */
+      .caja-tip {
+        background: #fce1f0;
+        border-left: 5px solid #9e1c66;
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 14px 0;
+        color: #800d4e;
+        font-size: 15px;
+      }
+      .caja-tip strong {
+        color: #800d4e;
+      }
+
+      .caja-atencion {
+        background: #fff8e1;
+        border-left: 5px solid #f9a825;
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 14px 0;
+        font-size: 15px;
+        color: #5c3900;
+      }
+      .caja-atencion strong {
+        color: #5c3900;
+      }
+
+      /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+      .vocabulario {
+        background: #ede7f6;
+        border-left: 6px solid #5e35b1;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 18px 0;
+      }
+      .vocabulario h2 {
+        margin: 0 0 6px;
+        color: #4527a0;
+        font-size: 18px;
+      }
+      .vocabulario p {
+        color: #311b92;
+      }
+
+      /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+      .lectura {
+        background: #fffdf7;
+        border: 2px solid var(--tema);
+        border-radius: 10px;
+        padding: 6px 22px 18px;
+        margin: 18px 0;
+      }
+      .lectura h2 {
+        color: var(--tema-d);
+        font-size: 19px;
+      }
+      .lectura .fuente {
+        font-size: 13px;
+        color: #555;
+        font-style: italic;
+      }
+      .lectura .texto-adaptado {
+        background: #ffffff;
+        border-left: 5px solid var(--tema-bg);
+        padding: 12px 18px;
+        margin: 12px 0;
+        border-radius: 0 8px 8px 0;
+      }
+
+      /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+      .enlace-interactivo {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        background: var(--tema-bg);
+        border: 2px solid var(--tema);
+        border-left: 6px solid var(--tema);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 18px 0;
+        text-decoration: none;
+        color: var(--tema-d);
+        transition: background 0.15s;
+      }
+      .enlace-interactivo:hover {
+        background: var(--tema-bg2);
+      }
+      .enlace-interactivo .ei-icono {
+        font-size: 26px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .enlace-interactivo .ei-titulo {
+        display: block;
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--tema-d);
+      }
+      .enlace-interactivo .ei-sub {
+        display: block;
+        font-size: 14px;
+        color: #333;
+        margin: 4px 0 8px;
+      }
+      .enlace-interactivo .ei-cta {
+        display: inline-block;
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 6px 16px;
+        border-radius: 7px;
+      }
+
+      /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+      .pendiente {
+        color: #c62828;
+        font-size: 15px;
+        margin-left: 6px;
+      }
+
+      .reglas {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .reglas th,
+      .reglas td {
+        border: 1px solid #e0e0e0;
+        padding: 9px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .reglas th {
+        background: var(--tema);
+        color: #ffffff;
+      }
+      .reglas td:first-child {
+        background: var(--tema-bg);
+        font-weight: 600;
+        color: var(--tema-d);
+      }
+
+      .practica {
+        background: var(--tema-bg2);
+        border: 1px dashed var(--tema);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 18px 0;
+      }
+      .practica h3 {
+        margin-top: 0;
+        color: var(--tema-d);
+      }
+      .pregunta {
+        margin: 14px 0;
+      }
+      .pregunta .enun {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .opcion {
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 9px 14px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .opcion:hover {
+        border-color: var(--tema);
+      }
+      .opcion.correcta {
+        border-color: #2e7d32;
+        background: #e8f5e9;
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: #c62828;
+        background: #ffebee;
+      }
+      .opcion.elegida {
+        border-color: var(--tema);
+      }
+      .fb {
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        display: none;
+      }
+      .fb.ok {
+        color: #1b5e20;
+      }
+      .fb.no {
+        color: #c62828;
+      }
+
+      .btn {
+        background: var(--tema);
+        color: #ffffff;
+        border: none;
+        padding: 9px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: inherit;
+        margin-top: 8px;
+      }
+      .btn:hover {
+        background: var(--tema-d);
+      }
+      .btn.sec {
+        background: #546e7a;
+      }
+      .btn.sec:hover {
+        background: #37474f;
+      }
+
+      .modalidad {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 12px 0;
+      }
+      .modo {
+        flex: 1;
+        min-width: 230px;
+        border-radius: 9px;
+        padding: 14px 16px;
+        font-size: 14px;
+      }
+      .modo-pres {
+        background: #e0f2f1;
+        border-left: 5px solid #00695c;
+      }
+      .modo-pres strong {
+        color: #004d40;
+      }
+      .modo-virt {
+        background: #f3e5f5;
+        border-left: 5px solid #6a1b9a;
+      }
+      .modo-virt strong {
+        color: #4a148c;
+      }
+      .modo h3 {
+        margin: 0 0 6px;
+        font-size: 15px;
+      }
+      .modo-pres h3 {
+        color: #004d40;
+      }
+      .modo-virt h3 {
+        color: #4a148c;
+      }
+
+      .actividad {
+        margin-bottom: 18px;
+      }
+      .actividad > .titulo-act {
+        font-weight: 700;
+        color: var(--tema-d);
+        font-size: 15px;
+        background: var(--tema-bg);
+        padding: 7px 14px;
+        border-radius: 7px;
+      }
+
+      .caja-tarea {
+        background: #e3f2fd;
+        border-left: 6px solid #1565c0;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 20px 0;
+      }
+      .caja-tarea h2 {
+        margin-top: 0;
+        color: #0d47a1;
+      }
+
+      .quiz {
+        background: #fff;
+        border: 2px solid var(--tema);
+        border-radius: 12px;
+        padding: 8px 24px 20px;
+        margin: 22px 0;
+      }
+      .quiz h2 {
+        color: var(--tema-d);
+      }
+      #resultado-quiz {
+        font-size: 17px;
+        font-weight: 700;
+        margin: 14px 0;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        display: none;
+      }
+      #resultado-quiz.aprob {
+        background: #e8f5e9;
+        color: #1b5e20;
+      }
+      #resultado-quiz.repro {
+        background: #ffebee;
+        color: #b71c1c;
+      }
+
+      .rubrica {
+        margin: 22px 0;
+        overflow-x: auto;
+      }
+      .rubrica h2 {
+        color: var(--tema-d);
+      }
+      table.tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+      }
+      table.tabla-rubrica th,
+      table.tabla-rubrica td {
+        border: 1px solid #e0e0e0;
+        padding: 8px 10px;
+        vertical-align: top;
+      }
+      table.tabla-rubrica th {
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+      table.tabla-rubrica td:first-child {
+        background: var(--tema-bg);
+        font-weight: 600;
+        color: var(--tema-d);
+      }
+
+      .cierre {
+        background: #263238;
+        color: #eceff1;
+        border-radius: 12px;
+        padding: 22px 26px;
+        margin: 24px 0 10px;
+      }
+      .cierre h2 {
+        color: #ffffff;
+        margin-top: 0;
+      }
+      .cierre strong {
+        color: #9bff8f;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: #555;
+        font-size: 13px;
+        border-top: 1px solid #ddd;
+        margin-top: 20px;
+      }
+      footer p {
+        margin: 5px 0;
+      }
+      footer a {
+        color: #14265e;
+      }
+
+      /* ===== Índice interno de la lección (GEDparaHispanos) ===== */
+      .indice {
+        background: #ffffff;
+        border: 1px solid var(--tema-bg);
+        border-left: 5px solid var(--tema-d);
+        border-radius: 8px;
+        padding: 14px 20px;
+        margin: 20px 0;
+      }
+      .indice h2 { margin: 0 0 8px; font-size: 18px; color: var(--tema-d); }
+      .indice ul { list-style: none; margin: 0; padding: 0; columns: 2 260px; column-gap: 28px; }
+      .indice li { margin: 0 0 6px; break-inside: avoid; }
+      .indice a { color: var(--tema-d); font-weight: 600; text-decoration: underline; }
+      .indice a:hover { text-decoration-thickness: 2px; }
+      h2[id] { scroll-margin-top: 16px; }
+      .volver-indice {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        background: var(--tema-d);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        z-index: 50;
+      }
+      .volver-indice:focus-visible, .indice a:focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; }
+      .actividad p { margin: 6px 0 0; }
+      @media print { .volver-indice, .indice { display: none; } }
+    </style>
+  </head>
+  <body>
+    <div class="contenedor">
+      <header class="principal">
+        <div class="ruta">GEDparaHispanos · Ciencias · Unidad 6 · Ciencias físicas II: fuerza, movimiento, energía y ondas</div>
+        <h1>Lección 6.1 · Las leyes de Newton, fuerza y fricción</h1>
+        <div class="meta">Tiempo estimado: unas 4 horas · NRS 4–5</div>
+        <div class="practicas-sp">
+          <span class="sp">SP.7 · Aplicar fórmulas y despejar variables</span>
+          <span class="sp">SP.6 · Leer gráficas y expresar resultados</span>
+        </div>
+      </header>
+
+      <div class="caja-objetivos">
+        <h2>Objetivos de la lección</h2>
+        <ul>
+          <li>Enunciar las tres leyes de Newton y aplicarlas a situaciones cotidianas.</li>
+          <li>Calcular la fuerza neta a partir de varias fuerzas concurrentes, teniendo en cuenta la dirección.</li>
+          <li>Aplicar y despejar la fórmula F = m · a según la variable que pida el problema.</li>
+          <li>Expresar el resultado con las unidades correctas: newtons, kilogramos y metros por segundo al cuadrado.</li>
+          <li>Explicar el efecto de la fricción sobre el movimiento y leer una gráfica de velocidad frente a tiempo.</li>
+        </ul>
+      </div>
+
+      <nav class="indice" id="indice" aria-labelledby="indice-titulo">
+        <h2 id="indice-titulo">Contenido de la lección</h2>
+        <ul>
+          <li><a href="#s-material-y-recursos">Material y recursos</a></li>
+          <li><a href="#s-1-fuerza-y-fuerza-neta">1. Fuerza y fuerza neta</a></li>
+          <li><a href="#s-2-las-tres-leyes-de-newton">2. Las tres leyes de Newton</a></li>
+          <li><a href="#s-3-f-m-a-y-sus-tres-despejes">3. F = m · a y sus tres despejes</a></li>
+          <li><a href="#s-4-la-friccion">4. La fricción</a></li>
+          <li><a href="#s-vocabulario-tecnico-y-raices">Vocabulario técnico y raíces</a></li>
+          <li><a href="#s-lectura-cientifica">Lectura científica</a></li>
+          <li><a href="#s-tarea">Tarea</a></li>
+          <li><a href="#s-quiz-de-la-leccion-6-1">Quiz de la lección 6.1</a></li>
+          <li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li>
+          <li><a href="#s-cierre-de-la-leccion-y-enlace-con-la-6-2">Cierre de la lección y enlace con la 6.2</a></li>
+        </ul>
+      </nav>
+
+      <div class="bloque">
+        <p>
+          <strong>Segunda mitad del dominio.</strong>
+          La Unidad 5 trabajó de qué está hecha la materia y cómo se transforma. Esta unidad se ocupa de lo que le ocurre cuando algo la
+          <strong>empuja</strong>
+          : fuerza, movimiento, energía y ondas.
+        </p>
+        <p>
+          La herramienta central vuelve a ser la de la Lección 5.2. Allí se aplicó el despeje a la fórmula de la densidad; aquí se aplica a F = m · a, y en la 6.2 a las fórmulas de trabajo y energía.
+          El procedimiento es idéntico y ya se domina: lo que cambia es la magnitud física y, sobre todo,
+          <span class="resalta">la unidad en que se expresa el resultado</span>
+          .
+        </p>
+      </div>
+
+      <div class="materiales">
+        <h2 id="s-material-y-recursos"><span aria-hidden="true">📐</span> Material y recursos</h2>
+        <ul>
+          <li>Diagramas de cuerpo libre sencillos, con las fuerzas representadas como flechas rotuladas.</li>
+          <li>La hoja de fórmulas científicas del GED<sup>®</sup>.</li>
+          <li>Situaciones cotidianas documentadas: frenar un automóvil, empujar una caja, el cinturón de seguridad.</li>
+          <li>Gráficas de velocidad frente a tiempo.</li>
+          <li>La calculadora TI-30XS.</li>
+        </ul>
+        <p><strong>Cómo estudiar esta lección:</strong> cada ley se presenta con una situación real antes que con su enunciado formal. Reconozca primero el fenómeno en algo que ya ha vivido y solo después lea la formulación de la ley que lo explica.</p>
+      </div>
+
+      <h2 class="seccion" id="s-1-fuerza-y-fuerza-neta">1. Fuerza y fuerza neta</h2>
+      <div class="bloque">
+        <p>
+          Una
+          <strong>fuerza</strong>
+          es un empuje o un tirón sobre un objeto. No se ve, pero se reconoce por su efecto: puede poner algo en movimiento, detenerlo, cambiar su dirección o deformarlo. Se mide en
+          <span class="resalta">newtons (N)</span>
+          .
+        </p>
+        <p>
+          Sobre cualquier objeto actúan casi siempre varias fuerzas a la vez, y lo que decide su comportamiento no es cada una por separado sino la
+          <strong>fuerza neta</strong>
+          : el resultado de combinarlas todas. Aquí es imprescindible atender a la dirección, porque las fuerzas en el mismo sentido se suman y las opuestas se restan.
+        </p>
+
+        <div class="diagrama-wrap">
+          <svg
+            width="700"
+            height="300"
+            viewBox="0 0 700 300"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Tres situaciones de fuerza neta sobre una caja. En la primera, dos personas empujan la caja hacia la derecha con treinta newtons cada una: las fuerzas van en el mismo sentido y se suman, de modo que la fuerza neta es de sesenta newtons hacia la derecha y la caja acelera. En la segunda, una fuerza de cincuenta newtons hacia la derecha se opone a otra de cincuenta newtons hacia la izquierda: las fuerzas se restan, la fuerza neta es cero y la caja permanece en reposo o mantiene su velocidad. En la tercera, una fuerza de ochenta newtons hacia la derecha se opone a otra de treinta hacia la izquierda: la fuerza neta es de cincuenta newtons hacia la derecha.">
+            <rect x="70" y="46" width="70" height="52" rx="6" fill="#dbe2f7" stroke="#14265e" stroke-width="3" />
+            <line x1="20" y1="72" x2="62" y2="72" stroke="#1e3a8a" stroke-width="5" />
+            <polygon points="62,64 78,72 62,80" fill="#1e3a8a" />
+            <text x="34" y="42" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e">30 N</text>
+            <line x1="148" y1="72" x2="190" y2="72" stroke="#1e3a8a" stroke-width="5" />
+            <polygon points="190,64 206,72 190,80" fill="#1e3a8a" />
+            <text x="160" y="42" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e">30 N</text>
+            <text x="300" y="66" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#14265e">Mismo sentido: se suman</text>
+            <text x="300" y="88" font-family="Segoe UI, sans-serif" font-size="13" fill="#222">Fuerza neta = 60 N hacia la derecha · la caja acelera</text>
+
+            <rect x="70" y="146" width="70" height="52" rx="6" fill="#dbe2f7" stroke="#14265e" stroke-width="3" />
+            <line x1="20" y1="172" x2="62" y2="172" stroke="#1e3a8a" stroke-width="5" />
+            <polygon points="62,164 78,172 62,180" fill="#1e3a8a" />
+            <text x="34" y="142" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e">50 N</text>
+            <line x1="190" y1="172" x2="148" y2="172" stroke="#1e3a8a" stroke-width="5" />
+            <polygon points="148,164 132,172 148,180" fill="#1e3a8a" />
+            <text x="160" y="142" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e">50 N</text>
+            <text x="300" y="166" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#14265e">Sentidos opuestos e iguales: se anulan</text>
+            <text x="300" y="188" font-family="Segoe UI, sans-serif" font-size="13" fill="#222">Fuerza neta = 0 N · sigue como estaba</text>
+
+            <rect x="70" y="246" width="70" height="52" rx="6" fill="#dbe2f7" stroke="#14265e" stroke-width="3" />
+            <line x1="10" y1="272" x2="62" y2="272" stroke="#1e3a8a" stroke-width="6" />
+            <polygon points="62,263 80,272 62,281" fill="#1e3a8a" />
+            <text x="26" y="242" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e">80 N</text>
+            <line x1="178" y1="272" x2="148" y2="272" stroke="#1e3a8a" stroke-width="4" />
+            <polygon points="148,265 134,272 148,279" fill="#1e3a8a" />
+            <text x="158" y="242" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e">30 N</text>
+            <text x="300" y="266" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#14265e">Opuestas y desiguales: se restan</text>
+            <text x="300" y="288" font-family="Segoe UI, sans-serif" font-size="13" fill="#222">Fuerza neta = 50 N hacia la derecha</text>
+          </svg>
+        </div>
+
+        <div class="caja-tip">
+          <strong>Fuerza neta cero no significa reposo.</strong>
+          Significa que el movimiento
+          <em>no cambia</em>
+          . Un automóvil que circula a velocidad constante por una autopista tiene fuerza neta cero: el empuje del motor iguala exactamente a la resistencia del aire y la fricción. Está en movimiento
+          y, sin embargo, ninguna fuerza domina sobre las demás. Este matiz es la clave de la primera ley y una de las confusiones más comunes del examen.
+        </div>
+        <a
+          class="enlace-interactivo"
+          href="https://zhemaria.github.io/fisica/fuerza_newton/#banco"
+          target="_blank"
+          rel="noopener"
+          aria-label="Abrir el interactivo de trabajo, potencia y energia (se abre en una pestaña nueva)">
+          <span class="ei-icono" aria-hidden="true">🕰️</span>
+          <span class="ei-cuerpo">
+            <span class="ei-titulo">El banco de fuerzas</span>
+            <span class="ei-sub">
+              Conviene reservarlo para el final de la lección, cuando ya se ha discutido la fricción. El péndulo repite el intercambio entre potencial y cinética en cada oscilación, pero con una
+              diferencia visible: cada vuelta alcanza algo menos de altura que la anterior. Ahí se ve, sin fórmula alguna, adónde va la energía que la fricción retira del movimiento.
+            </span>
+            <span class="ei-cta">
+              Abrir el interactivo
+              <span aria-hidden="true">›</span>
+            </span>
+          </span>
+        </a>
+      </div>
+
+      <h2 class="seccion" id="s-2-las-tres-leyes-de-newton">2. Las tres leyes de Newton</h2>
+      <div class="bloque">
+        <p>Cada ley se presenta aquí como el plan indica: primero la situación, después el enunciado.</p>
+
+        <h3>Primera ley · La situación</h3>
+        <p>
+          Un autobús frena de golpe y los pasajeros de pie se van hacia delante. Nadie los empujó. Simplemente venían moviéndose con el autobús y siguieron haciéndolo cuando este se detuvo. Lo mismo
+          explica el cinturón de seguridad: no sujeta al automóvil, sujeta al cuerpo, que tiende a continuar su marcha.
+        </p>
+        <p>
+          <strong>El enunciado.</strong>
+          Un objeto en reposo permanece en reposo, y uno en movimiento continúa moviéndose en línea recta y con velocidad constante,
+          <span class="resalta">mientras no actúe sobre él una fuerza neta</span>
+          . A esa tendencia a mantener el estado de movimiento se la llama
+          <strong>inercia</strong>
+          , y depende de la masa: cuanta más masa, más inercia y más difícil resulta cambiar el movimiento.
+        </p>
+
+        <h3>Segunda ley · La situación</h3>
+        <p>
+          Empujar un carrito de compra vacío con cierta fuerza produce una aceleración notable. Empujarlo lleno con esa misma fuerza produce mucha menos. Y si se empuja el carrito lleno con el doble
+          de fuerza, vuelve a acelerar como al principio.
+        </p>
+        <p>
+          <strong>El enunciado.</strong>
+          La aceleración de un objeto es directamente proporcional a la fuerza neta aplicada e inversamente proporcional a su masa. Se escribe
+          <span class="resalta">F = m · a</span>
+          , y es la fórmula que se trabaja en la sección siguiente.
+        </p>
+
+        <h3>Tercera ley · La situación</h3>
+        <p>
+          Al saltar desde una barca pequeña hacia el muelle, la barca se aleja en sentido contrario. Al disparar una manguera a presión, quien la sostiene siente un empuje hacia atrás. Al caminar, el
+          pie empuja el suelo hacia atrás y el suelo empuja a la persona hacia delante.
+        </p>
+        <p>
+          <strong>El enunciado.</strong>
+          A toda acción corresponde una reacción de igual magnitud y sentido contrario. Las dos fuerzas del par actúan
+          <span class="resalta">sobre objetos distintos</span>
+          , y por eso no se anulan entre sí.
+        </p>
+
+        <table class="reglas">
+          <caption class="sr-only">Las tres leyes de Newton con su idea central, cómo reconocerlas en un enunciado y un ejemplo cotidiano de cada una.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Ley</th>
+              <th scope="col">Idea central</th>
+              <th scope="col">Cómo reconocerla en el enunciado</th>
+              <th scope="col">Ejemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primera (inercia)</td>
+              <td>Sin fuerza neta, el movimiento no cambia</td>
+              <td>Se habla de seguir igual, de resistirse al cambio o de fuerza neta cero</td>
+              <td>El pasajero que se va hacia delante al frenar el autobús</td>
+            </tr>
+            <tr>
+              <td>Segunda (F = m · a)</td>
+              <td>La fuerza neta produce aceleración, tanto menor cuanta más masa</td>
+              <td>Aparecen cantidades: fuerza, masa o aceleración</td>
+              <td>El carrito lleno acelera menos que el vacío con el mismo empuje</td>
+            </tr>
+            <tr>
+              <td>Tercera (acción y reacción)</td>
+              <td>Las fuerzas siempre vienen por pares opuestos, sobre objetos distintos</td>
+              <td>Hay dos objetos que interactúan y uno retrocede</td>
+              <td>La barca que se aleja cuando alguien salta de ella</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="caja-atencion">
+          <strong>La confusión que más se cobra el examen en la tercera ley:</strong>
+          creer que las fuerzas de acción y reacción se anulan. No lo hacen, porque no actúan sobre el mismo objeto. El pie empuja al suelo y el suelo empuja al pie: son dos cuerpos distintos, de modo
+          que cada uno siente su propia fuerza. Solo se anulan entre sí las fuerzas que actúan
+          <em>sobre un mismo objeto</em>
+          , que es lo que se calcula con la fuerza neta.
+        </div>
+      </div>
+
+      <div class="practica">
+        <h3>Práctica interactiva 1 · Fuerza neta y leyes de Newton</h3>
+        <p>Seleccione la respuesta correcta en cada caso.</p>
+
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">1. Sobre una caja actúan 70 N hacia la derecha y 25 N hacia la izquierda. La fuerza neta es…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">95 N hacia la derecha</div>
+            <div class="opcion" data-op="b">45 N hacia la derecha</div>
+            <div class="opcion" data-op="c">45 N hacia la izquierda</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">2. Un camión circula a velocidad constante por una carretera recta. Su fuerza neta es…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Muy grande, porque el camión es pesado</div>
+            <div class="opcion" data-op="b">Igual a su masa</div>
+            <div class="opcion" data-op="c">Cero, porque el movimiento no está cambiando</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">3. Al saltar desde una barca hacia el muelle, la barca se aleja. Eso ilustra…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">La tercera ley: acción y reacción sobre objetos distintos</div>
+            <div class="opcion" data-op="b">La primera ley: la barca tiene inercia</div>
+            <div class="opcion" data-op="c">La segunda ley: la barca tiene poca masa</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+        <a
+          class="enlace-interactivo"
+          href="https://zhemaria.github.io/fisica/fuerza_newton/#leyes"
+          target="_blank"
+          rel="noopener"
+          aria-label="Abrir el interactivo de trabajo, potencia y energia (se abre en una pestaña nueva)">
+          <span class="ei-icono" aria-hidden="true">🕰️</span>
+          <span class="ei-cuerpo">
+            <span class="ei-titulo">Las 3 leyes de Newton</span>
+            <span class="ei-sub">
+              Conviene reservarlo para el final de la lección, cuando ya se ha discutido la fricción. El péndulo repite el intercambio entre potencial y cinética en cada oscilación, pero con una
+              diferencia visible: cada vuelta alcanza algo menos de altura que la anterior. Ahí se ve, sin fórmula alguna, adónde va la energía que la fricción retira del movimiento.
+            </span>
+            <span class="ei-cta">
+              Abrir el interactivo
+              <span aria-hidden="true">›</span>
+            </span>
+          </span>
+        </a>
+      </div>
+
+      <h2 class="seccion" id="s-3-f-m-a-y-sus-tres-despejes">3. F = m · a y sus tres despejes</h2>
+      <div class="bloque">
+        <p>La segunda ley se maneja igual que la densidad de la Lección 5.2: una sola relación escrita de tres maneras, según cuál de las tres cantidades falte.</p>
+
+        <div class="ejemplo">
+          <span class="et">LA FÓRMULA Y SUS TRES FORMAS</span>
+          <div class="paso">
+            <span class="n">1</span>
+            <strong>Para hallar la fuerza:</strong>
+            <span class="resalta">F = m × a</span>
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            <strong>Para hallar la masa:</strong>
+            <span class="resalta">m = F ÷ a</span>
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            <strong>Para hallar la aceleración:</strong>
+            <span class="resalta">a = F ÷ m</span>
+          </div>
+          <p>
+            Las unidades no son opcionales y se corresponden entre sí: la fuerza en
+            <strong>newtons (N)</strong>
+            , la masa en
+            <strong>kilogramos (kg)</strong>
+            y la aceleración en
+            <strong>metros por segundo al cuadrado (m/s²)</strong>
+            . De hecho, un newton se define exactamente así:
+            <span class="resalta">1 N = 1 kg · m/s²</span>
+            , es decir, la fuerza que hace acelerar un kilogramo a un metro por segundo cada segundo.
+          </p>
+        </div>
+
+        <div class="ejemplo">
+          <span class="et">EJEMPLO RESUELTO 1 · Se busca la fuerza</span>
+          <p>Un carrito de 12 kg acelera a 3 m/s². ¿Qué fuerza neta actúa sobre él?</p>
+          <div class="paso">
+            <span class="n">1</span>
+            <strong>Qué falta.</strong>
+            Se dan masa y aceleración y se pide fuerza: la fórmula se usa tal cual, F = m × a.
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            <strong>Sustitución.</strong>
+            F = 12 kg × 3 m/s².
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            <strong>Cálculo.</strong>
+            F =
+            <span class="resalta">36 N</span>
+            . La unidad sale de multiplicar kilogramos por metros por segundo al cuadrado, que es la definición de newton.
+          </div>
+        </div>
+
+        <div class="ejemplo">
+          <span class="et">EJEMPLO RESUELTO 2 · Se busca la aceleración</span>
+          <p>Sobre un objeto de 50 kg actúa una fuerza neta de 200 N. ¿Con qué aceleración se mueve?</p>
+          <div class="paso">
+            <span class="n">1</span>
+            <strong>Qué falta.</strong>
+            Se dan fuerza y masa y se pide aceleración: a = F ÷ m.
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            <strong>Sustitución y cálculo.</strong>
+            a = 200 N ÷ 50 kg =
+            <span class="resalta">4 m/s²</span>
+            .
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            <strong>Comprobación de sentido.</strong>
+            Si la masa fuera el doble, la aceleración debería ser la mitad. Con 100 kg saldrían 2 m/s², que es coherente con lo que anuncia la segunda ley.
+          </div>
+        </div>
+
+        <div class="ejemplo">
+          <span class="et">EJEMPLO RESUELTO 3 · Se busca la masa</span>
+          <p>Una fuerza neta de 90 N produce sobre un cuerpo una aceleración de 6 m/s². ¿Cuál es su masa?</p>
+          <div class="paso">
+            <span class="n">1</span>
+            <strong>Qué falta.</strong>
+            Se dan fuerza y aceleración y se pide masa: m = F ÷ a.
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            <strong>Sustitución y cálculo.</strong>
+            m = 90 N ÷ 6 m/s² =
+            <span class="resalta">15 kg</span>
+            .
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            <strong>Comprobación.</strong>
+            Multiplicando de vuelta: 15 kg × 6 m/s² = 90 N. Toda división se verifica con la multiplicación inversa.
+          </div>
+        </div>
+
+        <div class="caja-tip">
+          <strong>La fuerza que se sustituye es la fuerza neta,</strong>
+          no una fuerza cualquiera del enunciado. Si un problema dice que alguien empuja una caja con 100 N y que la fricción se opone con 40 N, en la fórmula entra 60 N, no 100. Conviene calcular
+          primero la fuerza neta y solo después aplicar F = m · a: es el paso que se olvida con más frecuencia.
+        </div>
+      </div>
+
+      <h2 class="seccion" id="s-4-la-friccion">4. La fricción</h2>
+      <div class="bloque">
+        <p>
+          La
+          <strong>fricción</strong>
+          es la fuerza que aparece cuando dos superficies están en contacto y una tiende a deslizarse sobre la otra. Siempre actúa
+          <span class="resalta">en sentido contrario al movimiento</span>
+          , de modo que su efecto habitual es frenar.
+        </p>
+        <p>
+          Es también la razón por la que la primera ley resulta poco intuitiva. Una caja empujada por el suelo acaba deteniéndose, y eso parece contradecir la idea de que un objeto en movimiento sigue
+          moviéndose. No la contradice: la caja se detiene porque la fricción actúa sobre ella. Sin fricción alguna, seguiría avanzando indefinidamente.
+        </p>
+
+        <table class="reglas">
+          <caption class="sr-only">Situaciones en las que la fricción resulta perjudicial y situaciones en las que resulta imprescindible, con la consecuencia de cada caso.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Papel de la fricción</th>
+              <th scope="col">Situación</th>
+              <th scope="col">Consecuencia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Estorba</td>
+              <td>Las piezas de un motor rozando entre sí</td>
+              <td>Se pierde energía en forma de calor y las piezas se desgastan: por eso se lubrican</td>
+            </tr>
+            <tr>
+              <td>Estorba</td>
+              <td>El aire contra un vehículo en marcha</td>
+              <td>Obliga a gastar más combustible para mantener la velocidad</td>
+            </tr>
+            <tr>
+              <td>Es imprescindible</td>
+              <td>Los frenos de un automóvil</td>
+              <td>Sin fricción entre pastilla y disco no habría manera de detenerlo</td>
+            </tr>
+            <tr>
+              <td>Es imprescindible</td>
+              <td>Caminar, o el neumático sobre el asfalto</td>
+              <td>Sin fricción el pie resbalaría: es lo que ocurre sobre hielo</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          Un detalle que el examen aprovecha: la energía que la fricción «quita» al movimiento no desaparece. Se transforma en
+          <strong>calor</strong>
+          , que es lo que se comprueba al frotarse las manos. Esa idea se retomará en la 6.2 al hablar de conservación de la energía y en la 6.3 al hablar de transferencia térmica.
+        </p>
+
+        <h3>La gráfica de velocidad frente a tiempo</h3>
+        <p>
+          El efecto de una fuerza sobre el movimiento puede leerse directamente en una gráfica, sin cálculo alguno. Basta con mirar la
+          <strong>inclinación</strong>
+          de la línea.
+        </p>
+
+        <div class="diagrama-wrap">
+          <svg
+            width="700"
+            height="300"
+            viewBox="0 0 700 300"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Gráfica de velocidad frente a tiempo con tres tramos. El eje horizontal representa el tiempo y el vertical la velocidad. En el primer tramo la línea sube: la velocidad aumenta, hay aceleración y por tanto una fuerza neta en el sentido del movimiento. En el segundo tramo la línea es horizontal: la velocidad se mantiene constante, no hay aceleración y la fuerza neta es cero, que es la situación descrita por la primera ley. En el tercer tramo la línea baja: la velocidad disminuye, hay desaceleración y la fuerza neta actúa en sentido contrario al movimiento, como ocurre al frenar o por efecto de la fricción.">
+            <line x1="70" y1="240" x2="660" y2="240" stroke="#222" stroke-width="2" />
+            <line x1="70" y1="240" x2="70" y2="40" stroke="#222" stroke-width="2" />
+            <text x="365" y="274" font-family="Segoe UI, sans-serif" font-size="13" fill="#222" text-anchor="middle">Tiempo</text>
+            <text x="34" y="140" font-family="Segoe UI, sans-serif" font-size="13" fill="#222" text-anchor="middle">v</text>
+            <polyline points="70,220 250,90 440,90 620,215" fill="none" stroke="#1e3a8a" stroke-width="4" />
+            <line x1="250" y1="240" x2="250" y2="90" stroke="#c3cdf0" stroke-width="2" stroke-dasharray="5 4" />
+            <line x1="440" y1="240" x2="440" y2="90" stroke="#c3cdf0" stroke-width="2" stroke-dasharray="5 4" />
+            <text x="160" y="70" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#14265e" text-anchor="middle">Sube</text>
+            <text x="160" y="182" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Acelera</text>
+            <text x="160" y="200" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Fuerza neta a favor</text>
+            <text x="345" y="70" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#14265e" text-anchor="middle">Horizontal</text>
+            <text x="345" y="182" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Velocidad constante</text>
+            <text x="345" y="200" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Fuerza neta = 0</text>
+            <text x="540" y="70" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#14265e" text-anchor="middle">Baja</text>
+            <text x="540" y="182" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Frena</text>
+            <text x="540" y="200" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Fuerza neta en contra</text>
+            <text x="365" y="294" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#14265e" text-anchor="middle">
+              La inclinación de la línea informa de la fuerza neta, sin necesidad de calcular
+            </text>
+          </svg>
+        </div>
+
+        <div class="caja-atencion">
+          <strong>Cuidado con el tramo horizontal.</strong>
+          Una línea horizontal en una gráfica de velocidad frente a tiempo no significa que el objeto esté parado: significa que se mueve
+          <em>a velocidad constante</em>
+          . Estaría parado solo si esa línea horizontal coincidiera con el valor cero del eje vertical. Es el mismo cuidado que exigían las mesetas de la curva de calentamiento en la Lección 5.2: lo
+          plano no es lo detenido.
+        </div>
+        <a
+          class="enlace-interactivo"
+          href="https://zhemaria.github.io/fisica/fuerza_newton/#friccion"
+          target="_blank"
+          rel="noopener"
+          aria-label="Abrir el interactivo de trabajo, potencia y energia (se abre en una pestaña nueva)">
+          <span class="ei-icono" aria-hidden="true">🕰️</span>
+          <span class="ei-cuerpo">
+            <span class="ei-titulo">La fricción</span>
+            <span class="ei-sub">
+              Conviene reservarlo para el final de la lección, cuando ya se ha discutido la fricción. El péndulo repite el intercambio entre potencial y cinética en cada oscilación, pero con una
+              diferencia visible: cada vuelta alcanza algo menos de altura que la anterior. Ahí se ve, sin fórmula alguna, adónde va la energía que la fricción retira del movimiento.
+            </span>
+            <span class="ei-cta">
+              Abrir el interactivo
+              <span aria-hidden="true">›</span>
+            </span>
+          </span>
+        </a>
+      </div>
+
+      <div class="vocabulario">
+        <h2 id="s-vocabulario-tecnico-y-raices">
+          <span aria-hidden="true">🔤</span>
+          Vocabulario técnico y raíces
+        </h2>
+        <p>
+          <strong>Inercia</strong>
+          procede del latín
+          <em>iners</em>
+          , inactivo o sin destreza, formado por
+          <em>in-</em>
+          , negación, y
+          <em>ars</em>
+          , arte o habilidad; describe la incapacidad de un cuerpo para cambiar por sí solo su estado de movimiento.
+          <strong>Fricción</strong>
+          viene de
+          <em>fricare</em>
+          , frotar, la misma raíz de
+          <em>friccionar</em>
+          .
+          <strong>Aceleración</strong>
+          procede de
+          <em>celer</em>
+          , rápido, la raíz de
+          <em>celeridad</em>
+          ; en física no significa «ir deprisa» sino
+          <em>cambiar</em>
+          de velocidad, de modo que frenar también es acelerar, con signo contrario.
+          <strong>Newton</strong>
+          es un epónimo: la unidad lleva el apellido de Isaac Newton, y por eso su símbolo va en mayúscula, N, aunque el nombre de la unidad se escriba en minúscula. La misma norma se aplicará al
+          <em>julio</em>
+          y al
+          <em>vatio</em>
+          en la Lección 6.2.
+        </p>
+      </div>
+
+      <a
+        class="enlace-interactivo"
+        href="https://zhemaria.github.io/fisica/fuerza_newton/#preguntas"
+        target="_blank"
+        rel="noopener"
+        aria-label="Abrir la simulación interactiva de movimiento parabólico (se abre en una pestaña nueva)">
+        <span class="ei-icono" aria-hidden="true">🎯</span>
+        <span class="ei-cuerpo">
+          <span class="ei-titulo">Preguntas rápidas</span>
+          <span class="ei-sub">
+            Lanzamiento con ángulo y velocidad ajustables. Conviene abrirlo al final de esta lección: la trayectoria curva es la prueba visual de que una fuerza constante —la gravedad— no detiene el
+            avance horizontal, sino que se suma a él. Permite además comprobar la primera ley en el eje horizontal, donde no actúa ninguna fuerza y la velocidad se mantiene.
+          </span>
+          <span class="ei-cta">
+            Abrir la simulación
+            <span aria-hidden="true">›</span>
+          </span>
+        </span>
+      </a>
+
+      <a
+        class="enlace-interactivo"
+        href="https://zhemaria.github.io/ciencias/cinematica"
+        target="_blank"
+        rel="noopener"
+        aria-label="Abrir la simulación interactiva de movimiento parabólico (se abre en una pestaña nueva)">
+        <span class="ei-icono" aria-hidden="true">🎯</span>
+        <span class="ei-cuerpo">
+          <span class="ei-titulo">Simulación de movimiento parabólico</span>
+          <span class="ei-sub">
+            Lanzamiento con ángulo y velocidad ajustables. Conviene abrirlo al final de esta lección: la trayectoria curva es la prueba visual de que una fuerza constante —la gravedad— no detiene el
+            avance horizontal, sino que se suma a él. Permite además comprobar la primera ley en el eje horizontal, donde no actúa ninguna fuerza y la velocidad se mantiene.
+          </span>
+          <span class="ei-cta">
+            Abrir la simulación
+            <span aria-hidden="true">›</span>
+          </span>
+        </span>
+      </a>
+
+      <div class="lectura">
+        <h2 id="s-lectura-cientifica">
+          <span aria-hidden="true">📖</span>
+          Lectura científica
+        </h2>
+        <p class="fuente">Texto científico breve adaptado al nivel. Obsérvese qué compara el estudio y qué variables no controla.</p>
+
+        <div class="texto-adaptado">
+          <p><strong>La distancia de frenado sobre asfalto mojado</strong></p>
+          <p>
+            La distancia que necesita un automóvil para detenerse depende de dos tramos sucesivos. El primero es el que recorre durante el tiempo de reacción del conductor, antes de que el pie llegue
+            al freno. El segundo es el que recorre ya frenando, y en él la fricción entre los neumáticos y el asfalto es la fuerza que se opone al movimiento.
+          </p>
+          <p>
+            Un organismo de seguridad vial midió la distancia de frenado de un mismo modelo de automóvil sobre una pista de pruebas, a 50 kilómetros por hora, en dos condiciones: asfalto seco y
+            asfalto mojado por riego artificial. Se emplearon neumáticos nuevos y un conductor experimentado, y cada condición se repitió veinte veces.
+          </p>
+          <p>
+            Sobre asfalto seco, la distancia media de frenado fue de 14 metros. Sobre asfalto mojado, de 21 metros. Los responsables del ensayo atribuyeron la diferencia a la reducción de la fricción
+            disponible: la película de agua separa parcialmente el neumático del pavimento.
+          </p>
+          <p>
+            El informe advierte que las cifras corresponden a esas condiciones concretas y que no deben extrapolarse sin más. Con neumáticos desgastados, con otro tipo de pavimento o a mayor
+            velocidad, las distancias aumentan, y el ensayo no midió esas variantes.
+          </p>
+        </div>
+
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Los automóviles no deberían circular con lluvia.</div>
+            <div class="opcion" data-op="b">Sobre asfalto mojado la distancia de frenado fue mayor, y la explicación propuesta es la menor fricción disponible.</div>
+            <div class="opcion" data-op="c">El tiempo de reacción del conductor es la única causa de los accidentes.</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">2. En el tramo de frenado, la fricción actúa…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">En sentido contrario al movimiento, y por eso el automóvil se detiene</div>
+            <div class="opcion" data-op="b">En el mismo sentido del movimiento</div>
+            <div class="opcion" data-op="c">Solo sobre el conductor, no sobre el vehículo</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">3. ¿Qué variable mantuvieron constante los responsables del ensayo para poder comparar?</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">El estado del pavimento</div>
+            <div class="opcion" data-op="b">La cantidad de agua sobre la pista</div>
+            <div class="opcion" data-op="c">El modelo de automóvil, los neumáticos, el conductor y la velocidad inicial</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">4. ¿Cuál de estas conclusiones se apoya en el texto sin excederlo?</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Cualquier automóvil necesita 21 metros para frenar sobre mojado.</div>
+            <div class="opcion" data-op="b">En las condiciones del ensayo, el asfalto mojado alargó la distancia de frenado en unos 7 metros.</div>
+            <div class="opcion" data-op="c">Los neumáticos desgastados frenan igual que los nuevos.</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+      </div>
+
+      <div class="practica">
+        <h3>Práctica interactiva 2 · Cálculo y fricción</h3>
+        <p>Seleccione la respuesta correcta en cada caso.</p>
+
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">1. Un cuerpo de 8 kg recibe una fuerza neta de 40 N. Su aceleración es…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">5 m/s²</div>
+            <div class="opcion" data-op="b">320 m/s²</div>
+            <div class="opcion" data-op="c">0,2 m/s²</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">2. Alguien empuja una caja con 100 N y la fricción se opone con 40 N. En la fórmula F = m · a debe sustituirse…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">100 N, porque es la fuerza aplicada</div>
+            <div class="opcion" data-op="b">140 N, sumando ambas</div>
+            <div class="opcion" data-op="c">60 N, que es la fuerza neta</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">3. En una gráfica de velocidad frente a tiempo, un tramo horizontal por encima del cero indica que el objeto…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Está detenido</div>
+            <div class="opcion" data-op="b">Se mueve a velocidad constante, con fuerza neta cero</div>
+            <div class="opcion" data-op="c">Está acelerando</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+      </div>
+
+      <div class="caja-tarea">
+        <h2 id="s-tarea">
+          <span aria-hidden="true">✅</span>
+          Tarea
+        </h2>
+
+        <ul>
+          <li>Diez problemas de fuerza neta y aceleración, con las tres variables repartidas entre ellos y la unidad exigida en cada respuesta.</li>
+          <li>Lectura de dos gráficas de velocidad frente a tiempo, identificando los tramos y la fuerza neta en cada uno.</li>
+          <li>Un párrafo breve explicando por qué las fuerzas de acción y reacción no se anulan entre sí.</li>
+        </ul>
+        <p>Tiempo estimado: 60 minutos. Se permiten la calculadora TI-30XS y la hoja de fórmulas. Evalúe su trabajo con la rúbrica de esta lección.</p>
+      </div>
+
+      <div class="quiz">
+        <h2 id="s-quiz-de-la-leccion-6-1">Quiz de la lección 6.1</h2>
+        <p>
+          Doce preguntas: cuatro de identificación de la ley aplicable, cinco de cálculo con despeje de F = m · a, y tres de fricción y fuerza neta. Tiempo sugerido: 30 minutos. Se permiten la
+          calculadora y la hoja de fórmulas. Para aprobar se requieren al menos 8 respuestas correctas.
+        </p>
+        <div id="quiz-cuerpo"></div>
+        <div id="resultado-quiz"></div>
+        <button class="btn" id="btn-corregir">Corregir quiz</button>
+        <button class="btn sec" id="btn-reintentar" style="display: none">Intentar de nuevo</button>
+      </div>
+
+      <div class="rubrica">
+        <h2 id="s-rubrica-analitica-de-la-leccion">
+          <span aria-hidden="true">📊</span>
+          Rúbrica analítica de la lección
+        </h2>
+        <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+        <table class="tabla-rubrica">
+          <caption class="sr-only">Rúbrica analítica de dinámica con cuatro criterios y cuatro niveles de desempeño.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Criterio</th>
+              <th scope="col">Inicial (1)</th>
+              <th scope="col">En desarrollo (2)</th>
+              <th scope="col">Competente (3)</th>
+              <th scope="col">Destacado (4)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identifica la ley aplicable a la situación</td>
+              <td>Asigna las leyes al azar o siempre la misma.</td>
+              <td>Reconoce la inercia, pero confunde la segunda ley con la tercera.</td>
+              <td>Asigna correctamente las tres leyes y justifica la elección.</td>
+              <td>Señala además sobre qué objeto actúa cada fuerza del par de acción y reacción.</td>
+            </tr>
+            <tr>
+              <td>Calcula la fuerza neta considerando la dirección</td>
+              <td>Suma todas las fuerzas sin atender al sentido.</td>
+              <td>Resta las opuestas, pero se equivoca en el sentido del resultado.</td>
+              <td>Obtiene magnitud y sentido correctos de la fuerza neta.</td>
+              <td>Aplica el resultado a F = m · a sin confundir fuerza neta con fuerza aplicada.</td>
+            </tr>
+            <tr>
+              <td>Despeja correctamente la variable pedida</td>
+              <td>Usa siempre F = m · a sin adaptarla a lo que se pide.</td>
+              <td>Identifica la variable buscada, pero se equivoca al despejar.</td>
+              <td>Elige y aplica la forma correcta en los tres casos.</td>
+              <td>Comprueba además el resultado con la operación inversa.</td>
+            </tr>
+            <tr>
+              <td>Expresa el resultado con las unidades correctas</td>
+              <td>Entrega números sin unidad.</td>
+              <td>Añade unidad, pero confunde newtons con kilogramos.</td>
+              <td>Usa N, kg y m/s² donde corresponde en todos los casos.</td>
+              <td>Justifica además la unidad a partir de la equivalencia 1 N = 1 kg · m/s².</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cierre">
+        <h2 id="s-cierre-de-la-leccion-y-enlace-con-la-6-2">Cierre de la lección y enlace con la 6.2</h2>
+        <p>
+          Esta lección ha respondido a la pregunta de
+          <strong>qué hace que el movimiento cambie</strong>
+          : la fuerza neta. La
+          <strong>Lección 6.2</strong>
+          cambia de pregunta y se ocupa de la
+          <strong>energía</strong>
+          : cuánta hace falta para mover algo, en qué formas se presenta y por qué la suma total no varía aunque cambie de forma.
+        </p>
+        <p>
+          Dos hilos de esta lección continúan allí. El primero es el
+          <strong>despeje</strong>
+          , que se aplicará a W = F · d y a las fórmulas de energía cinética y potencial. El segundo es la
+          <strong>fricción</strong>
+          : aquí se ha dicho que la energía perdida por rozamiento se convierte en calor, y en la 6.2 esa afirmación deja de ser un comentario para convertirse en la explicación de por qué una montaña
+          rusa nunca vuelve a subir tan alto como empezó.
+        </p>
+      </div>
+
+      <footer>
+        <p>GEDparaHispanos · Ciencias · Unidad 6 · Lección 6.1</p>
+        <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+        <p>
+          © 2026. Esta obra está licenciada bajo
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>
+          .
+        </p>
+      </footer>
+    </div>
+
+    <a href="#indice" class="volver-indice" aria-label="Volver al contenido de la lección">↑ Índice</a>
+
+    <script>
+      (function () {
+        /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+        var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+        preguntasOp.forEach(function (preg) {
+          var correcta = preg.getAttribute('data-correcta');
+          var opciones = preg.querySelectorAll('.opcion');
+          var fb = preg.querySelector('.fb');
+          opciones.forEach(function (op) {
+            op.addEventListener('click', function () {
+              opciones.forEach(function (o) {
+                o.classList.remove('correcta', 'incorrecta', 'elegida');
+              });
+              var elegida = op.getAttribute('data-op');
+              if (elegida === correcta) {
+                op.classList.add('correcta');
+                fb.textContent = 'Correcto. Bien razonado.';
+                fb.className = 'fb ok';
+              } else {
+                op.classList.add('incorrecta');
+                opciones.forEach(function (o) {
+                  if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+                });
+                fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+                fb.className = 'fb no';
+              }
+              fb.style.display = 'block';
+            });
+          });
+        });
+
+        /* ---- Quiz: 4 de identificación de la ley, 5 de cálculo con despeje de
+     F = m · a, 3 de fricción y fuerza neta. Umbral 8 de 12.
+     Coincide exactamente con lo que especifica el plan curricular aprobado
+     para esta lección: no hay desviación que registrar. ---- */
+        var preguntasQuiz = [
+          {
+            enun: '1. Un pasajero de pie se va hacia delante cuando el autobús frena. Eso ilustra…',
+            ops: ['La primera ley: el cuerpo tiende a seguir moviéndose', 'La segunda ley', 'La tercera ley', 'La fuerza de fricción del suelo'],
+            correcta: 0
+          },
+          {
+            enun: '2. Empujar un carrito lleno con la misma fuerza que uno vacío produce menos aceleración. Eso ilustra…',
+            ops: ['La primera ley', 'La segunda ley: a mayor masa, menor aceleración', 'La tercera ley', 'La ley de conservación de la materia'],
+            correcta: 1
+          },
+          {
+            enun: '3. Al caminar, el pie empuja el suelo hacia atrás y el suelo empuja a la persona hacia delante. Eso ilustra…',
+            ops: ['La primera ley', 'La segunda ley', 'La tercera ley: acción y reacción', 'La inercia del suelo'],
+            correcta: 2
+          },
+          {enun: '4. La propiedad por la que un objeto se resiste a cambiar su estado de movimiento se llama…', ops: ['Fricción', 'Aceleración', 'Fuerza neta', 'Inercia'], correcta: 3},
+          {enun: '5. Un cuerpo de 10 kg recibe una fuerza neta de 30 N. Su aceleración es…', ops: ['3 m/s²', '300 m/s²', '0,33 m/s²', '40 m/s²'], correcta: 0},
+          {enun: '6. Un objeto de 4 kg acelera a 7 m/s². La fuerza neta que actúa sobre él es…', ops: ['11 N', '28 N', '1,75 N', '0,57 N'], correcta: 1},
+          {enun: '7. Una fuerza neta de 120 N produce una aceleración de 8 m/s². La masa del cuerpo es…', ops: ['960 kg', '128 kg', '15 kg', '112 kg'], correcta: 2},
+          {enun: '8. Un newton equivale a…', ops: ['1 kg ÷ 1 m/s²', '1 kg + 1 m/s²', '1 m/s² ÷ 1 kg', '1 kg · m/s²'], correcta: 3},
+          {enun: '9. Alguien empuja una caja de 20 kg con 90 N mientras la fricción se opone con 30 N. La aceleración de la caja es…', ops: ['3 m/s²', '4,5 m/s²', '6 m/s²', '1,5 m/s²'], correcta: 0},
+          {
+            enun: '10. La fricción actúa siempre…',
+            ops: ['En el mismo sentido del movimiento', 'En sentido contrario al movimiento', 'Hacia arriba', 'Solo cuando el objeto está en reposo'],
+            correcta: 1
+          },
+          {
+            enun: '11. La energía que un objeto pierde por efecto de la fricción…',
+            ops: ['Desaparece por completo', 'Se convierte en masa', 'Se transforma en calor', 'Aumenta su velocidad'],
+            correcta: 2
+          },
+          {
+            enun: '12. Un automóvil circula a velocidad constante en línea recta. Su fuerza neta es…',
+            ops: ['Igual a su peso', 'Muy grande, porque se mueve', 'Igual a la fuerza del motor', 'Cero, porque el movimiento no cambia'],
+            correcta: 3
+          }
+        ];
+
+        var cuerpo = document.getElementById('quiz-cuerpo');
+        preguntasQuiz.forEach(function (p, i) {
+          var div = document.createElement('div');
+          div.className = 'pregunta';
+          div.setAttribute('data-idx', i);
+          var enun = document.createElement('div');
+          enun.className = 'enun';
+          enun.textContent = p.enun;
+          div.appendChild(enun);
+          var cont = document.createElement('div');
+          cont.className = 'opciones';
+          p.ops.forEach(function (texto, j) {
+            var op = document.createElement('div');
+            op.className = 'opcion';
+            op.setAttribute('data-j', j);
+            op.textContent = texto;
+            op.addEventListener('click', function () {
+              if (div.getAttribute('data-bloqueado') === 'si') return;
+              cont.querySelectorAll('.opcion').forEach(function (o) {
+                o.classList.remove('elegida');
+              });
+              op.classList.add('elegida');
+              div.setAttribute('data-elegida', j);
+            });
+            cont.appendChild(op);
+          });
+          div.appendChild(cont);
+          var fb = document.createElement('div');
+          fb.className = 'fb';
+          div.appendChild(fb);
+          cuerpo.appendChild(div);
+        });
+
+        var btnCorregir = document.getElementById('btn-corregir');
+        var btnReintentar = document.getElementById('btn-reintentar');
+        var resultado = document.getElementById('resultado-quiz');
+
+        btnCorregir.addEventListener('click', function () {
+          var aciertos = 0;
+          var divs = cuerpo.querySelectorAll('.pregunta');
+          divs.forEach(function (div, i) {
+            var elegida = div.getAttribute('data-elegida');
+            var fb = div.querySelector('.fb');
+            var opciones = div.querySelectorAll('.opcion');
+            div.setAttribute('data-bloqueado', 'si');
+            opciones.forEach(function (o) {
+              o.classList.remove('correcta', 'incorrecta');
+            });
+            if (elegida === null) {
+              fb.textContent = 'No se respondió esta pregunta.';
+              fb.className = 'fb no';
+              fb.style.display = 'block';
+              opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+              return;
+            }
+            var idxElegida = parseInt(elegida, 10);
+            if (idxElegida === preguntasQuiz[i].correcta) {
+              aciertos++;
+              opciones[idxElegida].classList.add('correcta');
+              fb.textContent = 'Correcto.';
+              fb.className = 'fb ok';
+            } else {
+              opciones[idxElegida].classList.add('incorrecta');
+              opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+              fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+              fb.className = 'fb no';
+            }
+            fb.style.display = 'block';
+          });
+
+          resultado.style.display = 'block';
+          if (aciertos >= 8) {
+            resultado.className = 'aprob';
+            resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Aprobado. Puede continuar a la Lección 6.2.';
+          } else {
+            resultado.className = 'repro';
+            resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repase la lección e intente de nuevo (se requieren 8).';
+          }
+          btnCorregir.style.display = 'none';
+          btnReintentar.style.display = 'inline-block';
+        });
+
+        btnReintentar.addEventListener('click', function () {
+          var divs = cuerpo.querySelectorAll('.pregunta');
+          divs.forEach(function (div) {
+            div.removeAttribute('data-elegida');
+            div.removeAttribute('data-bloqueado');
+            div.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('correcta', 'incorrecta', 'elegida');
+            });
+            var fb = div.querySelector('.fb');
+            fb.style.display = 'none';
+            fb.textContent = '';
+          });
+          resultado.style.display = 'none';
+          btnReintentar.style.display = 'none';
+          btnCorregir.style.display = 'inline-block';
+          window.scrollTo({top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth'});
+        });
+      })();
+    </script>
+  </body>
+</html>

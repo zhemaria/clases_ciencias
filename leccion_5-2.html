@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<!--
+  Lección 5.2 · Estados de la materia, densidad y disoluciones
+  Spanish ASE Science · Unidad 5 · Ciencias físicas I: materia, átomo y reacciones químicas
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 5.2 · Estados de la materia, densidad y disoluciones</title>
+<meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    /* Unidad 5 — naranja quemado del plan curricular (--t5 #bf360c). Primer
+       cambio de dominio: se abandona la familia verde de Ciencias de la vida
+       y se abre la familia cálida de Ciencias físicas. Coincide además con
+       la paleta naranja de las sub-páginas de Química de la Ruta C. */
+    --tema:    #bf360c;
+    --tema-d:  #8c2600;
+    --tema-bg: #ffdccf;
+    --tema-bg2:#ffc8b3;
+    --acento:  #e64a19;
+    --txt:     #222;
+    --bg:      #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ── ENCABEZADO ─────────────────────────────────────────────── */
+  header.principal {
+    background: var(--tema-d);
+    background: linear-gradient(135deg, #4a1300 0%, #8c2600 55%, #bf360c 100%);
+    color: #ffffff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(74,19,0,.28);
+  }
+  header.principal .ruta {
+    font-size: 13px; color: #ffffff; letter-spacing: .4px; text-transform: uppercase;
+  }
+  header.principal h1 { margin: 8px 0 6px; font-size: 23px; font-weight: 700; color: #ffffff; }
+  header.principal .meta { font-size: 14px; color: #ffffff; }
+
+  .practicas-sp { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sp {
+    display: inline-block; background: #ffffff; color: #8c2600;
+    font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 12px;
+    letter-spacing: .3px;
+  }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .diagrama-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+  .materiales {
+    background: #eceff1; border-left: 6px solid #37474f;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .materiales h2 { margin: 0 0 8px; color: #263238; font-size: 18px; }
+  .materiales ul { margin: 8px 0 0; padding-left: 22px; }
+  .materiales li { margin: 5px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+  .resalta { background: var(--tema-bg); padding: 1px 6px; border-radius: 5px; font-weight: 700; color: var(--tema-d); }
+
+  /* ── CAJA DE CONSEJO ─────────────────────────────────────────
+     Matiz fijo (326°, magenta-rosa) e independiente del color de
+     la Unidad: es el único matiz libre en las ocho paletas del
+     plan, de modo que el bloque nunca se funde con el tema.
+     ─────────────────────────────────────────────────────────── */
+  .caja-tip {
+    background: #fce1f0; border-left: 5px solid #9e1c66;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #800d4e; font-size: 15px;
+  }
+  .caja-tip strong { color: #800d4e; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+  .vocabulario {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .vocabulario h2 { margin: 0 0 6px; color: #4527a0; font-size: 18px; }
+  .vocabulario p { color: #311b92; }
+
+  /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+  .lectura {
+    background: #fffdf7; border: 2px solid var(--tema);
+    border-radius: 10px; padding: 6px 22px 18px; margin: 18px 0;
+  }
+  .lectura h2 { color: var(--tema-d); font-size: 19px; }
+  .lectura .fuente { font-size: 13px; color: #555; font-style: italic; }
+  .lectura .texto-adaptado {
+    background: #ffffff; border-left: 5px solid var(--tema-bg);
+    padding: 12px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+  }
+
+  /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+  .enlace-interactivo {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-left: 6px solid var(--tema); border-radius: 10px;
+    padding: 16px 20px; margin: 18px 0; text-decoration: none;
+    color: var(--tema-d); transition: background .15s;
+  }
+  .enlace-interactivo:hover { background: var(--tema-bg2); }
+  .enlace-interactivo .ei-icono { font-size: 26px; line-height: 1; flex-shrink: 0; }
+  .enlace-interactivo .ei-titulo { display: block; font-weight: 700; font-size: 16px; color: var(--tema-d); }
+  .enlace-interactivo .ei-sub { display: block; font-size: 14px; color: #333; margin: 4px 0 8px; }
+  .enlace-interactivo .ei-cta {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 14px; font-weight: 700; padding: 6px 16px; border-radius: 7px;
+  }
+
+  /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+  .pendiente { color: #c62828; font-size: 15px; margin-left: 6px; }
+
+  .reglas { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  .reglas th, .reglas td { border: 1px solid #e0e0e0; padding: 9px 12px; text-align: left; vertical-align: top; }
+  .reglas th { background: var(--tema); color: #ffffff; }
+  .reglas td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #c62828; }
+
+  .btn {
+    background: var(--tema); color: #ffffff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px; font-size: 14px; }
+  .modo-pres { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-pres strong { color: #004d40; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #004d40; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #e3f2fd; border-left: 6px solid #1565c0;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #0d47a1; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #ffffff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #ffffff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #555;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+  footer p { margin: 5px 0; }
+  footer a { color: #8c2600; }
+
+      /* ===== Índice interno de la lección (GEDparaHispanos) ===== */
+      .indice {
+        background: #ffffff;
+        border: 1px solid var(--tema-bg);
+        border-left: 5px solid var(--tema-d);
+        border-radius: 8px;
+        padding: 14px 20px;
+        margin: 20px 0;
+      }
+      .indice h2 { margin: 0 0 8px; font-size: 18px; color: var(--tema-d); }
+      .indice ul { list-style: none; margin: 0; padding: 0; columns: 2 260px; column-gap: 28px; }
+      .indice li { margin: 0 0 6px; break-inside: avoid; }
+      .indice a { color: var(--tema-d); font-weight: 600; text-decoration: underline; }
+      .indice a:hover { text-decoration-thickness: 2px; }
+      h2[id] { scroll-margin-top: 16px; }
+      .volver-indice {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        background: var(--tema-d);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        z-index: 50;
+      }
+      .volver-indice:focus-visible, .indice a:focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; }
+      .actividad p { margin: 6px 0 0; }
+      @media print { .volver-indice, .indice { display: none; } }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">GEDparaHispanos · Ciencias · Unidad 5 · Ciencias físicas I: materia, átomo y reacciones químicas</div>
+    <h1>Lección 5.2 · Estados de la materia, densidad y disoluciones</h1>
+    <div class="meta">Tiempo estimado: unas 4 horas · NRS 4–5</div>
+    <div class="practicas-sp">
+      <span class="sp">SP.7 · Aplicar fórmulas y despejar variables</span>
+      <span class="sp">SP.6 · Leer gráficas y curvas</span>
+    </div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Describir los estados de la materia y los cambios de estado en términos de energía cinética de las partículas.</li>
+      <li>Explicar por qué la temperatura no aumenta mientras dura un cambio de estado, aunque se siga aportando calor.</li>
+      <li>Aplicar la fórmula de la densidad y despejar la masa o el volumen según lo que pida el problema.</li>
+      <li>Expresar el resultado de un cálculo de densidad con las unidades correctas.</li>
+      <li>Distinguir mezcla, disolución y sustancia pura, e interpretar una curva de solubilidad.</li>
+    </ul>
+  </div>
+
+      <nav class="indice" id="indice" aria-labelledby="indice-titulo">
+        <h2 id="indice-titulo">Contenido de la lección</h2>
+        <ul>
+          <li><a href="#s-material-y-recursos">Material y recursos</a></li>
+          <li><a href="#s-1-los-tres-estados-y-la-energia-de-las-particula">1. Los tres estados y la energía de las partículas</a></li>
+          <li><a href="#s-2-la-curva-de-calentamiento-por-que-la-temperatu">2. La curva de calentamiento: por qué la temperatura se detiene</a></li>
+          <li><a href="#s-3-la-densidad-una-formula-con-tres-despejes">3. La densidad: una fórmula con tres despejes</a></li>
+          <li><a href="#s-4-mezclas-disoluciones-y-curvas-de-solubilidad">4. Mezclas, disoluciones y curvas de solubilidad</a></li>
+          <li><a href="#s-vocabulario-tecnico-y-raices">Vocabulario técnico y raíces</a></li>
+          <li><a href="#s-lectura-cientifica">Lectura científica</a></li>
+          <li><a href="#s-tarea">Tarea</a></li>
+          <li><a href="#s-quiz-de-la-leccion-5-2">Quiz de la lección 5.2</a></li>
+          <li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li>
+          <li><a href="#s-cierre-de-la-leccion-y-enlace-con-la-5-3">Cierre de la lección y enlace con la 5.3</a></li>
+        </ul>
+      </nav>
+
+  <div class="bloque">
+    <p><strong>Conexión con la lección anterior.</strong> La 5.1 trabajó el átomo aislado y terminó con una afirmación que quedó pendiente de consecuencias: el enlace del agua es covalente, pero los electrones no se reparten a partes iguales. Esta lección recoge esa deuda. El comportamiento del agua como disolvente, su densidad y hasta el hecho de que el hielo flote se explican por ahí.</p>
+    <p><strong>Una advertencia de método.</strong> Esta es la lección más cuantitativa de la unidad. El <span class="resalta">despeje de fórmulas</span> ya se domina del Nivel 3 de Matemáticas, de modo que aquí no se vuelve a enseñar: se aplica. Lo que sí se trabaja de forma explícita es lo que el examen penaliza con más frecuencia en este tipo de ítems, que no es el álgebra sino <strong>las unidades</strong> y la decisión de <strong>qué variable hay que despejar</strong>.</p>
+  </div>
+
+  <div class="materiales">
+        <h2 id="s-material-y-recursos"><span aria-hidden="true">📐</span> Material y recursos</h2>
+        <ul>
+          <li>La gráfica de la curva de calentamiento, con las mesetas de cambio de estado señaladas.</li>
+          <li>La tabla de densidades de materiales comunes, en gramos por centímetro cúbico.</li>
+          <li>Las curvas de solubilidad frente a temperatura, para sólidos y para gases.</li>
+          <li>Si quiere medir por su cuenta: una báscula de cocina, una taza medidora con agua y algunos objetos pequeños de su casa.</li>
+          <li>La calculadora TI-30XS y la hoja de fórmulas científicas del GED<sup>®</sup>.</li>
+        </ul>
+        <p><strong>Cómo estudiar esta lección:</strong> siempre que pueda, mida antes de calcular. La densidad es de los pocos conceptos en los que el resultado numérico y el resultado observable —flota o se hunde— pueden comprobarse en el mismo momento, con un simple vaso de agua.</p>
+      </div>
+
+  <h2 class="seccion" id="s-1-los-tres-estados-y-la-energia-de-las-particula">1. Los tres estados y la energía de las partículas</h2>
+  <div class="bloque">
+    <p>Una misma sustancia puede presentarse en tres estados sin dejar de ser la misma sustancia. El agua líquida, el hielo y el vapor están formados por moléculas idénticas de H₂O: lo que cambia no es la molécula, sino <strong>cuánta energía tiene y cómo de libremente puede moverse</strong>.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="270" viewBox="0 0 700 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparación de los tres estados de la materia según la disposición de las partículas. En el sólido, las partículas aparecen ordenadas en filas y columnas muy juntas, y solo vibran en su sitio: el sólido tiene forma y volumen propios. En el líquido, las partículas siguen juntas pero desordenadas y pueden deslizarse unas sobre otras: el líquido tiene volumen propio pero adopta la forma del recipiente. En el gas, las partículas están muy separadas y dispersas por todo el espacio disponible: el gas no tiene forma ni volumen propios. La energía de las partículas aumenta del sólido al gas.">
+        <rect x="20" y="30" width="200" height="150" rx="10" fill="#fff8f5" stroke="#8c2600" stroke-width="2"/>
+        <text x="120" y="22" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#8c2600" text-anchor="middle">Sólido</text>
+        <circle cx="60" cy="70" r="11" fill="#bf360c"/><circle cx="100" cy="70" r="11" fill="#bf360c"/><circle cx="140" cy="70" r="11" fill="#bf360c"/><circle cx="180" cy="70" r="11" fill="#bf360c"/>
+        <circle cx="60" cy="105" r="11" fill="#bf360c"/><circle cx="100" cy="105" r="11" fill="#bf360c"/><circle cx="140" cy="105" r="11" fill="#bf360c"/><circle cx="180" cy="105" r="11" fill="#bf360c"/>
+        <circle cx="60" cy="140" r="11" fill="#bf360c"/><circle cx="100" cy="140" r="11" fill="#bf360c"/><circle cx="140" cy="140" r="11" fill="#bf360c"/><circle cx="180" cy="140" r="11" fill="#bf360c"/>
+        <text x="120" y="200" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Ordenadas y muy juntas.</text>
+        <text x="120" y="218" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Solo vibran en su sitio.</text>
+        <text x="120" y="240" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#8c2600" text-anchor="middle">Forma y volumen propios</text>
+
+        <rect x="250" y="30" width="200" height="150" rx="10" fill="#fff8f5" stroke="#8c2600" stroke-width="2"/>
+        <text x="350" y="22" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#8c2600" text-anchor="middle">Líquido</text>
+        <circle cx="290" cy="78" r="11" fill="#bf360c"/><circle cx="326" cy="66" r="11" fill="#bf360c"/><circle cx="364" cy="82" r="11" fill="#bf360c"/><circle cx="404" cy="70" r="11" fill="#bf360c"/>
+        <circle cx="278" cy="112" r="11" fill="#bf360c"/><circle cx="316" cy="124" r="11" fill="#bf360c"/><circle cx="356" cy="112" r="11" fill="#bf360c"/><circle cx="398" cy="120" r="11" fill="#bf360c"/>
+        <circle cx="300" cy="150" r="11" fill="#bf360c"/><circle cx="342" cy="156" r="11" fill="#bf360c"/><circle cx="384" cy="150" r="11" fill="#bf360c"/><circle cx="420" cy="140" r="11" fill="#bf360c"/>
+        <text x="350" y="200" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Juntas pero desordenadas.</text>
+        <text x="350" y="218" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Se deslizan unas sobre otras.</text>
+        <text x="350" y="240" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#8c2600" text-anchor="middle">Volumen propio, forma del envase</text>
+
+        <rect x="480" y="30" width="200" height="150" rx="10" fill="#fff8f5" stroke="#8c2600" stroke-width="2"/>
+        <text x="580" y="22" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#8c2600" text-anchor="middle">Gas</text>
+        <circle cx="512" cy="56" r="11" fill="#bf360c"/><circle cx="600" cy="48" r="11" fill="#bf360c"/><circle cx="654" cy="82" r="11" fill="#bf360c"/>
+        <circle cx="530" cy="118" r="11" fill="#bf360c"/><circle cx="612" cy="106" r="11" fill="#bf360c"/>
+        <circle cx="498" cy="162" r="11" fill="#bf360c"/><circle cx="576" cy="164" r="11" fill="#bf360c"/><circle cx="648" cy="146" r="11" fill="#bf360c"/>
+        <text x="580" y="200" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Muy separadas y muy rápidas.</text>
+        <text x="580" y="218" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">Ocupan todo el espacio.</text>
+        <text x="580" y="240" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#8c2600" text-anchor="middle">Ni forma ni volumen propios</text>
+
+        <text x="350" y="264" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#8c2600" text-anchor="middle">La energía de las partículas aumenta de izquierda a derecha</text>
+      </svg>
+    </div>
+
+    <h3>Los cambios de estado</h3>
+    <p>Cada cambio de estado tiene nombre propio, y todos se agrupan en dos familias según lo que ocurra con la energía: los que <strong>absorben</strong> calor y los que lo <strong>liberan</strong>.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Los seis cambios de estado, con el estado de partida, el estado de llegada, el comportamiento de la energía y un ejemplo cotidiano.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Cambio</th>
+          <th scope="col">De</th>
+          <th scope="col">A</th>
+          <th scope="col">Energía</th>
+          <th scope="col">Ejemplo cotidiano</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Fusión</td><td>Sólido</td><td>Líquido</td><td>Absorbe</td><td>El hielo que se derrite en un vaso.</td></tr>
+        <tr><td>Solidificación</td><td>Líquido</td><td>Sólido</td><td>Libera</td><td>El agua que se congela en el congelador.</td></tr>
+        <tr><td>Vaporización</td><td>Líquido</td><td>Gas</td><td>Absorbe</td><td>El agua que hierve en una olla.</td></tr>
+        <tr><td>Condensación</td><td>Gas</td><td>Líquido</td><td>Libera</td><td>Las gotas en el exterior de un vaso frío.</td></tr>
+        <tr><td>Sublimación</td><td>Sólido</td><td>Gas</td><td>Absorbe</td><td>El hielo seco, que pasa directamente a gas.</td></tr>
+        <tr><td>Deposición</td><td>Gas</td><td>Sólido</td><td>Libera</td><td>La escarcha que se forma sobre una superficie fría.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>Un cambio de estado no es un cambio químico.</strong> El agua sigue siendo agua en los tres estados: sus moléculas no se rompen, solo se separan o se acercan. Por eso el proceso es reversible sin más que devolver o retirar el calor. En la Lección 5.3 aparecerán los cambios <em>químicos</em>, en los que sí se rompen enlaces y aparecen sustancias nuevas. Distinguir un caso del otro es una pregunta habitual del examen.
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-2-la-curva-de-calentamiento-por-que-la-temperatu">2. La curva de calentamiento: por qué la temperatura se detiene</h2>
+  <div class="bloque">
+    <p>Si se calienta un bloque de hielo con una fuente constante y se anota la temperatura cada minuto, la gráfica que resulta no es una recta que sube sin parar. Tiene dos tramos horizontales, dos <strong>mesetas</strong>, y esos tramos son el contenido de esta sección.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="330" viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curva de calentamiento del agua. El eje horizontal representa el tiempo de calentamiento y el eje vertical la temperatura en grados Celsius. La curva comienza por debajo de cero grados y sube en línea inclinada mientras el hielo se calienta. Al llegar a cero grados se vuelve horizontal: es la meseta de fusión, durante la cual coexisten hielo y agua líquida y la temperatura no sube aunque se siga aportando calor. Después vuelve a subir en línea inclinada mientras el agua líquida se calienta, hasta llegar a cien grados. Allí aparece la segunda meseta, más larga, que corresponde a la ebullición, durante la cual coexisten agua líquida y vapor. Por último la curva sube de nuevo, ya como vapor.">
+        <line x1="70" y1="270" x2="660" y2="270" stroke="#222" stroke-width="2"/>
+        <line x1="70" y1="270" x2="70" y2="40" stroke="#222" stroke-width="2"/>
+        <text x="365" y="300" font-family="Segoe UI, sans-serif" font-size="13" fill="#222" text-anchor="middle">Tiempo de calentamiento (calor aportado de forma constante)</text>
+        <text x="30" y="150" font-family="Segoe UI, sans-serif" font-size="13" fill="#222" text-anchor="middle">°C</text>
+        <line x1="64" y1="230" x2="70" y2="230" stroke="#222" stroke-width="2"/>
+        <text x="56" y="234" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="end">0</text>
+        <line x1="64" y1="120" x2="70" y2="120" stroke="#222" stroke-width="2"/>
+        <text x="56" y="124" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="end">100</text>
+
+        <polyline points="80,258 130,230 250,230 330,120 500,120 600,66" fill="none" stroke="#bf360c" stroke-width="4"/>
+        <line x1="130" y1="230" x2="250" y2="230" stroke="#8c2600" stroke-width="7"/>
+        <line x1="330" y1="120" x2="500" y2="120" stroke="#8c2600" stroke-width="7"/>
+
+        <text x="190" y="218" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#8c2600" text-anchor="middle">Meseta de fusión</text>
+        <text x="190" y="252" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">Hielo y agua a la vez</text>
+        <text x="415" y="108" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#8c2600" text-anchor="middle">Meseta de ebullición</text>
+        <text x="415" y="142" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">Agua y vapor a la vez</text>
+
+        <text x="104" y="290" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">hielo</text>
+        <text x="290" y="180" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">agua líquida</text>
+        <text x="612" y="96" font-family="Segoe UI, sans-serif" font-size="11" fill="#222" text-anchor="middle">vapor</text>
+
+        <text x="365" y="322" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#8c2600" text-anchor="middle">En las mesetas se sigue aportando calor, pero la temperatura no sube</text>
+      </svg>
+    </div>
+
+    <p>La explicación es la misma en las dos mesetas. El calor que entra no se emplea en aumentar la velocidad de las partículas —que es lo que mide el termómetro—, sino en <span class="resalta">separarlas unas de otras</span>, es decir, en vencer las fuerzas que las mantienen unidas. Mientras quede una sola porción de hielo por fundir, toda la energía se destina a esa tarea y el termómetro permanece clavado en cero.</p>
+
+    <div class="caja-atencion">
+      <strong>El error que persigue el examen en esta gráfica</strong> es leer la meseta como «no está pasando nada» o «se apagó el fuego». Está pasando lo más importante: es justo ahí donde ocurre el cambio de estado. Una meseta en una curva de calentamiento significa siempre que dos estados coexisten en ese momento.
+    </div>
+
+    <p>Conviene notar que esta forma de gráfica ya apareció antes en el curso. En la Lección 3.2 la fotosíntesis se aplanaba al llegar al punto de saturación, y en la 4.3 el crecimiento poblacional se aplanaba en la capacidad de carga. En los tres casos la meseta indica lo mismo: <strong>algo impide que el proceso siga aumentando</strong>. Cambia el factor limitante, no la lectura de la gráfica.</p>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Estados y cambios de estado</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">1. Las gotas que aparecen en el exterior de un vaso de refresco frío se deben a…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Sublimación</div>
+        <div class="opcion" data-op="b">Fusión</div>
+        <div class="opcion" data-op="c">Condensación</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. Durante la meseta de fusión de la curva de calentamiento…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Coexisten hielo y agua líquida, y el calor se emplea en separar las partículas</div>
+        <div class="opcion" data-op="b">Ha dejado de entrar calor en el sistema</div>
+        <div class="opcion" data-op="c">La sustancia se ha convertido en otra distinta</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. En un gas, comparado con el mismo material en estado sólido, las partículas…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Son más grandes</div>
+        <div class="opcion" data-op="b">Tienen más energía y están mucho más separadas</div>
+        <div class="opcion" data-op="c">Son de una sustancia distinta</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-3-la-densidad-una-formula-con-tres-despejes">3. La densidad: una fórmula con tres despejes</h2>
+  <div class="bloque">
+    <p>La densidad responde a una pregunta que la masa por sí sola no puede responder: <strong>cuánta materia hay en un volumen determinado</strong>. Un kilogramo de plomo y un kilogramo de plumas tienen la misma masa, y sin embargo nadie confundiría un bulto con el otro. La diferencia está en el volumen que ocupa esa masa.</p>
+
+    <div class="ejemplo">
+      <span class="et">LA FÓRMULA Y SUS TRES FORMAS</span>
+      <p>La relación es una sola, escrita de tres maneras según lo que se busque:</p>
+      <div class="paso"><span class="n">1</span><strong>Para hallar la densidad:</strong> <span class="resalta">d = m ÷ V</span></div>
+      <div class="paso"><span class="n">2</span><strong>Para hallar la masa:</strong> <span class="resalta">m = d × V</span></div>
+      <div class="paso"><span class="n">3</span><strong>Para hallar el volumen:</strong> <span class="resalta">V = m ÷ d</span></div>
+      <p>El despeje es el mismo que se practicó en Matemáticas Nivel 3 y no exige nada nuevo. Lo único que hay que decidir antes de calcular es <strong>cuál de las tres cantidades falta</strong>, porque el enunciado siempre da dos y pide la tercera.</p>
+    </div>
+
+    <h3>Las unidades, que es donde se pierden los puntos</h3>
+    <p>La densidad se expresa en <strong>gramos por centímetro cúbico</strong> (g/cm³) cuando se trata de sólidos, y en <strong>gramos por mililitro</strong> (g/mL) cuando se trata de líquidos. No son dos unidades distintas: <span class="resalta">1 cm³ equivale exactamente a 1 mL</span>, de modo que los valores se comparan sin conversión alguna.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Densidad de varios materiales comunes en gramos por centímetro cúbico y su comportamiento al colocarlos en agua.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Material</th>
+          <th scope="col">Densidad (g/cm³)</th>
+          <th scope="col">En agua</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Corcho</td><td>0,24</td><td>Flota</td></tr>
+        <tr><td>Madera de pino</td><td>0,50</td><td>Flota</td></tr>
+        <tr><td>Hielo</td><td>0,92</td><td>Flota</td></tr>
+        <tr><td>Aceite</td><td>0,92</td><td>Flota, y forma una capa encima</td></tr>
+        <tr><td>Agua</td><td>1,00</td><td>—</td></tr>
+        <tr><td>Aluminio</td><td>2,70</td><td>Se hunde</td></tr>
+        <tr><td>Hierro</td><td>7,87</td><td>Se hunde</td></tr>
+        <tr><td>Mercurio</td><td>13,6</td><td>Se hunde el agua en él, no al revés</td></tr>
+      </tbody>
+    </table>
+
+    <p>De esa tabla sale la regla de predicción, que no requiere cálculo: <strong>un material flota en agua si su densidad es menor que 1,00 g/cm³ y se hunde si es mayor</strong>. Y sale también una observación que merece detenerse: el hielo es menos denso que el agua líquida, cosa rarísima en la naturaleza, donde el sólido suele ser más denso que su líquido. Ocurre porque al congelarse las moléculas de agua se ordenan en una estructura abierta, con huecos, que ocupa más volumen. La causa está en el enlace covalente desigual que se nombró en la 5.1.</p>
+
+    <div class="caja-tip">
+      <strong>Por qué importa que el hielo flote.</strong> Si el hielo se hundiera, los lagos se congelarían desde el fondo y los organismos que viven en ellos no sobrevivirían al invierno. La capa de hielo que se forma arriba actúa como aislante y mantiene líquida el agua de abajo. Es un buen ejemplo de cómo una propiedad física del agua condiciona los ecosistemas de la Unidad 4.
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">EJEMPLO RESUELTO 1 · Se busca la densidad</span>
+      <p>Un objeto tiene una masa de 54 g y ocupa un volumen de 20 cm³. ¿Cuál es su densidad? ¿Flotará en agua?</p>
+      <div class="paso"><span class="n">1</span><strong>Qué falta.</strong> El enunciado da masa y volumen, luego se busca la densidad y la fórmula se usa tal cual: d = m ÷ V.</div>
+      <div class="paso"><span class="n">2</span><strong>Sustitución.</strong> d = 54 g ÷ 20 cm³.</div>
+      <div class="paso"><span class="n">3</span><strong>Cálculo.</strong> d = <span class="resalta">2,7 g/cm³</span>. La unidad no se inventa: sale de dividir gramos entre centímetros cúbicos.</div>
+      <div class="paso"><span class="n">4</span><strong>Interpretación.</strong> 2,7 es mayor que 1,00, de modo que <strong>se hunde</strong>. Comparando con la tabla, podría tratarse de aluminio.</div>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">EJEMPLO RESUELTO 2 · Se busca la masa</span>
+      <p>El aceite de cocina tiene una densidad de 0,92 g/mL. ¿Qué masa tienen 250 mL de aceite?</p>
+      <div class="paso"><span class="n">1</span><strong>Qué falta.</strong> Se dan densidad y volumen, y se pide masa: la forma que sirve es m = d × V.</div>
+      <div class="paso"><span class="n">2</span><strong>Sustitución.</strong> m = 0,92 g/mL × 250 mL.</div>
+      <div class="paso"><span class="n">3</span><strong>Cálculo.</strong> m = <span class="resalta">230 g</span>. Los mililitros se cancelan y queda gramos, que es justo lo que se pedía.</div>
+      <div class="paso"><span class="n">4</span><strong>Comprobación de sentido.</strong> El resultado debe ser algo menor que 250, porque cada mililitro pesa algo menos de un gramo. Lo es.</div>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">EJEMPLO RESUELTO 3 · Se busca el volumen</span>
+      <p>Una muestra de mercurio tiene una masa de 100 g. Su densidad es 13,6 g/cm³. ¿Qué volumen ocupa?</p>
+      <div class="paso"><span class="n">1</span><strong>Qué falta.</strong> Se dan masa y densidad, y se pide volumen: V = m ÷ d.</div>
+      <div class="paso"><span class="n">2</span><strong>Sustitución.</strong> V = 100 g ÷ 13,6 g/cm³.</div>
+      <div class="paso"><span class="n">3</span><strong>Cálculo.</strong> V ≈ <span class="resalta">7,4 cm³</span>. Los gramos se cancelan y queda centímetros cúbicos.</div>
+      <div class="paso"><span class="n">4</span><strong>Comprobación de sentido.</strong> Cien gramos de mercurio ocupan muchísimo menos que cien gramos de agua, que ocuparían 100 cm³. Un resultado pequeño es exactamente lo esperable en un material tan denso.</div>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Tres avisos sobre las unidades en el examen:</strong> el resultado debe llevar siempre unidad, porque un número solo no es una densidad; la unidad se obtiene operando con las unidades de los datos, no eligiéndola de memoria; y cuando el enunciado mezcla mililitros con centímetros cúbicos no hay que convertir nada, porque son equivalentes. Con la calculadora TI-30XS conviene además comprobar que la memoria esté limpia antes de encadenar varios problemas.
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-4-mezclas-disoluciones-y-curvas-de-solubilidad">4. Mezclas, disoluciones y curvas de solubilidad</h2>
+  <div class="bloque">
+    <p>Casi nada de lo que se maneja a diario es una sustancia pura. El aire, el agua del grifo, la leche y el acero son <strong>mezclas</strong>, y conviene ordenar el vocabulario antes de leer una curva.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Distinción entre sustancia pura, mezcla homogénea o disolución y mezcla heterogénea, con su aspecto y un ejemplo de cada una.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Tipo</th>
+          <th scope="col">Qué es</th>
+          <th scope="col">Aspecto</th>
+          <th scope="col">Ejemplo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sustancia pura</td>
+          <td>Un solo tipo de materia: un elemento o un compuesto</td>
+          <td>Uniforme, y no puede separarse por medios físicos</td>
+          <td>Agua destilada, oro, sal pura</td>
+        </tr>
+        <tr>
+          <td>Mezcla homogénea (disolución)</td>
+          <td>Dos o más sustancias mezcladas de manera uniforme</td>
+          <td>Se ve una sola fase: no se distinguen los componentes</td>
+          <td>Agua con sal, aire, acero</td>
+        </tr>
+        <tr>
+          <td>Mezcla heterogénea</td>
+          <td>Dos o más sustancias que no se reparten de forma uniforme</td>
+          <td>Se distinguen las partes a simple vista</td>
+          <td>Agua con arena, ensalada, granito</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>En una disolución, la sustancia que se disuelve es el <strong>soluto</strong> y la que la disuelve es el <strong>disolvente</strong>. En el agua con sal, la sal es el soluto y el agua el disolvente. Y el agua es el disolvente más frecuente del planeta precisamente por lo que se anunció en la 5.1: su molécula tiene un lado algo positivo y otro algo negativo, y eso le permite rodear y separar los iones de muchos compuestos.</p>
+
+    <h3>Saturación: cuánto cabe</h3>
+    <p>Un disolvente no admite soluto sin límite. Según cuánto lleve disuelto, una disolución se describe con tres términos: <strong>insaturada</strong>, si aún admite más soluto; <strong>saturada</strong>, si ha llegado al máximo que puede disolver a esa temperatura; y <strong>sobresaturada</strong>, si contiene más de ese máximo, lo que solo se consigue calentando y enfriando después con cuidado, y es una situación inestable.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="330" viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curvas de solubilidad. El eje horizontal representa la temperatura del agua en grados Celsius, de cero a cien, y el eje vertical la cantidad de soluto que puede disolverse en cien gramos de agua. Una curva ascendente corresponde a un soluto sólido: cuanto mayor es la temperatura, más cantidad se disuelve. Una curva descendente corresponde a un gas: cuanto mayor es la temperatura, menos gas permanece disuelto. Cualquier punto situado sobre la curva representa una disolución saturada; los puntos por debajo corresponden a disoluciones insaturadas y los puntos por encima, a disoluciones sobresaturadas.">
+        <line x1="70" y1="266" x2="660" y2="266" stroke="#222" stroke-width="2"/>
+        <line x1="70" y1="266" x2="70" y2="40" stroke="#222" stroke-width="2"/>
+        <text x="365" y="296" font-family="Segoe UI, sans-serif" font-size="13" fill="#222" text-anchor="middle">Temperatura del agua (°C)</text>
+        <text x="365" y="318" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#8c2600" text-anchor="middle">Eje vertical: gramos de soluto por cada 100 g de agua</text>
+        <text x="70" y="284" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">0</text>
+        <text x="365" y="284" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">50</text>
+        <text x="660" y="284" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">100</text>
+
+        <path d="M 70 240 Q 300 210 660 70" fill="none" stroke="#bf360c" stroke-width="4"/>
+        <text x="560" y="112" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#8c2600">Soluto sólido</text>
+        <text x="560" y="130" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Más calor, más se disuelve</text>
+
+        <path d="M 70 96 Q 260 200 660 232" fill="none" stroke="#5e35b1" stroke-width="4" stroke-dasharray="9 6"/>
+        <text x="150" y="80" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#4527a0">Gas disuelto</text>
+        <text x="150" y="98" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Más calor, menos se disuelve</text>
+
+        <circle cx="430" cy="160" r="7" fill="#8c2600"/>
+        <text x="444" y="164" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Sobre la curva: disolución saturada</text>
+        <text x="180" y="250" font-family="Segoe UI, sans-serif" font-size="12" fill="#222">Debajo: insaturada (admite más soluto)</text>
+      </svg>
+    </div>
+
+    <p>La curva se lee como cualquier gráfica de dos variables de la Lección 2.2: se entra por la temperatura en el eje horizontal, se sube hasta cortar la curva y se lee en el eje vertical cuántos gramos se disuelven en 100 g de agua. Lo que añade esta gráfica es que <strong>la propia curva marca una frontera</strong>: los puntos que caen sobre ella son disoluciones saturadas, los de debajo insaturadas y los de encima sobresaturadas.</p>
+
+    <div class="caja-tip">
+      <strong>Sólidos y gases se comportan al revés con la temperatura,</strong> y el examen lo pregunta con ejemplos cotidianos. El azúcar se disuelve mucho mejor en café caliente que en café frío: es un sólido. En cambio, un refresco pierde el gas mucho más rápido cuando está templado, y los peces sufren en el agua caliente de un río porque contiene menos oxígeno disuelto: son gases. Regla corta: <em>al sólido el calor lo ayuda; al gas lo expulsa</em>.
+    </div>
+
+    <div class="vocabulario">
+      <h2 id="s-vocabulario-tecnico-y-raices"><span aria-hidden="true">🔤</span> Vocabulario técnico y raíces</h2>
+      <p><strong>Densidad</strong> procede del latín <em>densus</em>, espeso o apretado, y describe exactamente eso: cuán apretada está la materia en un volumen. <strong>Soluto</strong> y <strong>disolvente</strong> comparten la raíz latina <em>solvere</em>, soltar o desatar, la misma de <em>disolver</em> y de <em>solución</em>: el disolvente «desata» al soluto y lo reparte. <strong>Saturado</strong> viene de <em>satur</em>, harto o lleno; de ahí que <em>sobresaturado</em> signifique literalmente más lleno de lo que cabe, y que el punto de saturación de la fotosíntesis de la Lección 3.2 lleve el mismo nombre por la misma razón. <strong>Sublimación</strong>, del latín <em>sublimare</em>, elevar, describe el paso directo de sólido a gas. <strong>Homogéneo</strong> y <strong>heterogéneo</strong> se distinguen por el prefijo griego: <em>homo-</em>, igual, frente a <em>hetero-</em>, distinto, con <em>génos</em>, clase o tipo.</p>
+    </div>
+  </div>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/solubilidad" target="_blank" rel="noopener"
+     aria-label="Abrir el recurso Solubilidad (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🧪</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Solubilidad</span>
+      <span class="ei-sub">Recurso ya publicado sobre disoluciones y curvas de solubilidad. Conviene abrirlo justo después de leer la curva de esta sección: permite variar la temperatura y comprobar sobre la marcha cuánto soluto admite el disolvente, que es la lectura que el examen pide hacer sobre una gráfica estática.</span>
+      <span class="ei-cta">Abrir el recurso <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/densidad/" target="_blank" rel="noopener"
+     aria-label="Abrir el interactivo Laboratorio de densidad (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">⚖️</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Laboratorio de densidad</span>
+      <span class="ei-sub">El estudiante elige un material y un volumen, el simulador calcula la masa y muestra el objeto flotando o hundiéndose en agua, aceite o mercurio. Es de los pocos casos del curso en que el resultado numérico y el resultado observable caben en la misma pantalla, y esa coincidencia es justo lo que consolida el despeje de la fórmula.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <div class="lectura">
+    <h2 id="s-lectura-cientifica"><span aria-hidden="true">📖</span> Lectura científica</h2>
+    <p class="fuente">Texto científico breve adaptado al nivel. Obsérvese qué mide el estudio y qué no llega a medir.</p>
+
+    <div class="texto-adaptado">
+      <p><strong>El oxígeno disuelto en un río</strong></p>
+      <p>El oxígeno que respiran los peces no es el de la molécula de agua, sino oxígeno gaseoso disuelto entre sus moléculas. La cantidad que un río puede contener depende de varios factores, y uno de los principales es la temperatura: el agua fría admite más gas disuelto que el agua templada.</p>
+      <p>Un equipo midió durante dos años el oxígeno disuelto en un tramo de río situado aguas abajo de una central térmica que emplea agua del propio río para refrigerarse y la devuelve más caliente. Las mediciones se tomaron cada semana en dos puntos: uno aguas arriba de la central y otro trescientos metros aguas abajo.</p>
+      <p>El punto situado aguas abajo registró temperaturas entre dos y cuatro grados superiores y una concentración de oxígeno disuelto sistemáticamente menor. En los meses de verano, la diferencia se amplió y en el punto inferior se registraron valores próximos al límite tolerado por varias especies. Los autores documentaron además una menor presencia de trucha en ese tramo durante los mismos meses.</p>
+      <p>En el informe, los autores señalan que el descenso de oxígeno es coherente con el aumento de temperatura registrado, pero advierten que en el tramo inferior desemboca también un canal de riego cuya composición no se analizó. Concluyen que sería necesario un muestreo adicional para determinar en qué medida cada factor contribuye a la diferencia observada.</p>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Las centrales térmicas deberían cerrarse.</div>
+        <div class="opcion" data-op="b">El tramo de río más caliente presentó menos oxígeno disuelto, y eso coincide con lo que se espera del comportamiento de los gases.</div>
+        <div class="opcion" data-op="c">Las truchas no toleran ninguna variación de temperatura.</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. El comportamiento descrito coincide con la curva de solubilidad de…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Un gas, porque su solubilidad disminuye al aumentar la temperatura</div>
+        <div class="opcion" data-op="b">Un sólido, porque su solubilidad aumenta al aumentar la temperatura</div>
+        <div class="opcion" data-op="c">Una sustancia pura, que no tiene curva de solubilidad</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. Los autores no atribuyen todo el descenso de oxígeno a la central porque…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Las mediciones de temperatura fueron poco fiables</div>
+        <div class="opcion" data-op="b">El oxígeno disuelto no se puede medir con precisión</div>
+        <div class="opcion" data-op="c">En ese tramo desemboca además un canal de riego que no se analizó</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">4. ¿Qué dato adicional permitiría poner a prueba la explicación de los autores?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">El número de empleados de la central</div>
+        <div class="opcion" data-op="b">La composición y el caudal del agua que aporta el canal de riego</div>
+        <div class="opcion" data-op="c">El precio de la electricidad en esos dos años</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Densidad y disoluciones</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Un bloque tiene una masa de 120 g y un volumen de 150 cm³. ¿Flotará en agua?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">No, porque su masa es alta</div>
+        <div class="opcion" data-op="b">Sí, porque su densidad es 0,8 g/cm³, menor que la del agua</div>
+        <div class="opcion" data-op="c">No se puede saber sin conocer el material</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. Se conoce la densidad de un líquido y el volumen de una muestra, y se pide la masa. La forma de la fórmula que corresponde es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">m = d × V</div>
+        <div class="opcion" data-op="b">V = m ÷ d</div>
+        <div class="opcion" data-op="c">d = m ÷ V</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. Un refresco pierde su gas más rápido cuando está templado que cuando está frío. Eso ocurre porque…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">El azúcar se disuelve mejor en caliente</div>
+        <div class="opcion" data-op="b">El envase se dilata con el calor</div>
+        <div class="opcion" data-op="c">La solubilidad de los gases disminuye al aumentar la temperatura</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+
+  <div class="caja-tarea">
+    <h2 id="s-tarea"><span aria-hidden="true">✅</span> Tarea</h2>
+        <ul>
+      <li>Diez problemas de densidad: en cuatro se pide la densidad, en tres la masa y en tres el volumen. Todos exigen expresar el resultado con su unidad.</li>
+      <li>Cinco preguntas de lectura de curvas de solubilidad, una de ellas sobre un gas.</li>
+      <li>Un párrafo breve explicando, con sus propias palabras, por qué la temperatura no sube durante un cambio de estado.</li>
+    </ul>
+    <p>Tiempo estimado: 60 minutos. Se permite el uso de la calculadora TI-30XS. Evalúe su trabajo con la rúbrica de esta lección.</p>
+  </div>
+
+  <div class="quiz">
+    <h2 id="s-quiz-de-la-leccion-5-2">Quiz de la lección 5.2</h2>
+    <p>Doce preguntas: cuatro de estados y cambios de estado, cuatro de cálculo de densidad con despeje, y cuatro de disoluciones y curvas de solubilidad. Tiempo sugerido: 30 minutos. Se permite el uso de la calculadora. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2 id="s-rubrica-analitica-de-la-leccion"><span aria-hidden="true">📊</span> Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <caption class="sr-only">Rúbrica analítica de propiedades de la materia con cuatro criterios y cuatro niveles de desempeño.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Inicial (1)</th>
+          <th scope="col">En desarrollo (2)</th>
+          <th scope="col">Competente (3)</th>
+          <th scope="col">Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Explica los cambios de estado en términos de energía</td>
+          <td>Nombra los cambios de estado sin relacionarlos con la energía.</td>
+          <td>Asocia el calor al cambio, pero no explica qué ocurre con las partículas.</td>
+          <td>Explica que la energía absorbida separa las partículas y que por eso la temperatura no sube.</td>
+          <td>Aplica además el mismo razonamiento a un cambio que libera energía, como la solidificación.</td>
+        </tr>
+        <tr>
+          <td>Despeja correctamente la variable pedida</td>
+          <td>Emplea siempre la misma forma de la fórmula, sin atender a lo que se pide.</td>
+          <td>Identifica la variable buscada, pero se equivoca al despejar.</td>
+          <td>Elige y aplica la forma correcta de la fórmula en los tres casos.</td>
+          <td>Justifica además la elección antes de calcular, señalando qué dos datos aporta el enunciado.</td>
+        </tr>
+        <tr>
+          <td>Expresa el resultado con las unidades correctas</td>
+          <td>Entrega el resultado como número suelto, sin unidad.</td>
+          <td>Añade una unidad, pero no siempre la que corresponde a la operación.</td>
+          <td>Obtiene la unidad operando con las unidades de los datos.</td>
+          <td>Comprueba además que el orden de magnitud del resultado sea razonable.</td>
+        </tr>
+        <tr>
+          <td>Interpreta una curva de solubilidad o de calentamiento</td>
+          <td>No logra extraer un valor de la gráfica.</td>
+          <td>Lee valores puntuales, pero no interpreta las mesetas ni la saturación.</td>
+          <td>Lee la gráfica y clasifica correctamente la disolución o identifica el cambio de estado.</td>
+          <td>Distingue además el comportamiento de un sólido del de un gas y lo explica.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2 id="s-cierre-de-la-leccion-y-enlace-con-la-5-3">Cierre de la lección y enlace con la 5.3</h2>
+    <p>Esta lección ha trabajado con <strong>cambios físicos</strong>: el agua se congela, hierve o disuelve sal, y en todos los casos sigue siendo agua. Las moléculas se separan, se acercan o se rodean unas a otras, pero <strong>ninguna se rompe</strong>.</p>
+    <p>La <strong>Lección 5.3</strong> cruza esa frontera y entra en los <strong>cambios químicos</strong>: allí los enlaces de la 5.1 se rompen y se forman otros nuevos, y aparecen sustancias que antes no existían. El principio que gobierna todo el proceso —la <strong>conservación de la materia</strong>— es el que obliga a equilibrar las ecuaciones, y esa será la destreza central de la lección. Conviene llegar con una idea clara de esta: un cambio de estado no crea ni destruye materia; un cambio químico tampoco.</p>
+  </div>
+
+  <footer>
+    <p>GEDparaHispanos · Ciencias · Unidad 5 · Lección 5.2</p>
+    <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+    <p>© 2026. Esta obra está licenciada bajo
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons
+      Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+  </footer>
+
+
+</div>
+
+<a href="#indice" class="volver-indice" aria-label="Volver al contenido de la lección">↑ Índice</a>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = 'Correcto. Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Quiz: 4 de estados y cambios de estado, 4 de densidad con despeje,
+     4 de disoluciones y curvas de solubilidad. Umbral 8 de 12.
+     Coincide exactamente con lo que especifica el plan curricular aprobado
+     para esta lección: no hay desviación que registrar. ---- */
+  var preguntasQuiz = [
+    { enun: '1. El paso de líquido a gas se denomina…',
+      ops: ['Condensación', 'Vaporización', 'Fusión', 'Sublimación'], correcta: 1 },
+    { enun: '2. En un sólido, las partículas…',
+      ops: ['Están ordenadas y muy juntas, y solo vibran en su sitio', 'Se mueven libremente por todo el espacio', 'No tienen ninguna energía', 'Están más separadas que en un gas'], correcta: 0 },
+    { enun: '3. Durante la meseta de ebullición de una curva de calentamiento, el calor que entra se emplea en…',
+      ops: ['Aumentar la temperatura del vapor', 'Nada: el sistema está en reposo', 'Separar las partículas del líquido para que pasen a gas', 'Convertir el agua en otra sustancia'], correcta: 2 },
+    { enun: '4. La escarcha que se forma sobre una superficie muy fría es un ejemplo de…',
+      ops: ['Fusión', 'Vaporización', 'Sublimación', 'Deposición'], correcta: 3 },
+    { enun: '5. Un objeto tiene una masa de 90 g y un volumen de 30 cm³. Su densidad es…',
+      ops: ['3 g/cm³', '2 700 g/cm³', '0,33 g/cm³', '60 g/cm³'], correcta: 0 },
+    { enun: '6. Un líquido tiene una densidad de 1,2 g/mL. ¿Qué masa tienen 50 mL de ese líquido?',
+      ops: ['41,7 g', '60 g', '50 g', '1,2 g'], correcta: 1 },
+    { enun: '7. Una muestra de 200 g de un material de densidad 4 g/cm³ ocupa un volumen de…',
+      ops: ['800 cm³', '204 cm³', '50 cm³', '4 cm³'], correcta: 2 },
+    { enun: '8. Un material flotará en agua si su densidad es…',
+      ops: ['Igual a la del agua', 'Mayor que 1,00 g/cm³', 'Mayor que su masa', 'Menor que 1,00 g/cm³'], correcta: 3 },
+    { enun: '9. En una disolución de agua con sal, el soluto es…',
+      ops: ['La sal', 'El agua', 'El recipiente', 'La mezcla completa'], correcta: 0 },
+    { enun: '10. El agua con arena, en la que se distinguen las partes a simple vista, es…',
+      ops: ['Una sustancia pura', 'Una mezcla heterogénea', 'Una disolución', 'Un compuesto'], correcta: 1 },
+    { enun: '11. Al aumentar la temperatura del agua, la cantidad de un gas que permanece disuelto…',
+      ops: ['Aumenta', 'No cambia', 'Disminuye', 'Se duplica'], correcta: 2 },
+    { enun: '12. Un punto situado exactamente sobre la curva de solubilidad corresponde a una disolución…',
+      ops: ['Insaturada', 'Sobresaturada', 'Heterogénea', 'Saturada'], correcta: 3 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta'); });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = 'Correcto.';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 8) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Aprobado. Puede continuar a la Lección 5.3.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repase la lección e intente de nuevo (se requieren 8).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

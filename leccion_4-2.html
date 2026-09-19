@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<!--
+  Lección 4.2 · Meiosis, cuadros de Punnett y probabilidad genética
+  Spanish ASE Science · Unidad 4 · Ciencias de la vida II: herencia, evolución y ecosistemas
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 4.2 · Meiosis, cuadros de Punnett y probabilidad genética</title>
+<meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    /* Unidad 4 — verde oliva del plan curricular (--t4 #33691e). Familia
+       vecina de la Unidad 3, como corresponde a la segunda mitad del mismo
+       dominio, pero con el matiz desplazado hacia el oliva para que las dos
+       unidades no se confundan entre sí. */
+    --tema:    #33691e;
+    --tema-d:  #1e400f;
+    --tema-bg: #d3e6c2;
+    --tema-bg2:#bfd9a9;
+    --acento:  #558b2f;
+    --txt:     #222;
+    --bg:      #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ── ENCABEZADO ─────────────────────────────────────────────── */
+  header.principal {
+    background: var(--tema-d);
+    background: linear-gradient(135deg, #13290a 0%, #1e400f 55%, #33691e 100%);
+    color: #ffffff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(19,41,10,.28);
+  }
+  header.principal .ruta {
+    font-size: 13px; color: #ffffff; letter-spacing: .4px; text-transform: uppercase;
+  }
+  header.principal h1 { margin: 8px 0 6px; font-size: 23px; font-weight: 700; color: #ffffff; }
+  header.principal .meta { font-size: 14px; color: #ffffff; }
+
+  .practicas-sp { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sp {
+    display: inline-block; background: #ffffff; color: #1e400f;
+    font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 12px;
+    letter-spacing: .3px;
+  }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .diagrama-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+  .materiales {
+    background: #eceff1; border-left: 6px solid #37474f;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .materiales h2 { margin: 0 0 8px; color: #263238; font-size: 18px; }
+  .materiales ul { margin: 8px 0 0; padding-left: 22px; }
+  .materiales li { margin: 5px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+  .resalta { background: var(--tema-bg); padding: 1px 6px; border-radius: 5px; font-weight: 700; color: var(--tema-d); }
+
+  /* ── CAJA DE CONSEJO ─────────────────────────────────────────
+     Matiz fijo (326°, magenta-rosa) e independiente del color de
+     la Unidad: es el único matiz libre en las ocho paletas del
+     plan, de modo que el bloque nunca se funde con el tema.
+     ─────────────────────────────────────────────────────────── */
+  .caja-tip {
+    background: #fce1f0; border-left: 5px solid #9e1c66;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #800d4e; font-size: 15px;
+  }
+  .caja-tip strong { color: #800d4e; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+  .vocabulario {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .vocabulario h2 { margin: 0 0 6px; color: #4527a0; font-size: 18px; }
+  .vocabulario p { color: #311b92; }
+
+  /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+  .lectura {
+    background: #fffdf7; border: 2px solid var(--tema);
+    border-radius: 10px; padding: 6px 22px 18px; margin: 18px 0;
+  }
+  .lectura h2 { color: var(--tema-d); font-size: 19px; }
+  .lectura .fuente { font-size: 13px; color: #555; font-style: italic; }
+  .lectura .texto-adaptado {
+    background: #ffffff; border-left: 5px solid var(--tema-bg);
+    padding: 12px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+  }
+
+  /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+  .enlace-interactivo {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-left: 6px solid var(--tema); border-radius: 10px;
+    padding: 16px 20px; margin: 18px 0; text-decoration: none;
+    color: var(--tema-d); transition: background .15s;
+  }
+  .enlace-interactivo:hover { background: var(--tema-bg2); }
+  .enlace-interactivo .ei-icono { font-size: 26px; line-height: 1; flex-shrink: 0; }
+  .enlace-interactivo .ei-titulo { display: block; font-weight: 700; font-size: 16px; color: var(--tema-d); }
+  .enlace-interactivo .ei-sub { display: block; font-size: 14px; color: #333; margin: 4px 0 8px; }
+  .enlace-interactivo .ei-cta {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 14px; font-weight: 700; padding: 6px 16px; border-radius: 7px;
+  }
+
+  /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+  .pendiente { color: #c62828; font-size: 15px; margin-left: 6px; }
+
+  .reglas { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  .reglas th, .reglas td { border: 1px solid #e0e0e0; padding: 9px 12px; text-align: left; vertical-align: top; }
+  .reglas th { background: var(--tema); color: #ffffff; }
+  .reglas td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #c62828; }
+
+  .btn {
+    background: var(--tema); color: #ffffff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px; font-size: 14px; }
+  .modo-pres { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-pres strong { color: #004d40; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #004d40; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #e3f2fd; border-left: 6px solid #1565c0;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #0d47a1; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #ffffff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #ffffff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #555;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+  footer p { margin: 5px 0; }
+  footer a { color: #1e400f; }
+
+      /* ===== Índice interno de la lección (GEDparaHispanos) ===== */
+      .indice {
+        background: #ffffff;
+        border: 1px solid var(--tema-bg);
+        border-left: 5px solid var(--tema-d);
+        border-radius: 8px;
+        padding: 14px 20px;
+        margin: 20px 0;
+      }
+      .indice h2 { margin: 0 0 8px; font-size: 18px; color: var(--tema-d); }
+      .indice ul { list-style: none; margin: 0; padding: 0; columns: 2 260px; column-gap: 28px; }
+      .indice li { margin: 0 0 6px; break-inside: avoid; }
+      .indice a { color: var(--tema-d); font-weight: 600; text-decoration: underline; }
+      .indice a:hover { text-decoration-thickness: 2px; }
+      h2[id] { scroll-margin-top: 16px; }
+      .volver-indice {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        background: var(--tema-d);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        z-index: 50;
+      }
+      .volver-indice:focus-visible, .indice a:focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; }
+      .actividad p { margin: 6px 0 0; }
+      @media print { .volver-indice, .indice { display: none; } }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">GEDparaHispanos · Ciencias · Unidad 4 · Ciencias de la vida II: herencia, evolución y ecosistemas</div>
+    <h1>Lección 4.2 · Meiosis, cuadros de Punnett y probabilidad genética</h1>
+    <div class="meta">Tiempo estimado: unas 4 horas · NRS 4–5</div>
+    <div class="practicas-sp">
+      <span class="sp">SP.8 · Probabilidad y estadística</span>
+      <span class="sp">Puente · Matemáticas Nivel 2 (porcentajes y conteo)</span>
+    </div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Explicar por qué los gametos deben tener la mitad de los cromosomas y en qué se diferencia la meiosis de la mitosis.</li>
+      <li>Distinguir genotipo de fenotipo, y alelo dominante de recesivo.</li>
+      <li>Construir cuadros de Punnett monohíbridos y dihíbridos con los gametos correctos.</li>
+      <li>Expresar la proporción esperada de la descendencia como fracción, decimal, porcentaje y razón.</li>
+      <li>Resolver un cruce de herencia ligada al sexo y explicar por qué afecta de distinta manera a hijos e hijas.</li>
+      <li>Leer un árbol genealógico de tres generaciones para deducir el genotipo de un individuo no marcado.</li>
+    </ul>
+  </div>
+
+      <nav class="indice" id="indice" aria-labelledby="indice-titulo">
+        <h2 id="indice-titulo">Contenido de la lección</h2>
+        <ul>
+          <li><a href="#s-material-y-recursos">Material y recursos</a></li>
+          <li><a href="#s-1-la-meiosis-de-donde-salen-los-gametos">1. La meiosis: de dónde salen los gametos</a></li>
+          <li><a href="#s-vocabulario-tecnico-y-raices">Vocabulario técnico y raíces</a></li>
+          <li><a href="#s-2-genotipo-fenotipo-y-alelos">2. Genotipo, fenotipo y alelos</a></li>
+          <li><a href="#s-3-el-cuadro-de-punnett-monohibrido">3. El cuadro de Punnett monohíbrido</a></li>
+          <li><a href="#s-4-los-cuatro-formatos-de-una-misma-proporcion">4. Los cuatro formatos de una misma proporción</a></li>
+          <li><a href="#s-5-el-cuadro-dihibrido">5. El cuadro dihíbrido</a></li>
+          <li><a href="#s-6-herencia-ligada-al-sexo">6. Herencia ligada al sexo</a></li>
+          <li><a href="#s-7-leer-un-arbol-genealogico">7. Leer un árbol genealógico</a></li>
+          <li><a href="#s-lectura-cientifica">Lectura científica</a></li>
+          <li><a href="#s-tarea">Tarea</a></li>
+          <li><a href="#s-quiz-de-la-leccion-4-2">Quiz de la lección 4.2</a></li>
+          <li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li>
+          <li><a href="#s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</a></li>
+        </ul>
+      </nav>
+
+  <div class="bloque">
+    <p><strong>Conexión con la lección anterior.</strong> La Lección 4.1 trabajó el nivel molecular: un gen se transcribe y se traduce en una proteína. Esta sube al nivel del <strong>individuo</strong> y responde a una pregunta distinta: si cada persona tiene dos copias de cada gen, una de cada progenitor, ¿cuál de las dos se manifiesta y con qué probabilidad se transmite?</p>
+    <p>Y hay una deuda pendiente de la Unidad 3. La Lección 3.1 explicó la mitosis y anunció que existía una segunda forma de división celular. Esa deuda se salda aquí, y no como curiosidad: sin la meiosis, un cuadro de Punnett se rellena de memoria pero no se entiende.</p>
+  </div>
+
+  <div class="materiales">
+        <h2 id="s-material-y-recursos"><span aria-hidden="true">📐</span> Material y recursos</h2>
+        <ul>
+          <li>Papel para dibujar cuadros de Punnett de 2×2 y de 4×4.</li>
+          <li>Fichas de alelos hechas con papel de dos colores, para distinguir el origen materno del paterno. Sirven también dos bolígrafos de distinto color.</li>
+          <li>La tabla de conversión entre fracción, decimal, porcentaje y razón.</li>
+          <li>Los árboles genealógicos de tres generaciones de la sección 7.</li>
+        </ul>
+        <p><strong>Cómo estudiar esta lección:</strong> esta lección se apoya en los porcentajes de Matemáticas (Nivel 2) y en el principio del conteo de la Lección 2.3. Si esos temas no están frescos, repáselos antes: los gametos de un cruce dihíbrido son exactamente el 2 × 2 de aquel diagrama de árbol.</p>
+      </div>
+
+  <h2 class="seccion" id="s-1-la-meiosis-de-donde-salen-los-gametos">1. La meiosis: de dónde salen los gametos</h2>
+  <div class="bloque">
+    <p>Empecemos por un problema aritmético. Una célula humana tiene 46 cromosomas. Si el óvulo y el espermatozoide llevaran cada uno los 46, al unirse resultarían <strong>92</strong>. Los hijos de esa generación producirían gametos de 92 y sus nietos tendrían 184. En pocas generaciones el número sería absurdo.</p>
+
+    <p>La solución es la <strong>meiosis</strong>: una división que produce células con la <em>mitad</em> de los cromosomas. Los gametos humanos tienen 23. Al unirse dos de ellos, la fecundación restaura los 46 y el número se mantiene constante generación tras generación.</p>
+
+    <div class="vocabulario">
+      <h2 id="s-vocabulario-tecnico-y-raices"><span aria-hidden="true">🔤</span> Vocabulario técnico y raíces</h2>
+      <p><strong>Meiosis</strong> viene del griego <em>meíosis</em>, disminución, de la misma familia que <em>menos</em>. El nombre anuncia el resultado: una división que <em>reduce</em>. Frente a ella, <strong>mitosis</strong> viene de <em>mitos</em>, hilo, por el aspecto de los cromosomas al dividirse, y no dice nada sobre el número, porque no lo cambia. <strong>Gameto</strong> procede del griego para «esposo o esposa»: la célula destinada a unirse con otra. Y <strong>diploide</strong> y <strong>haploide</strong> comparten la raíz <em>-ploide</em>, pliegue o juego: <em>di-</em> es dos juegos de cromosomas, 46 en el ser humano; <em>haplo-</em> es uno solo, 23.</p>
+    </div>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="285" viewBox="0 0 700 285" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparación entre mitosis y meiosis. En la mitosis, una célula con dos cromosomas se divide una sola vez y produce dos células hijas, cada una con dos cromosomas, idénticas a la original. En la meiosis, la misma célula se divide dos veces y produce cuatro células, cada una con un solo cromosoma, es decir, con la mitad. Las células de la mitosis sirven para crecer y reparar; las de la meiosis son los gametos.">
+        <text x="175" y="24" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1e400f" text-anchor="middle">Mitosis</text>
+        <text x="520" y="24" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1e400f" text-anchor="middle">Meiosis</text>
+
+        <circle cx="175" cy="72" r="30" fill="#d3e6c2" stroke="#1e400f" stroke-width="3"/>
+        <rect x="164" y="59" width="8" height="27" rx="4" fill="#1565c0"/>
+        <rect x="179" y="62" width="8" height="22" rx="4" fill="#8d6e63"/>
+        <g stroke="#1e400f" stroke-width="2.5" fill="none">
+          <line x1="160" y1="104" x2="120" y2="140"/>
+          <line x1="190" y1="104" x2="230" y2="140"/>
+        </g>
+        <circle cx="110" cy="170" r="28" fill="#d3e6c2" stroke="#1e400f" stroke-width="3"/>
+        <rect x="100" y="158" width="8" height="25" rx="4" fill="#1565c0"/>
+        <rect x="114" y="161" width="8" height="20" rx="4" fill="#8d6e63"/>
+        <circle cx="240" cy="170" r="28" fill="#d3e6c2" stroke="#1e400f" stroke-width="3"/>
+        <rect x="230" y="158" width="8" height="25" rx="4" fill="#1565c0"/>
+        <rect x="244" y="161" width="8" height="20" rx="4" fill="#8d6e63"/>
+
+        <circle cx="520" cy="72" r="30" fill="#d3e6c2" stroke="#1e400f" stroke-width="3"/>
+        <rect x="509" y="59" width="8" height="27" rx="4" fill="#1565c0"/>
+        <rect x="524" y="62" width="8" height="22" rx="4" fill="#8d6e63"/>
+        <g stroke="#1e400f" stroke-width="2.5" fill="none">
+          <line x1="503" y1="100" x2="450" y2="128"/>
+          <line x1="537" y1="100" x2="590" y2="128"/>
+          <line x1="430" y1="152" x2="400" y2="176"/>
+          <line x1="450" y1="152" x2="480" y2="176"/>
+          <line x1="570" y1="152" x2="540" y2="176"/>
+          <line x1="590" y1="152" x2="620" y2="176"/>
+        </g>
+        <circle cx="440" cy="140" r="16" fill="#eef7ef" stroke="#1e400f" stroke-width="2"/>
+        <circle cx="600" cy="140" r="16" fill="#eef7ef" stroke="#1e400f" stroke-width="2"/>
+
+        <circle cx="390" cy="196" r="24" fill="#bfd9a9" stroke="#1e400f" stroke-width="3"/>
+        <rect x="386" y="185" width="8" height="22" rx="4" fill="#1565c0"/>
+        <circle cx="470" cy="196" r="24" fill="#bfd9a9" stroke="#1e400f" stroke-width="3"/>
+        <rect x="466" y="187" width="8" height="18" rx="4" fill="#8d6e63"/>
+        <circle cx="550" cy="196" r="24" fill="#bfd9a9" stroke="#1e400f" stroke-width="3"/>
+        <rect x="546" y="185" width="8" height="22" rx="4" fill="#1565c0"/>
+        <circle cx="630" cy="196" r="24" fill="#bfd9a9" stroke="#1e400f" stroke-width="3"/>
+        <rect x="626" y="187" width="8" height="18" rx="4" fill="#8d6e63"/>
+
+        <rect x="40" y="232" width="270" height="42" rx="8" fill="#eef7ef" stroke="#1e400f" stroke-width="2"/>
+        <text x="175" y="250" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f" text-anchor="middle">2 células · mismo número de cromosomas</text>
+        <text x="175" y="266" font-family="Segoe UI, sans-serif" font-size="11" fill="#1e400f" text-anchor="middle">para crecer y reparar</text>
+
+        <rect x="385" y="232" width="275" height="42" rx="8" fill="#eef7ef" stroke="#1e400f" stroke-width="2"/>
+        <text x="522" y="250" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f" text-anchor="middle">4 células · la mitad de los cromosomas</text>
+        <text x="522" y="266" font-family="Segoe UI, sans-serif" font-size="11" fill="#1e400f" text-anchor="middle">son los gametos</text>
+      </svg>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Comparación entre mitosis y meiosis según número de divisiones, células resultantes, número de cromosomas, semejanza genética y finalidad.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Aspecto</th>
+          <th scope="col">Mitosis</th>
+          <th scope="col">Meiosis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Divisiones</td>
+          <td>Una.</td>
+          <td>Dos seguidas.</td>
+        </tr>
+        <tr>
+          <td>Células resultantes</td>
+          <td>Dos.</td>
+          <td>Cuatro.</td>
+        </tr>
+        <tr>
+          <td>Cromosomas de cada una</td>
+          <td>Los mismos que la original: 46 en el ser humano.</td>
+          <td>La mitad: 23 en el ser humano.</td>
+        </tr>
+        <tr>
+          <td>Semejanza genética</td>
+          <td>Idénticas entre sí y a la original.</td>
+          <td>Distintas entre sí: cada una recibe una combinación diferente.</td>
+        </tr>
+        <tr>
+          <td>Para qué sirve</td>
+          <td>Crecer, reparar y reemplazar tejidos.</td>
+          <td>Formar óvulos y espermatozoides.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>Aquí está la clave de todo lo que sigue:</strong> como cada gameto lleva un solo juego de cromosomas, lleva también <strong>un solo alelo de cada gen</strong>. Por eso, en el cuadro de Punnett que se construirá a continuación, cada progenitor aporta una sola letra por casilla y no las dos que posee. El cuadro no es una convención arbitraria: es el reparto que hace la meiosis, dibujado.
+    </div>
+  </div>
+
+  <!-- ENLACE AL INTERACTIVO — recurso ya publicado -->
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/meiosis" target="_blank" rel="noopener"
+     aria-label="Abrir el recurso Meiosis (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🧫</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Meiosis · La formación de los gametos</span>
+      <span class="ei-sub">Recorrido por las dos divisiones sucesivas que reducen a la mitad el número de cromosomas y producen cuatro células distintas entre sí. Conviene abrirlo antes de construir el primer cuadro de Punnett: de ahí sale la razón por la que cada progenitor aporta un solo alelo.</span>
+      <span class="ei-cta">Abrir el recurso <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <h2 class="seccion" id="s-2-genotipo-fenotipo-y-alelos">2. Genotipo, fenotipo y alelos</h2>
+  <div class="bloque">
+    <p>Cada gen puede presentarse en versiones distintas llamadas <strong>alelos</strong>. Una persona tiene dos alelos de cada gen: uno del padre y otro de la madre. Se representan con letras, mayúscula para el dominante y minúscula para el recesivo.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Términos básicos de la genética con su definición y un ejemplo aplicado al color de la flor.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Término</th>
+          <th scope="col">Qué significa</th>
+          <th scope="col">Ejemplo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Genotipo</td>
+          <td>Los dos alelos que el individuo posee.</td>
+          <td>AA, Aa o aa.</td>
+        </tr>
+        <tr>
+          <td>Fenotipo</td>
+          <td>La característica que se manifiesta y puede observarse.</td>
+          <td>Flor morada o flor blanca.</td>
+        </tr>
+        <tr>
+          <td>Alelo dominante</td>
+          <td>Se manifiesta con una sola copia. Se escribe en mayúscula.</td>
+          <td>A, el alelo de flor morada.</td>
+        </tr>
+        <tr>
+          <td>Alelo recesivo</td>
+          <td>Solo se manifiesta si están presentes las dos copias. Minúscula.</td>
+          <td>a, el alelo de flor blanca.</td>
+        </tr>
+        <tr>
+          <td>Homocigoto</td>
+          <td>Los dos alelos son iguales.</td>
+          <td>AA o aa.</td>
+        </tr>
+        <tr>
+          <td>Heterocigoto</td>
+          <td>Los dos alelos son distintos. También se le llama portador.</td>
+          <td>Aa: flor morada, pero lleva el alelo blanco.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-atencion">
+      <strong>Genotipos distintos, mismo fenotipo:</strong> una flor con genotipo AA y otra con genotipo Aa son las dos moradas. Mirándolas no hay manera de distinguirlas, y sin embargo transmiten cosas distintas a su descendencia. El examen aprovecha esa asimetría constantemente: pregunta por el genotipo cuando el fenotipo no basta para deducirlo, y ahí es donde entra el árbol genealógico.
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-3-el-cuadro-de-punnett-monohibrido">3. El cuadro de Punnett monohíbrido</h2>
+  <div class="bloque">
+    <p>Un cuadro de Punnett cruza los gametos posibles de un progenitor con los del otro. Cada casilla es una combinación posible en la descendencia, y todas tienen la misma probabilidad.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1 · Cruce de dos heterocigotos</span>
+      <p>Se cruzan dos plantas de flor morada heterocigotas: <strong>Aa × Aa</strong>. Cada una produce, por meiosis, gametos con A y gametos con a.</p>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Cuadro de Punnett del cruce A a por A a. Los gametos del primer progenitor encabezan las columnas y los del segundo, las filas. Los cuatro resultados son A A, A a, A a y a a.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Gametos</th>
+          <th scope="col">A</th>
+          <th scope="col">a</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">A</th>
+          <td>AA</td>
+          <td>Aa</td>
+        </tr>
+        <tr>
+          <th scope="row">a</th>
+          <td>Aa</td>
+          <td>aa</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · Leer el cuadro en dos niveles</span>
+      <div class="paso"><span class="n">1</span> <strong>Proporción de genotipos:</strong> una casilla AA, dos casillas Aa y una casilla aa. Es decir, <span class="resalta">1 : 2 : 1</span>.</div>
+      <div class="paso"><span class="n">2</span> <strong>Proporción de fenotipos:</strong> AA y Aa se ven igual, las dos son moradas. Solo aa es blanca. Por tanto, <span class="resalta">3 moradas : 1 blanca</span>.</div>
+      <div class="paso"><span class="n">3</span> La probabilidad de flor blanca es de 1 casilla entre 4.</div>
+      <p><strong>La distinción que más se falla:</strong> las proporciones de genotipo y de fenotipo del mismo cuadro son distintas, 1:2:1 frente a 3:1. Antes de responder hay que leer si la pregunta dice «genotipo» o «fenotipo», o bien si nombra una característica visible, como el color.</p>
+    </div>
+  </div>
+    <!-- ENLACE AL INTERACTIVO -->
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/punnett_interactivo/" target="_blank" rel="noopener"
+     aria-label="Abrir el interactivo Cuadro de Punnett interactivo (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔲</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Cuadro de Punnett interactivo</span>
+      <span class="ei-sub">El estudiante arrastra los alelos parentales a los márgenes y el cuadro se rellena solo, mostrando en paralelo la proporción resultante en los cuatro formatos: fracción, decimal, porcentaje y razón. Admite cruces monohíbridos, dihíbridos y ligados al sexo. Es el ejercicio que conecta de forma más directa la matemática del Nivel 2 con el contenido biológico.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <h2 class="seccion" id="s-4-los-cuatro-formatos-de-una-misma-proporcion">4. Los cuatro formatos de una misma proporción</h2>
+  <div class="bloque">
+    <p>El examen puede pedir el mismo resultado de cuatro maneras distintas. No son cuatro respuestas: son <strong>cuatro escrituras de la misma</strong>, y conviene saber pasar de una a otra sin detenerse.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Los cuatro formatos en que puede expresarse una proporción de descendencia, aplicados a las tres proporciones más frecuentes.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Resultado</th>
+          <th scope="col">Fracción</th>
+          <th scope="col">Decimal</th>
+          <th scope="col">Porcentaje</th>
+          <th scope="col">Razón</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Flor morada (3 de 4)</td>
+          <td>3/4</td>
+          <td>0.75</td>
+          <td>75 %</td>
+          <td>3 : 1 frente a la blanca</td>
+        </tr>
+        <tr>
+          <td>Flor blanca (1 de 4)</td>
+          <td>1/4</td>
+          <td>0.25</td>
+          <td>25 %</td>
+          <td>1 : 3 frente a la morada</td>
+        </tr>
+        <tr>
+          <td>Genotipo Aa (2 de 4)</td>
+          <td>2/4 = 1/2</td>
+          <td>0.5</td>
+          <td>50 %</td>
+          <td>1 : 1 frente al resto</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-atencion">
+      <strong>La razón no es la fracción:</strong> es el error más frecuente de este bloque. La fracción compara una parte con el <em>total</em>: 3/4 significa tres de cada cuatro. La razón compara una parte con <em>otra parte</em>: 3:1 significa tres moradas por cada blanca. Los mismos datos, dos comparaciones distintas. Escribir «3/4» donde se pedía la razón, o «3:1» donde se pedía la fracción, se penaliza igual que un error de cálculo.
+    </div>
+
+    <div class="caja-tip">
+      <strong>Probabilidad no es certeza:</strong> que la probabilidad de flor blanca sea de 1/4 no significa que de cada cuatro semillas vaya a salir exactamente una blanca. Puede no salir ninguna, o salir tres. La proporción se cumple de forma aproximada cuando la descendencia es numerosa, exactamente igual que ocurre al lanzar una moneda. Conviene recordar aquí lo trabajado en la Lección 2.3 sobre dispersión: los resultados reales se agrupan alrededor del valor esperado, no coinciden con él.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Meiosis y cruces monohíbridos</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Un óvulo humano contiene…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">46 cromosomas</div>
+        <div class="opcion" data-op="b">23 cromosomas</div>
+        <div class="opcion" data-op="c">92 cromosomas</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. En un cuadro de Punnett cada progenitor aporta un solo alelo por casilla porque…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Es una convención de escritura</div>
+        <div class="opcion" data-op="b">El otro alelo se pierde</div>
+        <div class="opcion" data-op="c">La meiosis reparte un solo alelo de cada gen a cada gameto</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. Del cruce Aa × Aa, la proporción de <em>fenotipos</em> esperada es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">3 dominantes : 1 recesivo</div>
+        <div class="opcion" data-op="b">1 : 2 : 1</div>
+        <div class="opcion" data-op="c">Todos dominantes</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-5-el-cuadro-dihibrido">5. El cuadro dihíbrido</h2>
+  <div class="bloque">
+    <p>Cuando se siguen dos genes a la vez, cada progenitor puede producir cuatro tipos de gameto. Y ese número no hay que memorizarlo: es el <strong>principio del conteo</strong> de la Lección 2.3. Dos posibilidades para el primer gen por dos para el segundo dan 2 × 2 = 4 gametos, y el cuadro pasa a tener 4 × 4 = 16 casillas.</p>
+
+    <p>Se cruzan dos individuos <strong>AaBb × AaBb</strong>. Los gametos posibles de cada uno son AB, Ab, aB y ab.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Cuadro de Punnett dihíbrido del cruce A a B b por A a B b, con dieciséis casillas. Los cuatro tipos de gameto encabezan las columnas y las filas.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Gametos</th>
+          <th scope="col">AB</th>
+          <th scope="col">Ab</th>
+          <th scope="col">aB</th>
+          <th scope="col">ab</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">AB</th>
+          <td>AABB</td><td>AABb</td><td>AaBB</td><td>AaBb</td>
+        </tr>
+        <tr>
+          <th scope="row">Ab</th>
+          <td>AABb</td><td>AAbb</td><td>AaBb</td><td>Aabb</td>
+        </tr>
+        <tr>
+          <th scope="row">aB</th>
+          <td>AaBB</td><td>AaBb</td><td>aaBB</td><td>aaBb</td>
+        </tr>
+        <tr>
+          <th scope="row">ab</th>
+          <td>AaBb</td><td>Aabb</td><td>aaBb</td><td>aabb</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3 · Contar fenotipos en el cuadro dihíbrido</span>
+      <p>Para contar fenotipos basta con preguntarse, en cada casilla, si hay al menos una mayúscula de cada gen.</p>
+      <div class="paso"><span class="n">1</span> Casillas con A y con B a la vez, es decir, ambos rasgos dominantes: <span class="resalta">9</span>.</div>
+      <div class="paso"><span class="n">2</span> Casillas con A pero con bb, primer rasgo dominante y segundo recesivo: <span class="resalta">3</span>.</div>
+      <div class="paso"><span class="n">3</span> Casillas con aa pero con B, primer rasgo recesivo y segundo dominante: <span class="resalta">3</span>.</div>
+      <div class="paso"><span class="n">4</span> Casillas aabb, ambos recesivos: <span class="resalta">1</span>.</div>
+      <p><strong>Resultado:</strong> la proporción 9 : 3 : 3 : 1, que es la más característica de la genética clásica. Las 16 casillas suman, y esa comprobación conviene hacerla siempre: si la suma no da 16, hay una casilla mal contada.</p>
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-6-herencia-ligada-al-sexo">6. Herencia ligada al sexo</h2>
+  <div class="bloque">
+    <p>Los cruces anteriores suponían que los dos progenitores tienen las mismas posibilidades. Con ciertos genes eso deja de ser cierto, y el motivo está en un par de cromosomas concreto.</p>
+
+    <p>De los 23 pares humanos, uno determina el sexo. Las mujeres tienen dos cromosomas <strong>X</strong>; los varones, un <strong>X</strong> y un <strong>Y</strong>. Y ahí está el detalle decisivo: el cromosoma Y es mucho más pequeño y <strong>no lleva copia</strong> de la mayoría de los genes del X.</p>
+
+    <div class="caja-tip">
+      <strong>La consecuencia, en una frase:</strong> para un gen situado en el cromosoma X, la mujer tiene dos alelos y el varón tiene uno solo. Un varón con un único alelo recesivo lo manifiesta, porque no hay un segundo alelo que pueda enmascararlo. Una mujer necesitaría los dos. Por eso los rasgos recesivos ligados al X —como el daltonismo o la hemofilia— aparecen con mucha más frecuencia en varones.
+    </div>
+
+    <p>La notación añade el alelo como índice sobre la X. Una mujer portadora de daltonismo es X<sup>A</sup>X<sup>a</sup>: tiene el alelo, pero ve los colores con normalidad. Un varón daltónico es X<sup>a</sup>Y.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4 · Madre portadora, padre no daltónico</span>
+      <p>Se cruza una mujer portadora, X<sup>A</sup>X<sup>a</sup>, con un varón que ve los colores con normalidad, X<sup>A</sup>Y.</p>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Cuadro de Punnett del cruce entre una mujer portadora de daltonismo y un varón no daltónico. Los gametos de la madre encabezan las filas y los del padre, las columnas.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Gametos</th>
+          <th scope="col">X<sup>A</sup> (del padre)</th>
+          <th scope="col">Y (del padre)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">X<sup>A</sup> (de la madre)</th>
+          <td>X<sup>A</sup>X<sup>A</sup> · hija, no portadora</td>
+          <td>X<sup>A</sup>Y · hijo, no daltónico</td>
+        </tr>
+        <tr>
+          <th scope="row">X<sup>a</sup> (de la madre)</th>
+          <td>X<sup>A</sup>X<sup>a</sup> · hija portadora</td>
+          <td>X<sup>a</sup>Y · hijo daltónico</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>El resultado se lee por separado para cada sexo, y ahí está la diferencia con todo lo anterior. Entre las hijas, ninguna es daltónica y la mitad son portadoras. Entre los hijos, <strong>la mitad es daltónica</strong>. Un mismo cruce con dos resultados distintos según el sexo.</p>
+
+    <div class="caja-atencion">
+      <strong>El error que el examen busca:</strong> responder «el 25 % de la descendencia será daltónica» y quedarse ahí. Es cierto sobre el total, pero la pregunta casi siempre dice «de los hijos varones» o «de las hijas», y entonces la respuesta correcta es 50 % o 0 %. Ante un cruce ligado al sexo hay que leer con cuidado <em>sobre qué grupo</em> se pide la proporción.
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-7-leer-un-arbol-genealogico">7. Leer un árbol genealógico</h2>
+  <div class="bloque">
+    <p>Un árbol genealógico muestra un rasgo a lo largo de varias generaciones. Su utilidad es deducir <strong>genotipos que no se ven</strong>: quién es portador aunque no manifieste nada.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="330" viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Árbol genealógico de tres generaciones. En la primera generación, un varón no afectado se une con una mujer no afectada. Tienen dos hijos: un varón afectado y una mujer no afectada. Esa mujer se une con un varón no afectado y tienen un hijo varón afectado. Como el rasgo reaparece en la tercera generación a través de personas no afectadas, la mujer de la segunda generación tiene que ser portadora.">
+        <g font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f">
+          <text x="20" y="66">I</text>
+          <text x="20" y="176">II</text>
+          <text x="20" y="266">III</text>
+        </g>
+
+        <line x1="222" y1="60" x2="298" y2="60" stroke="#1e400f" stroke-width="2.5"/>
+        <line x1="260" y1="60" x2="260" y2="110" stroke="#1e400f" stroke-width="2.5"/>
+        <line x1="170" y1="110" x2="350" y2="110" stroke="#1e400f" stroke-width="2.5"/>
+        <line x1="170" y1="110" x2="170" y2="140" stroke="#1e400f" stroke-width="2.5"/>
+        <line x1="350" y1="110" x2="350" y2="140" stroke="#1e400f" stroke-width="2.5"/>
+
+        <rect x="178" y="38" width="44" height="44" fill="#eef7ef" stroke="#1e400f" stroke-width="3"/>
+        <circle cx="320" cy="60" r="22" fill="#eef7ef" stroke="#1e400f" stroke-width="3"/>
+
+        <rect x="148" y="140" width="44" height="44" fill="#1e400f" stroke="#1e400f" stroke-width="3"/>
+        <circle cx="350" cy="162" r="22" fill="#eef7ef" stroke="#1e400f" stroke-width="3"/>
+
+        <line x1="372" y1="162" x2="448" y2="162" stroke="#1e400f" stroke-width="2.5"/>
+        <rect x="448" y="140" width="44" height="44" fill="#eef7ef" stroke="#1e400f" stroke-width="3"/>
+        <line x1="410" y1="162" x2="410" y2="212" stroke="#1e400f" stroke-width="2.5"/>
+        <line x1="410" y1="212" x2="410" y2="230" stroke="#1e400f" stroke-width="2.5"/>
+        <rect x="388" y="230" width="44" height="44" fill="#1e400f" stroke="#1e400f" stroke-width="3"/>
+
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1e400f" text-anchor="middle">
+          <text x="200" y="98">I-1</text>
+          <text x="320" y="98">I-2</text>
+          <text x="170" y="200">II-1</text>
+          <text x="350" y="200">II-2</text>
+          <text x="470" y="200">II-3</text>
+          <text x="410" y="290">III-1</text>
+        </g>
+
+        <g font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f">
+          <rect x="60" y="304" width="18" height="18" fill="#eef7ef" stroke="#1e400f" stroke-width="2.5"/>
+          <text x="86" y="318">varón</text>
+          <circle cx="178" cy="313" r="9" fill="#eef7ef" stroke="#1e400f" stroke-width="2.5"/>
+          <text x="194" y="318">mujer</text>
+          <rect x="290" y="304" width="18" height="18" fill="#1e400f"/>
+          <text x="316" y="318">manifiesta el rasgo</text>
+          <rect x="470" y="304" width="18" height="18" fill="#eef7ef" stroke="#1e400f" stroke-width="2.5"/>
+          <text x="496" y="318">no lo manifiesta</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 5 · Deducir un genotipo que no se ve</span>
+      <p>El rasgo del árbol es recesivo. ¿Qué puede afirmarse sobre <strong>II-2</strong>, la mujer de la segunda generación, que no lo manifiesta?</p>
+      <div class="paso"><span class="n">1</span> Su hijo III-1 sí manifiesta el rasgo, de modo que es homocigoto recesivo: tiene dos alelos recesivos.</div>
+      <div class="paso"><span class="n">2</span> Uno de esos dos alelos procede necesariamente de ella, porque cada progenitor aporta uno.</div>
+      <div class="paso"><span class="n">3</span> Como ella no manifiesta el rasgo, no puede ser homocigota recesiva. Tiene entonces un alelo dominante y uno recesivo.</div>
+      <p><strong>Conclusión:</strong> II-2 es <span class="resalta">portadora</span>, aunque nada en su aspecto lo revele. Ese es exactamente el tipo de deducción que pide el examen: un rasgo que <em>salta</em> una generación obliga a que alguien en el medio lo haya llevado sin manifestarlo.</p>
+    </div>
+  </div>
+
+
+
+  <!-- ENLACE AL INTERACTIVO — recurso publicado -->
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/arbol_probabilidad/" target="_blank" rel="noopener"
+     aria-label="Abrir el interactivo Diagrama de árbol de probabilidad (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🌳</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Diagrama de árbol de probabilidad</span>
+      <span class="ei-sub">El mismo árbol de la Lección 2.3, reutilizado aquí para el cruce con dos genes. Allí contaba gametos como ejercicio de conteo; aquí cuenta descendencia. Es la comprobación de que el 9 : 3 : 3 : 1 del cuadro dihíbrido y las ramas del árbol dan el mismo resultado por caminos distintos.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <div class="lectura">
+    <h2 id="s-lectura-cientifica"><span aria-hidden="true">📖</span> Lectura científica</h2>
+    <p class="fuente">Texto científico breve adaptado al nivel. Obsérvese cómo el autor distingue la proporción esperada del resultado observado.</p>
+
+    <div class="texto-adaptado">
+      <p><strong>Los guisantes de un monasterio</strong></p>
+      <p>A mediados del siglo XIX, un monje llamado Gregor Mendel cultivó guisantes en el huerto de su monasterio y llevó un registro minucioso de sus cruces. Eligió siete características que aparecían en dos versiones bien diferenciadas, entre ellas el color de la semilla, amarilla o verde, y la forma, lisa o rugosa.</p>
+      <p>Al cruzar plantas de semilla amarilla con plantas de semilla verde, toda la descendencia resultó amarilla. El verde parecía haber desaparecido. Pero al cruzar entre sí esas plantas amarillas, el verde reapareció en una parte de la generación siguiente. De 8023 semillas contadas en uno de sus experimentos, 6022 fueron amarillas y 2001 verdes.</p>
+      <p>Mendel calculó la razón entre ambas cifras y obtuvo aproximadamente tres a uno. La misma proporción se repitió en las siete características estudiadas. De ahí dedujo que cada planta debía llevar dos factores para cada característica, que uno podía enmascarar al otro y que al formarse las células reproductoras los dos factores se separaban.</p>
+      <p>Es notable que llegara a esa conclusión sin conocer los cromosomas, que se describirían décadas más tarde, ni el ADN. Lo que hizo fue contar muchísimo y confiar en la proporción. También advirtió que sus cifras no eran exactas: 6022 no es tres veces 2001 con precisión matemática, y sostuvo que la desviación era la esperable en cualquier conteo con azar de por medio.</p>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Mendel era monje y cultivaba guisantes.</div>
+        <div class="opcion" data-op="b">Contando grandes cantidades de descendencia, Mendel dedujo las reglas de la herencia sin conocer los cromosomas ni el ADN.</div>
+        <div class="opcion" data-op="c">Las semillas amarillas son más frecuentes que las verdes.</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. La razón entre semillas amarillas y verdes que obtuvo Mendel fue aproximadamente…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">1 : 1</div>
+        <div class="opcion" data-op="b">9 : 3 : 3 : 1</div>
+        <div class="opcion" data-op="c">3 : 1</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. Que toda la primera descendencia fuera amarilla indica que el alelo amarillo es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Dominante sobre el verde</div>
+        <div class="opcion" data-op="b">Recesivo frente al verde</div>
+        <div class="opcion" data-op="c">Ligado al sexo</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">4. ¿Por qué las cifras 6022 y 2001 no dan exactamente 3 a 1?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Porque Mendel se equivocó al contar</div>
+        <div class="opcion" data-op="b">Porque la proporción real era otra</div>
+        <div class="opcion" data-op="c">Porque una proporción esperada se cumple de forma aproximada, no exacta, cuando interviene el azar</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Formatos, dihíbridos y herencia ligada al sexo</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Una probabilidad de 1/4 expresada como porcentaje y como razón es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">25 % y 1 : 4</div>
+        <div class="opcion" data-op="b">25 % y 1 : 3</div>
+        <div class="opcion" data-op="c">40 % y 1 : 3</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. Un individuo AaBb puede producir…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">4 tipos de gameto, por el principio del conteo</div>
+        <div class="opcion" data-op="b">2 tipos de gameto</div>
+        <div class="opcion" data-op="c">16 tipos de gameto</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. Un varón manifiesta un rasgo recesivo ligado al cromosoma X con un solo alelo porque…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Los varones tienen más cromosomas X</div>
+        <div class="opcion" data-op="b">El alelo se vuelve dominante en los varones</div>
+        <div class="opcion" data-op="c">El cromosoma Y no lleva copia de ese gen, así que no hay un segundo alelo que lo enmascare</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">4. Del cruce entre una madre portadora X<sup>A</sup>X<sup>a</sup> y un padre X<sup>A</sup>Y, la proporción de <em>hijos varones</em> daltónicos es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">La mitad</div>
+        <div class="opcion" data-op="b">Ninguno</div>
+        <div class="opcion" data-op="c">La cuarta parte</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+
+  <div class="caja-tarea">
+    <h2 id="s-tarea"><span aria-hidden="true">✅</span> Tarea</h2>
+        <ul>
+      <li>Diez cruces —siete monohíbridos y tres dihíbridos— con la respuesta en el formato solicitado en cada caso.</li>
+      <li>Dos cruces de herencia ligada al sexo, indicando por separado la proporción esperada entre las hijas y entre los hijos varones.</li>
+      <li>Un árbol genealógico de tres generaciones con dos individuos sin marcar, con la justificación escrita de cada deducción.</li>
+    </ul>
+    <p>Tiempo estimado: 60 minutos. Evalúe su trabajo con la rúbrica de esta lección.</p>
+  </div>
+
+  <div class="quiz">
+    <h2 id="s-quiz-de-la-leccion-4-2">Quiz de la lección 4.2</h2>
+    <p>Dieciséis preguntas: dos de meiosis y formación de gametos, cuatro de cuadros monohíbridos, tres de dihíbridos, tres de conversión de formato de la proporción, dos de herencia ligada al sexo y dos de lectura de árbol genealógico. Tiempo sugerido: 40 minutos. Para aprobar se requieren al menos 11 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2 id="s-rubrica-analitica-de-la-leccion"><span aria-hidden="true">📊</span> Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <caption class="sr-only">Rúbrica analítica de genética cuantitativa con cuatro criterios y cuatro niveles de desempeño.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Inicial (1)</th>
+          <th scope="col">En desarrollo (2)</th>
+          <th scope="col">Competente (3)</th>
+          <th scope="col">Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Construye el cuadro con los gametos correctos</td>
+          <td>Coloca en los márgenes el genotipo completo en lugar de los gametos.</td>
+          <td>Obtiene bien los gametos del cruce monohíbrido, pero no los del dihíbrido.</td>
+          <td>Obtiene los gametos correctos en ambos tipos de cruce.</td>
+          <td>Además, justifica el número de gametos mediante el principio del conteo y la meiosis.</td>
+        </tr>
+        <tr>
+          <td>Distingue genotipo de fenotipo en el conteo</td>
+          <td>Cuenta una sola proporción sin distinguir de cuál se trata.</td>
+          <td>Distingue ambos conceptos, pero se equivoca al contar uno de los dos.</td>
+          <td>Obtiene por separado la proporción de genotipos y la de fenotipos.</td>
+          <td>Identifica en el enunciado cuál de las dos se pide, aunque la pregunta no use esas palabras.</td>
+        </tr>
+        <tr>
+          <td>Expresa la proporción en el formato solicitado</td>
+          <td>Responde siempre en el mismo formato, sea cual sea la pregunta.</td>
+          <td>Convierte entre formatos, pero confunde la fracción con la razón.</td>
+          <td>Expresa correctamente la proporción en los cuatro formatos.</td>
+          <td>Convierte entre los cuatro con soltura y explica qué compara cada uno.</td>
+        </tr>
+        <tr>
+          <td>Interpreta el resultado como probabilidad y no como certeza</td>
+          <td>Afirma que de cada cuatro descendientes habrá exactamente uno recesivo.</td>
+          <td>Menciona que es una probabilidad, pero razona como si fuera exacta.</td>
+          <td>Interpreta la proporción como valor esperado y admite la desviación.</td>
+          <td>Relaciona la desviación con el tamaño de la descendencia, apoyándose en lo trabajado en la Lección 2.3.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2 id="s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</h2>
+    <p>Esta lección trabajó el nivel del <strong>individuo</strong>: qué hereda un descendiente y con qué probabilidad. Saldó además la deuda de la Unidad 3 con la <strong>meiosis</strong>, que es lo que convierte el cuadro de Punnett en un modelo de algo real y no en una receta.</p>
+    <p>La <strong>Lección 4.3 · Selección natural, evidencia evolutiva y ecosistemas</strong> sube al último nivel, el de la <strong>población</strong>. Allí la variación que aquí se contaba caso por caso pasa a ser materia prima: las diferencias entre individuos, combinadas con una presión del ambiente, explican cómo cambia una especie entera. Y volverá la anemia falciforme de la Lección 4.1, ahora como ejemplo de por qué una variante perjudicial puede mantenerse.</p>
+  </div>
+
+  <footer>
+    <p>GEDparaHispanos · Ciencias · Unidad 4 · Lección 4.2</p>
+    <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+    <p>© 2026. Esta obra está licenciada bajo
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons
+      Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+  </footer>
+
+
+</div>
+
+<a href="#indice" class="volver-indice" aria-label="Volver al contenido de la lección">↑ Índice</a>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = 'Correcto. Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Quiz: 2 de meiosis, 4 monohíbridos, 3 dihíbridos, 3 de formato,
+     2 de herencia ligada al sexo, 2 de árbol genealógico.
+     El plan aprobado especifica 12 preguntas sin los bloques de meiosis ni de
+     herencia ligada al sexo; para volver a esa versión basta retirar las
+     preguntas 1, 2, 13 y 14 y devolver el umbral a 8. ---- */
+  var preguntasQuiz = [
+    { enun: '1. La meiosis se diferencia de la mitosis en que produce…',
+      ops: ['Dos células idénticas con el mismo número de cromosomas', 'Cuatro células con la mitad de los cromosomas', 'Una sola célula de mayor tamaño', 'Dos células con el doble de cromosomas'], correcta: 1 },
+    { enun: '2. Si los gametos humanos tuvieran 46 cromosomas en lugar de 23, la consecuencia sería que…',
+      ops: ['El número de cromosomas se duplicaría en cada generación', 'No se formarían gametos', 'Los hijos serían idénticos a los padres', 'No habría ninguna consecuencia'], correcta: 0 },
+    { enun: '3. En el cruce Aa × Aa, la proporción de genotipos esperada es…',
+      ops: ['3 : 1', '1 : 1', '1 : 2 : 1', '9 : 3 : 3 : 1'], correcta: 2 },
+    { enun: '4. En el cruce Aa × aa, la proporción de descendientes con fenotipo recesivo es…',
+      ops: ['Ninguno', 'La mitad', 'La cuarta parte', 'Tres de cada cuatro'], correcta: 1 },
+    { enun: '5. Un individuo de genotipo AA cruzado con uno de genotipo aa produce descendencia…',
+      ops: ['Toda Aa, con fenotipo dominante', 'Mitad AA y mitad aa', 'Toda aa', 'En proporción 3 : 1'], correcta: 0 },
+    { enun: '6. Dos plantas de flor morada tienen una descendiente de flor blanca. El genotipo de ambos progenitores es…',
+      ops: ['AA y AA', 'AA y Aa', 'Aa y Aa', 'aa y aa'], correcta: 2 },
+    { enun: '7. Un individuo de genotipo AaBb puede producir cuántos tipos distintos de gameto…',
+      ops: ['2', '4', '8', '16'], correcta: 1 },
+    { enun: '8. El cuadro de Punnett del cruce AaBb × AaBb tiene…',
+      ops: ['4 casillas', '8 casillas', '16 casillas', '9 casillas'], correcta: 2 },
+    { enun: '9. La proporción de fenotipos característica del cruce dihíbrido AaBb × AaBb es…',
+      ops: ['3 : 1', '1 : 2 : 1', '1 : 1 : 1 : 1', '9 : 3 : 3 : 1'], correcta: 3 },
+    { enun: '10. Una probabilidad de 3/4 expresada como decimal y porcentaje es…',
+      ops: ['0.75 y 75 %', '0.34 y 34 %', '0.25 y 25 %', '3.4 y 340 %'], correcta: 0 },
+    { enun: '11. Si de cada cuatro descendientes se esperan tres morados y uno blanco, la RAZÓN entre morados y blancos es…',
+      ops: ['3/4', '1 : 4', '3 : 1', '25 %'], correcta: 2 },
+    { enun: '12. La diferencia entre la fracción 1/4 y la razón 1 : 3 es que…',
+      ops: ['Son cantidades distintas', 'La fracción compara una parte con el total y la razón compara una parte con otra parte', 'La razón siempre es mayor', 'La fracción solo se usa en matemáticas'], correcta: 1 },
+    { enun: '13. Los rasgos recesivos ligados al cromosoma X aparecen con más frecuencia en varones porque…',
+      ops: ['Los varones heredan más alelos recesivos', 'El cromosoma Y no lleva copia de esos genes, así que un solo alelo basta para manifestarlos', 'Las mujeres no pueden portar esos alelos', 'El alelo cambia de dominante a recesivo según el sexo'], correcta: 1 },
+    { enun: '14. Del cruce entre una madre portadora de daltonismo y un padre no daltónico, la proporción esperada de HIJAS daltónicas es…',
+      ops: ['Ninguna', 'La mitad', 'La cuarta parte', 'Todas'], correcta: 0 },
+    { enun: '15. En un árbol genealógico, un rasgo recesivo reaparece en un nieto cuyos padres no lo manifiestan. Puede deducirse que…',
+      ops: ['El rasgo es dominante', 'Hubo una mutación nueva', 'El árbol está mal construido', 'Ambos padres son portadores'], correcta: 3 },
+    { enun: '16. Al leer un árbol genealógico, conviene empezar la deducción por…',
+      ops: ['El individuo afectado, porque su genotipo se conoce con certeza', 'El individuo de mayor edad', 'Cualquier individuo no afectado', 'La generación más antigua siempre'], correcta: 0 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta'); });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = 'Correcto.';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 11) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 16 correctas. Aprobado. Puede continuar a la Lección 4.3.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 16 correctas. Repase la lección e intente de nuevo (se requieren 11).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

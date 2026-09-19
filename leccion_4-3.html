@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<!--
+  Lección 4.3 · Selección natural, evidencia evolutiva y ecosistemas
+  Spanish ASE Science · Unidad 4 · Ciencias de la vida II: herencia, evolución y ecosistemas
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 4.3 · Selección natural, evidencia evolutiva y ecosistemas</title>
+<meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    /* Unidad 4 — verde oliva del plan curricular (--t4 #33691e). Familia
+       vecina de la Unidad 3, como corresponde a la segunda mitad del mismo
+       dominio, pero con el matiz desplazado hacia el oliva para que las dos
+       unidades no se confundan entre sí. */
+    --tema:    #33691e;
+    --tema-d:  #1e400f;
+    --tema-bg: #d3e6c2;
+    --tema-bg2:#bfd9a9;
+    --acento:  #558b2f;
+    --txt:     #222;
+    --bg:      #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ── ENCABEZADO ─────────────────────────────────────────────── */
+  header.principal {
+    background: var(--tema-d);
+    background: linear-gradient(135deg, #13290a 0%, #1e400f 55%, #33691e 100%);
+    color: #ffffff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(19,41,10,.28);
+  }
+  header.principal .ruta {
+    font-size: 13px; color: #ffffff; letter-spacing: .4px; text-transform: uppercase;
+  }
+  header.principal h1 { margin: 8px 0 6px; font-size: 23px; font-weight: 700; color: #ffffff; }
+  header.principal .meta { font-size: 14px; color: #ffffff; }
+
+  .practicas-sp { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sp {
+    display: inline-block; background: #ffffff; color: #1e400f;
+    font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 12px;
+    letter-spacing: .3px;
+  }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .diagrama-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+  .materiales {
+    background: #eceff1; border-left: 6px solid #37474f;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .materiales h2 { margin: 0 0 8px; color: #263238; font-size: 18px; }
+  .materiales ul { margin: 8px 0 0; padding-left: 22px; }
+  .materiales li { margin: 5px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+  .resalta { background: var(--tema-bg); padding: 1px 6px; border-radius: 5px; font-weight: 700; color: var(--tema-d); }
+
+  /* ── CAJA DE CONSEJO ─────────────────────────────────────────
+     Matiz fijo (326°, magenta-rosa) e independiente del color de
+     la Unidad: es el único matiz libre en las ocho paletas del
+     plan, de modo que el bloque nunca se funde con el tema.
+     ─────────────────────────────────────────────────────────── */
+  .caja-tip {
+    background: #fce1f0; border-left: 5px solid #9e1c66;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #800d4e; font-size: 15px;
+  }
+  .caja-tip strong { color: #800d4e; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+  .vocabulario {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .vocabulario h2 { margin: 0 0 6px; color: #4527a0; font-size: 18px; }
+  .vocabulario p { color: #311b92; }
+
+  /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+  .lectura {
+    background: #fffdf7; border: 2px solid var(--tema);
+    border-radius: 10px; padding: 6px 22px 18px; margin: 18px 0;
+  }
+  .lectura h2 { color: var(--tema-d); font-size: 19px; }
+  .lectura .fuente { font-size: 13px; color: #555; font-style: italic; }
+  .lectura .texto-adaptado {
+    background: #ffffff; border-left: 5px solid var(--tema-bg);
+    padding: 12px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+  }
+
+  /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+  .enlace-interactivo {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-left: 6px solid var(--tema); border-radius: 10px;
+    padding: 16px 20px; margin: 18px 0; text-decoration: none;
+    color: var(--tema-d); transition: background .15s;
+  }
+  .enlace-interactivo:hover { background: var(--tema-bg2); }
+  .enlace-interactivo .ei-icono { font-size: 26px; line-height: 1; flex-shrink: 0; }
+  .enlace-interactivo .ei-titulo { display: block; font-weight: 700; font-size: 16px; color: var(--tema-d); }
+  .enlace-interactivo .ei-sub { display: block; font-size: 14px; color: #333; margin: 4px 0 8px; }
+  .enlace-interactivo .ei-cta {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 14px; font-weight: 700; padding: 6px 16px; border-radius: 7px;
+  }
+
+  /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+  .pendiente { color: #c62828; font-size: 15px; margin-left: 6px; }
+
+  .reglas { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  .reglas th, .reglas td { border: 1px solid #e0e0e0; padding: 9px 12px; text-align: left; vertical-align: top; }
+  .reglas th { background: var(--tema); color: #ffffff; }
+  .reglas td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #c62828; }
+
+  .btn {
+    background: var(--tema); color: #ffffff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px; font-size: 14px; }
+  .modo-pres { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-pres strong { color: #004d40; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #004d40; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #e3f2fd; border-left: 6px solid #1565c0;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #0d47a1; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #ffffff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #ffffff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #555;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+  footer p { margin: 5px 0; }
+  footer a { color: #1e400f; }
+
+      /* ===== Índice interno de la lección (GEDparaHispanos) ===== */
+      .indice {
+        background: #ffffff;
+        border: 1px solid var(--tema-bg);
+        border-left: 5px solid var(--tema-d);
+        border-radius: 8px;
+        padding: 14px 20px;
+        margin: 20px 0;
+      }
+      .indice h2 { margin: 0 0 8px; font-size: 18px; color: var(--tema-d); }
+      .indice ul { list-style: none; margin: 0; padding: 0; columns: 2 260px; column-gap: 28px; }
+      .indice li { margin: 0 0 6px; break-inside: avoid; }
+      .indice a { color: var(--tema-d); font-weight: 600; text-decoration: underline; }
+      .indice a:hover { text-decoration-thickness: 2px; }
+      h2[id] { scroll-margin-top: 16px; }
+      .volver-indice {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        background: var(--tema-d);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        z-index: 50;
+      }
+      .volver-indice:focus-visible, .indice a:focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; }
+      .actividad p { margin: 6px 0 0; }
+      @media print { .volver-indice, .indice { display: none; } }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">GEDparaHispanos · Ciencias · Unidad 4 · Ciencias de la vida II: herencia, evolución y ecosistemas</div>
+    <h1>Lección 4.3 · Selección natural, evidencia evolutiva y ecosistemas</h1>
+    <div class="meta">Tiempo estimado: unas 4 horas · NRS 4–5</div>
+    <div class="practicas-sp">
+      <span class="sp">SP.4 · Evaluar conclusiones con evidencia</span>
+      <span class="sp">SP.3 · Razonar a partir de datos y evidencias</span>
+    </div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Explicar el mecanismo de la selección natural a partir de la variación, la presión ambiental y el éxito reproductivo.</li>
+      <li>Clasificar los tipos de evidencia que sostienen la ascendencia común.</li>
+      <li>Interpretar un cladograma: identificar el antepasado común más reciente de dos especies y deducir, a partir de él, cuáles están más emparentadas.</li>
+      <li>Construir un cladograma sencillo a partir de una tabla de características.</li>
+      <li>Interpretar una red trófica y predecir el efecto en cascada de la desaparición de una especie.</li>
+      <li>Leer una gráfica de crecimiento poblacional e identificar la capacidad de carga.</li>
+      <li>Distinguir los cuatro tipos de relación entre especies según a quién beneficia y a quién perjudica.</li>
+      <li>Separar la conclusión sostenida por los datos de aquella que los excede.</li>
+    </ul>
+  </div>
+
+      <nav class="indice" id="indice" aria-labelledby="indice-titulo">
+        <h2 id="indice-titulo">Contenido de la lección</h2>
+        <ul>
+          <li><a href="#s-material-y-recursos">Material y recursos</a></li>
+          <li><a href="#s-1-el-mecanismo-de-la-seleccion-natural">1. El mecanismo de la selección natural</a></li>
+          <li><a href="#s-2-la-evidencia-de-la-ascendencia-comun-y-el-clad">2. La evidencia de la ascendencia común y el cladograma</a></li>
+          <li><a href="#s-3-redes-troficas-y-flujo-de-energia">3. Redes tróficas y flujo de energía</a></li>
+          <li><a href="#s-4-las-relaciones-entre-especies">4. Las relaciones entre especies</a></li>
+          <li><a href="#s-vocabulario-tecnico-y-raices">Vocabulario técnico y raíces</a></li>
+          <li><a href="#s-lectura-cientifica">Lectura científica</a></li>
+          <li><a href="#s-tarea">Tarea</a></li>
+          <li><a href="#s-quiz-de-la-leccion-4-3">Quiz de la lección 4.3</a></li>
+          <li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li>
+          <li><a href="#s-cierre-de-la-unidad-4-y-enlace-con-la-unidad-5">Cierre de la Unidad 4 y enlace con la Unidad 5</a></li>
+        </ul>
+      </nav>
+
+  <div class="bloque">
+    <p><strong>Conexión con las lecciones anteriores.</strong> La 4.1 trabajó la <strong>molécula</strong> y la 4.2 el <strong>individuo</strong>. Esta cierra la unidad en el nivel de la <strong>población</strong>, y ahí las piezas encajan: la variación que en el cuadro de Punnett era una proporción de descendencia se convierte, a escala de miles de individuos y de generaciones, en el motor del cambio evolutivo.</p>
+    <p>Volverá también la anemia falciforme de la Lección 4.1. Allí quedó una pregunta sin responder del todo: por qué una variante perjudicial no ha desaparecido. Aquí se responde con el mecanismo completo.</p>
+  </div>
+
+  <div class="materiales">
+        <h2 id="s-material-y-recursos"><span aria-hidden="true">📐</span> Material y recursos</h2>
+        <ul>
+          <li>Casos documentados de selección natural con datos: la polilla moteada y la resistencia bacteriana a los antibióticos.</li>
+          <li>El esquema de red trófica de esta lección, en versión completa y con una especie retirada.</li>
+          <li>La gráfica de crecimiento poblacional con capacidad de carga.</li>
+          <li>La tabla de estructuras homólogas y análogas.</li>
+          <li>La tabla de características de cinco especies y el cladograma correspondiente, con los caracteres derivados marcados sobre las ramas.</li>
+        </ul>
+        <p><strong>Cómo estudiar esta lección:</strong> trabaje primero con los datos y después con la teoría. Observe qué ocurrió con las polillas o con las bacterias antes de leer el nombre del mecanismo que lo explica.</p>
+      </div>
+
+  <h2 class="seccion" id="s-1-el-mecanismo-de-la-seleccion-natural">1. El mecanismo de la selección natural</h2>
+  <div class="bloque">
+    <p>La selección natural no es una fuerza que empuje a las especies hacia la perfección. Es el resultado inevitable de tres hechos que, por separado, no tienen nada de misterioso.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="255" viewBox="0 0 700 255" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Los tres elementos del mecanismo de la selección natural dispuestos en secuencia. Primero, la variación: los individuos de una población no son idénticos entre sí. Segundo, la presión ambiental: alguna condición del entorno hace que ciertas variantes sobrevivan mejor que otras. Tercero, el éxito reproductivo: los que sobreviven dejan más descendencia y su variante se hace más frecuente en la población. El resultado es que la población cambia con las generaciones, aunque ningún individuo haya cambiado.">
+        <rect x="20" y="40" width="195" height="118" rx="10" fill="#d3e6c2" stroke="#1e400f" stroke-width="3"/>
+        <text x="117" y="70" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#1e400f" text-anchor="middle">1 · Variación</text>
+        <text x="117" y="98" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">Los individuos de una</text>
+        <text x="117" y="116" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">población no son</text>
+        <text x="117" y="134" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">idénticos entre sí</text>
+
+        <rect x="252" y="40" width="195" height="118" rx="10" fill="#d3e6c2" stroke="#1e400f" stroke-width="3"/>
+        <text x="349" y="70" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#1e400f" text-anchor="middle">2 · Presión ambiental</text>
+        <text x="349" y="98" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">Alguna condición del</text>
+        <text x="349" y="116" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">entorno favorece a</text>
+        <text x="349" y="134" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">unas variantes y no a otras</text>
+
+        <rect x="484" y="40" width="195" height="118" rx="10" fill="#d3e6c2" stroke="#1e400f" stroke-width="3"/>
+        <text x="581" y="70" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#1e400f" text-anchor="middle">3 · Éxito reproductivo</text>
+        <text x="581" y="98" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">Los favorecidos dejan</text>
+        <text x="581" y="116" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">más descendencia y su</text>
+        <text x="581" y="134" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">variante se hace frecuente</text>
+
+        <g stroke="#1e400f" stroke-width="3">
+          <line x1="217" y1="99" x2="240" y2="99"/>
+          <line x1="449" y1="99" x2="472" y2="99"/>
+        </g>
+        <g fill="#1e400f">
+          <polygon points="250,99 236,92 236,106"/>
+          <polygon points="482,99 468,92 468,106"/>
+        </g>
+
+        <rect x="120" y="186" width="460" height="50" rx="10" fill="#bfd9a9" stroke="#1e400f" stroke-width="3"/>
+        <text x="350" y="208" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1e400f" text-anchor="middle">Resultado: la población cambia con las generaciones</text>
+        <text x="350" y="227" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">aunque ningún individuo haya cambiado</text>
+      </svg>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>El error conceptual que el examen persigue:</strong> decir que los organismos «se adaptan» o «desarrollan» una característica porque la necesitan. No es así. La variación <em>ya existía</em> en la población antes de que apareciera la presión, y se debe al azar de las mutaciones y de la meiosis. El ambiente no crea la variante: solo determina cuál de las que ya había resulta ventajosa. Una jirafa no estiró el cuello: las que ya lo tenían más largo dejaron más descendencia.
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1 · Resistencia bacteriana a los antibióticos</span>
+      <p>Un cultivo de bacterias se trata con un antibiótico y casi todas mueren. Al cabo de unos días, la población se ha recuperado y el mismo antibiótico ya no la afecta.</p>
+      <div class="paso"><span class="n">1</span> <strong>Variación:</strong> en el cultivo inicial ya existían unas pocas bacterias con una mutación que las hacía resistentes. No apareció por el antibiótico: estaba antes.</div>
+      <div class="paso"><span class="n">2</span> <strong>Presión ambiental:</strong> el antibiótico elimina a las sensibles y deja vivas a las resistentes.</div>
+      <div class="paso"><span class="n">3</span> <strong>Éxito reproductivo:</strong> las supervivientes se multiplican sin competencia, y la población recuperada está formada casi por completo por descendientes suyas.</div>
+      <p><strong>Lo que este caso demuestra y lo que no:</strong> demuestra que la frecuencia de la variante resistente aumentó. No demuestra que el antibiótico <em>provocara</em> la mutación. Es exactamente la distinción entre correlación y causa de la Lección 2.2, y es también la razón por la que abandonar un tratamiento antes de tiempo agrava el problema: deja vivas precisamente a las más resistentes.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Y la anemia falciforme, ahora con el mecanismo completo:</strong> en regiones con malaria, quien porta una sola copia del alelo resiste mejor la enfermedad y deja más descendencia. La presión ambiental es la malaria; la variante favorecida es la portadora. Por eso el alelo se mantiene pese a que en doble copia produzca una enfermedad grave. Donde no hay malaria, esa ventaja desaparece y el alelo se vuelve mucho menos frecuente.
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-2-la-evidencia-de-la-ascendencia-comun-y-el-clad">2. La evidencia de la ascendencia común y el cladograma</h2>
+  <div class="bloque">
+    <p>La afirmación de que las especies actuales descienden de antepasados comunes no se sostiene en un solo tipo de prueba, sino en varias líneas independientes que coinciden. Que coincidan procediendo de disciplinas distintas es, precisamente, lo que las hace convincentes.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Tipos de evidencia que sostienen la ascendencia común, con qué muestra cada uno y un ejemplo.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Tipo de evidencia</th>
+          <th scope="col">Qué muestra</th>
+          <th scope="col">Ejemplo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fósiles</td>
+          <td>Formas intermedias entre grupos actuales, ordenadas en el tiempo por la capa donde aparecen.</td>
+          <td>Fósiles con rasgos de reptil y de ave a la vez.</td>
+        </tr>
+        <tr>
+          <td>Anatomía comparada: estructuras homólogas</td>
+          <td>El mismo plan óseo con funciones distintas, señal de un antepasado común.</td>
+          <td>El brazo humano, la aleta de la ballena y el ala del murciélago tienen los mismos huesos.</td>
+        </tr>
+        <tr>
+          <td>Anatomía comparada: estructuras análogas</td>
+          <td>La misma función con planes distintos, señal de que <em>no</em> hay parentesco cercano.</td>
+          <td>El ala del insecto y la del ave sirven para lo mismo, pero no comparten estructura.</td>
+        </tr>
+        <tr>
+          <td>Evidencia molecular</td>
+          <td>Semejanza en las secuencias de ADN y de proteínas, proporcional al parentesco.</td>
+          <td>Cuanto más próximas dos especies, más parecidas son sus secuencias genéticas.</td>
+        </tr>
+        <tr>
+          <td>Desarrollo embrionario</td>
+          <td>Etapas tempranas semejantes en grupos que de adultos son muy distintos.</td>
+          <td>Embriones de vertebrados difíciles de distinguir en las primeras fases.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-atencion">
+      <strong>Homólogo y análogo apuntan en direcciones opuestas:</strong> es la confusión más costosa de este bloque. <em>Homólogo</em> significa misma estructura, distinta función, y es evidencia <strong>a favor</strong> del parentesco. <em>Análogo</em> significa misma función, distinta estructura, y es evidencia <strong>en contra</strong>: dos soluciones parecidas alcanzadas por caminos separados. La prueba práctica es sencilla: si hay que mirar los huesos por dentro para ver el parecido, es homólogo; si el parecido está solo en lo que hace, es análogo.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       BLOQUE DE CLADOGRAMAS
+       Añadido en la revisión de agosto de 2026. Corresponde al objetivo
+       L.f.1 de los Assessment Targets de Ciencias del examen GED
+       («Common ancestry and cladograms: drawing, creating, interpreting»),
+       que el plan aprobado no recogía. Para revertir el cambio basta
+       eliminar este bloque completo, las preguntas 4 y 5 de la Práctica
+       interactiva 1, la Actividad 4, las preguntas 8 y 9 del quiz y
+       devolver el umbral a 9 sobre 14.
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="bloque">
+    <h3>El cladograma: cómo se lee un árbol de parentesco</h3>
+    <p>Cuando todas esas líneas de evidencia se reúnen, el resultado se resume en un diagrama ramificado llamado <strong>cladograma</strong>. No es una prueba nueva ni una sexta clase de evidencia: es la manera de <em>representar</em> la conclusión a la que llevan las cinco anteriores. El examen lo evalúa de forma directa y casi siempre pide lo mismo: decidir, mirando el diagrama, qué dos especies están más emparentadas entre sí.</p>
+
+    <p>Un cladograma se construye a partir de una tabla de características. La regla es que un rasgo nuevo, una vez que aparece, lo heredan todos los descendientes; por eso los grupos quedan encajados unos dentro de otros, como cajas dentro de cajas.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Tabla de características de cinco especies. Para cada especie se indica si presenta columna vertebral, mandíbulas, cuatro extremidades, huevo amniótico y pelo.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Especie</th>
+          <th scope="col">Columna vertebral</th>
+          <th scope="col">Mandíbulas</th>
+          <th scope="col">Cuatro extremidades</th>
+          <th scope="col">Huevo amniótico</th>
+          <th scope="col">Pelo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Lamprea</th><td>Sí</td><td>No</td><td>No</td><td>No</td><td>No</td></tr>
+        <tr><th scope="row">Tiburón</th><td>Sí</td><td>Sí</td><td>No</td><td>No</td><td>No</td></tr>
+        <tr><th scope="row">Rana</th><td>Sí</td><td>Sí</td><td>Sí</td><td>No</td><td>No</td></tr>
+        <tr><th scope="row">Lagarto</th><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>No</td></tr>
+        <tr><th scope="row">Ratón</th><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+      </tbody>
+    </table>
+
+    <p>Léase la tabla por columnas. La columna vertebral la tienen las cinco especies, de modo que su aparición es anterior a cualquier separación entre ellas. Las mandíbulas las tienen cuatro: el rasgo apareció después de que la lamprea siguiera su propio camino. Las cuatro extremidades, tres; el huevo amniótico, dos; el pelo, una sola. Cada columna define un grupo más pequeño que la anterior, y ese encaje es exactamente lo que dibuja el cladograma.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="350" viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cladograma de cinco especies. En la parte superior, de izquierda a derecha, están las puntas: lamprea, tiburón, rana, lagarto y ratón. Desde abajo, la raíz lleva la marca de la columna vertebral y sube hasta un primer nodo del que sale, por un lado, la lamprea y, por otro, el resto del grupo. En la rama que lleva al resto está marcada la aparición de las mandíbulas. Esa rama llega a un segundo nodo del que sale el tiburón por un lado y, por otro, una rama marcada con la aparición de las cuatro extremidades. Esa rama llega a un tercer nodo del que sale la rana por un lado y, por otro, una rama marcada con la aparición del huevo amniótico. Esa rama llega a un cuarto nodo, el más reciente de todos, del que salen el lagarto y el ratón. En la rama del ratón está marcada la aparición del pelo. El lagarto y el ratón son, por tanto, las dos especies más emparentadas del diagrama, y la lamprea es la más lejana de todas.">
+        <text x="90"  y="40" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1e400f" text-anchor="middle">Lamprea</text>
+        <text x="220" y="40" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1e400f" text-anchor="middle">Tiburón</text>
+        <text x="350" y="40" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1e400f" text-anchor="middle">Rana</text>
+        <text x="480" y="40" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1e400f" text-anchor="middle">Lagarto</text>
+        <text x="610" y="40" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1e400f" text-anchor="middle">Ratón</text>
+
+        <g stroke="#1e400f" stroke-width="3" fill="none" stroke-linecap="square">
+          <line x1="90"  y1="55"  x2="90"  y2="260"/>
+          <line x1="220" y1="55"  x2="220" y2="210"/>
+          <line x1="350" y1="55"  x2="350" y2="160"/>
+          <line x1="480" y1="55"  x2="480" y2="110"/>
+          <line x1="610" y1="55"  x2="610" y2="110"/>
+          <line x1="480" y1="110" x2="610" y2="110"/>
+          <line x1="545" y1="110" x2="545" y2="160"/>
+          <line x1="350" y1="160" x2="545" y2="160"/>
+          <line x1="448" y1="160" x2="448" y2="210"/>
+          <line x1="220" y1="210" x2="448" y2="210"/>
+          <line x1="334" y1="210" x2="334" y2="260"/>
+          <line x1="90"  y1="260" x2="334" y2="260"/>
+          <line x1="212" y1="260" x2="212" y2="300"/>
+        </g>
+
+        <g fill="#1e400f">
+          <circle cx="545" cy="110" r="6"/>
+          <circle cx="448" cy="160" r="6"/>
+          <circle cx="334" cy="210" r="6"/>
+          <circle cx="212" cy="260" r="6"/>
+        </g>
+
+        <g fill="#5C3900">
+          <rect x="605" y="80"  width="11" height="11"/>
+          <rect x="540" y="132" width="11" height="11"/>
+          <rect x="443" y="182" width="11" height="11"/>
+          <rect x="329" y="232" width="11" height="11"/>
+          <rect x="207" y="277" width="11" height="11"/>
+        </g>
+        <g font-family="Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#5C3900">
+          <text x="622" y="90">Pelo</text>
+          <text x="557" y="142">Huevo amniótico</text>
+          <text x="460" y="192">Cuatro extremidades</text>
+          <text x="346" y="242">Mandíbulas</text>
+          <text x="224" y="287">Columna vertebral</text>
+        </g>
+
+        <text x="212" y="320" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">Antepasado común de todo el grupo</text>
+
+        <rect x="20" y="337" width="11" height="11" fill="#5C3900"/>
+        <text x="38" y="347" font-family="Segoe UI, sans-serif" font-size="11" fill="#5C3900">La marca señala el carácter derivado que aparece en esa rama</text>
+      </svg>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Las cuatro reglas de lectura de un cladograma, con lo que representa cada elemento del diagrama.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Elemento del diagrama</th>
+          <th scope="col">Qué representa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Las puntas</td>
+          <td>Las especies que se comparan. Todas son actuales: ninguna desciende de otra punta del diagrama.</td>
+        </tr>
+        <tr>
+          <td>Los nodos (los puntos de ramificación)</td>
+          <td>El antepasado común más reciente de todo lo que sale de ese punto. Es una especie que ya no existe.</td>
+        </tr>
+        <tr>
+          <td>La raíz</td>
+          <td>El antepasado común de todas las especies del diagrama, el más antiguo de todos.</td>
+        </tr>
+        <tr>
+          <td>Las marcas sobre las ramas</td>
+          <td>Los caracteres derivados: rasgos nuevos que aparecen ahí y que heredan todas las especies situadas por encima.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>La regla que resuelve casi todas las preguntas:</strong> dos especies están tanto más emparentadas cuanto <strong>más reciente</strong> sea el nodo que las une, es decir, cuanto más cerca de las puntas se encuentre. No hay que contar rasgos ni medir distancias: basta con subir por las dos ramas y ver dónde se juntan.
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · Tres preguntas sobre el mismo cladograma</span>
+      <div class="paso"><span class="n">1</span> <strong>¿Qué especie está más emparentada con el lagarto?</strong> El ratón. El nodo que une al lagarto con el ratón es el del huevo amniótico, el más reciente del diagrama. Cualquier otra especie se une al lagarto en un nodo anterior.</div>
+      <div class="paso"><span class="n">2</span> <strong>¿La rana está más emparentada con el tiburón o con el ratón?</strong> Con el ratón. La rana y el ratón se unen en el nodo de las cuatro extremidades; la rana y el tiburón, en el nodo anterior, el de las mandíbulas. El resultado sorprende, porque la rana y el tiburón se parecen más a simple vista, pero el parecido exterior no es el criterio.</div>
+      <div class="paso"><span class="n">3</span> <strong>¿Cuál es el pariente más lejano de todos?</strong> La lamprea, que se separa en el nodo más próximo a la raíz. De ahí que solo comparta con las demás el carácter más antiguo: la columna vertebral.</div>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Los tres errores que el examen persigue con los cladogramas:</strong>
+      <ol>
+        <li><strong>Leer la cercanía en el papel.</strong> Que dos especies estén dibujadas una al lado de la otra no significa que sean parientes cercanas. Lo único que decide es el nodo que las une.</li>
+        <li><strong>Leerlo como una escalera de progreso.</strong> El ratón no es «más evolucionado» que la lamprea. Las cinco especies son actuales y todas llevan exactamente el mismo tiempo evolucionando desde la raíz; lo único que cambia es qué rasgos aparecieron por el camino.</li>
+        <li><strong>Creer que una punta desciende de otra.</strong> La rana no desciende del tiburón. Ambos descienden de un antepasado común que no es ninguno de los dos y que ya no existe.</li>
+      </ol>
+    </div>
+
+    <p>El primero de esos errores se desmonta con una comprobación sencilla: un mismo cladograma admite muchos dibujos distintos. Las ramas pueden girar sobre sus nodos, igual que gira un móvil colgado del techo, sin que el parentesco cambie en absoluto.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="250" viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dos dibujos del mismo cladograma de cuatro especies llamadas A, B, C y D. En la versión 1, las puntas aparecen en el orden A, B, C, D de izquierda a derecha: C y D se unen en el nodo más reciente, B se une a ese grupo en el nodo siguiente y A se une a todo lo demás en el nodo más antiguo. En la versión 2, las puntas aparecen en el orden B, C, D, A: la especie A se ha dibujado en el extremo derecho, junto a D, pero sigue uniéndose a las demás en el nodo más antiguo. Los nodos son los mismos en los dos dibujos, de modo que el parentesco representado es idéntico: A sigue siendo la especie más lejana de todas, aunque en la versión 2 esté dibujada al lado de D.">
+        <text x="175" y="20" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1e400f" text-anchor="middle">Versión 1</text>
+        <text x="525" y="20" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1e400f" text-anchor="middle">Versión 2</text>
+
+        <line x1="350" y1="10" x2="350" y2="225" stroke="#757575" stroke-width="1" stroke-dasharray="6 5"/>
+
+        <g font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f" text-anchor="middle">
+          <text x="60"  y="55">A</text>
+          <text x="140" y="55">B</text>
+          <text x="220" y="55">C</text>
+          <text x="300" y="55">D</text>
+          <text x="400" y="55">B</text>
+          <text x="480" y="55">C</text>
+          <text x="560" y="55">D</text>
+          <text x="640" y="55">A</text>
+        </g>
+
+        <g stroke="#1e400f" stroke-width="3" fill="none" stroke-linecap="square">
+          <line x1="220" y1="68"  x2="220" y2="105"/>
+          <line x1="300" y1="68"  x2="300" y2="105"/>
+          <line x1="220" y1="105" x2="300" y2="105"/>
+          <line x1="260" y1="105" x2="260" y2="145"/>
+          <line x1="140" y1="68"  x2="140" y2="145"/>
+          <line x1="140" y1="145" x2="260" y2="145"/>
+          <line x1="200" y1="145" x2="200" y2="185"/>
+          <line x1="60"  y1="68"  x2="60"  y2="185"/>
+          <line x1="60"  y1="185" x2="200" y2="185"/>
+          <line x1="130" y1="185" x2="130" y2="210"/>
+
+          <line x1="480" y1="68"  x2="480" y2="105"/>
+          <line x1="560" y1="68"  x2="560" y2="105"/>
+          <line x1="480" y1="105" x2="560" y2="105"/>
+          <line x1="520" y1="105" x2="520" y2="145"/>
+          <line x1="400" y1="68"  x2="400" y2="145"/>
+          <line x1="400" y1="145" x2="520" y2="145"/>
+          <line x1="460" y1="145" x2="460" y2="185"/>
+          <line x1="640" y1="68"  x2="640" y2="185"/>
+          <line x1="460" y1="185" x2="640" y2="185"/>
+          <line x1="550" y1="185" x2="550" y2="210"/>
+        </g>
+
+        <g fill="#1e400f">
+          <circle cx="260" cy="105" r="5"/>
+          <circle cx="200" cy="145" r="5"/>
+          <circle cx="130" cy="185" r="5"/>
+          <circle cx="520" cy="105" r="5"/>
+          <circle cx="460" cy="145" r="5"/>
+          <circle cx="550" cy="185" r="5"/>
+        </g>
+
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1e400f" text-anchor="middle">
+          <text x="175" y="237">A se dibuja a la izquierda</text>
+          <text x="525" y="237">A se dibuja a la derecha, junto a D</text>
+        </g>
+      </svg>
+    </div>
+
+    <p>En la versión 2 la especie A ha quedado pegada a la D, pero sigue uniéndose a las demás en el nodo más antiguo: continúa siendo el pariente más lejano de las tres. <span class="resalta">Los nodos son los mismos, luego el parentesco es el mismo.</span> Quien lea por la posición de las puntas dará respuestas distintas ante dos dibujos que dicen exactamente lo mismo.</p>
+
+    <div class="caja-tip">
+      <strong>Del cladograma a la evidencia molecular:</strong> las secuencias de ADN de la tabla anterior confirmarían el mismo orden. El ratón y el lagarto tendrían entre sí más semejanza genética que cualquiera de los dos con la lamprea. Que la anatomía comparada y las moléculas produzcan el mismo diagrama, partiendo de datos independientes, es justamente el argumento de la sección anterior aplicado a un caso concreto.
+    </div>
+  </div>
+    <!-- ENLACE AL INTERACTIVO — recurso ya publicado -->
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/cladograma/" target="_blank" rel="noopener"
+     aria-label="Abrir el cladograma (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🌍</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Cladogramas: lectura y construcción</span>
+      <span class="ei-sub">En este interactivo podrás identificar las partes de un cladograma, explicar qué relación evolutiva representa cada una y determinar qué organismos están más emparentados entre sí. También comprobarás por qué dos cladogramas que se ven distintos pueden decir exactamente lo mismo..</span>
+      <span class="ei-cta">Abrir el simulador <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Mecanismo, evidencia y cladogramas</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">1. En una población de escarabajos aparecen individuos verdes y marrones. Tras años de depredación en un suelo oscuro, casi todos son marrones. La explicación correcta es que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Los escarabajos verdes cambiaron de color para sobrevivir</div>
+        <div class="opcion" data-op="b">El suelo oscuro provocó una mutación en la población</div>
+        <div class="opcion" data-op="c">Los marrones, que ya existían, fueron menos depredados y dejaron más descendencia</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. El brazo humano y el ala del murciélago tienen los mismos huesos con funciones distintas. Son estructuras…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Homólogas, y sugieren un antepasado común</div>
+        <div class="opcion" data-op="b">Análogas, y descartan el parentesco</div>
+        <div class="opcion" data-op="c">Fósiles intermedios</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. Que varias líneas de evidencia independientes coincidan resulta convincente porque…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Una sola prueba nunca es válida en ciencia</div>
+        <div class="opcion" data-op="b">Es muy improbable que disciplinas distintas se equivoquen en el mismo sentido</div>
+        <div class="opcion" data-op="c">Cuantas más pruebas, más antigua es la teoría</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">4. En el cladograma de los vertebrados, ¿qué carácter comparten el lagarto y el ratón que la rana no tiene?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">El huevo amniótico</div>
+        <div class="opcion" data-op="b">Las cuatro extremidades</div>
+        <div class="opcion" data-op="c">Las mandíbulas</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">5. Dos cladogramas dibujan las mismas cuatro especies en distinto orden, pero con los mismos nodos. Eso significa que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Representan parentescos distintos y uno de los dos está equivocado</div>
+        <div class="opcion" data-op="b">Representan el mismo parentesco: el orden de las puntas no lo modifica</div>
+        <div class="opcion" data-op="c">El segundo diagrama es más reciente que el primero</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-3-redes-troficas-y-flujo-de-energia">3. Redes tróficas y flujo de energía</h2>
+  <div class="bloque">
+    <p>Un ecosistema se organiza por <strong>niveles tróficos</strong>, según de dónde obtiene cada especie su energía. La flecha de una red trófica no señala quién come a quién en el sentido intuitivo: señala <strong>hacia dónde va la energía</strong>.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="290" viewBox="0 0 700 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Red trófica sencilla. Desde la hierba, que es el productor, parten flechas hacia el saltamontes y hacia el conejo, que son consumidores primarios. Del saltamontes parte una flecha hacia la rana y del conejo hacia el zorro, ambos consumidores secundarios. De la rana y del zorro parten flechas hacia el halcón, consumidor terciario. Todas las flechas indican la dirección en que fluye la energía.">
+        <rect x="270" y="234" width="160" height="44" rx="8" fill="#bfd9a9" stroke="#1e400f" stroke-width="3"/>
+        <text x="350" y="254" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1e400f" text-anchor="middle">Hierba</text>
+        <text x="350" y="271" font-family="Segoe UI, sans-serif" font-size="11" fill="#1e400f" text-anchor="middle">productor</text>
+
+        <rect x="120" y="156" width="160" height="44" rx="8" fill="#d3e6c2" stroke="#1e400f" stroke-width="3"/>
+        <text x="200" y="176" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1e400f" text-anchor="middle">Saltamontes</text>
+        <text x="200" y="193" font-family="Segoe UI, sans-serif" font-size="11" fill="#1e400f" text-anchor="middle">consumidor primario</text>
+
+        <rect x="420" y="156" width="160" height="44" rx="8" fill="#d3e6c2" stroke="#1e400f" stroke-width="3"/>
+        <text x="500" y="176" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1e400f" text-anchor="middle">Conejo</text>
+        <text x="500" y="193" font-family="Segoe UI, sans-serif" font-size="11" fill="#1e400f" text-anchor="middle">consumidor primario</text>
+
+        <rect x="120" y="80" width="160" height="44" rx="8" fill="#eef7ef" stroke="#1e400f" stroke-width="3"/>
+        <text x="200" y="100" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1e400f" text-anchor="middle">Rana</text>
+        <text x="200" y="117" font-family="Segoe UI, sans-serif" font-size="11" fill="#1e400f" text-anchor="middle">consumidor secundario</text>
+
+        <rect x="420" y="80" width="160" height="44" rx="8" fill="#eef7ef" stroke="#1e400f" stroke-width="3"/>
+        <text x="500" y="100" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1e400f" text-anchor="middle">Zorro</text>
+        <text x="500" y="117" font-family="Segoe UI, sans-serif" font-size="11" fill="#1e400f" text-anchor="middle">consumidor secundario</text>
+
+        <rect x="270" y="14" width="160" height="44" rx="8" fill="#eef7ef" stroke="#1e400f" stroke-width="3"/>
+        <text x="350" y="34" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1e400f" text-anchor="middle">Halcón</text>
+        <text x="350" y="51" font-family="Segoe UI, sans-serif" font-size="11" fill="#1e400f" text-anchor="middle">consumidor terciario</text>
+
+        <g stroke="#1e400f" stroke-width="2.5" fill="none">
+          <line x1="300" y1="240" x2="220" y2="210"/>
+          <line x1="400" y1="240" x2="480" y2="210"/>
+          <line x1="200" y1="152" x2="200" y2="134"/>
+          <line x1="500" y1="152" x2="500" y2="134"/>
+          <line x1="230" y1="80" x2="300" y2="62"/>
+          <line x1="470" y1="80" x2="400" y2="62"/>
+        </g>
+        <g fill="#1e400f">
+          <polygon points="212,207 226,203 219,215"/>
+          <polygon points="488,207 474,203 481,215"/>
+          <polygon points="200,126 194,138 206,138"/>
+          <polygon points="500,126 494,138 506,138"/>
+          <polygon points="308,60 294,62 302,72"/>
+          <polygon points="392,60 406,62 398,72"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Solo una décima parte pasa al nivel siguiente:</strong> de la energía que un nivel trófico contiene, apenas alrededor del 10 % llega al siguiente. El resto se gasta en moverse, mantener la temperatura y funcionar, y se disipa como calor. De ahí se siguen dos consecuencias que el examen pregunta: que las cadenas tróficas raramente pasen de cuatro o cinco niveles, y que siempre haya mucha más masa de plantas que de herbívoros, y de herbívoros que de depredadores.
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · Retirar una especie y seguir la cascada</span>
+      <p>Supóngase que una enfermedad elimina a los conejos de esta red. ¿Qué cabe predecir?</p>
+      <div class="paso"><span class="n">1</span> <strong>Hacia arriba:</strong> el zorro pierde su fuente de alimento y su población disminuye. El halcón, que se alimenta de zorro y de rana, dependerá más de la rana.</div>
+      <div class="paso"><span class="n">2</span> <strong>Hacia abajo:</strong> la hierba deja de ser consumida por los conejos y aumenta.</div>
+      <div class="paso"><span class="n">3</span> <strong>De lado:</strong> con más hierba disponible, la población de saltamontes puede crecer, lo que a su vez favorece a la rana.</div>
+      <p><strong>El principio general:</strong> el efecto de retirar una especie no se limita a quien se la comía. Se propaga hacia arriba, hacia abajo y hacia los lados, porque los niveles están conectados. Esa propagación es lo que se llama <span class="resalta">efecto en cascada</span>.</p>
+    </div>
+        <!-- ENLACE AL INTERACTIVO — recurso ya publicado -->
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/red_trofica/" target="_blank" rel="noopener"
+     aria-label="Abrir la red trófica (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🌍</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Red trófica y cascadas</span>
+      <span class="ei-sub">En este interactivo Vas a quitar especies de un ecosistema, o a cambiar cuánta lluvia y cuánto sol recibe, y a observar el resultado. Lo interesante nunca es lo que le pasa a la especie que tocas: es lo que les pasa a las demás. A ese efecto en cadena se le llama cascada trófica, y es lo que el examen quiere que sepas anticipar.</span>
+      <span class="ei-cta">Abrir el simulador <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+    <h3>La capacidad de carga</h3>
+    <p>Ninguna población crece de forma indefinida. Los recursos —alimento, agua, espacio— son limitados, y llega un punto en que el ambiente no admite más individuos. Ese máximo sostenible se llama <strong>capacidad de carga</strong>.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="265" viewBox="0 0 700 265" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de crecimiento poblacional en forma de ese. El eje horizontal representa el tiempo y el vertical el número de individuos. Al principio la población crece despacio, después con mucha rapidez, y finalmente el crecimiento se frena y la curva se aplana en un valor máximo. Una línea horizontal discontinua marca ese valor, que es la capacidad de carga del ambiente.">
+        <text x="90" y="22" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1e400f">Crecimiento de una población con recursos limitados</text>
+
+        <g stroke="#d3e6c2" stroke-width="1">
+          <line x1="90" y1="70" x2="620" y2="70"/>
+          <line x1="90" y1="120" x2="620" y2="120"/>
+          <line x1="90" y1="170" x2="620" y2="170"/>
+        </g>
+
+        <line x1="90" y1="220" x2="620" y2="220" stroke="#1e400f" stroke-width="2.5"/>
+        <line x1="90" y1="50" x2="90" y2="220" stroke="#1e400f" stroke-width="2.5"/>
+
+        <line x1="90" y1="70" x2="620" y2="70" stroke="#9e1c66" stroke-width="2.5" stroke-dasharray="6,4"/>
+        <rect x="430" y="34" width="190" height="26" rx="8" fill="#fce1f0" stroke="#9e1c66" stroke-width="2"/>
+        <text x="525" y="52" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#800d4e" text-anchor="middle">capacidad de carga</text>
+
+        <path d="M 90 214 C 170 210, 210 200, 250 165 C 290 128, 320 92, 380 78 C 440 68, 520 71, 620 71"
+              fill="none" stroke="#1e400f" stroke-width="3.5"/>
+
+        <g font-family="Segoe UI, sans-serif" font-size="11" fill="#1e400f" text-anchor="middle">
+          <text x="160" y="244">crecimiento</text>
+          <text x="160" y="258">lento</text>
+          <text x="300" y="244">crecimiento</text>
+          <text x="300" y="258">rápido</text>
+          <text x="500" y="244">el crecimiento</text>
+          <text x="500" y="258">se detiene</text>
+        </g>
+
+        <text x="34" y="135" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f" text-anchor="middle" transform="rotate(-90 34 135)">Individuos</text>
+        <text x="355" y="236" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f" text-anchor="middle">Tiempo</text>
+      </svg>
+    </div>
+
+    <p>La forma de esta curva se lee con los cinco pasos de la Lección 2.2, y la parte final es una <strong>meseta</strong>, exactamente igual que el punto de saturación de la gráfica de fotosíntesis de la Lección 3.2. En ambos casos, un factor limitante ha dejado de permitir que el proceso siga aumentando.</p>
+  </div>
+
+  <h2 class="seccion" id="s-4-las-relaciones-entre-especies">4. Las relaciones entre especies</h2>
+  <div class="bloque">
+    <p>Las flechas de una red trófica solo describen quién come a quién. Entre las especies de un ecosistema existen además otras relaciones estrechas y duraderas, que se clasifican según un criterio sencillo: <strong>a quién beneficia y a quién perjudica</strong>.</p>
+
+    <div class="vocabulario">
+      <h2 id="s-vocabulario-tecnico-y-raices"><span aria-hidden="true">🔤</span> Vocabulario técnico y raíces</h2>
+      <p><strong>Simbiosis</strong>: de <em>sim-</em>, junto o con, y <em>bio-</em>, vida. Literalmente, vivir juntos. La misma raíz <em>sim-</em> aparece en <em>simetría</em> y <em>simpatía</em>, y <em>bio-</em> ya se trabajó en la Lección 1.3. Dentro de la simbiosis, <strong>mutualismo</strong> comparte raíz con <em>mutuo</em>, en ambos sentidos; <strong>comensalismo</strong> viene del latín <em>com-mensa</em>, compartir mesa, y describe a quien come de lo que otro deja sin molestarlo; y <strong>parasitismo</strong> procede del griego <em>pará-sitos</em>, el que come al lado de otro, y acabó designando a quien vive a costa del anfitrión.</p>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Los cuatro tipos de relación entre especies según a quién beneficia y a quién perjudica, con un ejemplo de cada uno.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Relación</th>
+          <th scope="col">Especie A</th>
+          <th scope="col">Especie B</th>
+          <th scope="col">Ejemplo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mutualismo</td>
+          <td>Se beneficia</td>
+          <td>Se beneficia</td>
+          <td>La abeja obtiene néctar y la flor consigue que su polen viaje.</td>
+        </tr>
+        <tr>
+          <td>Comensalismo</td>
+          <td>Se beneficia</td>
+          <td>Ni se beneficia ni se perjudica</td>
+          <td>El ave que anida en un árbol: obtiene refugio y el árbol no se ve afectado.</td>
+        </tr>
+        <tr>
+          <td>Parasitismo</td>
+          <td>Se beneficia</td>
+          <td>Se perjudica, pero no suele morir de inmediato</td>
+          <td>La garrapata se alimenta de la sangre del perro.</td>
+        </tr>
+        <tr>
+          <td>Depredación</td>
+          <td>Se beneficia</td>
+          <td>Muere</td>
+          <td>El zorro captura al conejo.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>Parásito y depredador se distinguen por el desenlace y por el tiempo:</strong> el depredador mata a su presa y la relación termina en ese momento. El parásito vive <em>sobre</em> o <em>dentro</em> del anfitrión durante un periodo largo y le conviene que siga vivo, porque es su fuente de alimento. Un parásito que mata rápidamente a su anfitrión resulta poco eficaz, y por eso muchos parásitos evolucionan hacia formas menos dañinas.
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Cuidado con el comensalismo:</strong> exige que la segunda especie quede <em>exactamente igual</em>, ni mejor ni peor. En la práctica es difícil comprobarlo, y muchos casos que se citaban como comensalismo resultaron ser mutualismos o parasitismos leves al estudiarlos con detalle. En el examen conviene elegir comensalismo solo cuando el enunciado afirme de forma explícita que la segunda especie no se ve afectada.
+    </div>
+  </div>
+    <!-- ENLACE AL INTERACTIVO — recurso ya publicado -->
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/capacidad_de_carga/" target="_blank" rel="noopener"
+     aria-label="Abrir el Simulador ecosistémico (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🌍</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Capacidad de carga y relaciones entre especies</span>
+      <span class="ei-sub">Este interactivo tiene dos partes. En la primera haces crecer una población de ciervos en un valle y observas dónde se detiene. En la segunda clasificas relaciones entre especies a partir de un solo criterio: qué le ocurre a cada una.<br>
+        Las dos partes están unidas. Cada tipo de relación deja una huella distinta en la curva de crecimiento, y al final podrás reconocer de cuál se trata solo con mirar la gráfica.</span>
+      <span class="ei-cta">Abrir el simulador <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
+  <div class="lectura">
+    <h2 id="s-lectura-cientifica"><span aria-hidden="true">📖</span> Lectura científica</h2>
+    <p class="fuente">Texto científico breve adaptado al nivel. Obsérvese qué afirma el autor y dónde se detiene.</p>
+
+    <div class="texto-adaptado">
+      <p><strong>Los lobos y los álamos</strong></p>
+      <p>Durante casi setenta años no hubo lobos en un extenso parque natural del oeste de Estados Unidos llamado Yellowstone. En su ausencia, la población de alces creció considerablemente y los alces pasaron largos periodos alimentándose en las riberas de los ríos, donde los brotes tiernos de álamo y de sauce resultan más accesibles.</p>
+      <p>En 1995 se reintrodujeron lobos en el parque. En los años siguientes, los investigadores registraron una disminución del número de alces y, además, un cambio en su comportamiento: los alces evitaban permanecer mucho tiempo en las riberas, donde quedaban expuestos. Los brotes de álamo y de sauce, menos consumidos, crecieron con más altura.</p>
+      <p>Varios estudios describieron efectos posteriores: mayor cobertura vegetal en las orillas, más aves asociadas a esa vegetación y un aumento de la actividad de los castores, que emplean sauces para sus construcciones. Algunos autores señalaron que las presas de los castores modificaron a su vez el curso de pequeños arroyos.</p>
+      <p>La secuencia se ha citado con frecuencia como ejemplo de efecto en cascada. Sin embargo, otros investigadores han advertido que en el mismo periodo cambiaron también las precipitaciones, la gestión del parque y la población de otros grandes herbívoros. Sostienen que atribuir toda la transformación a los lobos simplifica un sistema en el que actuaron varios factores a la vez, y que separar la contribución de cada uno exigiría datos que no se recogieron.</p>
+      <p>Mira el video <a href="https://youtu.be/5QvtYwyHpfc?si=DKlyJnt6YIlQgnF2" target="_blank" >Cómo los lobos cambiaron el curso de los ríos </a></p>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Los lobos son necesarios en todos los parques naturales.</div>
+        <div class="opcion" data-op="b">Los alces destruyen la vegetación de las riberas.</div>
+        <div class="opcion" data-op="c">La reintroducción de los lobos coincidió con cambios en cascada, aunque atribuirlos por completo a los lobos resulta discutible.</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. Según el texto, el cambio en los álamos se debió no solo a que hubiera menos alces, sino también a…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Un cambio en el comportamiento de los alces, que evitaban las riberas</div>
+        <div class="opcion" data-op="b">La plantación de nuevos árboles</div>
+        <div class="opcion" data-op="c">El aumento de las precipitaciones</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. La objeción de los investigadores críticos consiste en que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Los lobos no llegaron a establecerse en el parque</div>
+        <div class="opcion" data-op="b">Otros factores cambiaron en el mismo periodo y no se puede aislar la contribución de los lobos</div>
+        <div class="opcion" data-op="c">Los álamos no crecieron en realidad</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">4. La relación entre el castor y el sauce descrita en el texto es de…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Mutualismo</div>
+        <div class="opcion" data-op="b">Comensalismo</div>
+        <div class="opcion" data-op="c">Consumo: el castor obtiene beneficio y el sauce resulta perjudicado</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Ecosistemas y relaciones</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. En la red trófica de la lección, si desaparecieran los saltamontes, el efecto más directo sería que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">La hierba desaparecería también</div>
+        <div class="opcion" data-op="b">La población de ranas disminuiría</div>
+        <div class="opcion" data-op="c">El conejo se extinguiría</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. En una gráfica de crecimiento poblacional, la meseta final indica que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Se ha alcanzado la capacidad de carga del ambiente</div>
+        <div class="opcion" data-op="b">La población se ha extinguido</div>
+        <div class="opcion" data-op="c">Los recursos son ilimitados</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. La abeja obtiene néctar de la flor y transporta su polen. Esa relación es de…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Parasitismo</div>
+        <div class="opcion" data-op="b">Comensalismo</div>
+        <div class="opcion" data-op="c">Mutualismo</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">4. ¿Por qué las cadenas tróficas rara vez superan los cuatro o cinco niveles?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Porque solo alrededor del 10 % de la energía pasa a cada nivel siguiente</div>
+        <div class="opcion" data-op="b">Porque no existen suficientes especies</div>
+        <div class="opcion" data-op="c">Porque los depredadores no se comen entre sí</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2 id="s-tarea"><span aria-hidden="true">✅</span> Tarea</h2>
+    
+    <ul>
+      <li>Diez preguntas sobre selección natural, evidencia evolutiva y dinámica de ecosistemas.</li>
+      <li>Lectura de un cladograma de cinco especies: qué par está más emparentado, qué carácter derivado aparece en cada nodo y cuál es el pariente más lejano del conjunto.</li>
+      <li>Clasificación de seis relaciones entre especies, indicando en cada caso el efecto sobre las dos partes.</li>
+      <li>Un párrafo breve explicando un caso de selección natural con los tres elementos del mecanismo nombrados de forma explícita.</li>
+    </ul>
+    <p>Tiempo estimado: 60 minutos. Evalúe su trabajo con la rúbrica de esta lección.</p>
+  </div>
+
+  <div class="quiz">
+    <h2 id="s-quiz-de-la-leccion-4-3">Quiz de la lección 4.3</h2>
+    <p>Dieciséis preguntas: cuatro de mecanismo de la selección natural, tres de tipos de evidencia evolutiva, dos de lectura de cladogramas, cinco de redes tróficas, flujo de energía y capacidad de carga, y dos de relaciones entre especies. Tiempo sugerido: 40 minutos. Para aprobar se requieren al menos 10 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2 id="s-rubrica-analitica-de-la-leccion"><span aria-hidden="true">📊</span> Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <caption class="sr-only">Rúbrica analítica de evolución y ecología con cuatro criterios y cuatro niveles de desempeño.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Inicial (1)</th>
+          <th scope="col">En desarrollo (2)</th>
+          <th scope="col">Competente (3)</th>
+          <th scope="col">Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Explica la selección natural con los tres elementos del mecanismo</td>
+          <td>Afirma que los organismos cambian porque lo necesitan.</td>
+          <td>Nombra alguno de los tres elementos, pero no los encadena.</td>
+          <td>Explica variación, presión ambiental y éxito reproductivo en secuencia.</td>
+          <td>Además, señala que la variación es previa a la presión y de origen azaroso.</td>
+        </tr>
+        <tr>
+          <td>Clasifica los tipos de evidencia e interpreta un cladograma</td>
+          <td>No distingue unos tipos de evidencia de otros y determina el parentesco por la cercanía de las puntas en el dibujo.</td>
+          <td>Reconoce los fósiles, pero confunde homólogo con análogo; localiza los nodos sin deducir de ellos el parentesco.</td>
+          <td>Clasifica correctamente los cinco tipos de evidencia y determina el parentesco por el nodo común más reciente.</td>
+          <td>Explica además por qué la coincidencia de líneas independientes refuerza la conclusión y por qué dos dibujos distintos pueden representar el mismo cladograma.</td>
+        </tr>
+        <tr>
+          <td>Predice efectos en cascada en una red trófica</td>
+          <td>Solo considera a la especie que se alimentaba de la retirada.</td>
+          <td>Predice efectos hacia arriba, pero no hacia abajo ni laterales.</td>
+          <td>Predice efectos en las tres direcciones y los justifica.</td>
+          <td>Relaciona además la magnitud del efecto con el flujo del 10 % entre niveles.</td>
+        </tr>
+        <tr>
+          <td>Distingue la conclusión sostenida por los datos de la que los excede</td>
+          <td>Acepta como demostrada cualquier explicación plausible.</td>
+          <td>Distingue algunos casos, pero no identifica las afirmaciones causales.</td>
+          <td>Separa con criterio lo que los datos muestran de lo que solo sugieren.</td>
+          <td>Además, especifica qué dato adicional permitiría poner a prueba la hipótesis.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2 id="s-cierre-de-la-unidad-4-y-enlace-con-la-unidad-5">Cierre de la Unidad 4 y enlace con la Unidad 5</h2>
+    <p>Con esta lección se cierra la Unidad 4 y queda completo el dominio de <strong>Ciencias de la vida</strong>, el de mayor peso del examen. Las tres lecciones recorrieron los tres niveles: <strong>molécula</strong>, <strong>individuo</strong> y <strong>población</strong>. La variación que en la 4.1 era el cambio de una base y en la 4.2 una proporción de descendencia se convirtió aquí en el motor del cambio evolutivo.</p>
+    <p>La <strong>Unidad 5 · Ciencias físicas I</strong> abre el segundo dominio, con la estructura del átomo, las propiedades de la materia y las reacciones químicas. Cambia el contenido, pero no las herramientas: seguirán haciendo falta la notación científica de la Lección 2.1, la lectura de gráficas de la 2.2 y, muy especialmente, la distinción entre lo que los datos sostienen y lo que no, que esta lección ha trabajado hasta el final.</p>
+  </div>
+
+  <footer>
+    <p>GEDparaHispanos · Ciencias · Unidad 4 · Lección 4.3</p>
+    <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+    <p>© 2026. Esta obra está licenciada bajo
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons
+      Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+  </footer>
+
+
+</div>
+
+<a href="#indice" class="volver-indice" aria-label="Volver al contenido de la lección">↑ Índice</a>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = 'Correcto. Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Quiz: 4 de selección natural, 3 de evidencia evolutiva, 2 de cladogramas,
+     5 de redes tróficas y capacidad de carga, 2 de relaciones entre especies.
+     El plan aprobado especifica 12 preguntas sin el bloque de cladogramas ni el
+     de relaciones entre especies; para volver a esa versión basta retirar las
+     preguntas 8, 9, 15 y 16 y devolver el umbral a 8. Para conservar solo el
+     bloque de cladogramas, retirar las preguntas 15 y 16 y fijar el umbral en 9
+     sobre 14. ---- */
+  var preguntasQuiz = [
+    { enun: '1. Los tres elementos del mecanismo de la selección natural son…',
+      ops: ['Variación, presión ambiental y éxito reproductivo', 'Mutación, migración y extinción', 'Nacimiento, crecimiento y muerte', 'Fósiles, anatomía y moléculas'], correcta: 0 },
+    { enun: '2. ¿Cuál de estas afirmaciones describe correctamente el origen de la variación en una población?',
+      ops: ['El ambiente crea la variante que hace falta', 'La variación ya existía por azar antes de que apareciera la presión', 'Los individuos deciden qué característica desarrollar', 'La variación aparece solo después de la presión ambiental'], correcta: 1 },
+    { enun: '3. Tras un tratamiento con antibiótico, la población bacteriana superviviente es resistente. La explicación correcta es que…',
+      ops: ['El antibiótico provocó la mutación de resistencia', 'Las bacterias aprendieron a resistir', 'Ya había bacterias resistentes y solo esas sobrevivieron y se multiplicaron', 'Las bacterias sensibles cambiaron de especie'], correcta: 2 },
+    { enun: '4. En regiones con malaria, el alelo de la anemia falciforme se mantiene porque…',
+      ops: ['No produce ningún síntoma', 'La malaria lo provoca', 'Es un alelo dominante', 'Quien porta una sola copia resiste mejor la malaria y deja más descendencia'], correcta: 3 },
+    { enun: '5. El brazo humano y la aleta de la ballena tienen los mismos huesos con funciones distintas. Son estructuras…',
+      ops: ['Análogas', 'Homólogas', 'Fósiles', 'Vestigiales'], correcta: 1 },
+    { enun: '6. El ala de un insecto y el ala de un ave cumplen la misma función con estructuras distintas. Eso indica que…',
+      ops: ['No comparten un antepasado común cercano', 'Descienden del mismo antepasado inmediato', 'Ambos son fósiles intermedios', 'Sus secuencias de ADN son idénticas'], correcta: 0 },
+    { enun: '7. Comparar las secuencias de ADN de dos especies corresponde al tipo de evidencia…',
+      ops: ['Fósil', 'Embrionaria', 'Molecular', 'Anatómica'], correcta: 2 },
+    { enun: '8. En un cladograma, un nodo representa…',
+      ops: ['El antepasado común más reciente de las especies que salen de él', 'La especie más evolucionada del grupo', 'El momento en que una especie se extinguió', 'El número de caracteres que dos especies comparten'], correcta: 0 },
+    { enun: '9. En el cladograma de la lección, la especie más emparentada con el lagarto es…',
+      ops: ['La rana, porque está dibujada justo a su lado', 'El tiburón, porque los dos tienen mandíbulas', 'El ratón, porque el nodo que los une es el más reciente', 'La lamprea, porque tiene el carácter más antiguo'], correcta: 2 },
+    { enun: '10. En una red trófica, las flechas indican…',
+      ops: ['El orden alfabético de las especies', 'La dirección en que fluye la energía', 'El tamaño de cada población', 'La velocidad de reproducción'], correcta: 1 },
+    { enun: '11. Aproximadamente qué proporción de la energía pasa de un nivel trófico al siguiente…',
+      ops: ['El 90 %', 'El 50 %', 'El 100 %', 'Alrededor del 10 %'], correcta: 3 },
+    { enun: '12. En la red de la lección desaparecen los conejos. El efecto más directo sobre el zorro es que…',
+      ops: ['Su población disminuye por falta de alimento', 'Su población aumenta', 'Empieza a alimentarse de hierba', 'No se ve afectado'], correcta: 0 },
+    { enun: '13. La capacidad de carga de un ambiente es…',
+      ops: ['El número mínimo de individuos para que la especie sobreviva', 'El número máximo de individuos que los recursos disponibles pueden sostener', 'La velocidad de crecimiento de la población', 'El peso total de los individuos'], correcta: 1 },
+    { enun: '14. En una gráfica de crecimiento poblacional, la parte final aplanada se parece al punto de saturación de la fotosíntesis porque en ambos casos…',
+      ops: ['Los datos están mal medidos', 'El proceso se ha detenido por completo', 'Un factor limitante impide que el proceso siga aumentando', 'La escala del eje está recortada'], correcta: 2 },
+    { enun: '15. La garrapata se alimenta de la sangre del perro sin matarlo de inmediato. Esa relación es de…',
+      ops: ['Mutualismo', 'Comensalismo', 'Depredación', 'Parasitismo'], correcta: 3 },
+    { enun: '16. La diferencia esencial entre parasitismo y depredación es que…',
+      ops: ['El parásito vive largo tiempo a costa del anfitrión, al que le conviene mantener vivo', 'El parásito siempre es de mayor tamaño', 'El depredador no obtiene beneficio', 'El parasitismo beneficia a las dos especies'], correcta: 0 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta'); });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = 'Correcto.';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 10) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 16 correctas. Aprobado. Ha completado la Unidad 4 y puede continuar a la Unidad 5.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 16 correctas. Repase la lección e intente de nuevo (se requieren 10).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<!--
+  Lección 8.1 · Hallazgos múltiples y evaluación de conclusiones con evidencia
+  Spanish ASE Science · Unidad 8 · Integración, evaluación de conclusiones y preparación GED
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 8.1 · Hallazgos múltiples y evaluación de conclusiones con evidencia</title>
+<meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    /* Unidad 8 — azul del plan curricular (--t8 #0d47a1). Última unidad, de
+       integración y preparación del examen.
+       ATENCIÓN: este azul invade el matiz que el bloque .caja-tarea venía
+       usando en las veintiuna lecciones anteriores (#1565c0 sobre #e3f2fd).
+       Para que ambos no se confundan, en esta unidad —y solo en esta— la caja
+       de tarea asincrónica se desplaza al verde. Para revertirlo, devuelva los
+       valores indicados en el propio bloque .caja-tarea.
+       El bloque .vocabulario recupera aquí su violeta original de las unidades
+       1 a 6, ya que el violeta queda libre al abandonar la paleta de la
+       Unidad 7. */
+    --tema:    #0d47a1;
+    --tema-d:  #08306b;
+    --tema-bg: #d6e6fa;
+    --tema-bg2:#bcd6f5;
+    --acento:  #2f6fd0;
+    --txt:     #222;
+    --bg:      #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* ── ENCABEZADO ─────────────────────────────────────────────── */
+  header.principal {
+    background: var(--tema-d);
+    background: linear-gradient(135deg, #041c40 0%, #08306b 55%, #0d47a1 100%);
+    color: #ffffff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(4,28,64,.28);
+  }
+  header.principal .ruta {
+    font-size: 13px; color: #ffffff; letter-spacing: .4px; text-transform: uppercase;
+  }
+  header.principal h1 { margin: 8px 0 6px; font-size: 23px; font-weight: 700; color: #ffffff; }
+  header.principal .meta { font-size: 14px; color: #ffffff; }
+
+  .practicas-sp { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .sp {
+    display: inline-block; background: #ffffff; color: #08306b;
+    font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 12px;
+    letter-spacing: .3px;
+  }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .diagrama-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+  .materiales {
+    background: #eceff1; border-left: 6px solid #37474f;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .materiales h2 { margin: 0 0 8px; color: #263238; font-size: 18px; }
+  .materiales ul { margin: 8px 0 0; padding-left: 22px; }
+  .materiales li { margin: 5px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+  .resalta { background: var(--tema-bg); padding: 1px 6px; border-radius: 5px; font-weight: 700; color: var(--tema-d); }
+
+  /* ── CAJA DE CONSEJO ─────────────────────────────────────────
+     Matiz fijo (326°, magenta-rosa) e independiente del color de
+     la Unidad: es el único matiz libre en las ocho paletas del
+     plan, de modo que el bloque nunca se funde con el tema.
+     ─────────────────────────────────────────────────────────── */
+  .caja-tip {
+    background: #fce1f0; border-left: 5px solid #9e1c66;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #800d4e; font-size: 15px;
+  }
+  .caja-tip strong { color: #800d4e; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+  /* Recupera el violeta de las unidades 1 a 6 (en la Unidad 7 se desplazó al
+     verde azulado porque el tema violeta lo invadía). */
+  .vocabulario {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0;
+  }
+  .vocabulario h2 { margin: 0 0 6px; color: #4527a0; font-size: 18px; }
+  .vocabulario p { color: #311b92; }
+
+  /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+  .lectura {
+    background: #fffdf7; border: 2px solid var(--tema);
+    border-radius: 10px; padding: 6px 22px 18px; margin: 18px 0;
+  }
+  .lectura h2 { color: var(--tema-d); font-size: 19px; }
+  .lectura .fuente { font-size: 13px; color: #555; font-style: italic; }
+  .lectura .texto-adaptado {
+    background: #ffffff; border-left: 5px solid var(--tema-bg);
+    padding: 12px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+  }
+
+  /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+  .enlace-interactivo {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-left: 6px solid var(--tema); border-radius: 10px;
+    padding: 16px 20px; margin: 18px 0; text-decoration: none;
+    color: var(--tema-d); transition: background .15s;
+  }
+  .enlace-interactivo:hover { background: var(--tema-bg2); }
+  .enlace-interactivo .ei-icono { font-size: 26px; line-height: 1; flex-shrink: 0; }
+  .enlace-interactivo .ei-titulo { display: block; font-weight: 700; font-size: 16px; color: var(--tema-d); }
+  .enlace-interactivo .ei-sub { display: block; font-size: 14px; color: #333; margin: 4px 0 8px; }
+  .enlace-interactivo .ei-cta {
+    display: inline-block; background: var(--tema); color: #ffffff;
+    font-size: 14px; font-weight: 700; padding: 6px 16px; border-radius: 7px;
+  }
+
+  /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+  .pendiente { color: #c62828; font-size: 15px; margin-left: 6px; }
+
+  .reglas { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  .reglas th, .reglas td { border: 1px solid #e0e0e0; padding: 9px 12px; text-align: left; vertical-align: top; }
+  .reglas th { background: var(--tema); color: #ffffff; }
+  .reglas td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #c62828; }
+
+  .btn {
+    background: var(--tema); color: #ffffff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px; font-size: 14px; }
+  .modo-pres { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-pres strong { color: #004d40; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #004d40; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  /* Valores originales de las unidades 1 a 7, para revertir:
+     background #e3f2fd · border #1565c0 · h2 #0d47a1 */
+  .caja-tarea {
+    background: #dcf0dc; border-left: 6px solid #2e7d32;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #1b5e20; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #ffffff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #ffffff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #555;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+  footer p { margin: 5px 0; }
+  footer a { color: #08306b; }
+
+      /* ===== Índice interno de la lección (GEDparaHispanos) ===== */
+      .indice {
+        background: #ffffff;
+        border: 1px solid var(--tema-bg);
+        border-left: 5px solid var(--tema-d);
+        border-radius: 8px;
+        padding: 14px 20px;
+        margin: 20px 0;
+      }
+      .indice h2 { margin: 0 0 8px; font-size: 18px; color: var(--tema-d); }
+      .indice ul { list-style: none; margin: 0; padding: 0; columns: 2 260px; column-gap: 28px; }
+      .indice li { margin: 0 0 6px; break-inside: avoid; }
+      .indice a { color: var(--tema-d); font-weight: 600; text-decoration: underline; }
+      .indice a:hover { text-decoration-thickness: 2px; }
+      h2[id] { scroll-margin-top: 16px; }
+      .volver-indice {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        background: var(--tema-d);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        z-index: 50;
+      }
+      .volver-indice:focus-visible, .indice a:focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; }
+      .actividad p { margin: 6px 0 0; }
+      @media print { .volver-indice, .indice { display: none; } }
+    </style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">GEDparaHispanos · Ciencias · Unidad 8 · Integración, evaluación de conclusiones y preparación GED</div>
+    <h1>Lección 8.1 · Hallazgos múltiples y evaluación de conclusiones con evidencia</h1>
+    <div class="meta">Tiempo estimado: unas 4 horas · NRS 4–5</div>
+    <div class="practicas-sp">
+      <span class="sp">SP.4 · Evaluar conclusiones con evidencia</span>
+      <span class="sp">SP.5 · Reconciliar fuentes divergentes</span>
+    </div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Reconciliar resultados procedentes de dos o más fuentes que no coinciden.</li>
+      <li>Identificar el punto exacto de divergencia entre dos estudios: método, muestra o alcance.</li>
+      <li>Determinar si un conjunto de datos respalda, contradice o resulta irrelevante para una conclusión propuesta.</li>
+      <li>Distinguir hecho empírico, interpretación y especulación dentro de un mismo texto científico.</li>
+      <li>Justificar todo veredicto citando el dato concreto en que se apoya.</li>
+    </ul>
+  </div>
+
+      <nav class="indice" id="indice" aria-labelledby="indice-titulo">
+        <h2 id="indice-titulo">Contenido de la lección</h2>
+        <ul>
+          <li><a href="#s-material-y-recursos">Material y recursos</a></li>
+          <li><a href="#s-1-cuando-dos-estudios-no-coinciden">1. Cuando dos estudios no coinciden</a></li>
+          <li><a href="#s-2-los-datos-sostienen-la-conclusion">2. ¿Los datos sostienen la conclusión?</a></li>
+          <li><a href="#s-3-hecho-interpretacion-y-especulacion">3. Hecho, interpretación y especulación</a></li>
+          <li><a href="#s-vocabulario-tecnico-y-raices">Vocabulario técnico y raíces</a></li>
+          <li><a href="#s-lectura-cientifica">Lectura científica</a></li>
+          <li><a href="#s-tarea">Tarea</a></li>
+          <li><a href="#s-quiz-de-la-leccion-8-1">Quiz de la lección 8.1</a></li>
+          <li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li>
+          <li><a href="#s-cierre-de-la-leccion-y-enlace-con-la-8-2">Cierre de la lección y enlace con la 8.2</a></li>
+        </ul>
+      </nav>
+
+  <div class="bloque">
+    <p><strong>Última unidad, y cambia el propósito.</strong> Las siete unidades anteriores enseñaron contenido. Esta no añade ninguno: toma las dos prácticas científicas más evaluadas —<strong>SP.4</strong>, evaluar conclusiones, y <strong>SP.5</strong>, auditar fuentes— y las lleva a régimen intensivo.</p>
+    <p>Conviene decir por qué. En el examen de Ciencias, la mayoría de los ítems no preguntan qué se sabe, sino <span class="resalta">qué se puede concluir del estímulo que se acaba de leer</span>. Un estudiante que domina el contenido pero no distingue lo que un dato sostiene de lo que solo sugiere pierde puntos en preguntas cuyo contenido conoce perfectamente. Esta lección entrena esa distinción.</p>
+    <p>La práctica ya empezó. La 4.3 pidió separar la conclusión sostenida de la que excede los datos; la 7.1 mostró que a Wegener le faltaba el mecanismo, no la evidencia; la 7.3 presentó dos informes que discrepaban sin que ninguno mintiera. Aquí eso se sistematiza.</p>
+  </div>
+
+  <div class="materiales">
+        <h2 id="s-material-y-recursos"><span aria-hidden="true">📐</span> Material y recursos</h2>
+        <ul>
+          <li>Los estudios con resultados divergentes de esta lección.</li>
+          <li>Una plantilla de análisis de cuatro columnas, hecha a mano en una hoja: afirmación, evidencia a favor, evidencia en contra y veredicto.</li>
+          <li>Los fragmentos de texto que mezclan hechos, interpretaciones y especulaciones.</li>
+          <li>Marcadores o resaltadores de tres colores: uno para los hechos, otro para las interpretaciones y otro para las especulaciones.</li>
+        </ul>
+        <p><strong>Cómo estudiar esta lección:</strong> use la plantilla de cuatro columnas de forma sistemática, en todos los ejercicios y sin excepción. No es un formulario administrativo: reproduce el proceso mental que exigen las preguntas SP.4 del examen, y la repetición es lo que lo vuelve automático cuando el reloj corre.</p>
+      </div>
+
+  <h2 class="seccion" id="s-1-cuando-dos-estudios-no-coinciden">1. Cuando dos estudios no coinciden</h2>
+  <div class="bloque">
+    <p>Encontrar dos resultados distintos sobre el mismo fenómeno provoca una reacción inmediata y equivocada: suponer que uno de los dos está mal. A veces es así. Pero <span class="resalta">la mayoría de las divergencias no son contradicciones</span>, sino diferencias en cómo se obtuvo cada resultado.</p>
+    <p>Antes de declarar que dos estudios se contradicen, hay que comprobar tres cosas.</p>
+
+    <div class="diagrama-wrap">
+      <svg width="700" height="290" viewBox="0 0 700 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esquema de las tres comprobaciones que deben hacerse antes de declarar que dos estudios se contradicen. La primera es el método: si midieron de manera distinta, los resultados pueden no ser comparables. La segunda es la muestra: si estudiaron poblaciones, lugares o periodos distintos, ambos resultados pueden ser correctos a la vez. La tercera es el alcance: si uno afirma algo general y el otro algo particular, no están hablando de lo mismo. Solo cuando método, muestra y alcance coinciden y los resultados siguen siendo incompatibles, existe una contradicción real que requiere más investigación.">
+        <rect x="16" y="20" width="212" height="112" rx="10" fill="#eef4fd" stroke="#08306b" stroke-width="2"/>
+        <text x="122" y="46" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#08306b" text-anchor="middle">1 · Método</text>
+        <text x="122" y="72" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">¿Midieron de la misma</text>
+        <text x="122" y="90" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">manera?</text>
+        <text x="122" y="116" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#08306b" text-anchor="middle">Si no, no son comparables</text>
+
+        <rect x="244" y="20" width="212" height="112" rx="10" fill="#eef4fd" stroke="#08306b" stroke-width="2"/>
+        <text x="350" y="46" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#08306b" text-anchor="middle">2 · Muestra</text>
+        <text x="350" y="72" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">¿Estudiaron lo mismo,</text>
+        <text x="350" y="90" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">dónde y cuándo?</text>
+        <text x="350" y="116" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#08306b" text-anchor="middle">Si no, pueden ser ambos ciertos</text>
+
+        <rect x="472" y="20" width="212" height="112" rx="10" fill="#eef4fd" stroke="#08306b" stroke-width="2"/>
+        <text x="578" y="46" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#08306b" text-anchor="middle">3 · Alcance</text>
+        <text x="578" y="72" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">¿Afirman lo mismo, con</text>
+        <text x="578" y="90" font-family="Segoe UI, sans-serif" font-size="12" fill="#222" text-anchor="middle">la misma amplitud?</text>
+        <text x="578" y="116" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#08306b" text-anchor="middle">Si no, hablan de cosas distintas</text>
+
+        <line x1="122" y1="138" x2="300" y2="192" stroke="#0d47a1" stroke-width="3"/>
+        <line x1="350" y1="138" x2="350" y2="192" stroke="#0d47a1" stroke-width="3"/>
+        <line x1="578" y1="138" x2="400" y2="192" stroke="#0d47a1" stroke-width="3"/>
+
+        <rect x="150" y="198" width="400" height="58" rx="10" fill="#bcd6f5" stroke="#08306b" stroke-width="3"/>
+        <text x="350" y="222" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#08306b" text-anchor="middle">Solo si los tres coinciden y los resultados siguen</text>
+        <text x="350" y="242" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#08306b" text-anchor="middle">siendo incompatibles hay contradicción real</text>
+
+        <text x="350" y="278" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#08306b" text-anchor="middle">Reconciliar no es decidir quién gana: es localizar dónde difieren</text>
+      </svg>
+    </div>
+
+    <table class="reglas">
+      <caption class="sr-only">Los tres puntos de divergencia entre estudios, con un ejemplo de cada uno y la conclusión que corresponde.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Punto de divergencia</th>
+          <th scope="col">Ejemplo</th>
+          <th scope="col">Conclusión correcta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Método</td>
+          <td>Un estudio mide la temperatura del agua a diez centímetros de profundidad y el otro en la superficie</td>
+          <td>Los valores no son comparables directamente; no hay contradicción</td>
+        </tr>
+        <tr>
+          <td>Muestra</td>
+          <td>Un estudio observa un lago del norte y el otro un lago del sur, en estaciones distintas</td>
+          <td>Ambos resultados pueden ser correctos a la vez</td>
+        </tr>
+        <tr>
+          <td>Alcance</td>
+          <td>Uno afirma que «el fertilizante aumenta el crecimiento» y el otro que «no lo aumenta en suelo arcilloso»</td>
+          <td>No se contradicen: el segundo acota una condición del primero</td>
+        </tr>
+        <tr>
+          <td>Ninguno: contradicción real</td>
+          <td>Mismo método, misma muestra, mismo alcance, y los resultados siguen siendo incompatibles</td>
+          <td>Hay una discrepancia genuina que exige más investigación</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>La pregunta que ordena todo el análisis</strong> no es «¿cuál de los dos tiene razón?», sino <em>«¿en qué punto exacto difieren?»</em>. Localizar la divergencia suele resolver el aparente conflicto sin necesidad de descartar a nadie. Y cuando el examen pregunta cómo reconciliar dos hallazgos, la respuesta correcta casi siempre señala una diferencia de condiciones, no un error.
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Y sin embargo, no todo se reconcilia.</strong> Conviene evitar el extremo contrario: dar por bueno cualquier resultado con el argumento de que «cada estudio mide algo distinto». Cuando método, muestra y alcance coinciden y los datos siguen siendo incompatibles, la respuesta honesta es que existe una discrepancia real y que hacen falta más datos. Reconocerlo es una respuesta correcta en el examen, no una evasiva.
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-2-los-datos-sostienen-la-conclusion">2. ¿Los datos sostienen la conclusión?</h2>
+  <div class="bloque">
+    <p>Este es el segundo bloque de la lección y el más frecuente en el examen. Ante una conclusión propuesta y un conjunto de datos, solo hay <strong>tres veredictos posibles</strong>, y conviene tenerlos nombrados porque la tercera opción es la que más se olvida.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Los tres veredictos posibles al evaluar si unos datos sostienen una conclusión, con su definición y un ejemplo.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Veredicto</th>
+          <th scope="col">Cuándo se aplica</th>
+          <th scope="col">Ejemplo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Respalda</td>
+          <td>Los datos apuntan en la dirección de la conclusión</td>
+          <td>La conclusión dice que la planta crece más con luz, y las plantas iluminadas midieron más</td>
+        </tr>
+        <tr>
+          <td>Contradice</td>
+          <td>Los datos apuntan en dirección opuesta</td>
+          <td>La conclusión dice lo mismo, pero las plantas a oscuras midieron más</td>
+        </tr>
+        <tr>
+          <td>Es irrelevante</td>
+          <td>Los datos no dicen nada sobre la conclusión, ni a favor ni en contra</td>
+          <td>La conclusión habla de luz, y los datos registran únicamente el tipo de maceta</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>«Irrelevante» es una respuesta legítima y muy poco elegida.</strong> El examen incluye a propósito datos verdaderos que no vienen al caso, porque quien siente que debe pronunciarse a favor o en contra acaba forzando una relación que no existe. Un dato puede ser correcto y no aportar nada a la conclusión que se evalúa. Ante cualquier dato, la primera pregunta es si habla del mismo asunto.
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">LA PLANTILLA DE CUATRO COLUMNAS</span>
+      <p>Todo el análisis se registra en la misma estructura, y esa es la razón de usarla siempre:</p>
+      <div class="paso"><span class="n">1</span><strong>Afirmación.</strong> Se escribe la conclusión propuesta, tal como se enuncia y sin suavizarla.</div>
+      <div class="paso"><span class="n">2</span><strong>Evidencia a favor.</strong> Qué datos concretos la respaldan, citados con su cifra.</div>
+      <div class="paso"><span class="n">3</span><strong>Evidencia en contra.</strong> Qué datos la contradicen o la limitan.</div>
+      <div class="paso"><span class="n">4</span><strong>Veredicto.</strong> Respalda, contradice o irrelevante, <span class="resalta">acompañado del dato concreto que lo justifica</span>. Un veredicto sin dato no cuenta.</div>
+    </div>
+
+    <p>La última columna es la que más rinde. Escribir «respalda» a secas no demuestra nada; escribir «respalda, porque las plantas iluminadas midieron 18 cm frente a 11 cm» sí. En el examen no hay que redactar la justificación, pero el ítem correcto es siempre el que podría justificarse así.</p>
+          <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/cientidebate/" target="_blank" rel="noopener"
+     aria-label="Abrir CientíDebate (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">⚖️</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">CientíDebate</span>
+      <span class="ei-sub">Herramienta de evaluación de posiciones divergentes, alineada con SP.5. Es el recurso central de la sección 1: permite contrastar dos posturas sobre un mismo asunto y localizar en qué punto difieren. Es la práctica más recomendable para esta lección.</span>
+      <span class="ei-cta">Abrir el recurso <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Reconciliar y evaluar</h3>
+    <p>Seleccione la respuesta correcta en cada caso.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Dos estudios sobre el mismo fertilizante obtienen resultados distintos. Uno se hizo en suelo arenoso y el otro en suelo arcilloso. Lo más probable es que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Uno de los dos contenga un error de cálculo</div>
+        <div class="opcion" data-op="b">Ambos sean correctos: difieren en la muestra, no se contradicen</div>
+        <div class="opcion" data-op="c">Los fertilizantes no tengan ningún efecto</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. Se propone la conclusión «el ejercicio reduce la presión arterial» y los datos disponibles registran solo la edad de los participantes. Esos datos…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Respaldan la conclusión</div>
+        <div class="opcion" data-op="b">La contradicen</div>
+        <div class="opcion" data-op="c">Son irrelevantes para la conclusión propuesta</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. Dos estudios coinciden en método, muestra y alcance, y sus resultados siguen siendo incompatibles. La respuesta correcta es que…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Existe una discrepancia real y hacen falta más datos</div>
+        <div class="opcion" data-op="b">Hay que elegir el estudio más reciente</div>
+        <div class="opcion" data-op="c">Ambos deben descartarse por igual</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion" id="s-3-hecho-interpretacion-y-especulacion">3. Hecho, interpretación y especulación</h2>
+  <div class="bloque">
+    <p>Los tres aparecen mezclados en un mismo texto científico, escritos en el mismo tono y sin aviso alguno. Separarlos es la tercera destreza de la lección, y la más útil fuera del examen.</p>
+
+    <table class="reglas">
+      <caption class="sr-only">Distinción entre hecho, interpretación y especulación con su definición, las expresiones que suelen anunciarlos y un ejemplo de cada uno.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Categoría</th>
+          <th scope="col">Qué es</th>
+          <th scope="col">Expresiones que suelen anunciarlo</th>
+          <th scope="col">Ejemplo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hecho empírico</td>
+          <td>Lo que se midió u observó. Se puede comprobar repitiendo la medición</td>
+          <td>«se registró», «se midió», «los datos muestran»</td>
+          <td>La temperatura media del tramo inferior fue 3 °C mayor</td>
+        </tr>
+        <tr>
+          <td>Interpretación</td>
+          <td>La explicación que el autor da a esos hechos. Es razonada, pero no es el dato</td>
+          <td>«esto indica», «los resultados sugieren», «se atribuye a»</td>
+          <td>Esa diferencia se atribuye al vertido de la central</td>
+        </tr>
+        <tr>
+          <td>Especulación</td>
+          <td>Lo que podría ocurrir o explicarse, sin datos que lo sostengan todavía</td>
+          <td>«es posible que», «podría», «cabría esperar», «si se confirmara»</td>
+          <td>Es posible que el efecto se extienda aguas abajo del tramo estudiado</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>El verbo es la pista más fiable.</strong> «Se registró» introduce un hecho; «sugiere» introduce una interpretación; «podría» introduce una especulación. Los textos científicos serios marcan esa diferencia con cuidado, y en el examen los estímulos la respetan. Leer prestando atención a los verbos resuelve la mayoría de estos ítems.
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Especular no es un defecto.</strong> Un artículo que termina proponiendo qué habría que investigar después está haciendo su trabajo, y la lectura del parque solar de la Lección 7.3 lo hacía sin perder rigor. El problema aparece cuando el lector <em>toma la especulación por hecho</em>. El error que penaliza el examen no es que el autor especule, sino que quien responde no lo advierta.
+    </div>
+
+    <div class="vocabulario">
+      <h2 id="s-vocabulario-tecnico-y-raices"><span aria-hidden="true">🔤</span> Vocabulario técnico y raíces</h2>
+      <p><strong>Evidencia</strong> procede del latín <em>videre</em>, ver, la misma raíz de <em>visible</em> y <em>evidente</em>: lo que se puede mostrar. <strong>Reconciliar</strong>, de <em>re-</em>, de nuevo, y <em>conciliare</em>, reunir: volver a hacer compatibles dos cosas que parecían enfrentadas, que es exactamente la tarea de la sección 1. <strong>Interpretar</strong> viene de <em>interpres</em>, intermediario: quien se sitúa entre el dato y el lector para explicarlo. <strong>Especular</strong> procede de <em>speculum</em>, espejo, y de <em>speculari</em>, observar desde lejos; conserva ese sentido de mirar más allá de lo que se tiene delante. <strong>Veredicto</strong> une <em>verum</em>, verdadero, y <em>dictum</em>, dicho: lo que se declara verdadero tras examinar las pruebas. Y <strong>criterio</strong>, del griego <em>kritérion</em>, medio para juzgar, de la raíz <em>krínein</em>, separar o decidir, que también dio <em>crítica</em>.</p>
+    </div>
+      <a class="enlace-interactivo" href="https://zhemaria.github.io/ciencias/interpreta_graficos/" target="_blank" rel="noopener"
+     aria-label="Abrir CientíGraf (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">📊</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">CientíGraf</span>
+      <span class="ei-sub">Entrenador de razonamiento a partir de datos y gráficas, alineado con SP.3 y SP.4. Complementa a CientíDebate: mientras aquel trabaja con posiciones en texto, este obliga a decidir si una gráfica respalda, contradice o resulta irrelevante para una conclusión. También es muy recomendable como práctica de esta lección.</span>
+      <span class="ei-cta">Abrir el recurso <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+  </div>
+
+
+
+
+  <div class="lectura">
+    <h2 id="s-lectura-cientifica"><span aria-hidden="true">📖</span> Lectura científica</h2>
+    <p class="fuente">Texto científico breve adaptado al nivel. Al leerlo, separe mentalmente lo que se midió, lo que se explica y lo que solo se propone.</p>
+
+    <div class="texto-adaptado">
+      <p><strong>Dos recuentos de abejas que no coincidían</strong></p>
+      <p>Dos equipos estudiaron la población de abejas en una misma comarca agrícola y publicaron resultados aparentemente opuestos. El primero informó de un descenso del 30 % en cinco años. El segundo, trabajando en la misma comarca y en el mismo periodo, no encontró descenso apreciable.</p>
+      <p>Al comparar los métodos se localizó la diferencia. El primer equipo contabilizó colmenas gestionadas por apicultores, registradas en un censo oficial. El segundo contabilizó abejas silvestres mediante trampas distribuidas por el terreno. No estaban midiendo lo mismo: una cifra refleja actividad apícola y la otra, población silvestre.</p>
+      <p>Un análisis posterior reunió ambos conjuntos de datos. Los autores señalan que el descenso de colmenas registradas coincide en el tiempo con el abandono de varias explotaciones apícolas de la zona, y que ese dato explica buena parte de la caída del primer recuento sin necesidad de suponer una mortalidad elevada.</p>
+      <p>El informe añade que sería posible que la población silvestre se hubiera beneficiado de la menor competencia por el néctar, aunque advierte que el diseño del estudio no permite comprobarlo y que haría falta un seguimiento específico para determinarlo.</p>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Las abejas de la comarca están desapareciendo.</div>
+        <div class="opcion" data-op="b">Uno de los dos equipos cometió un error de medición.</div>
+        <div class="opcion" data-op="c">Los dos recuentos no se contradicen: medían poblaciones distintas con métodos distintos.</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. El punto exacto de divergencia entre ambos estudios está en…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">El método y la muestra: colmenas gestionadas frente a abejas silvestres</div>
+        <div class="opcion" data-op="b">El periodo estudiado, que fue distinto</div>
+        <div class="opcion" data-op="c">La comarca, que no era la misma</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. «El descenso de colmenas coincide con el abandono de varias explotaciones» es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Una especulación</div>
+        <div class="opcion" data-op="b">Un hecho registrado, que el análisis posterior documenta</div>
+        <div class="opcion" data-op="c">Una opinión de los apicultores</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">4. La frase sobre la posible mejora de la población silvestre por menor competencia es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Un hecho comprobado por el estudio</div>
+        <div class="opcion" data-op="b">La conclusión principal del informe</div>
+        <div class="opcion" data-op="c">Una especulación: los propios autores advierten que su diseño no permite comprobarlo</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>  
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Hecho, interpretación y especulación</h3>
+    <p>Clasifique cada enunciado.</p>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">1. «Se midieron 14 metros de distancia de frenado sobre asfalto seco.» Eso es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Un hecho empírico</div>
+        <div class="opcion" data-op="b">Una interpretación</div>
+        <div class="opcion" data-op="c">Una especulación</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">2. «Esa diferencia se atribuye a la menor fricción disponible sobre el asfalto mojado.» Eso es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Un hecho empírico</div>
+        <div class="opcion" data-op="b">Una interpretación de los autores</div>
+        <div class="opcion" data-op="c">Una especulación sin fundamento</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. «Cabría esperar que el efecto fuera aún mayor con neumáticos desgastados, aunque no se midió.» Eso es…</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Un hecho empírico</div>
+        <div class="opcion" data-op="b">Una interpretación respaldada por los datos</div>
+        <div class="opcion" data-op="c">Una especulación, señalada por el propio texto</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2 id="s-tarea"><span aria-hidden="true">✅</span> Tarea</h2>
+    <ul>
+      <li>Dos conjuntos de fuentes con diez preguntas de evaluación de conclusiones.</li>
+      <li>Una sesión de práctica en <strong>CientíDebate</strong> y otra en <strong>CientíGraf</strong>.</li>
+      <li>Una plantilla de cuatro columnas completa sobre un par de estudios divergentes, con el punto de divergencia identificado.</li>
+    </ul>
+    <p>Tiempo estimado: 60 minutos. Evalúe su trabajo con la rúbrica de esta lección.</p>
+  </div>
+
+  <div class="quiz">
+    <h2 id="s-quiz-de-la-leccion-8-1">Quiz de la lección 8.1</h2>
+    <p>Doce preguntas sobre estímulos con fuentes múltiples: cuatro de reconciliación de hallazgos, cuatro de determinación de si los datos sostienen la conclusión y cuatro de distinción entre hecho, interpretación y especulación. Tiempo sugerido: 35 minutos. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2 id="s-rubrica-analitica-de-la-leccion"><span aria-hidden="true">📊</span> Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <caption class="sr-only">Rúbrica analítica de evaluación científica con cuatro criterios y cuatro niveles de desempeño.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col">Inicial (1)</th>
+          <th scope="col">En desarrollo (2)</th>
+          <th scope="col">Competente (3)</th>
+          <th scope="col">Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Identifica el punto exacto de divergencia entre fuentes</td>
+          <td>Concluye que uno de los estudios está equivocado.</td>
+          <td>Advierte que difieren, pero no localiza en qué.</td>
+          <td>Señala si la divergencia está en el método, la muestra o el alcance.</td>
+          <td>Distingue además los casos de contradicción real de los reconciliables.</td>
+        </tr>
+        <tr>
+          <td>Determina si la evidencia sostiene la conclusión</td>
+          <td>Acepta cualquier conclusión que suene razonable.</td>
+          <td>Distingue respaldo de contradicción, pero nunca elige «irrelevante».</td>
+          <td>Aplica los tres veredictos, incluido el de irrelevancia.</td>
+          <td>Detecta además los datos verdaderos que no vienen al caso y explica por qué.</td>
+        </tr>
+        <tr>
+          <td>Distingue hecho de interpretación</td>
+          <td>Trata todo el texto como si fuera dato.</td>
+          <td>Separa los hechos, pero confunde interpretación con especulación.</td>
+          <td>Clasifica correctamente las tres categorías.</td>
+          <td>Justifica la clasificación señalando el verbo o la expresión que la determina.</td>
+        </tr>
+        <tr>
+          <td>Justifica el veredicto citando el dato concreto</td>
+          <td>Emite veredictos sin justificación.</td>
+          <td>Justifica de forma general, sin citar datos.</td>
+          <td>Acompaña cada veredicto del dato concreto que lo sostiene.</td>
+          <td>Indica además qué dato adicional cambiaría el veredicto.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2 id="s-cierre-de-la-leccion-y-enlace-con-la-8-2">Cierre de la lección y enlace con la 8.2</h2>
+    <p>Esta lección ha entrenado la posición del <strong>lector</strong>: recibir estudios ajenos y juzgar qué sostienen. La <strong>Lección 8.2</strong> cambia de asiento y pone al estudiante del otro lado: el <strong>proyecto final integrador</strong>, en el que diseña su propia investigación, recoge sus propios datos y presenta sus conclusiones.</p>
+    <p>Y ahí se cierra un círculo que empezó en la primera lección del curso. La Unidad 1 enseñó a formular una hipótesis comprobable y a aislar una variable; ahora hay que hacerlo de verdad, con un fenómeno del propio entorno. Al revisar su propio proyecto, conviene aplicarle exactamente el criterio de esta lección: <strong>si la conclusión se sostiene en los datos presentados</strong>. Conviene recordar, al preparar el proyecto, que reconocer una limitación no resta puntos: la rúbrica los otorga.</p>
+  </div>
+
+  <footer>
+    <p>GEDparaHispanos · Ciencias · Unidad 8 · Lección 8.1</p>
+    <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+    <p>© 2026. Esta obra está licenciada bajo
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons
+      Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+  </footer>
+
+
+</div>
+
+<a href="#indice" class="volver-indice" aria-label="Volver al contenido de la lección">↑ Índice</a>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = 'Correcto. Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Quiz: 4 de reconciliación de hallazgos, 4 de determinación de si los
+     datos sostienen la conclusión, 4 de distinción entre hecho, interpretación
+     y especulación. Umbral 8 de 12.
+     Coincide exactamente con lo que especifica el plan curricular aprobado
+     para esta lección: no hay desviación que registrar. ---- */
+  var preguntasQuiz = [
+    { enun: '1. Antes de afirmar que dos estudios se contradicen, conviene comprobar…',
+      ops: ['El método, la muestra y el alcance de cada uno', 'Cuál se publicó antes', 'Cuál tiene más páginas', 'Cuál cita más autores'], correcta: 0 },
+    { enun: '2. Dos estudios miden la temperatura de un lago: uno en superficie y otro a diez metros de profundidad. Sus valores distintos indican que…',
+      ops: ['Uno de los dos se equivocó', 'Difieren en el método, de modo que los valores no son comparables sin más', 'El lago no tiene temperatura definida', 'Ambos deben descartarse'], correcta: 1 },
+    { enun: '3. Un estudio afirma que un fertilizante aumenta el crecimiento; otro, que no lo aumenta en suelo arcilloso. Se concluye que…',
+      ops: ['Se contradicen frontalmente', 'El primero es falso', 'No se contradicen: el segundo acota una condición del primero', 'El fertilizante no sirve'], correcta: 2 },
+    { enun: '4. Dos estudios coinciden en método, muestra y alcance, y sus resultados siguen siendo incompatibles. Lo correcto es concluir que…',
+      ops: ['Hay que quedarse con el más reciente', 'Los dos son igualmente inútiles', 'Cada uno mide algo distinto', 'Existe una discrepancia real que exige más investigación'], correcta: 3 },
+    { enun: '5. Los tres veredictos posibles al evaluar si unos datos sostienen una conclusión son…',
+      ops: ['Respalda, contradice o es irrelevante', 'Verdadero, falso o dudoso', 'Bueno, malo o regular', 'Aceptado, rechazado o pendiente'], correcta: 0 },
+    { enun: '6. Se propone la conclusión «la planta crece más con luz» y los datos registran solo el tipo de maceta empleada. Esos datos…',
+      ops: ['Respaldan la conclusión', 'Son irrelevantes para la conclusión propuesta', 'La contradicen', 'La confirman parcialmente'], correcta: 1 },
+    { enun: '7. Un dato correcto que no habla del asunto de la conclusión debe clasificarse como…',
+      ops: ['Evidencia a favor, por ser correcto', 'Evidencia en contra', 'Irrelevante', 'Erróneo'], correcta: 2 },
+    { enun: '8. En la plantilla de cuatro columnas, un veredicto solo se considera completo si…',
+      ops: ['Está escrito en la última columna', 'Coincide con el del resto del equipo', 'Emplea una sola palabra', 'Va acompañado del dato concreto que lo justifica'], correcta: 3 },
+    { enun: '9. «Se registró una temperatura media 3 °C mayor en el tramo inferior.» Ese enunciado es…',
+      ops: ['Un hecho empírico', 'Una interpretación', 'Una especulación', 'Una conclusión general'], correcta: 0 },
+    { enun: '10. «Esa diferencia se atribuye al vertido de agua caliente de la central.» Ese enunciado es…',
+      ops: ['Un hecho medido', 'Una interpretación de los autores', 'Una especulación sin base', 'Un dato irrelevante'], correcta: 1 },
+    { enun: '11. «Es posible que el efecto se extienda aguas abajo, aunque no se midió.» Ese enunciado es…',
+      ops: ['Un hecho empírico', 'Una interpretación respaldada', 'Una especulación', 'Un error del autor'], correcta: 2 },
+    { enun: '12. Que un artículo científico incluya especulaciones al final…',
+      ops: ['Invalida todo el artículo', 'Significa que los datos son falsos', 'Obliga a descartar sus conclusiones', 'Es aceptable si quedan señaladas como tales; el error sería que el lector las tomara por hechos'], correcta: 3 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta'); });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = 'Correcto.';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 8) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Aprobado. Puede continuar a la Lección 8.2.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repase la lección e intente de nuevo (se requieren 8).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

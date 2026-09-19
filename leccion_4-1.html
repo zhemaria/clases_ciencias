@@ -1,0 +1,1545 @@
+<!doctype html>
+<!--
+  Lección 4.1 · ADN, ARN y expresión genética
+  Spanish ASE Science · Unidad 4 · Ciencias de la vida II: herencia, evolución y ecosistemas
+  © 2026 José M. Fernández, ABE/ASE Math Master Teacher,
+  Harry S. Truman College — City Colleges of Chicago.
+  Licencia: Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+  Internacional (CC BY-NC-SA 4.0) — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+-->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lección 4.1 · ADN, ARN y expresión genética</title>
+    <meta name="author" content="José M. Fernández — Harry S. Truman College, City Colleges of Chicago" />
+    <meta name="license" content="CC BY-NC-SA 4.0" />
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" />
+    <style>
+      :root {
+        /* Unidad 4 — verde oliva del plan curricular (--t4 #33691e). Familia
+       vecina de la Unidad 3, como corresponde a la segunda mitad del mismo
+       dominio, pero con el matiz desplazado hacia el oliva para que las dos
+       unidades no se confundan entre sí. */
+        --tema: #33691e;
+        --tema-d: #1e400f;
+        --tema-bg: #d3e6c2;
+        --tema-bg2: #bfd9a9;
+        --acento: #558b2f;
+        --txt: #222;
+        --bg: #f5f7fa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        margin: 0;
+        background: var(--bg);
+        color: var(--txt);
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      .contenedor {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* ── ENCABEZADO ─────────────────────────────────────────────── */
+      header.principal {
+        background: var(--tema-d);
+        background: linear-gradient(135deg, #13290a 0%, #1e400f 55%, #33691e 100%);
+        color: #ffffff;
+        padding: 32px 30px;
+        border-radius: 14px;
+        margin-bottom: 22px;
+        box-shadow: 0 4px 14px rgba(19, 41, 10, 0.28);
+      }
+      header.principal .ruta {
+        font-size: 13px;
+        color: #ffffff;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+      header.principal h1 {
+        margin: 8px 0 6px;
+        font-size: 23px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+      header.principal .meta {
+        font-size: 14px;
+        color: #ffffff;
+      }
+
+      .practicas-sp {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .sp {
+        display: inline-block;
+        background: #ffffff;
+        color: #1e400f;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 12px;
+        letter-spacing: 0.3px;
+      }
+
+      h2.seccion {
+        color: var(--tema-d);
+        font-size: 21px;
+        margin: 34px 0 12px;
+        padding-bottom: 6px;
+        border-bottom: 3px solid var(--tema-bg);
+      }
+      h3 {
+        color: var(--tema-d);
+        font-size: 17px;
+        margin: 20px 0 8px;
+      }
+
+      .caja-objetivos {
+        background: var(--tema-bg);
+        border-left: 6px solid var(--tema);
+        padding: 18px 22px;
+        border-radius: 0 10px 10px 0;
+        margin-bottom: 22px;
+      }
+      .caja-objetivos h2 {
+        margin: 0 0 10px;
+        color: var(--tema-d);
+        font-size: 19px;
+      }
+      .caja-objetivos ul {
+        margin: 0;
+        padding-left: 22px;
+      }
+      .caja-objetivos li {
+        margin: 5px 0;
+      }
+
+      .bloque {
+        background: #fff;
+        border-radius: 10px;
+        padding: 4px 24px 18px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
+        margin-bottom: 18px;
+      }
+      p {
+        margin: 10px 0;
+      }
+
+      .diagrama-wrap {
+        text-align: center;
+        margin: 16px 0;
+        overflow-x: auto;
+      }
+
+      /* ── MATERIAL Y RECURSOS (componente fijo del plan de Ciencias) ── */
+      .materiales {
+        background: #eceff1;
+        border-left: 6px solid #37474f;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 18px 0;
+      }
+      .materiales h2 {
+        margin: 0 0 8px;
+        color: #263238;
+        font-size: 18px;
+      }
+      .materiales ul {
+        margin: 8px 0 0;
+        padding-left: 22px;
+      }
+      .materiales li {
+        margin: 5px 0;
+      }
+
+      .ejemplo {
+        background: #fafafa;
+        border: 1px solid #e3e3e3;
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin: 14px 0;
+      }
+      .ejemplo .et {
+        display: inline-block;
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 12px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+        letter-spacing: 0.4px;
+      }
+      .paso {
+        margin: 7px 0;
+        padding-left: 30px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: var(--tema-bg);
+        color: var(--tema-d);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        text-align: center;
+        line-height: 22px;
+      }
+      .resalta {
+        background: var(--tema-bg);
+        padding: 1px 6px;
+        border-radius: 5px;
+        font-weight: 700;
+        color: var(--tema-d);
+      }
+
+      /* ── CAJA DE CONSEJO ─────────────────────────────────────────
+     Matiz fijo (326°, magenta-rosa) e independiente del color de
+     la Unidad: es el único matiz libre en las ocho paletas del
+     plan, de modo que el bloque nunca se funde con el tema.
+     ─────────────────────────────────────────────────────────── */
+      .caja-tip {
+        background: #fce1f0;
+        border-left: 5px solid #9e1c66;
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 14px 0;
+        color: #800d4e;
+        font-size: 15px;
+      }
+      .caja-tip strong {
+        color: #800d4e;
+      }
+
+      .caja-atencion {
+        background: #fff8e1;
+        border-left: 5px solid #f9a825;
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 14px 0;
+        font-size: 15px;
+        color: #5c3900;
+      }
+      .caja-atencion strong {
+        color: #5c3900;
+      }
+
+      /* ── VOCABULARIO TÉCNICO (particularidad de Ciencias) ────────── */
+      .vocabulario {
+        background: #ede7f6;
+        border-left: 6px solid #5e35b1;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 18px 0;
+      }
+      .vocabulario h2 {
+        margin: 0 0 6px;
+        color: #4527a0;
+        font-size: 18px;
+      }
+      .vocabulario p {
+        color: #311b92;
+      }
+
+      /* ── LECTURA CIENTÍFICA (particularidad de Ciencias) ─────────── */
+      .lectura {
+        background: #fffdf7;
+        border: 2px solid var(--tema);
+        border-radius: 10px;
+        padding: 6px 22px 18px;
+        margin: 18px 0;
+      }
+      .lectura h2 {
+        color: var(--tema-d);
+        font-size: 19px;
+      }
+      .lectura .fuente {
+        font-size: 13px;
+        color: #555;
+        font-style: italic;
+      }
+      .lectura .texto-adaptado {
+        background: #ffffff;
+        border-left: 5px solid var(--tema-bg);
+        padding: 12px 18px;
+        margin: 12px 0;
+        border-radius: 0 8px 8px 0;
+      }
+
+      /* ── ENLACE AL INTERACTIVO ───────────────────────────────────── */
+      .enlace-interactivo {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        background: var(--tema-bg);
+        border: 2px solid var(--tema);
+        border-left: 6px solid var(--tema);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 18px 0;
+        text-decoration: none;
+        color: var(--tema-d);
+        transition: background 0.15s;
+      }
+      .enlace-interactivo:hover {
+        background: var(--tema-bg2);
+      }
+      .enlace-interactivo .ei-icono {
+        font-size: 26px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .enlace-interactivo .ei-titulo {
+        display: block;
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--tema-d);
+      }
+      .enlace-interactivo .ei-sub {
+        display: block;
+        font-size: 14px;
+        color: #333;
+        margin: 4px 0 8px;
+      }
+      .enlace-interactivo .ei-cta {
+        display: inline-block;
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 6px 16px;
+        border-radius: 7px;
+      }
+
+      /* ── MARCADOR DE RECURSO AÚN NO PUBLICADO ────────────────────
+     Para retirarlo cuando el interactivo exista, elimine el
+     elemento completo <span class="pendiente">…</span>.
+     ─────────────────────────────────────────────────────────── */
+      .pendiente {
+        color: #c62828;
+        font-size: 15px;
+        margin-left: 6px;
+      }
+
+      .reglas {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .reglas th,
+      .reglas td {
+        border: 1px solid #e0e0e0;
+        padding: 9px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .reglas th {
+        background: var(--tema);
+        color: #ffffff;
+      }
+      .reglas td:first-child {
+        background: var(--tema-bg);
+        font-weight: 600;
+        color: var(--tema-d);
+      }
+
+      .practica {
+        background: var(--tema-bg2);
+        border: 1px dashed var(--tema);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 18px 0;
+      }
+      .practica h3 {
+        margin-top: 0;
+        color: var(--tema-d);
+      }
+      .pregunta {
+        margin: 14px 0;
+      }
+      .pregunta .enun {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .opcion {
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 9px 14px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .opcion:hover {
+        border-color: var(--tema);
+      }
+      .opcion.correcta {
+        border-color: #2e7d32;
+        background: #e8f5e9;
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: #c62828;
+        background: #ffebee;
+      }
+      .opcion.elegida {
+        border-color: var(--tema);
+      }
+      .fb {
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        display: none;
+      }
+      .fb.ok {
+        color: #1b5e20;
+      }
+      .fb.no {
+        color: #c62828;
+      }
+
+      .btn {
+        background: var(--tema);
+        color: #ffffff;
+        border: none;
+        padding: 9px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: inherit;
+        margin-top: 8px;
+      }
+      .btn:hover {
+        background: var(--tema-d);
+      }
+      .btn.sec {
+        background: #546e7a;
+      }
+      .btn.sec:hover {
+        background: #37474f;
+      }
+
+      .modalidad {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 12px 0;
+      }
+      .modo {
+        flex: 1;
+        min-width: 230px;
+        border-radius: 9px;
+        padding: 14px 16px;
+        font-size: 14px;
+      }
+      .modo-pres {
+        background: #e0f2f1;
+        border-left: 5px solid #00695c;
+      }
+      .modo-pres strong {
+        color: #004d40;
+      }
+      .modo-virt {
+        background: #f3e5f5;
+        border-left: 5px solid #6a1b9a;
+      }
+      .modo-virt strong {
+        color: #4a148c;
+      }
+      .modo h3 {
+        margin: 0 0 6px;
+        font-size: 15px;
+      }
+      .modo-pres h3 {
+        color: #004d40;
+      }
+      .modo-virt h3 {
+        color: #4a148c;
+      }
+
+      .actividad {
+        margin-bottom: 18px;
+      }
+      .actividad > .titulo-act {
+        font-weight: 700;
+        color: var(--tema-d);
+        font-size: 15px;
+        background: var(--tema-bg);
+        padding: 7px 14px;
+        border-radius: 7px;
+      }
+
+      .caja-tarea {
+        background: #e3f2fd;
+        border-left: 6px solid #1565c0;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 20px 0;
+      }
+      .caja-tarea h2 {
+        margin-top: 0;
+        color: #0d47a1;
+      }
+
+      .quiz {
+        background: #fff;
+        border: 2px solid var(--tema);
+        border-radius: 12px;
+        padding: 8px 24px 20px;
+        margin: 22px 0;
+      }
+      .quiz h2 {
+        color: var(--tema-d);
+      }
+      #resultado-quiz {
+        font-size: 17px;
+        font-weight: 700;
+        margin: 14px 0;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        display: none;
+      }
+      #resultado-quiz.aprob {
+        background: #e8f5e9;
+        color: #1b5e20;
+      }
+      #resultado-quiz.repro {
+        background: #ffebee;
+        color: #b71c1c;
+      }
+
+      .rubrica {
+        margin: 22px 0;
+        overflow-x: auto;
+      }
+      .rubrica h2 {
+        color: var(--tema-d);
+      }
+      table.tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+      }
+      table.tabla-rubrica th,
+      table.tabla-rubrica td {
+        border: 1px solid #e0e0e0;
+        padding: 8px 10px;
+        vertical-align: top;
+      }
+      table.tabla-rubrica th {
+        background: var(--tema);
+        color: #ffffff;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+      table.tabla-rubrica td:first-child {
+        background: var(--tema-bg);
+        font-weight: 600;
+        color: var(--tema-d);
+      }
+
+      .cierre {
+        background: #263238;
+        color: #eceff1;
+        border-radius: 12px;
+        padding: 22px 26px;
+        margin: 24px 0 10px;
+      }
+      .cierre h2 {
+        color: #ffffff;
+        margin-top: 0;
+      }
+      .cierre strong {
+        color: #9bff8f;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: #555;
+        font-size: 13px;
+        border-top: 1px solid #ddd;
+        margin-top: 20px;
+      }
+      footer p {
+        margin: 5px 0;
+      }
+      footer a {
+        color: #1e400f;
+      }
+
+      /* ===== Índice interno de la lección (GEDparaHispanos) ===== */
+      .indice {
+        background: #ffffff;
+        border: 1px solid var(--tema-bg);
+        border-left: 5px solid var(--tema-d);
+        border-radius: 8px;
+        padding: 14px 20px;
+        margin: 20px 0;
+      }
+      .indice h2 { margin: 0 0 8px; font-size: 18px; color: var(--tema-d); }
+      .indice ul { list-style: none; margin: 0; padding: 0; columns: 2 260px; column-gap: 28px; }
+      .indice li { margin: 0 0 6px; break-inside: avoid; }
+      .indice a { color: var(--tema-d); font-weight: 600; text-decoration: underline; }
+      .indice a:hover { text-decoration-thickness: 2px; }
+      h2[id] { scroll-margin-top: 16px; }
+      .volver-indice {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        background: var(--tema-d);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        z-index: 50;
+      }
+      .volver-indice:focus-visible, .indice a:focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; }
+      .actividad p { margin: 6px 0 0; }
+      @media print { .volver-indice, .indice { display: none; } }
+    </style>
+  </head>
+  <body>
+    <div class="contenedor">
+      <header class="principal">
+        <div class="ruta">GEDparaHispanos · Ciencias · Unidad 4 · Ciencias de la vida II: herencia, evolución y ecosistemas</div>
+        <h1>Lección 4.1 · ADN, ARN y expresión genética</h1>
+        <div class="meta">Tiempo estimado: unas 4 horas · NRS 4–5</div>
+        <div class="practicas-sp">
+          <span class="sp">SP.6 · Expresar información científica</span>
+          <span class="sp">SP.1 · Comprender textos científicos</span>
+        </div>
+      </header>
+
+      <div class="caja-objetivos">
+        <h2>Objetivos de la lección</h2>
+        <ul>
+          <li>Describir la estructura de doble hélice del ADN y aplicar la regla de emparejamiento de bases complementarias.</li>
+          <li>Distinguir el ADN del ARN por su estructura, su ubicación y su función.</li>
+          <li>Explicar en términos generales la transcripción y la traducción, y obtener una secuencia de aminoácidos a partir de una hebra de ADN.</li>
+          <li>Relacionar una mutación puntual con su posible efecto sobre la proteína resultante.</li>
+          <li>Reconocer que una misma mutación puede resultar perjudicial o ventajosa según el ambiente.</li>
+        </ul>
+      </div>
+
+      <nav class="indice" id="indice" aria-labelledby="indice-titulo">
+        <h2 id="indice-titulo">Contenido de la lección</h2>
+        <ul>
+          <li><a href="#s-material-y-recursos">Material y recursos</a></li>
+          <li><a href="#s-1-la-estructura-del-adn-y-la-complementariedad">1. La estructura del ADN y la complementariedad</a></li>
+          <li><a href="#s-vocabulario-tecnico-y-raices">Vocabulario técnico y raíces</a></li>
+          <li><a href="#s-2-adn-y-arn-dos-moleculas-parecidas-con-oficios">2. ADN y ARN: dos moléculas parecidas con oficios distintos</a></li>
+          <li><a href="#s-3-del-gen-a-la-proteina">3. Del gen a la proteína</a></li>
+          <li><a href="#s-4-mutaciones-puntuales">4. Mutaciones puntuales</a></li>
+          <li><a href="#s-lectura-cientifica">Lectura científica</a></li>
+          <li><a href="#s-tarea">Tarea</a></li>
+          <li><a href="#s-quiz-de-la-leccion-4-1">Quiz de la lección 4.1</a></li>
+          <li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li>
+          <li><a href="#s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</a></li>
+        </ul>
+      </nav>
+
+      <div class="bloque">
+        <p>
+          <strong>Comienza la segunda mitad del dominio.</strong>
+          La Unidad 3 respondió qué es una célula y cómo obtiene energía. La Unidad 4 responde cómo se transmite la información de una generación a la siguiente, cómo cambian las poblaciones con el
+          tiempo y cómo se organizan los seres vivos en un ecosistema.
+        </p>
+        <p>
+          Esta lección abre por el nivel más pequeño, la molécula, y la 4.2 subirá al individuo y la 4.3 a la población. Conviene tener presente ese orden:
+          <strong>molécula, individuo, población</strong>
+          . Cada escalón explica el siguiente.
+        </p>
+      </div>
+
+      <div class="materiales">
+        <h2 id="s-material-y-recursos"><span aria-hidden="true">📐</span> Material y recursos</h2>
+        <ul>
+          <li>El diagrama de la doble hélice de esta lección.</li>
+          <li>La tabla del código genético simplificada, con los codones que se usan en los ejercicios.</li>
+          <li>Papel para recortar ocho tarjetas con las bases nitrogenadas —dos de cada una: A, T, C y G— y emparejarlas sobre la mesa.</li>
+          <li>El texto breve sobre la anemia falciforme como caso de mutación puntual.</li>
+        </ul>
+        <p><strong>Cómo estudiar esta lección:</strong> manipule el modelo antes de detenerse en la explicación formal. Empareje las tarjetas y descubra por sí mismo que solo hay dos combinaciones posibles; la regla de complementariedad le resultará evidente cuando ya la haya comprobado.</p>
+      </div>
+
+      <h2 class="seccion" id="s-1-la-estructura-del-adn-y-la-complementariedad">1. La estructura del ADN y la complementariedad</h2>
+      <div class="bloque">
+        <p>
+          El ADN es una escalera retorcida sobre sí misma: eso es la
+          <strong>doble hélice</strong>
+          . Los dos largueros están formados por azúcar y fosfato; cada peldaño lo forman dos
+          <strong>bases nitrogenadas</strong>
+          enfrentadas.
+        </p>
+
+        <p>Hay solo cuatro bases —adenina, timina, citosina y guanina— y no se emparejan de cualquier manera. La regla no admite excepciones:</p>
+
+        <div class="caja-tip">
+          <strong>La regla de complementariedad:</strong>
+          la adenina siempre se empareja con la timina, y la citosina siempre con la guanina.
+          <strong>A con T</strong>
+          y
+          <strong>C con G</strong>
+          . De ahí se sigue algo muy útil: conocida una hebra, la otra queda determinada por completo. No hay que memorizarla, se deduce.
+        </div>
+
+        <div class="diagrama-wrap">
+          <svg
+            width="700"
+            height="240"
+            viewBox="0 0 700 240"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Esquema de las dos hebras del ADN emparejadas. La hebra uno tiene la secuencia adenina, timina, citosina, guanina, adenina, timina. La hebra dos tiene la secuencia complementaria: timina, adenina, guanina, citosina, timina, adenina. Cada adenina se empareja siempre con una timina y cada citosina con una guanina.">
+            <text x="20" y="46" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f">Hebra 1</text>
+            <text x="20" y="196" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f">Hebra 2</text>
+
+            <line x1="95" y1="62" x2="660" y2="62" stroke="#1e400f" stroke-width="5" />
+            <line x1="95" y1="178" x2="660" y2="178" stroke="#1e400f" stroke-width="5" />
+
+            <g stroke="#33691e" stroke-width="2.5">
+              <line x1="130" y1="88" x2="130" y2="152" />
+              <line x1="220" y1="88" x2="220" y2="152" />
+              <line x1="310" y1="88" x2="310" y2="152" />
+              <line x1="400" y1="88" x2="400" y2="152" />
+              <line x1="490" y1="88" x2="490" y2="152" />
+              <line x1="580" y1="88" x2="580" y2="152" />
+            </g>
+
+            <g fill="#d3e6c2" stroke="#1e400f" stroke-width="2.5">
+              <rect x="112" y="62" width="36" height="30" rx="6" />
+              <rect x="202" y="62" width="36" height="30" rx="6" />
+              <rect x="292" y="62" width="36" height="30" rx="6" />
+              <rect x="382" y="62" width="36" height="30" rx="6" />
+              <rect x="472" y="62" width="36" height="30" rx="6" />
+              <rect x="562" y="62" width="36" height="30" rx="6" />
+              <rect x="112" y="148" width="36" height="30" rx="6" />
+              <rect x="202" y="148" width="36" height="30" rx="6" />
+              <rect x="292" y="148" width="36" height="30" rx="6" />
+              <rect x="382" y="148" width="36" height="30" rx="6" />
+              <rect x="472" y="148" width="36" height="30" rx="6" />
+              <rect x="562" y="148" width="36" height="30" rx="6" />
+            </g>
+
+            <g font-family="Segoe UI, sans-serif" font-size="17" font-weight="700" fill="#1e400f" text-anchor="middle">
+              <text x="130" y="84">A</text>
+              <text x="220" y="84">T</text>
+              <text x="310" y="84">C</text>
+              <text x="400" y="84">G</text>
+              <text x="490" y="84">A</text>
+              <text x="580" y="84">T</text>
+              <text x="130" y="170">T</text>
+              <text x="220" y="170">A</text>
+              <text x="310" y="170">G</text>
+              <text x="400" y="170">C</text>
+              <text x="490" y="170">T</text>
+              <text x="580" y="170">A</text>
+            </g>
+
+            <rect x="180" y="206" width="340" height="28" rx="8" fill="#d3e6c2" stroke="#1e400f" stroke-width="2" />
+            <text x="350" y="225" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1e400f" text-anchor="middle">A con T · C con G · siempre</text>
+          </svg>
+        </div>
+
+        <div class="vocabulario">
+          <h2 id="s-vocabulario-tecnico-y-raices">
+            <span aria-hidden="true">🔤</span>
+            Vocabulario técnico y raíces
+          </h2>
+          <p>
+            <strong>ADN</strong>
+            son las siglas de ácido
+            <em>desoxi</em>
+            rribo
+            <em>nucleico</em>
+            . Las tres piezas dicen qué es:
+            <em>nucleico</em>
+            , del núcleo, donde se encontró;
+            <em>ribo-</em>
+            , por la ribosa, el azúcar que forma los largueros; y
+            <em>desoxi-</em>
+            , del griego
+            <em>des-</em>
+            , sin, más oxígeno, porque a esa ribosa le falta un oxígeno. El
+            <strong>ARN</strong>
+            es el mismo nombre
+            <em>sin</em>
+            el
+            <em>desoxi-</em>
+            : ácido ribonucleico, con la ribosa completa. La diferencia entre ambas siglas está en un solo átomo, y ese átomo está anunciado en el nombre.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="seccion" id="s-2-adn-y-arn-dos-moleculas-parecidas-con-oficios">2. ADN y ARN: dos moléculas parecidas con oficios distintos</h2>
+      <div class="bloque">
+        <p>
+          El ADN guarda la información y no sale del núcleo. El ARN es una copia de trabajo que sí sale, lleva el mensaje al ribosoma y después se degrada. La comparación con un archivo lo explica: el
+          original se conserva bajo llave y lo que circula por la oficina es una fotocopia.
+        </p>
+
+        <table class="reglas">
+          <caption class="sr-only">Comparación entre el ADN y el ARN según número de hebras, azúcar, bases, ubicación y función.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Característica</th>
+              <th scope="col">ADN</th>
+              <th scope="col">ARN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Número de hebras</td>
+              <td>Dos, enrolladas en doble hélice.</td>
+              <td>Una sola.</td>
+            </tr>
+            <tr>
+              <td>Azúcar</td>
+              <td>Desoxirribosa.</td>
+              <td>Ribosa.</td>
+            </tr>
+            <tr>
+              <td>Bases</td>
+              <td>A, T, C, G.</td>
+              <td>
+                A,
+                <strong>U</strong>
+                , C, G. El uracilo ocupa el lugar de la timina.
+              </td>
+            </tr>
+            <tr>
+              <td>Ubicación</td>
+              <td>En el núcleo, del que no sale.</td>
+              <td>Se fabrica en el núcleo y sale al citoplasma.</td>
+            </tr>
+            <tr>
+              <td>Función</td>
+              <td>Almacenar la información de forma permanente.</td>
+              <td>Llevar el mensaje hasta el ribosoma para fabricar la proteína.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="caja-atencion">
+          <strong>La única letra que cambia:</strong>
+          al pasar de ADN a ARN, la timina se sustituye por uracilo. Donde el ADN dice T, el ARN dice U. Es el error más frecuente en los ejercicios de transcripción: se copia la T por costumbre y
+          toda la secuencia posterior queda mal. Conviene revisar siempre la secuencia terminada buscando alguna T superviviente.
+        </div>
+      </div>
+
+      <div class="practica">
+        <h3>Práctica interactiva 1 · Complementariedad</h3>
+        <p>Seleccione la respuesta correcta en cada caso.</p>
+
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">1. Si una hebra de ADN dice A T G C, la hebra complementaria dice…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">A T G C</div>
+            <div class="opcion" data-op="b">T A C G</div>
+            <div class="opcion" data-op="c">G C A T</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">2. En una molécula de ARN nunca aparece…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">El uracilo</div>
+            <div class="opcion" data-op="b">La guanina</div>
+            <div class="opcion" data-op="c">La timina</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">3. La diferencia entre las siglas ADN y ARN se refiere a…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Un oxígeno de menos en el azúcar del ADN</div>
+            <div class="opcion" data-op="b">El número de bases distintas</div>
+            <div class="opcion" data-op="c">El tamaño del núcleo</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+      </div>
+
+      <h2 class="seccion" id="s-3-del-gen-a-la-proteina">3. Del gen a la proteína</h2>
+      <div class="bloque">
+        <p>La información del ADN no se usa directamente: se copia y se traduce. Son dos pasos con nombres precisos y con lugares distintos.</p>
+
+        <div class="diagrama-wrap">
+          <svg
+            width="700"
+            height="205"
+            viewBox="0 0 700 205"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Esquema de la expresión genética en dos pasos. Del ADN, situado en el núcleo, se obtiene el ARN mensajero mediante la transcripción. Del ARN mensajero, ya en el ribosoma, se obtiene la proteína mediante la traducción.">
+            <rect x="177" y="38" width="116" height="28" rx="8" fill="#d3e6c2" stroke="#1e400f" stroke-width="2" />
+            <text x="235" y="57" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f" text-anchor="middle">transcripción</text>
+
+            <rect x="412" y="38" width="116" height="28" rx="8" fill="#d3e6c2" stroke="#1e400f" stroke-width="2" />
+            <text x="470" y="57" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f" text-anchor="middle">traducción</text>
+
+            <rect x="40" y="82" width="150" height="58" rx="8" fill="#bfd9a9" stroke="#1e400f" stroke-width="3" />
+            <text x="115" y="118" font-family="Segoe UI, sans-serif" font-size="18" font-weight="700" fill="#1e400f" text-anchor="middle">ADN</text>
+
+            <rect x="275" y="82" width="150" height="58" rx="8" fill="#bfd9a9" stroke="#1e400f" stroke-width="3" />
+            <text x="350" y="110" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#1e400f" text-anchor="middle">ARN</text>
+            <text x="350" y="128" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1e400f" text-anchor="middle">mensajero</text>
+
+            <rect x="510" y="82" width="150" height="58" rx="8" fill="#bfd9a9" stroke="#1e400f" stroke-width="3" />
+            <text x="585" y="118" font-family="Segoe UI, sans-serif" font-size="18" font-weight="700" fill="#1e400f" text-anchor="middle">Proteína</text>
+
+            <g stroke="#1e400f" stroke-width="3">
+              <line x1="192" y1="111" x2="263" y2="111" />
+              <line x1="427" y1="111" x2="498" y2="111" />
+            </g>
+            <g fill="#1e400f">
+              <polygon points="273,111 259,104 259,118" />
+              <polygon points="508,111 494,104 494,118" />
+            </g>
+
+            <g font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">
+              <text x="115" y="164">en el núcleo</text>
+              <text x="350" y="164">sale al citoplasma</text>
+              <text x="585" y="164">en el ribosoma</text>
+            </g>
+            <text x="350" y="192" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f" text-anchor="middle">Tres letras del ARN mensajero, un aminoácido</text>
+          </svg>
+        </div>
+
+        <p>
+          El ARN mensajero se lee de tres en tres. Cada grupo de tres bases se llama
+          <strong>codón</strong>
+          y designa un aminoácido concreto, o bien la orden de detenerse. Los aminoácidos encadenados forman la proteína.
+        </p>
+
+        <table class="reglas">
+          <caption class="sr-only">Tabla simplificada del código genético con los codones que se emplean en esta lección y el aminoácido u orden que designa cada uno.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Codón del ARN</th>
+              <th scope="col">Significado</th>
+              <th scope="col">Observación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AUG</td>
+              <td>Metionina</td>
+              <td>Marca además el comienzo de la lectura.</td>
+            </tr>
+            <tr>
+              <td>CCU</td>
+              <td>Prolina</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>GAG</td>
+              <td>Ácido glutámico</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>GUG</td>
+              <td>Valina</td>
+              <td>Se diferencia del anterior en una sola letra.</td>
+            </tr>
+            <tr>
+              <td>UUU</td>
+              <td>Fenilalanina</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>UAG, UAA, UGA</td>
+              <td>Alto</td>
+              <td>No designan aminoácido: detienen la lectura.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ejemplo">
+          <span class="et">Ejemplo 1 · De una hebra de ADN a una proteína</span>
+          <p>
+            Se parte de la hebra molde de ADN:
+            <span class="resalta">TAC · GGA · CTC · ATC</span>
+          </p>
+          <div class="paso">
+            <span class="n">1</span>
+            <strong>Transcripción.</strong>
+            Se escribe la secuencia complementaria, sustituyendo la timina por uracilo: A con U, T con A, C con G, G con C.
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            El ARN mensajero resulta ser:
+            <span class="resalta">AUG · CCU · GAG · UAG</span>
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            <strong>Traducción.</strong>
+            Se consulta cada codón en la tabla: AUG es metionina, CCU es prolina, GAG es ácido glutámico y UAG es la orden de alto.
+          </div>
+          <p>
+            <strong>Resultado:</strong>
+            una cadena de tres aminoácidos —metionina, prolina y ácido glutámico— y ahí termina la lectura. El codón de alto no aporta ningún aminoácido: solo indica dónde parar.
+          </p>
+        </div>
+
+        <div class="caja-tip">
+          <strong>Leer de tres en tres, sin desplazarse:</strong>
+          los codones se cuentan desde el principio y siempre de tres en tres, sin saltarse ni repetir ninguna base. Si al copiar la secuencia se pierde una letra, todos los codones siguientes se
+          desplazan y la proteína resultante no se parece en nada a la correcta. Conviene separar los tríos con un punto antes de traducir, tal como se hace en el ejemplo.
+        </div>
+      </div>
+
+      <h2 class="seccion" id="s-4-mutaciones-puntuales">4. Mutaciones puntuales</h2>
+      <div class="bloque">
+        <p>
+          Una
+          <strong>mutación puntual</strong>
+          es el cambio de una sola base. Parece poca cosa y a veces lo es, pero puede alterar por completo la proteína resultante.
+        </p>
+
+        <div class="diagrama-wrap">
+          <svg
+            width="700"
+            height="225"
+            viewBox="0 0 700 225"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Comparación entre una secuencia normal y la misma secuencia con una sustitución de una sola base. La secuencia normal tiene los codones A U G, C C U, G A G, U A G, que se traducen como metionina, prolina, ácido glutámico y alto. En la secuencia mutada, el tercer codón pasa de G A G a G U G, y el aminoácido correspondiente cambia de ácido glutámico a valina. Los demás aminoácidos no varían.">
+            <text x="20" y="52" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f">Secuencia normal</text>
+            <text x="20" y="152" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1e400f">Con una sustitución</text>
+
+            <g fill="#d3e6c2" stroke="#1e400f" stroke-width="2.5">
+              <rect x="190" y="30" width="106" height="34" rx="7" />
+              <rect x="306" y="30" width="106" height="34" rx="7" />
+              <rect x="422" y="30" width="106" height="34" rx="7" />
+              <rect x="538" y="30" width="106" height="34" rx="7" />
+            </g>
+            <g font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#1e400f" text-anchor="middle">
+              <text x="243" y="54">AUG</text>
+              <text x="359" y="54">CCU</text>
+              <text x="475" y="54">GAG</text>
+              <text x="591" y="54">UAG</text>
+            </g>
+            <g font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">
+              <text x="243" y="84">metionina</text>
+              <text x="359" y="84">prolina</text>
+              <text x="475" y="84">ácido glutámico</text>
+              <text x="591" y="84">alto</text>
+            </g>
+
+            <g fill="#d3e6c2" stroke="#1e400f" stroke-width="2.5">
+              <rect x="190" y="130" width="106" height="34" rx="7" />
+              <rect x="306" y="130" width="106" height="34" rx="7" />
+              <rect x="538" y="130" width="106" height="34" rx="7" />
+            </g>
+            <rect x="422" y="130" width="106" height="34" rx="7" fill="#fce1f0" stroke="#9e1c66" stroke-width="3" />
+            <g font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#1e400f" text-anchor="middle">
+              <text x="243" y="154">AUG</text>
+              <text x="359" y="154">CCU</text>
+              <text x="591" y="154">UAG</text>
+            </g>
+            <text x="475" y="154" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#800d4e" text-anchor="middle">GUG</text>
+            <g font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">
+              <text x="243" y="184">metionina</text>
+              <text x="359" y="184">prolina</text>
+              <text x="591" y="184">alto</text>
+            </g>
+            <text x="475" y="184" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#800d4e" text-anchor="middle">valina</text>
+
+            <text x="350" y="212" font-family="Segoe UI, sans-serif" font-size="12" fill="#1e400f" text-anchor="middle">Una sola letra distinta, un aminoácido distinto</text>
+          </svg>
+        </div>
+
+        <table class="reglas">
+          <caption class="sr-only">Tres efectos posibles de una mutación puntual sobre la proteína resultante, con su explicación.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Efecto posible</th>
+              <th scope="col">Qué ocurre</th>
+              <th scope="col">Consecuencia sobre la proteína</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ningún efecto</td>
+              <td>El codón cambia, pero el nuevo designa el mismo aminoácido. Varios codones distintos codifican el mismo aminoácido.</td>
+              <td>La proteína es idéntica. La mutación pasa inadvertida.</td>
+            </tr>
+            <tr>
+              <td>Cambio de un aminoácido</td>
+              <td>El nuevo codón designa un aminoácido distinto, como en el paso de GAG a GUG.</td>
+              <td>La proteína se forma completa, pero puede funcionar peor, igual o incluso mejor.</td>
+            </tr>
+            <tr>
+              <td>Alto prematuro</td>
+              <td>El nuevo codón resulta ser una orden de alto donde no la había.</td>
+              <td>La proteína queda incompleta y casi siempre deja de funcionar.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="caja-atencion">
+          <strong>Una mutación no es «buena» ni «mala» por sí misma:</strong>
+          es una idea que el examen evalúa con frecuencia y que resulta contraintuitiva. El efecto de una mutación depende del
+          <em>ambiente</em>
+          en que vive el organismo. La misma variante puede ser perjudicial en un lugar y ventajosa en otro, como se verá en la lectura de esta lección y, sobre todo, en la Lección 4.3 al estudiar la
+          selección natural.
+        </div>
+      </div>
+
+      <!-- ENLACE AL INTERACTIVO — URL POR CONFIRMAR con el autor del sitio -->
+      <a
+        class="enlace-interactivo"
+        href="https://zhemaria.github.io/ciencias/genetica"
+        target="_blank"
+        rel="noopener"
+        aria-label="Abrir la sub-página Genética y herencia (se abre en una pestaña nueva)">
+        <span class="ei-icono" aria-hidden="true">🧬</span>
+        <span class="ei-cuerpo">
+          <span class="ei-titulo">Genética y herencia</span>
+          <span class="ei-sub">
+            Sub-página temática de Biología con diagramas nativos, acordeones de vocabulario, tooltips sobre los términos técnicos y cuestionario de estilo GED con retroalimentación inmediata. Cubre
+            la estructura del ADN y la expresión genética, y sirve además de puente hacia los cruces de la Lección 4.2.
+          </span>
+          <span class="ei-cta">
+            Abrir el recurso
+            <span aria-hidden="true">›</span>
+          </span>
+        </span>
+      </a>
+
+      <div class="lectura">
+        <h2 id="s-lectura-cientifica">
+          <span aria-hidden="true">📖</span>
+          Lectura científica
+        </h2>
+        <p class="fuente">Texto científico breve adaptado al nivel. Obsérvese que la conclusión final depende del ambiente y no solo de la molécula.</p>
+
+        <div class="texto-adaptado">
+          <p><strong>Una letra que cambia una vida</strong></p>
+          <p>
+            La hemoglobina es la proteína de los glóbulos rojos que transporta el oxígeno. El gen que la codifica tiene, en la mayoría de las personas, un codón que designa el ácido glutámico en una
+            posición determinada de la cadena.
+          </p>
+          <p>
+            En algunas personas ese codón presenta una sola base distinta, y el aminoácido que se incorpora ya no es el ácido glutámico sino la valina. El cambio afecta a un solo eslabón de una cadena
+            de cientos, pero basta para alterar el comportamiento de la molécula completa: cuando cede su oxígeno, esta hemoglobina tiende a unirse consigo misma formando fibras rígidas.
+          </p>
+          <p>
+            Los glóbulos rojos que las contienen pierden su forma redondeada y adoptan una silueta alargada, semejante a una hoz, que da nombre a la enfermedad: anemia falciforme. Esas células
+            circulan con dificultad, obstruyen los vasos más finos y se destruyen antes de tiempo, lo que produce dolor y anemia.
+          </p>
+          <p>
+            La cuestión que durante años resultó desconcertante es por qué una variante tan perjudicial no había desaparecido. La respuesta llegó al observar su distribución geográfica: la variante es
+            más frecuente en regiones donde la malaria es común. Quien hereda el alelo de un solo progenitor no desarrolla la enfermedad y además resulta menos vulnerable a la malaria. En esas
+            regiones, portar una copia resulta ventajoso; en regiones sin malaria, esa ventaja desaparece.
+          </p>
+        </div>
+
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">1. ¿Cuál es la idea central del texto?</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">La hemoglobina transporta oxígeno en los glóbulos rojos.</div>
+            <div class="opcion" data-op="b">La anemia falciforme es una enfermedad dolorosa.</div>
+            <div class="opcion" data-op="c">El cambio de una sola base altera la proteína, y el efecto de esa alteración depende del ambiente.</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">2. Según el texto, el aminoácido que sustituye al ácido glutámico es…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">La valina</div>
+            <div class="opcion" data-op="b">La prolina</div>
+            <div class="opcion" data-op="c">La metionina</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">3. ¿Por qué la variante no ha desaparecido en ciertas regiones?</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Porque no produce ningún síntoma</div>
+            <div class="opcion" data-op="b">Porque quien hereda una sola copia resulta menos vulnerable a la malaria</div>
+            <div class="opcion" data-op="c">Porque las mutaciones nunca desaparecen</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">4. El texto permite concluir que una mutación…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Siempre es perjudicial para el organismo</div>
+            <div class="opcion" data-op="b">Siempre resulta beneficiosa a largo plazo</div>
+            <div class="opcion" data-op="c">Puede ser perjudicial o ventajosa según el ambiente en que viva el organismo</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+      </div>
+
+      <div class="practica">
+        <h3>Práctica interactiva 2 · Transcripción, traducción y mutaciones</h3>
+        <p>Seleccione la respuesta correcta en cada caso.</p>
+
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">1. La hebra molde de ADN T A C se transcribe como el codón de ARN…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">A U G</div>
+            <div class="opcion" data-op="b">A T G</div>
+            <div class="opcion" data-op="c">T A C</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="b">
+          <div class="enun">2. La traducción ocurre en…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">El núcleo</div>
+            <div class="opcion" data-op="b">El ribosoma</div>
+            <div class="opcion" data-op="c">La mitocondria</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="c">
+          <div class="enun">3. Una mutación convierte un codón normal en un codón de alto. Cabe esperar que la proteína…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Se forme igual que antes</div>
+            <div class="opcion" data-op="b">Sea más larga de lo habitual</div>
+            <div class="opcion" data-op="c">Quede incompleta y probablemente no funcione</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+
+        <div class="pregunta" data-correcta="a">
+          <div class="enun">4. Al copiar una secuencia se pierde una base por descuido. La consecuencia es que…</div>
+          <div class="opciones">
+            <div class="opcion" data-op="a">Todos los codones siguientes se desplazan y la proteína resulta distinta</div>
+            <div class="opcion" data-op="b">Solo cambia el codón afectado</div>
+            <div class="opcion" data-op="c">No hay ninguna consecuencia</div>
+          </div>
+          <div class="fb"></div>
+        </div>
+      </div>
+
+      <div class="caja-tarea">
+        <h2 id="s-tarea">
+          <span aria-hidden="true">✅</span>
+          Tarea
+        </h2>
+        <ul>
+          <li>Ocho ejercicios de complementariedad y transcripción, con revisión final en busca de timinas supervivientes en el ARN.</li>
+          <li>Lectura de un texto sobre una enfermedad genética distinta de la estudiada en la lección, con cinco preguntas de comprensión.</li>
+          <li>Recorrido en la sub-página de Genética, con anotación de los dos términos que hayan resultado más difíciles.</li>
+        </ul>
+        <p>Tiempo estimado: 60 minutos. Evalúe su trabajo con la rúbrica de esta lección.</p>
+      </div>
+
+      <div class="quiz">
+        <h2 id="s-quiz-de-la-leccion-4-1">Quiz de la lección 4.1</h2>
+        <p>
+          Diez preguntas: tres de estructura y complementariedad, tres de diferencias entre ADN y ARN, y cuatro de transcripción, traducción y efecto de las mutaciones. Tiempo sugerido: 25 minutos.
+          Para aprobar se requieren al menos 7 respuestas correctas.
+        </p>
+        <div id="quiz-cuerpo"></div>
+        <div id="resultado-quiz"></div>
+        <button class="btn" id="btn-corregir">Corregir quiz</button>
+        <button class="btn sec" id="btn-reintentar" style="display: none">Intentar de nuevo</button>
+      </div>
+
+      <div class="rubrica">
+        <h2 id="s-rubrica-analitica-de-la-leccion">
+          <span aria-hidden="true">📊</span>
+          Rúbrica analítica de la lección
+        </h2>
+        <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+        <table class="tabla-rubrica">
+          <caption class="sr-only">Rúbrica analítica de biología molecular con cuatro criterios y cuatro niveles de desempeño.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Criterio</th>
+              <th scope="col">Inicial (1)</th>
+              <th scope="col">En desarrollo (2)</th>
+              <th scope="col">Competente (3)</th>
+              <th scope="col">Destacado (4)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Empareja bases correctamente</td>
+              <td>Empareja las bases sin seguir ninguna regla fija.</td>
+              <td>Aplica la regla, pero comete errores al copiar secuencias largas.</td>
+              <td>Obtiene la hebra complementaria sin errores.</td>
+              <td>Además, revisa la secuencia terminada y detecta por sí mismo cualquier emparejamiento imposible.</td>
+            </tr>
+            <tr>
+              <td>Distingue ADN de ARN por estructura y función</td>
+              <td>Confunde ambas moléculas.</td>
+              <td>Señala alguna diferencia, pero no la de las bases ni la de ubicación.</td>
+              <td>Distingue ambas por número de hebras, bases, ubicación y función.</td>
+              <td>Explica además por qué la información se copia en lugar de usarse directamente.</td>
+            </tr>
+            <tr>
+              <td>Realiza la transcripción y la traducción sin errores de marco</td>
+              <td>No separa los codones o los lee de forma irregular.</td>
+              <td>Separa los codones, pero conserva alguna timina en el ARN.</td>
+              <td>Transcribe y traduce correctamente una secuencia completa.</td>
+              <td>Traduce correctamente y reconoce dónde termina la lectura sin necesidad de consultar.</td>
+            </tr>
+            <tr>
+              <td>Explica el efecto de una mutación sobre la proteína</td>
+              <td>Afirma que toda mutación destruye la proteína.</td>
+              <td>Reconoce que hay mutaciones sin efecto, pero no explica por qué.</td>
+              <td>Distingue los tres efectos posibles y los relaciona con el codón alterado.</td>
+              <td>Además, argumenta que el efecto sobre el organismo depende del ambiente.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cierre">
+        <h2 id="s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</h2>
+        <p>
+          Esta lección trabajó el nivel
+          <strong>molecular</strong>
+          : qué es un gen y cómo se convierte en una proteína. Dejó además una idea que la Unidad 4 va a desarrollar entera: que el efecto de una variante genética
+          <strong>depende del ambiente</strong>
+          , no solo de la molécula.
+        </p>
+        <p>
+          La
+          <strong>Lección 4.2 · Cuadros de Punnett y probabilidad genética</strong>
+          sube al nivel del
+          <strong>individuo</strong>
+          . Antes de construir el primer cuadro se estudiará la
+          <strong>meiosis</strong>
+          , que es la que explica de dónde salen los gametos y por qué cada progenitor aporta un solo alelo de cada par. Y reaparecerá el
+          <strong>diagrama de árbol</strong>
+          de la Lección 2.3, esta vez contando descendencia en lugar de gametos.
+        </p>
+      </div>
+
+      <footer>
+        <p>GEDparaHispanos · Ciencias · Unidad 4 · Lección 4.1</p>
+        <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+        <p>
+          © 2026. Esta obra está licenciada bajo
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>
+          .
+        </p>
+      </footer>
+    </div>
+
+    <a href="#indice" class="volver-indice" aria-label="Volver al contenido de la lección">↑ Índice</a>
+
+    <script>
+      (function () {
+        /* ---- Práctica de opciones (bloques .practica y .lectura) ---- */
+        var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta], .lectura .pregunta[data-correcta]');
+        preguntasOp.forEach(function (preg) {
+          var correcta = preg.getAttribute('data-correcta');
+          var opciones = preg.querySelectorAll('.opcion');
+          var fb = preg.querySelector('.fb');
+          opciones.forEach(function (op) {
+            op.addEventListener('click', function () {
+              opciones.forEach(function (o) {
+                o.classList.remove('correcta', 'incorrecta', 'elegida');
+              });
+              var elegida = op.getAttribute('data-op');
+              if (elegida === correcta) {
+                op.classList.add('correcta');
+                fb.textContent = 'Correcto. Bien razonado.';
+                fb.className = 'fb ok';
+              } else {
+                op.classList.add('incorrecta');
+                opciones.forEach(function (o) {
+                  if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+                });
+                fb.textContent = 'Revise: la opción marcada en verde es la correcta.';
+                fb.className = 'fb no';
+              }
+              fb.style.display = 'block';
+            });
+          });
+        });
+
+        /* ---- Quiz: 3 de estructura y complementariedad, 3 de ADN frente a ARN,
+     4 de transcripción, traducción y mutaciones ---- */
+        var preguntasQuiz = [
+          {enun: '1. En el ADN, la adenina se empareja siempre con…', ops: ['La guanina', 'La citosina', 'La timina', 'El uracilo'], correcta: 2},
+          {enun: '2. Si una hebra de ADN dice G G A T C, la hebra complementaria dice…', ops: ['C C T A G', 'G G A T C', 'C C U A G', 'A A T G C'], correcta: 0},
+          {
+            enun: '3. La estructura de doble hélice del ADN está formada por…',
+            ops: ['Una sola hebra plegada', 'Dos hebras complementarias enrolladas', 'Cuatro hebras paralelas', 'Una cadena de aminoácidos'],
+            correcta: 1
+          },
+          {enun: '4. La base que aparece en el ARN y no en el ADN es…', ops: ['La citosina', 'La timina', 'La adenina', 'El uracilo'], correcta: 3},
+          {
+            enun: '5. A diferencia del ADN, el ARN…',
+            ops: ['Tiene una sola hebra y sale del núcleo', 'Tiene dos hebras y permanece en el núcleo', 'No contiene bases nitrogenadas', 'Se encuentra solo en las plantas'],
+            correcta: 0
+          },
+          {
+            enun: '6. La función principal del ADN es…',
+            ops: ['Transportar oxígeno', 'Almacenar de forma permanente la información genética', 'Fabricar directamente las proteínas en el citoplasma', 'Producir energía'],
+            correcta: 1
+          },
+          {enun: '7. La hebra molde de ADN C T C se transcribe como el codón de ARN…', ops: ['C U C', 'G A G', 'G T G', 'C T C'], correcta: 1},
+          {enun: '8. Un codón está formado por…', ops: ['Dos bases del ARN', 'Tres bases del ARN', 'Cuatro bases del ARN', 'Un aminoácido'], correcta: 1},
+          {
+            enun: '9. Una mutación cambia el codón GAG por GUG. Según la tabla del código, el aminoácido pasa de…',
+            ops: ['Prolina a metionina', 'Valina a ácido glutámico', 'Ácido glutámico a valina', 'Metionina a alto'],
+            correcta: 2
+          },
+          {
+            enun: '10. Una mutación puntual que convierte un codón normal en un codón de alto produce…',
+            ops: ['Una proteína incompleta que probablemente no funcione', 'Una proteína idéntica a la original', 'Una proteína más larga', 'Ningún cambio en la célula'],
+            correcta: 0
+          }
+        ];
+
+        var cuerpo = document.getElementById('quiz-cuerpo');
+        preguntasQuiz.forEach(function (p, i) {
+          var div = document.createElement('div');
+          div.className = 'pregunta';
+          div.setAttribute('data-idx', i);
+          var enun = document.createElement('div');
+          enun.className = 'enun';
+          enun.textContent = p.enun;
+          div.appendChild(enun);
+          var cont = document.createElement('div');
+          cont.className = 'opciones';
+          p.ops.forEach(function (texto, j) {
+            var op = document.createElement('div');
+            op.className = 'opcion';
+            op.setAttribute('data-j', j);
+            op.textContent = texto;
+            op.addEventListener('click', function () {
+              if (div.getAttribute('data-bloqueado') === 'si') return;
+              cont.querySelectorAll('.opcion').forEach(function (o) {
+                o.classList.remove('elegida');
+              });
+              op.classList.add('elegida');
+              div.setAttribute('data-elegida', j);
+            });
+            cont.appendChild(op);
+          });
+          div.appendChild(cont);
+          var fb = document.createElement('div');
+          fb.className = 'fb';
+          div.appendChild(fb);
+          cuerpo.appendChild(div);
+        });
+
+        var btnCorregir = document.getElementById('btn-corregir');
+        var btnReintentar = document.getElementById('btn-reintentar');
+        var resultado = document.getElementById('resultado-quiz');
+
+        btnCorregir.addEventListener('click', function () {
+          var aciertos = 0;
+          var divs = cuerpo.querySelectorAll('.pregunta');
+          divs.forEach(function (div, i) {
+            var elegida = div.getAttribute('data-elegida');
+            var fb = div.querySelector('.fb');
+            var opciones = div.querySelectorAll('.opcion');
+            div.setAttribute('data-bloqueado', 'si');
+            opciones.forEach(function (o) {
+              o.classList.remove('correcta', 'incorrecta');
+            });
+            if (elegida === null) {
+              fb.textContent = 'No se respondió esta pregunta.';
+              fb.className = 'fb no';
+              fb.style.display = 'block';
+              opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+              return;
+            }
+            var idxElegida = parseInt(elegida, 10);
+            if (idxElegida === preguntasQuiz[i].correcta) {
+              aciertos++;
+              opciones[idxElegida].classList.add('correcta');
+              fb.textContent = 'Correcto.';
+              fb.className = 'fb ok';
+            } else {
+              opciones[idxElegida].classList.add('incorrecta');
+              opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+              fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+              fb.className = 'fb no';
+            }
+            fb.style.display = 'block';
+          });
+
+          resultado.style.display = 'block';
+          if (aciertos >= 7) {
+            resultado.className = 'aprob';
+            resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. Aprobado. Puede continuar a la Lección 4.2.';
+          } else {
+            resultado.className = 'repro';
+            resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. Repase la lección e intente de nuevo (se requieren 7).';
+          }
+          btnCorregir.style.display = 'none';
+          btnReintentar.style.display = 'inline-block';
+        });
+
+        btnReintentar.addEventListener('click', function () {
+          var divs = cuerpo.querySelectorAll('.pregunta');
+          divs.forEach(function (div) {
+            div.removeAttribute('data-elegida');
+            div.removeAttribute('data-bloqueado');
+            div.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('correcta', 'incorrecta', 'elegida');
+            });
+            var fb = div.querySelector('.fb');
+            fb.style.display = 'none';
+            fb.textContent = '';
+          });
+          resultado.style.display = 'none';
+          btnReintentar.style.display = 'none';
+          btnCorregir.style.display = 'inline-block';
+          window.scrollTo({top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth'});
+        });
+      })();
+    </script>
+  </body>
+</html>
